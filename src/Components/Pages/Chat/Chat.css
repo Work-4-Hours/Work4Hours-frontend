@@ -1,0 +1,158 @@
+* {
+    --background: #D6D6D6;
+}
+
+.chat {
+    height: calc(100vh - 54px);
+    display: flex;
+}
+
+.subtitle_nav_chat {
+    font-size: 1.7em;
+    padding: 0 0 20px 0;
+    color: var(--clr-titles);
+    font-weight: 700;
+}
+
+.nav_messages {
+    width: 30%;
+    padding: 20px;
+    background: var(--background);
+}
+
+.container_nav_messages {
+    overflow: auto;
+    height: 90%;
+}
+
+.container_nav_messages::-webkit-scrollbar {
+    display: none;
+}
+
+.card_body {
+    padding: 10px;
+    color: #303030;
+}
+
+/* Chat */
+
+.container_chat {
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header_chat {
+    height: 80px;
+    background: var(--background);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_user {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.image_user img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 25px;
+    color: #303030;
+    margin: 0 10px;
+}
+
+.container_messages {
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f3f3f3;
+}
+
+.container_messages::-webkit-scrollbar {
+    width: 10px;   
+    height: 8px;   
+    background:  var(--background);
+}
+
+.container_messages::-webkit-scrollbar-thumb {
+    padding: 10px;
+    border-radius: 5px;
+    background: #8a8a8a;
+}
+
+.container_messages::-webkit-scrollbar-thumb:hover {
+    background: #747474;
+}
+
+.card_message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px 0;
+}
+
+.body_message {
+    max-width: 70%;
+    background: #EBEBEB;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.date_message {
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.message {
+    color: #303030;
+}
+
+.in {
+    align-items: flex-start;
+}
+
+.out {
+    align-items: flex-end;
+}
+
+.container_input_messages {
+    background: var(--background);
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input_message {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.btn_send_message {
+    width: 9.5%;
+    padding: 10px;
+    background: #00C2CB;
+    border-radius: 5px;
+    border: none;
+    color: #FFFF;
+    font-size: 17px;
+}

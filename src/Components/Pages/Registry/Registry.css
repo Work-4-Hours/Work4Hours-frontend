@@ -1,0 +1,47 @@
+.register {
+    background-image: url('../../../Assets/Images/background4.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.filter {
+    height: 400px;
+    background:  rgba(31, 31, 31, 0.63);
+}
+
+.center_register {
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    padding: 3em;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.container_form_register {
+    width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #FFFF;
+    /* box-shadow: 5px 5px 10px #afafaf; */
+}
+
+.container_info_register {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin: 3em 0;
+}
+  
+.title_form_register {
+    font-size: 4em;
+    margin: 0  0 10px 0;
+    color: #FFFF;
+}
+  
+.container_info_register p {
+    color: #FFFF;
+}
+  

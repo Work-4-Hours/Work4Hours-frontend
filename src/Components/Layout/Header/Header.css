@@ -1,0 +1,36 @@
+.header {
+    background: #1A171B;
+}
+
+.center_nav_bar {
+    max-width: 1100px;
+    margin: auto;
+    height: 54px;
+    padding: 7px 20px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--color-one);
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.button_registry {
+    padding: 7px;
+    background: var(--bg-buttons);
+    color: #FFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px 0 0;
+    font-size: 15px;
+}
+  
+.button_login {
+    color: #FFFF;
+    text-decoration: none;
+}
+  

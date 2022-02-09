@@ -1,0 +1,47 @@
+:root {
+  --bg-buttons: #289fa5;
+  --clr-titles: #303030;
+  --clr-paragrhap: #303030;
+
+  --color-one: #26c9d1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/* Buttons */
+.input {
+  padding: 10px;
+  margin: 0 0 1.5em 0;
+  border-radius: 5px;
+  border: none;
+  background: #EBEBEB;
+  font-size: 17px;
+  outline: none;
+  transition: 40ms;
+  color: var(--clr-paragrhap);
+}
+
+.input:focus {
+  outline: 2px solid var(--bg-buttons);
+  background: #289fa510;
+}
+
