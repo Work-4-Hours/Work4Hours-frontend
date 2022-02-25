@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Chat } from './Components/Pages/Chat/Chat';
+import { Chat } from './Modules/Main/Chat/Chat';
 import { Index } from './Components/Pages/Index/Index';
 import { Login } from './Components/Pages/Login/Login';
 import { Registry } from './Components/Pages/Registry/Registry';

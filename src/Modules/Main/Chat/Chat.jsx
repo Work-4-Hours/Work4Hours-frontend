@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import { Header } from "../../Layout/Header/Header";
-import { ChatUserCard } from "../../Ui/ChatUserCard/ChatUserCard";
-import { MessageCard } from "../../Ui/MessageCard/MessageCard";
-import { verifyTypeOfLogin } from '../../../Functions/ReusableFunctions'
+import { Header } from "Components/Layout/Header/Header";
+import { ChatUserCard } from "Components/Ui/ChatUserCard/ChatUserCard";
+import { MessageCard } from "Components/Ui/MessageCard/MessageCard";
+import { verifyTypeOfLogin } from 'Functions/ReusableFunctions'
 import './Chat.css';
 
 const API = process.env.REACT_APP_API;
