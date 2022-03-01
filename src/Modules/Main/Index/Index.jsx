@@ -14,7 +14,7 @@ export const Index = () => {
             <Header />
             <section className="services">
                 <h2 className="subtitle_services">Bienvenido</h2>
-                <p className="paragrhap">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam doloremque ipsam labore repellendus eius nobis quia neque </p>
+                <p className="paragrhap">ipsum dolor sit amet consectetur adipisicing elit. Aperiam doloremque ipsam labore repellendus eius nobis quia neque </p>
             </section>  
         </>
     ) 
