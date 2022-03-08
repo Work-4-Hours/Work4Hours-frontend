@@ -5,7 +5,20 @@ import './Dashboard.css';
 
 export const Dashboard = () => {
   return (
-    <div>
+    <div className='dashborard scroll'>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
+      <UserInfo/>
       <UserInfo/>
     </div>
   )
