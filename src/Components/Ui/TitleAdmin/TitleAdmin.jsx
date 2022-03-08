@@ -3,6 +3,9 @@ import './TitleAdmin.css';
 
 export const TitleAdmin = () => {
   return (
-    <div>TitleAdmin</div>
+    <div>
+      <h1>Admin</h1>
+      <h2>Usuarios</h2>
+    </div>
   )
 }
