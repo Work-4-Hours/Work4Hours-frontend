@@ -8,11 +8,13 @@ import './Users.css'
 
 export const Users = () => {
   return (
-    <div>
+    <div className='users_menu_admin'>
       <MenuAdmin/>
-      <Search/>
-      <DashboardHeader/>
-      <Dashboard/>
+      <div className='users'>
+        <Search/>
+        <DashboardHeader/>
+        <Dashboard/>
+      </div>
     </div>
   )
 }
