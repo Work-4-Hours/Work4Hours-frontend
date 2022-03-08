@@ -5,7 +5,7 @@ import './MenuAdmin.css';
 
 export const MenuAdmin = () => {
   return (
-    <div >
+    <div className='menu_admin'>
       <TitleAdmin/>
     </div>
   )
