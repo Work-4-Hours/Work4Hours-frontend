@@ -7,6 +7,6 @@ export const MenuAdmin = () => {
   return (
     <div className='menu_admin'>
       <TitleAdmin/>
-    </div>
+    </div> 
   )
 }

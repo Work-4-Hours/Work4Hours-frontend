@@ -8,7 +8,7 @@ export const DashboardHeader = () => {
       <p>Apellidos</p>
       <p>Nombres</p>
       <p>Correo</p>
-      <p>Cantidad de reportes</p>
+      <p>Reportes</p>
       <p>Estado Usuario</p>
       <p>Conf. cambios</p>
     </div>

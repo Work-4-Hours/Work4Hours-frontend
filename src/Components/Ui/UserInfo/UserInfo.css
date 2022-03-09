@@ -1,22 +1,21 @@
 .user_info{
-    display: grid;
-    grid-template-columns: 3% 13% 13% 16% 14% 15% 7%;
-    align-items: center;
-    gap: 2.5%;
-    background-color: #e0e0e0;
-    border-radius: 1rem;
-    padding: 1%;
-    margin-bottom: 1%;
-    
+  display: grid;
+  grid-template-columns: 5% 18% 19% 20% 7% 18% 8%;
+  justify-content: flex-start;
+  gap: 1%;
+  background-color: #e0e0e0;
+  border-radius: 1rem;
+  padding: 1%;
+  margin-bottom: 1%;
 }
 
 
 .admin_user_photo{
-    height:100%;
-	width:100%;
+  height:100%;
+	width:50%;
 	object-fit: cover;
 	object-position: center;
-	border-radius: 100%;
+	border-radius: 50%;
 }
 
 .ellipsis{
@@ -38,4 +37,8 @@
     width: 2.3vh;
     height: 2.3vh;
 
+}
+
+.number_reports{
+  text-align: center;
 }

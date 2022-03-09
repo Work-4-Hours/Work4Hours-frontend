@@ -6,9 +6,9 @@ export const UserInfo = () => {
     <div className='user_info'>
       <img className='admin_user_photo' src="https://cdn.pixabay.com/photo/2021/09/12/08/49/headset-6617715_960_720.png" alt="user_photo" />
       <p className='ellipsis'>Cactus</p>
-      <p className='ellipsis'>Fantasmita</p>
+      <p className='ellipsis'>Fantasmita </p>
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
-      <p>10</p>
+      <p className='number_reports'>1000</p>
       <select className='cb_state_user'>
         <option value="Habilitado">Habilitado</option>
         <option value="Suspendido 3 Dias" selected>Suspendido 3 Dias</option>
