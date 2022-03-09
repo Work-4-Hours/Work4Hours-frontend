@@ -1,21 +1,20 @@
 import React from "react"
-import { Header } from "../../Layout/Header/Header"
-import { Button } from "../../Ui/Button/Button"
+import { Header } from "Components/Layout/Header/Header" 
+import { Button } from "Components/Ui/Button/Button" 
+import { CardService } from 'Components/Ui/CardService/CardService'
 import './Index.css'
 
 export const Index = () => {
+    const service = {
+        price: 200000,
+        image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/ver030119fieldtrip03-1615574226.jpg",
+        city: "Armenia",
+        departament: "Quindio",
+        title: "Instalacion de tejados"
+    }
     return (
         <>
-            <section className="banner_index">
-                <div className="title_banner">
-                    <h1 className="title">Work 4 Hours</h1>
-                </div>            
-            </section>
-            <Header />
-            <section className="services">
-                <h2 className="subtitle_services">Bienvenido</h2>
-                <p className="paragrhap">ipsum dolor sit amet consectetur adipisicing elit. Aperiam doloremque ipsam labore repellendus eius nobis quia neque </p>
-            </section>  
+            <CardService info={service}/>
         </>
     ) 
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormLogin } from '../../Layout/FormLogin/FormLogin'
+import { FormLogin } from 'Components/Layout/FormLogin/FormLogin' 
 import './Login.css'
 
 export const Login = () => {

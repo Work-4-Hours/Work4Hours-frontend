@@ -1,9 +1,27 @@
 :root {
+  /* Backgrounds */
   --bg-buttons: #289fa5;
   --clr-titles: #303030;
   --clr-paragrhap: #303030;
-
   --color-one: #26c9d1;
+
+  --bg-ligth-blue: #F4F8FF;
+  --bg-blue: #14A2D6;
+
+  /* Shadows */
+  --gray-shadow-1: #9F9F9F;
+
+  /* Text colos */
+  --gray-text-1: #494949;
+  --gray-text-2: #6D6D6D;
+  --gray-text-3: #858585;
+
+  /* Gradients */
+  --color-gradient-1: #616161;
+
+  /* Border radius */
+  --border-radius-1: 10px;
+  --border-radius-2: 12;
 }
 
 * {
@@ -19,6 +37,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
