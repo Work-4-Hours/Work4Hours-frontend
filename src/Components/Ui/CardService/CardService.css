@@ -1,6 +1,6 @@
 .card_service {
     width: 280px;
-    height: 400px;
+    height: 404px;
     margin: 20px;
     border-radius: var(--border-radius-1);
     overflow: hidden;
@@ -11,7 +11,7 @@
 
 .header_card_service {
     position: relative;
-    height: 300px;
+    height: calc(100% - 144px);
 }
 
 .price_header_card {
@@ -29,7 +29,7 @@
 }
 
 .price_card {
-    font-size: 24px;
+    font-size: 17px;
     color: #FFFF;
 }
 
@@ -40,17 +40,21 @@
 }
 
 .body_card_service {
-    /* height: 140px; */
-    padding: 18px;
+    height: 144px;
+    padding: 14px;
     background: #f9f9f9;
 }
 
 .location_body_card {
-    font-size: 17px;
+    font-size: 14px;
     color: var(--gray-text-3);
 }
 
 .title_body_card {
-    font-size: 25px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20px;
+    text-overflow: ellipsis;
     color: var(--gray-text-1);
 }

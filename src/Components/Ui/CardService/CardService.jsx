@@ -13,7 +13,7 @@ export const CardService = ({info}) => {
             </header>
             <body className='body_card_service'>
                 <p className='location_body_card'>{city} • {departament}</p>
-                <p className='title_body_card'>{title}</p>
+                <p className='title_body_card'>{title} </p>
             </body>
         </div>
     )

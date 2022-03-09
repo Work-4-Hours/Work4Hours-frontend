@@ -3,6 +3,7 @@ import { Header } from "Components/Layout/Header/Header"
 import { Button } from "Components/Ui/Button/Button" 
 import { CardService } from 'Components/Ui/CardService/CardService'
 import './Index.css'
+import { Banner } from "Components/Layout/Banner/Banner"
 
 export const Index = () => {
     const service = {
@@ -12,9 +13,15 @@ export const Index = () => {
         departament: "Quindio",
         title: "Instalacion de tejados"
     }
+
+    const informacionBanner = {
+        title: "Services",
+        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    }
     return (
         <>
-            <CardService info={service}/>
+        <Banner informaction={informacionBanner} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />
+         
         </>
     ) 
 }

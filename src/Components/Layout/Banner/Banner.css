@@ -1,0 +1,22 @@
+.banner {
+    height: 300px;
+    border-radius: var(--border-radius-2);
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--gray-shadow-1);
+
+    display: flex;
+    position: relative;
+}
+
+.informacion_banner {
+    position: absolute;
+    top: 0;
+
+    padding: 20px;
+}
+
+.image_banner {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}

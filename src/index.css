@@ -21,7 +21,7 @@
 
   /* Border radius */
   --border-radius-1: 10px;
-  --border-radius-2: 12;
+  --border-radius-2: 12px;
 }
 
 * {
@@ -37,7 +37,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  background: var(--bg-ligth-blue);
 }
 
 code {
