@@ -3,10 +3,10 @@ import React from 'react';
 
 import './MenuAdmin.css';
 
-export const MenuAdmin = () => {
+export const MenuAdmin = ({nameAdmin}) => {
   return (
     <div className='menu_admin'>
-      <TitleAdmin/>
+      <TitleAdmin typeAdmin={nameAdmin}/>
     </div> 
   )
 }

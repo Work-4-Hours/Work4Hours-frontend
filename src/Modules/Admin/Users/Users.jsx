@@ -9,7 +9,7 @@ import './Users.css'
 export const Users = () => {
   return (
     <div className='users_menu_admin'>
-      <MenuAdmin/>
+      <MenuAdmin nameAdmin={"Usuarios"}/>
       <div className='users'>
         <Search/>
         <DashboardHeader/>
