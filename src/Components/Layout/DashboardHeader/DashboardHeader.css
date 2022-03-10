@@ -6,7 +6,7 @@
     border-radius: 1rem;
     display: grid;
     justify-content: flex-start;
-    grid-template-columns: 5% 18% 18% 20% 7% 13% 13%;
+    grid-template-columns: 3% 22% 22% 20% 5% 9% 8%;
     gap: 1%;
     color: #848484;
 }

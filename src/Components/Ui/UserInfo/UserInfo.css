@@ -1,6 +1,6 @@
 .user_info{
   display: grid;
-  grid-template-columns: 5% 18% 19% 20% 7% 18% 8%;
+  grid-template-columns: 3% 22% 23% 20% 5% 9% 8%;
   justify-content: flex-start;
   gap: 1%;
   background-color: #e0e0e0;
@@ -8,7 +8,6 @@
   padding: 1%;
   margin-bottom: 1%;
 }
-
 
 .admin_user_photo{
   height:100%;
@@ -19,26 +18,26 @@
 }
 
 .ellipsis{
-    text-overflow:ellipsis;
-    overflow:hidden;
-    white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
 }
 .cb_state_user{
-    appearance: none;
-    background-color: #e0e0e0;
-    border: 0px;
-    cursor: pointer;
-    outline: none;
+  appearance: none;
+  background-color: #e0e0e0;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
 }
 .cb_confirm_changes{
-    appearance: none;
-    background-color:#e0e0e0 ;
-    border: 1px solid #848484;
-    width: 2.3vh;
-    height: 2.3vh;
+  appearance: none;
+  background-color:#e0e0e0 ;
+  border: 1px solid #848484;
+  width: 2.3vh;
+  height: 2.3vh;
 
 }
 
-.number_reports{
+.text_center{
   text-align: center;
 }
