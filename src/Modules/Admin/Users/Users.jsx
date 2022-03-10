@@ -12,7 +12,7 @@ export const Users = () => {
       <MenuAdmin nameAdmin={"Usuarios"}/>
       <div className='users'>
         <Search nameSearch={"Buscar Usuarios"}/>
-        <DashboardHeader/>
+        <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"}/>
         <Dashboard/>
       </div>
     </div>

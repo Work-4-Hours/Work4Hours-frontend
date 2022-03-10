@@ -1,16 +1,16 @@
 import React from 'react';
 import './DashboardHeader.css';
 
-export const DashboardHeader = () => {
+export const DashboardHeader = ({header1,header2,header3,header4,header5,header6,header7}) => {
   return (
     <div className='dashboard_header'>
-      <p>Perfil</p>
-      <p>Apellidos</p>
-      <p>Nombres</p>
-      <p>Correo</p>
-      <p>Reportes</p>
-      <p>Estado Usuario</p>
-      <p>Conf. cambios</p>
+      <p>{header1}</p>
+      <p>{header2}</p>
+      <p>{header3}</p>
+      <p>{header4}</p>
+      <p className='report'>{header5}</p>
+      <p>{header6}</p>
+      <p>{header7}</p>
     </div>
   )
 }

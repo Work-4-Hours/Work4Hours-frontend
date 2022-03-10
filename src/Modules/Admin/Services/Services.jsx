@@ -12,7 +12,7 @@ export const Services = () => {
       <MenuAdmin nameAdmin={"Servicios"}/>
       <div className='users'>
         <Search nameSearch={"Buscar Servicios"}/>
-        <DashboardHeader/>
+        <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"}/>
         <Dashboard/>
       </div>
     </div>
