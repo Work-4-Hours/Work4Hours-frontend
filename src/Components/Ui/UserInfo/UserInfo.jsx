@@ -1,5 +1,7 @@
 import React from 'react';
+import { SelectAdmin } from '../SelectAdmin/SelectAdmin';
 import './UserInfo.css';
+
 
 export const UserInfo = () => {
   return (
@@ -9,11 +11,7 @@ export const UserInfo = () => {
       <p className='ellipsis'>Fantasmita </p>
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
       <p className='text_center'>1000</p>
-      <select className='cb_state_user'>
-        <option value="Habilitado">Habilitado</option>
-        <option value="Suspendido 3 Dias" selected>Suspendido 3 Dias</option>
-        <option value="Inhabilitado">Inhabilitado</option>
-      </select>
+      <SelectAdmin/>
       <div className='text_center'>
         <input type="checkbox" className='cb_confirm_changes'/>
       </div>

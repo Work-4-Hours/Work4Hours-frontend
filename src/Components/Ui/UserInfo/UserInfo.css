@@ -22,13 +22,10 @@
   overflow:hidden;
   white-space:nowrap;
 }
-.cb_state_user{
-  appearance: none;
-  background-color: #e0e0e0;
-  border: 0px;
-  cursor: pointer;
-  outline: none;
-}
+
+
+
+
 .cb_confirm_changes{
   appearance: none;
   background-color:#e0e0e0 ;

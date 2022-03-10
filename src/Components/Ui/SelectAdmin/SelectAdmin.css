@@ -1,0 +1,18 @@
+.cb_state_user{
+    cursor: pointer;
+    position: relative;
+    padding-left: 1%;
+
+}
+
+.op_state_user::before{
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    background-color: #ffcc00;
+    position: absolute;
+    top: 7%;
+    left: -10%;
+}
