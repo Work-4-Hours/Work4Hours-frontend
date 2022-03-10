@@ -17,20 +17,15 @@
 .price_header_card {
     position: absolute;
     width: 100%;
+    height: 80px;
     top: 0;
-    background: linear-gradient(
-        180deg, 
-        var(--color-gradient-1),
-        var(--color-gradient-1),
-        #616161ad,
-        rgba(0, 0, 0,.0)
-    );
     padding: 10px;
-}
-
-.price_card {
-    font-size: 17px;
-    color: #FFFF;
+    background: linear-gradient(
+        180deg, rgba(97,97,97,1) 16%, 
+        rgba(97,97,97,0.7763480392156863) 42%,
+        rgba(97,97,97,0.41780462184873945) 62%, 
+        rgba(97,97,97,0) 100%
+    );
 }
 
 .image_header_card {
@@ -39,10 +34,42 @@
     object-fit: cover;
 }
 
+.information_price_service {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    color: #FFFF;
+    gap: 5px;
+}
+
+.information_price_service p:first-child {
+    font-family: 'coco gothic';
+}
+
+.information_price_service p:nth-child(2) {
+    font-family: Arial;
+}
+
+.information_price_service p:last-child {
+    font-family: 'coco gothic';
+}
+
 .body_card_service {
     height: 144px;
     padding: 14px;
     background: #f9f9f9;
+    font-family: 'coco gothic';
+}
+
+.location_card_service {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.icon_location_card_service {
+    fill: var(--gray-text-3);
+    width: 13px;
 }
 
 .location_body_card {
