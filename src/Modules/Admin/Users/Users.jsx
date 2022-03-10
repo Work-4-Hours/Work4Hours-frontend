@@ -11,7 +11,7 @@ export const Users = () => {
     <div className='users_menu_admin'>
       <MenuAdmin nameAdmin={"Usuarios"}/>
       <div className='users'>
-        <Search/>
+        <Search nameSearch={"Buscar Usuarios"}/>
         <DashboardHeader/>
         <Dashboard/>
       </div>
