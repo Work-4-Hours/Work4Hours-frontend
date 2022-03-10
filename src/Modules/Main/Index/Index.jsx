@@ -5,6 +5,7 @@ import { Banner } from "Components/Layout/Banner/Banner"
 import { DivShadow } from "Components/StyleComponets/DivShadow"
 
 import './Index.css'
+import { Seeker } from "Components/Layout/Seeker/Seeker"
 
 export const Index = () => {
     const service = {
@@ -12,23 +13,33 @@ export const Index = () => {
         image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
         city: "Armenia",
         departament: "Quindio",
-        title: "Instalacion de tejados"
+        title: "Pinto casas a domicilio Lorem"
     }
 
     const informacionBanner = {
         title: "Services",
         info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
     }
+
     return (
         <>
             <Header />
+            <Seeker/>
             <main>
                 <div className="center_main_index">
                     <section className="banner_index">
                         <Banner informaction={informacionBanner} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />               
                     </section>
                     <section className='services_index'>
-                        <DivShadow className=''>
+                        <DivShadow className='container_pricipal_servieces'> 
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
+                            <CardService info={service} />
                             <CardService info={service} />
                         </DivShadow>                 
                     </section>

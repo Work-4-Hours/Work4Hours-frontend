@@ -1,9 +1,15 @@
 .center_main_index {
-    max-width: 1100px;
+    max-width: 1130px;
     margin: 1em auto;
     padding: 0 20px;
 }
 
 .services_index {
     margin: 20px 0;
+}
+
+.container_pricipal_servieces {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
