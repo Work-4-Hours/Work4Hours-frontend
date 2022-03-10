@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormRegistry } from '../../Layout/FormRegistry/FormRegistry'
+import { FormRegistry } from 'Components/Layout/FormRegistry/FormRegistry' 
 import './Registry.css'
 
 export const Registry = () => {
