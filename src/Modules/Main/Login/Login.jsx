@@ -1,25 +1,22 @@
+import { Title } from 'Components/StyleComponets/Titlte'
+import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import React from 'react'
-import { FormLogin } from 'Components/Layout/FormLogin/FormLogin' 
 import './Login.css'
 
 export const Login = () => {
     return (
-        <div className="component_login"> 
-             <div className="banner">
-                <div className="container_info_login">
-                    <div>
-                        <img className="logo" src />
-                        <h1 className="title_info_login">Works 4 Hours</h1>
-                        <p className="paragraph_info_login">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-                            nulla temporibus veniam fugiat molestias hic delectus voluptas
-                            doloremque consequuntur eum. Earum vitae quibusdam modi ducimus
-                            eveniet doloribus, similique ea numquam!
-                        </p>
-                    </div>
+        <main className='login'>
+            <div className="center_main_login">
+                <div className="information_login_app">
+
+                </div>
+                <div className="container_form_login">
+                    <Title>Iniciar sesión</Title>
+                    <form className='form_login' action="">
+                        <InputTextLabel titleLabel='Correo' placeholder='Correo' />
+                    </form>
                 </div>
             </div>
-            <FormLogin/>
-        </div>
+        </main>
     )
 }
