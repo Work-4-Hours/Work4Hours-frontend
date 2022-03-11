@@ -1,24 +1,53 @@
 import React from 'react'
 import { FormRegistry } from 'Components/Layout/FormRegistry/FormRegistry' 
 import './Registry.css'
+import { DivShadow } from 'Components/StyleComponets/DivShadow'
+import { Link } from 'react-router-dom'
+import { InputText } from 'Components/Ui/InputText/InputText'
+import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
+import { Button } from 'Components/Ui/Button/Button'
+import { Title } from 'Components/StyleComponets/Titlte'
 
 export const Registry = () => {
     return (
-        <div>
-            <section className="register">
-                <div className="filter">
-                    <div className="center_register">
-                        <div className="container_form_register">
-                            <h1 className="subtitle">Registro</h1>
-                            <FormRegistry />
+        <main className='registry'>
+            <div className="background_registry">
+                <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png" alt="" />
+            </div>
+
+           <div className="center_main_registry">
+                <DivShadow>
+                    <header className='header_registry'>
+                        <Title>Registro</Title>
+                        <Link to='/login'>¿Ya tienes una cuenta?</Link> 
+                    </header>
+                    <form action="">
+                        <div className="subtitle_form_registry">
+                            <p>Datos basicos</p>
                         </div>
-                        <div className="container_info_register">
-                            <h1 className="title_form_register">Work 4 Hours</h1>
-                            <p className="paragraph_info_login">elit. Minima illo sequi nobis maxime velit suscipit voluptates in voluptas praesentium non!</p>
+                        <section className="basic_data">                     
+                            <InputTextLabel titleLabel='Nombres' placeholder='Camilo' />
+                            <InputTextLabel titleLabel='Apellidos' placeholder='Lopez' />
+                            <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number' />
+                            <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />                         
+                        </section>
+
+                        <div className="subtitle_form_registry">
+                            <p>Cuenta</p>
                         </div>
-                    </div>
+                        <section className="acount_data">
+                            <InputTextLabel titleLabel='Email' placeholder='correo' type='email' />
+                            <InputTextLabel titleLabel='Contraseña' placeholder='contraseña' type='password' />
+                        </section>
+                        <Button value='Registrar cuenta' />
+                    </form>    
+                </DivShadow>
+
+                <div className="information_app">
+                    <h1>Work 4 Hours</h1>
                 </div>
-            </section>
-        </div>
+            </div> 
+
+        </main>
     )
 }

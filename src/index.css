@@ -22,7 +22,10 @@
   /* Border radius */
   --border-radius-1: 10px;
   --border-radius-2: 12px;
-}
+
+  /* Fonts */
+  --font-1: 'coco gothic';
+} 
 
 * {
   margin: 0;

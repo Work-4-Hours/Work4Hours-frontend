@@ -1,0 +1,9 @@
+.input_text {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #f9f9f9;
+    font-family: var(--font-1);
+    font-size: 18px;
+}
