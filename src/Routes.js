@@ -5,6 +5,7 @@ import { Index } from 'Modules/Main/Index/Index'
 import { Login } from 'Modules/Main/Login/Login' 
 import { Registry } from 'Modules/Main/Registry/Registry'
 import { Users } from 'Modules/Admin/Users/Users'
+import { Services } from 'Modules/Admin/Services/Services';
 
 export const AllRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const AllRoutes = () => {
         <Route path='/login' element={<Login/>} />
         <Route path='/registry' element={<Registry />} /> 
         <Route path='/AdminUsers' element={<Users />} />
+        <Route path='/AdminServices' element={<Services/>}/>
         <Route path='*' element={<h1>Not found</h1>} />     
       </Routes>
     </BrowserRouter>

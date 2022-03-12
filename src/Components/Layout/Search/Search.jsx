@@ -3,10 +3,10 @@ import React from 'react';
 import './Search.css';
 
 
-export const Search = () => {
+export const Search = ({nameSearch}) => {
   return (
     <div>
-      <SearchBox/>
+      <SearchBox typeSearch={nameSearch}/>
     </div>
   )
 }

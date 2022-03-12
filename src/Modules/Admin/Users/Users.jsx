@@ -9,10 +9,10 @@ import './Users.css'
 export const Users = () => {
   return (
     <div className='users_menu_admin'>
-      <MenuAdmin/>
+      <MenuAdmin nameAdmin={"Usuarios"}/>
       <div className='users'>
-        <Search/>
-        <DashboardHeader/>
+        <Search nameSearch={"Buscar Usuarios"}/>
+        <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"}/>
         <Dashboard/>
       </div>
     </div>
