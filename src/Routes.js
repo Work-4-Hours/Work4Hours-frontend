@@ -5,6 +5,7 @@ import { Index } from 'Modules/Main/Index/Index'
 import { Login } from 'Modules/Main/Login/Login' 
 import { Registry } from 'Modules/Main/Registry/Registry'
 import { Users } from 'Modules/Admin/Users/Users'
+import { Profile } from 'Modules/Main/Profile/Profile'
 
 export const AllRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AllRoutes = () => {
         <Route path='/' element={<Index/>} />
         <Route path='/chat' element={<Chat/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/registry' element={<Registry />} /> 
         <Route path='/AdminUsers' element={<Users />} />
         <Route path='*' element={<h1>Not found</h1>} />     

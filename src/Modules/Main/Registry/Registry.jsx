@@ -10,7 +10,7 @@ export const Registry = () => {
     return (
         <main className='registry'>
             <div className="background_registry"></div>
-            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1641780076/welm2wm2ua65mt8qibnw.jpg" alt="" />
+            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1647117029/k8fv4rdcwvk6bwtcqzid.png" alt="" />
 
            <div className="center_main_registry">
                 <DivShadow className='container_form_registry'>
