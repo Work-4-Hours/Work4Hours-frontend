@@ -5,7 +5,7 @@ export const DefaultProfile = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 189px;
+    height: ${props => props.small ? '40px' : '208px'};
     text-align: center;
 `;
 

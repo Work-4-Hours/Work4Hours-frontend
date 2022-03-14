@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 138.3 24" style="enable-background:new 0 0 138.3 24;" xml:space="preserve">
-<clipPath id="star">
-	<path d="M40.6,0.3L43.4,9h9.2l-7.4,5.4l2.8,8.7l-7.4-5.4l-7.4,5.4l2.8-8.7L28.6,9h9.2L40.6,0.3z"/>
-	<path d="M69.2,0.3L72,9h9.2l-7.4,5.4l2.8,8.7l-7.4-5.4l-7.4,5.4l2.8-8.7L57.2,9h9.2L69.2,0.3z"/>
-	<path d="M97.7,0.3l2.8,8.7h9.2l-7.4,5.4l2.8,8.7l-7.4-5.4l-7.4,5.4l2.8-8.7L85.7,9h9.2L97.7,0.3z"/>
-	<path d="M126.3,0.3l2.8,8.7h9.2l-7.4,5.4l2.8,8.7l-7.4-5.4l-7.4,5.4l2.8-8.7L114.3,9h9.2L126.3,0.3z"/>
-	<path d="M12,0.3L14.8,9H24l-7.4,5.4l2.8,8.7L12,17.7l-7.4,5.4l2.8-8.7L0,9h9.2L12,0.3z"/>
-
-</clipPath>
-
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#f8cc09"><path d="M12 .288l2.833 8.718h9.167l-7.417 5.389 2.833 8.718-7.416-5.388-7.417 5.388 2.833-8.718-7.416-5.389h9.167z"/></svg>

@@ -4,10 +4,10 @@ import { CardService } from 'Components/Ui/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
 import { ReactComponent as IconEmail } from 'Assets/Icons/IconEmail.svg'
-import { ReactComponent as IconStar } from 'Assets/Icons/IconStar.svg'
 import React from 'react'
 
 import './Profile.css'
+import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUser'
 
 export const Profile = () => {
 
@@ -15,10 +15,10 @@ export const Profile = () => {
         profile: {
             color: "#2736bb",
             imageprofile: "",
-            name: "Rarlos Alverto",
+            name: "Carlos Alverto",
             email: "carlos@gmail.com",
             phone: "3166529009",
-            calification: 35.4
+            calification: 73.6
         },
         services: [
             {
@@ -44,7 +44,7 @@ export const Profile = () => {
                         <div className="sticky_informacion_user">
                             <DivShadow>
                                 <header className='photo_user_profile'>
-                                    <PhotoUserProfile infoProfile={profileU} />
+                                    <PhotoUserProfile infoProfile={profileU} style='' small={false}/>
                                 </header>
                                 <section className='info_user_profile'>
                                     <p className='name_user_profile'>{profileU.name}</p>
@@ -63,8 +63,8 @@ export const Profile = () => {
                                 <div className="padding_calification_user_profile">
                                     <p className="subtitle_user_profile">Calificacion</p>
                                     <div className="calification_user_profile">
-                                        <div className='cal_image'></div>                        
-                                        <IconStar />
+                                        <CalificationUser value={profileU.calification}/>
+                                        <p className='value_calification_user'>{profileU.calification}%</p>
                                     </div>
                                 </div>
                             </DivShadow>
@@ -74,6 +74,7 @@ export const Profile = () => {
                     <section className='services_user'>
                         <DivShadow>
                             <div className="padding_publications_profile">
+                                <h1 className='subtilte_publications_user'>Publicaciones</h1>
                                 <div className="publications_user_profile">
                                     <CardService info={servicesU[0]} />
                                     <CardService info={servicesU[0]} />
