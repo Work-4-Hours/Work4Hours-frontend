@@ -69,3 +69,23 @@ code {
 .text_center{
   text-align: center;
 }
+
+/*Admin*/
+.admin_menu{
+  display: flex;
+}
+.manager_control{
+  width: 80%;
+  padding: 3% 2% 0 2%;
+}
+
+.btn_save_changes_admin_position{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_save_changes_admin{
+  width: 18%;
+  margin-top: 2%;
+}

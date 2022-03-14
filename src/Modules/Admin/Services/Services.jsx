@@ -8,9 +8,9 @@ import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
 
 export const Services = () => {
   return (
-    <div className='users_menu_admin'>
+    <div className='menu_admin'>
       <MenuAdmin nameAdmin={"Servicios"}/>
-      <div className='users'>
+      <div className='manager_control'>
         <Search nameSearch={"Buscar Servicios"}/>
         <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"}/>
         <Dashboard/>
