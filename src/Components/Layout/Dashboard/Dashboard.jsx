@@ -6,19 +6,6 @@ export const Dashboard = () => {
   return (
     <div className='dashborard scroll'>
       <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
     </div>
   )
 }

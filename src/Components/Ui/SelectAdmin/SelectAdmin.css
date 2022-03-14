@@ -1,18 +1,43 @@
 .cb_state_user{
-    cursor: pointer;
+    /*cursor: pointer;*/
     position: relative;
     padding-left: 1%;
-
 }
 
-.op_state_user::before{
+.op_state_user_initial{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    padding-right: -13vw;
+}
+
+.op_state_user_initial::before{
     content: "";
     display: block;
     height: 10px;
     width: 10px;
     border-radius: 100%;
     background-color: #ffcc00;
+}
+
+.content_options{
+    background-color: var(--bg-buttons);
+    color:var(--white-text-1);
+    width: 14vw;
+    padding: 12% 16%;
     position: absolute;
-    top: 7%;
-    left: -10%;
+    top: 4vh;
+}
+
+.spacing{
+    margin-bottom: 4%;
+}
+
+.op_state_user{
+    cursor: pointer;
+}
+
+.option_spacing{
+    display: flex;
+    justify-content: space-between;
 }
