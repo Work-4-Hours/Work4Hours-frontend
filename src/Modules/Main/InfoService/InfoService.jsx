@@ -52,7 +52,6 @@ export const InfoService = () => {
                                             <Link to=''>Contenido ofensivo</Link>
                                         </div>
                                     </div>    
-
                                 </PopUp>
                             </header>
                             <div className="user_profile">
