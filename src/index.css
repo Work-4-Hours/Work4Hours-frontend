@@ -65,3 +65,7 @@ code {
   background: #289fa510;
 }
 
+/*text*/
+.text_center{
+  text-align: center;
+}

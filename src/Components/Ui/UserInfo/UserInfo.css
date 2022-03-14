@@ -22,8 +22,6 @@
   white-space:nowrap;
 }
 
-
-
 .cb_confirm_changes input{display: none;}
 
 .cb_confirm_changes span{
@@ -51,6 +49,4 @@
   justify-content: center;
   align-items: center;
 }
-.text_center{
-  text-align: center;
-}
+

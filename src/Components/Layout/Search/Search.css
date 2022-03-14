@@ -1,0 +1,9 @@
+.search_filter_admin_users{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.btn_search-filter_admin_users{
+    width: 10%;
+}
