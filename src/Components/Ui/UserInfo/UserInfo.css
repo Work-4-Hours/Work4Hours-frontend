@@ -24,16 +24,33 @@
 
 
 
+.cb_confirm_changes input{display: none;}
 
-.cb_confirm_changes{
-  appearance: none;
+.cb_confirm_changes span{
+  display: inline-block;
+  width: 2.3vh;
+  height: 2.3vh;
+  cursor: pointer;
+}
+
+.cb_confirm_changes span::after{
+  content: "";
+  display: block;
   background-color:#e0e0e0 ;
   border: 1px solid #848484;
   width: 2.3vh;
-  height: 2.3vh;
-
+  height: 2.3vh; 
 }
-
+.cb_confirm_changes input:checked ~ span::after{
+  content: "✓";
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-buttons);
+  color:var(--white-text-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .text_center{
   text-align: center;
 }

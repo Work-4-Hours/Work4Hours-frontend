@@ -12,9 +12,10 @@ export const UserInfo = () => {
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
       <p className='text_center'>1000</p>
       <SelectAdmin/>
-      <div className='text_center'>
-        <input type="checkbox" className='cb_confirm_changes'/>
-      </div>
+      <label className='cb_confirm_changes text_center'>
+        <input type="checkbox"/>
+        <span></span>
+      </label>
     </div>
   )
 }
