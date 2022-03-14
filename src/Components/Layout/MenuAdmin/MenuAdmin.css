@@ -4,3 +4,25 @@
     width: 20%;
     padding: 3%;
 }
+
+.btns_menu_admin{
+    display: flex;
+    flex-direction: column;
+    height: 13vh;
+    justify-content: space-between;
+}
+
+.btn_with_admin{
+    width: 100%;
+}
+
+.btn_change_color_gray{
+    background-color: #bfbfbf;
+}
+
+.btn_log_out_admin{
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
