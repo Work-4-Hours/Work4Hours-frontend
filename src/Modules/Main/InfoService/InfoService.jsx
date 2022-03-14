@@ -43,7 +43,7 @@ export const InfoService = () => {
                                     <p className='report'>Reportar</p>
                                     <IconFlag className='icon_flag' />
                                 </div>
-                                <PopUp className='popup_report' isOpen={isOpen}>
+                                <PopUp className='popup_report' isOpen={isOpen} bg='#FFFF'>
                                     <div className="padding_popup_report">    
                                         <p>Seleccione un motivo</p>
                                         <div className="options_report">
