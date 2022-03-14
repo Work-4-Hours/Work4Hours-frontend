@@ -48,16 +48,16 @@ export const InfoService = () => {
                                         <p>Seleccione un motivo</p>
                                         <div className="options_report">
                                             <Link to=''>Abuso</Link>
-                                            <Link to=''>Contenido indevido</Link>
+                                            <Link to=''>Contenido indebido</Link>
                                             <Link to=''>Contenido ofensivo</Link>
                                         </div>
                                     </div>    
-
                                 </PopUp>
                             </header>
                             <div className="user_profile">
                                 <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
-                                <p>{profile.name}</p>
+                                <p className='name_info_service'>{profile.name}</p>
+                                
                             </div>
                         </div>
                     </DivShadow>
@@ -66,7 +66,6 @@ export const InfoService = () => {
                     </DivShadow>
                 </div>
             </main>
-     
         </>
     )
 }
