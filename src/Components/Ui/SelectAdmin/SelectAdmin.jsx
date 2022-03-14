@@ -5,16 +5,23 @@ import './SelectAdmin.css'
 export const SelectAdmin = () => {
 
   const [stateUser, setStateUser]=useState("Habilitado");
+  const [option, setOption] = useState(false);
   
 
   const changeUserStatus=()=>{
-    
-    
+    setOption(true);
+    const options = document.querySelector('.content_options');
+    if(option===true){
+      options.style.visibility='visible';
+    }
+    else{
+      options.style.visibility='hidden';
+    }
   }
 
   return (
     <div className='cb_state_user' >
-      <a className='op_state_user_initial' onClick={changeUserStatus()}>{stateUser}</a>
+      <p className='op_state_user_initial' onClick={changeUserStatus() }>{stateUser}</p>
        <div className='content_options'>
         <h5 className='spacing'>Estados del usuario</h5>
         <div className='option_spacing'>

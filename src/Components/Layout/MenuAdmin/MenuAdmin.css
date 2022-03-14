@@ -8,7 +8,7 @@
 .btns_menu_admin{
     display: flex;
     flex-direction: column;
-    height: 13vh;
+    height: 9vh;
     justify-content: space-between;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .btn_log_out_admin{
-    height: 65vh;
+    height: 72vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

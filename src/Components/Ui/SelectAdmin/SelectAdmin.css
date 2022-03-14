@@ -21,13 +21,21 @@
 }
 
 .content_options{
-    background-color: var(--bg-buttons);
+    background-color: var(--bg-blue);
     color:var(--white-text-1);
     width: 14vw;
     padding: 12% 16%;
     position: absolute;
     top: 4vh;
+    visibility: hidden;
 }
+/* .content_options_visibility{
+    visibility: visible;
+}
+
+.options_visibility{
+    visibility: hidden;
+} */
 
 .spacing{
     margin-bottom: 4%;

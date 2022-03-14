@@ -32,4 +32,3 @@ export const MessageCard = ({messageObject,key}) => {
         </div>
     )
 }
-

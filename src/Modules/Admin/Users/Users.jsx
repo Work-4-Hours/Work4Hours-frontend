@@ -14,7 +14,7 @@ export const Users = () => {
       <MenuAdmin nameAdmin={"Usuarios"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Usuarios"}/>
-        <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"}/>
+        <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         <Dashboard/>
         <div className='btn_save_changes_admin_position'>
           <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>

@@ -1,0 +1,12 @@
+.popup_report {
+    position: absolute;
+}
+
+.padding_popup_report {
+    padding: 15px;
+}
+
+.options_report {
+    display: flex;
+    flex-direction: column;
+}

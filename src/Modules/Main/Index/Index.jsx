@@ -3,9 +3,9 @@ import { Header } from "Components/Layout/Header/Header"
 import { CardService } from 'Components/Ui/CardService/CardService'
 import { Banner } from "Components/Layout/Banner/Banner"
 import { DivShadow } from "Components/StyleComponets/DivShadow"
+import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 
 import './Index.css'
-import { Seeker } from "Components/Layout/Seeker/Seeker"
 
 export const Index = () => {
     const service = {
@@ -24,7 +24,7 @@ export const Index = () => {
     return (
         <>
             <Header />
-            <Seeker/>
+            <SerchEngine/>
             <main>
                 <div className="center_main_index">
                     <section className="banner_index">
@@ -32,14 +32,6 @@ export const Index = () => {
                     </section>
                     <section className='services_index'>
                         <DivShadow className='container_pricipal_servieces'> 
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
-                            <CardService info={service} />
                             <CardService info={service} />
                         </DivShadow>                 
                     </section>
