@@ -11,7 +11,7 @@ import React from 'react';
 export const Users = () => {
   return (
     <div className='admin_menu'>
-      <MenuAdmin nameAdmin={"Usuarios"}/>
+      <MenuAdmin nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Usuarios"}/>
         <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />

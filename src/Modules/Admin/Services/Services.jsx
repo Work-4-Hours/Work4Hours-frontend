@@ -10,7 +10,7 @@ import { Button } from 'Components/Ui/Button/Button';
 export const Services = () => {
   return (
     <div className='admin_menu'>
-      <MenuAdmin nameAdmin={"Servicios"}/>
+      <MenuAdmin nameAdmin={"Servicios"} btnActive={"button btn_change_color_gray btn_with_admin"} btnInactive={"button btn_with_admin"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Servicios"}/>
         <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"report"}/>
