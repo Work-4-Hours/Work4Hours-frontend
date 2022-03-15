@@ -1,6 +1,6 @@
 .user_info{
   display: grid;
-  grid-template-columns: 3vw 14vw 14vw 14vw 5vw 8vw 8vw;
+  grid-template-columns: 3vw 14vw 14vw 14vw 5vw 9vw 4vw;
   justify-content: flex-start;
   gap: 1%;
   background-color: #e0e0e0;

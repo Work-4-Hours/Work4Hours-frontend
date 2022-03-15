@@ -8,34 +8,54 @@
     display: flex;
     align-items: baseline;
     justify-content: space-evenly;
-    padding-right: -13vw;
+    cursor: pointer;
 }
 
-.op_state_user_initial::before{
+
+
+.op_state_user_initial::before, .op_state_user::before{
     content: "";
     display: block;
     height: 10px;
     width: 10px;
     border-radius: 100%;
+    
+}
+
+.yellow::before{
     background-color: #ffcc00;
+}
+
+.green::before{
+    background-color: #7dd725;
+}
+
+.red::before{
+    background-color: #ff3e3e;
+}
+
+.op_state_user:hover{
+    text-decoration: double;
 }
 
 .content_options{
     background-color: var(--bg-blue);
     color:var(--white-text-1);
-    width: 14vw;
-    padding: 12% 16%;
+    width: 10vw;
+    padding: 8% 9%;
     position: absolute;
     top: 4vh;
+    left: 2vh;
+    
+}
+
+.hidden_options{
     visibility: hidden;
 }
-/* .content_options_visibility{
+.content_options_visibility{
     visibility: visible;
 }
 
-.options_visibility{
-    visibility: hidden;
-} */
 
 .spacing{
     margin-bottom: 4%;
@@ -43,9 +63,9 @@
 
 .op_state_user{
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
-.option_spacing{
-    display: flex;
-    justify-content: space-between;
-}
+
+
