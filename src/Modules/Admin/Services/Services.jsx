@@ -5,15 +5,19 @@ import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
+import { Button } from 'Components/Ui/Button/Button';
 
 export const Services = () => {
   return (
-    <div className='menu_admin'>
+    <div className='admin_menu'>
       <MenuAdmin nameAdmin={"Servicios"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Servicios"}/>
-        <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} prueba={"report"}/>
+        <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"report"}/>
         <Dashboard/>
+        <div className='btn_save_changes_admin_position'>
+          <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>
+        </div>
       </div>
     </div>
   )

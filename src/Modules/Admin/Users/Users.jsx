@@ -6,7 +6,7 @@ import { Button } from 'Components/Ui/Button/Button';
 
 
 import React from 'react';
-import './Users.css'
+
 
 export const Users = () => {
   return (
@@ -19,7 +19,6 @@ export const Users = () => {
         <div className='btn_save_changes_admin_position'>
           <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>
         </div>
-        
       </div>
     </div>
   )
