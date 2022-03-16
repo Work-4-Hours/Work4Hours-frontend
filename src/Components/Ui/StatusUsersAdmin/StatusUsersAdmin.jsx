@@ -21,7 +21,7 @@ export const StatusUsersAdmin = () => {
   // }
   
   return (
-    <div className='cb_state_user' >
+    <div className='position_relative' >
       <p className='op_state_user_initial green'  onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
       <PopUp className='content_options' isOpen={isOpen} >
         <h5 className='spacing'>Estados del usuario</h5>
