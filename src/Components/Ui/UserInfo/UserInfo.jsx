@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
-import { SelectAdmin } from '../SelectAdmin/SelectAdmin';
+import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 
 import './UserInfo.css';
 
@@ -13,7 +13,7 @@ export const UserInfo = () => {
       <p className='ellipsis'>Fantasmita </p>
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
       <p className='text_center'>1000</p>
-      <SelectAdmin/>
+      <StatusUsersAdmin/>
       <CheckBoxAdmin/>
     </div>
   )
