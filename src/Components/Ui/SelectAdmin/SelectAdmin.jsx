@@ -7,11 +7,17 @@ import './SelectAdmin.css'
 export const SelectAdmin = () => {
 
   const [stateUser, setStateUser]=useState("Habilitado");
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [stateColor, setStateColor]=useState("")
+
+
+  
 
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
     setIsOpen(!isOpen)
+    setStateColor(event.target.classList[2])
+
   }
 
   // const closePopUp=()=>{
@@ -20,7 +26,7 @@ export const SelectAdmin = () => {
   
   return (
     <div className='cb_state_user' >
-      <p className='op_state_user_initial green' onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
+      <p className='op_state_user_initial green'  onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
       <PopUp className='content_options' isOpen={isOpen} >
         <h5 className='spacing'>Estados del usuario</h5>
         <p className='op_state_user spacing green' onClick={event=>changeStateUsers(event)}>ㅤHabilitado</p>
