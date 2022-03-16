@@ -1,7 +1,5 @@
 .cb_state_user{
-    /*cursor: pointer;*/
     position: relative;
-    padding-left: 1%;
 }
 
 .op_state_user_initial{
@@ -34,9 +32,6 @@
     background-color: #ff3e3e;
 }
 
-.op_state_user:hover{
-    text-decoration: double;
-}
 
 .content_options{
     background-color: var(--bg-blue);
@@ -45,8 +40,7 @@
     padding: 8% 9%;
     position: absolute;
     top: 4vh;
-    left: 2vh;
-    
+    left: 2vh; 
 }
 
 .hidden_options{

@@ -29,7 +29,6 @@ export const StatusUsersAdmin = () => {
         <p className='op_state_user spacing yellow' onClick={event=>changeStateUsers(event)}>ㅤSuspendido 3 dias</p>
         <p className='op_state_user spacing red' onClick={event=>changeStateUsers(event)}>ㅤInhabilitado</p>
       </PopUp>
-
     </div>
   )
 }
