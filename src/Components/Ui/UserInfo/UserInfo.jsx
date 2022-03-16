@@ -1,5 +1,7 @@
 import React from 'react';
+import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { SelectAdmin } from '../SelectAdmin/SelectAdmin';
+
 import './UserInfo.css';
 
 
@@ -12,10 +14,7 @@ export const UserInfo = () => {
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
       <p className='text_center'>1000</p>
       <SelectAdmin/>
-      <label className='cb_confirm_changes text_center'>
-        <input type="checkbox"/>
-        <span></span>
-      </label>
+      <CheckBoxAdmin/>
     </div>
   )
 }
