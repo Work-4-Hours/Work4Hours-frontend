@@ -14,11 +14,9 @@ export const UserInfo = () => {
       <p className='ellipsis'>Cactus</p>
       <p className='ellipsis'>Fantasmita </p>
       <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
-
       <InfoReportAdmin/>
-      
       <StatusUsersAdmin/>
-      <CheckBoxAdmin/>
+      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>
   )
 }

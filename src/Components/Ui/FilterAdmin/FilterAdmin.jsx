@@ -4,8 +4,6 @@ import { Button } from '../Button/Button';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import './FilterAdmin.css'
 
-
-
 export const FilterAdmin = () => {
     const [isOpen, setIsOpen] = useState(false);
   return (
@@ -14,13 +12,13 @@ export const FilterAdmin = () => {
       <PopUp className='content_options filter_options' isOpen={isOpen} > 
         <p className='spacing'>Tipos de suspención</p>
         <div className="typ_report spacing">
-          <p>Reportes</p><CheckBoxAdmin className="checkbox_filter"/>
+          <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
         <div className="typ_report spacing">
-          <p>Correo</p><CheckBoxAdmin/>
+          <p>Correo</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
         <div className="typ_report spacing">
-          <p>Nombres y Apellidos</p><CheckBoxAdmin/>
+          <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
       </PopUp>
     </div>
