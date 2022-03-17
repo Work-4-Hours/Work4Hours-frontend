@@ -45,3 +45,26 @@
     justify-content: center;
     align-items: center;
 }
+
+.color_state_user{
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+}
+
+.color_state_user::after {
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    margin-right: 15px;
+    background: red;
+}
+
+.spacing_type_suspension{
+    display: flex;
+    justify-content: space-between;
+    width: 17rem;
+    align-items: baseline;
+}

@@ -5,7 +5,6 @@
 .op_state_user_initial{
     display: flex;
     align-items: baseline;
-    
     cursor: pointer;
 }
 
@@ -29,7 +28,6 @@
 .red::before{
     background-color: var(--status-red);
 }
-
 
 .content_options{
     background-color: var(--bg-blue);
