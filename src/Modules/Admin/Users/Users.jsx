@@ -1,14 +1,18 @@
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
+import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { Search } from 'Components/Layout/Search/Search';
-import { Button } from 'Components/Ui/Button/Button';
-
-
 import React from 'react';
+
+
+
+
+
 import './Users.css'
 
 export const Users = () => {
+  
   return (
     <div className='admin_menu'>
       <MenuAdmin nameAdmin={"Usuarios"}/>
@@ -16,10 +20,7 @@ export const Users = () => {
         <Search nameSearch={"Buscar Usuarios"}/>
         <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         <Dashboard/>
-        <div className='btn_save_changes_admin_position'>
-          <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>
-        </div>
-        
+        <PopupConfirmChanges/>
       </div>
     </div>
   )
