@@ -24,3 +24,14 @@
     border-radius: 10px;
     margin-bottom: 3%;
 }
+
+.btns_save_changes_admin{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btns_save_changes_admin_spacing{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}

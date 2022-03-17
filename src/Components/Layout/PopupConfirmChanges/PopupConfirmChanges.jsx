@@ -19,8 +19,13 @@ export const PopupConfirmChanges = () => {
                     <PopupTitleAdmin/>
                     <PopupConfirmChangesContentObjects/>
                     <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador'/>
-                    <Button value="Cancelar" onClick={event=>setIsOpen(!isOpen)}/>
-                    <Button value="Actualizar" onClick={event=>setIsOpen(!isOpen)}/>
+                    <div className='btns_save_changes_admin'>
+                        <div className='btns_save_changes_admin_spacing'>
+                            <Button value="Cancelar" onClick={event=>setIsOpen(!isOpen)}/>
+                            <Button value="Actualizar" onClick={event=>setIsOpen(!isOpen)}/>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </PopUp>
