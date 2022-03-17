@@ -5,7 +5,7 @@
 .op_state_user_initial{
     display: flex;
     align-items: baseline;
-    justify-content: space-evenly;
+    
     cursor: pointer;
 }
 
@@ -15,6 +15,7 @@
     height: 10px;
     width: 10px;
     border-radius: 100%;
+    margin-right: 15px;
 }
 
 .yellow::before{
@@ -36,8 +37,8 @@
     width: 10vw;
     padding: 10%;
     position: absolute;
-    top: 4vh;
-    left: 2vh; 
+    top: 3vh;
+    
 }
 
 .hidden_options{
