@@ -1,6 +1,6 @@
 .user_info{
   display: grid;
-  grid-template-columns: 3vw 14vw 14vw 14vw 5vw 8vw 8vw;
+  grid-template-columns: 3vw 14vw 14vw 14vw 5vw 9vw 4vw;
   justify-content: flex-start;
   gap: 1%;
   background-color: #e0e0e0;
@@ -22,31 +22,5 @@
   white-space:nowrap;
 }
 
-.cb_confirm_changes input{display: none;}
 
-.cb_confirm_changes span{
-  display: inline-block;
-  width: 2.3vh;
-  height: 2.3vh;
-  cursor: pointer;
-}
-
-.cb_confirm_changes span::after{
-  content: "";
-  display: block;
-  background-color:#e0e0e0 ;
-  border: 1px solid #848484;
-  width: 2.3vh;
-  height: 2.3vh; 
-}
-.cb_confirm_changes input:checked ~ span::after{
-  content: "✓";
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-buttons);
-  color:var(--white-text-1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
