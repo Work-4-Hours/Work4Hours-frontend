@@ -5,7 +5,12 @@ import './PopupConfirmChangesContentObjects.css'
 
 export const PopupConfirmChangesContentObjects = () => {
   return (
-    <div className='popup_confirm_changes_content_objects'>
-    <ObjectStatus/></div>
+    <div className='popup_confirm_changes_content_objects scroll'>
+    <ObjectStatus/>
+    <ObjectStatus/>
+    <ObjectStatus/>
+    <ObjectStatus/>
+    
+    </div>
   )
 }
