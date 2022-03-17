@@ -9,8 +9,6 @@
     cursor: pointer;
 }
 
-
-
 .op_state_user_initial::before, .op_state_user::before{
     content: "";
     display: block;
@@ -37,7 +35,7 @@
     background-color: var(--bg-blue);
     color:var(--white-text-1);
     width: 10vw;
-    padding: 8% 9%;
+    padding: 10%;
     position: absolute;
     top: 4vh;
     left: 2vh; 
