@@ -19,15 +19,15 @@
 }
 
 .yellow::before{
-    background-color: #ffcc00;
+    background-color: var(--status-yellow);
 }
 
 .green::before{
-    background-color: #7dd725;
+    background-color: var(--status-green);
 }
 
 .red::before{
-    background-color: #ff3e3e;
+    background-color: var(--status-red);
 }
 
 

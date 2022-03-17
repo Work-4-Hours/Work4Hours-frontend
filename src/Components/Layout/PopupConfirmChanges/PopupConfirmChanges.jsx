@@ -13,9 +13,9 @@ export const PopupConfirmChanges = () => {
   return (
     <div className='btn_save_changes_admin_position'>
         <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={event=>setIsOpen(!isOpen)}/>
-        <PopUp isOpen={isOpen}> 
+        <PopUp isOpen={isOpen}>  
             <div className="overlay">
-                <div>
+                <div className='popup_admin_save_changes_admin'>
                     <PopupTitleAdmin/>
                     <PopupConfirmChangesContentObjects/>
                     <input type="password" name="" id="" />
