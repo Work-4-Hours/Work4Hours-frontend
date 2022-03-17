@@ -4,6 +4,7 @@
   --clr-titles: #303030;
   --clr-paragrhap: #303030;
   --color-one: #26c9d1;
+  --bg-layout-grey:#f1f1f1;
 
   --bg-ligth-blue: #F4F8FF;
   --bg-blue: #14A2D6;
@@ -28,7 +29,6 @@
   --font-1: 'coco gothic';
 
   /*status users*/
-
   --status-yellow:#ffcc00;
   --status-red:#ff3e3e;
   --status-green:#7dd725;

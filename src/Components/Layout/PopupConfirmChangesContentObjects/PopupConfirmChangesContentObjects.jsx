@@ -1,10 +1,11 @@
 
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import React from 'react'
+import './PopupConfirmChangesContentObjects.css'
 
 export const PopupConfirmChangesContentObjects = () => {
   return (
-    <div>
+    <div className='popup_confirm_changes_content_objects'>
     <ObjectStatus/></div>
   )
 }
