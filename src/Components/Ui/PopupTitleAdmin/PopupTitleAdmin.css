@@ -1,3 +1,9 @@
+.popup_title_admin{
+    display: flex;
+    align-items:center ;
+}
+
 .icon_alert_admin{
     color: var(--status-yellow);
+    font-size: 50px;
 }
