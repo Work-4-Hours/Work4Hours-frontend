@@ -12,10 +12,6 @@ export const StatusUsersAdmin = () => {
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
   }
-
-  // const closePopUp=()=>{
-  //   setIsOpen(true)
-  // }
   
   return (
     <div className='position_relative' >
