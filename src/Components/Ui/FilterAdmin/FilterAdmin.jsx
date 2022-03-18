@@ -5,12 +5,15 @@ import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import './FilterAdmin.css'
 
 export const FilterAdmin = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div className='position_relative content_filter' >
         <Button className=" button btn_search_filter_admin_users" value={"Filtro"} onClick={event=>setIsOpen(!isOpen)}/>
       <PopUp className='content_options filter_options' isOpen={isOpen} > 
-        <p className='spacing'>Tipos de suspención</p>
+      <div className="typ_report spacing spacing_type_suspension">
+        <p>Tipos de suspención</p><p className='color_state_user'></p>
+      </div>
         <div className="typ_report spacing">
           <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
