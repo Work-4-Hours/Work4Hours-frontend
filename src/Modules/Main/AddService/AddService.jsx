@@ -1,14 +1,37 @@
 import React from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
-
-
-import './AddService.css'
 import { Title } from 'Components/StyleComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
+import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
+import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
+import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
+
+import './AddService.css'
 
 export const AddService = () => {
+
+    const optionsl = [
+        {
+            id: 1,
+            name: "Quindio"
+        },
+        {
+            id: 2,
+            name: "Choco"
+        }
+    ]
+
+    const ciudadl = [
+        {
+            id: 1,
+            name: "Armenia"
+        },
+        {
+            id: 2,
+            name: "Montenegro"
+        }
+    ]
 
     return (
         <>
@@ -30,7 +53,20 @@ export const AddService = () => {
                             <InputTextLabel titleLabel='Titulo' placeholder='Servicio' />
                             <InputTextLabel titleLabel='Precio por hora' placeholder='' />
                             <InputTextLabel titleLabel='Descriptcion' placeholder='Lorem' />
+                            <SelectTextLabel 
+                                titleLabel='Seleccione el departamento donde se ofrese el servicio' 
+                                nameSelect='Departamento' 
+                                options={optionsl}                          
+                                onChange={(e)=> console.log(e.target.value)}
+                            />
 
+                            <SelectTextLabel 
+                                titleLabel='Seleccione la ciudad donde se ofrece el servicio' 
+                                nameSelect='Ciudad' 
+                                options={ciudadl}                          
+                                onChange={(e)=> console.log(e.target.value)}
+                                active={false}
+                            />
                         </form>
                     </DivShadow>
                     

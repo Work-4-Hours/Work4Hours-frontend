@@ -1,9 +1,10 @@
 import React from 'react'
+import './InputSelect.css'
 
-export const AddService = ({nameSelect,options}) => {
+export const InputSelect = ({nameSelect,options, active = true, ...props}) => {
 
     return (
-        <select name="" id="">
+        <select className={`select_input ${active ? '' : 'select_active' }`} {...props} >
             <option value="">{nameSelect}</option>
             {
                 options.map((item,index) => (
