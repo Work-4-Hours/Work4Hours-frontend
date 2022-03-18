@@ -7,11 +7,22 @@
 }
 
 .filter_options{
-    top: 8vh;
-    left: -16vh;
-    width: 30vh;
+    top: 7vh;
+    left: -9vh;
+    width: 12vw;
     z-index: 1;
+    height: 15vh;
 }
+
+.filter_options_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+
 .checkbox_filter label span::after{
     background-color: var(--bg-blue);
 }
