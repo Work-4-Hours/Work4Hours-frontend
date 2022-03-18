@@ -6,13 +6,22 @@ import './FilterAdmin.css'
 
 export const FilterAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
+  // const [stateColor, setStateColor] = useState('grey');
+
+  // const color_state=["green", "yellow", "red", "grey"];
+
+  // const prueba = () =>{
+  //   color_state.forEach(item=>{
+  //     console.log(item)
+  //   }) 
+  // }
+
   return (
-    <div className='position_relative content_filter' >
+    <div className='position_relative content_filter'>
         <Button className=" button btn_search_filter_admin_users" value={"Filtro"} onClick={event=>setIsOpen(!isOpen)}/>
       <PopUp className='content_options filter_options' isOpen={isOpen} > 
       <div className="typ_report spacing spacing_type_suspension">
-        <p>Tipos de suspención</p><p className='color_state_user'></p>
+        <p>Tipos de suspensión</p><p className='color_state_user grey'></p>
       </div>
         <div className="typ_report spacing">
           <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>

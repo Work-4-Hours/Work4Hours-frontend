@@ -1,6 +1,7 @@
 .content_filter{
     width: 10%;
 }
+
 .btn_search_filter_admin_users{
     width: 100%;
     height: 100%;
@@ -12,6 +13,7 @@
     width: 30vh;
     z-index: 1;
 }
+
 .checkbox_filter label span::after{
     background-color: var(--bg-blue);
 }
@@ -46,6 +48,10 @@
     align-items: center;
 }
 
+.spacing{
+    margin-bottom: 4%;
+}
+
 .color_state_user{
     display: flex;
     align-items: baseline;
@@ -59,7 +65,6 @@
     width: 10px;
     border-radius: 100%;
     margin-right: 15px;
-    background: red;
 }
 
 .spacing_type_suspension{
@@ -67,4 +72,20 @@
     justify-content: space-between;
     width: 29vh;
     align-items: baseline;
+}
+
+.grey::before{
+    background-color: var(--status-grey);
+}
+
+.yellow::before{
+    background-color: var(--status-yellow);
+}
+
+.green::before{
+    background-color: var(--status-green);
+}
+
+.red::before{
+    background-color: var(--status-red);
 }
