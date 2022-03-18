@@ -7,6 +7,7 @@ import { Registry } from 'Modules/Main/Registry/Registry'
 import { Users } from 'Modules/Admin/Users/Users'
 import { Profile } from 'Modules/Main/Profile/Profile'
 import { InfoService } from 'Modules/Main/InfoService/InfoService'
+import { AddService } from 'Modules/Main/AddService/AddService'
 
 export const AllRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const AllRoutes = () => {
         <Route path='/profile' element={<Profile/>} />
         <Route path='/registry' element={<Registry />} /> 
         <Route path='/infoservice' element={<InfoService />} /> 
+        <Route path='service/add' element={<AddService />} /> 
         <Route path='/AdminUsers' element={<Users />} />
         <Route path='*' element={<h1>Not found</h1>} />     
       </Routes>
