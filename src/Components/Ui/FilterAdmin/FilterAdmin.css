@@ -65,6 +65,6 @@
 .spacing_type_suspension{
     display: flex;
     justify-content: space-between;
-    width: 17rem;
+    width: 29vh;
     align-items: baseline;
 }
