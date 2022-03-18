@@ -74,18 +74,18 @@
     align-items: baseline;
 }
 
-.grey::before{
+.grey::after{
     background-color: var(--status-grey);
 }
 
-.yellow::before{
+.yellow::after{
     background-color: var(--status-yellow);
 }
 
-.green::before{
+.green::after{
     background-color: var(--status-green);
 }
 
-.red::before{
+.red::after{
     background-color: var(--status-red);
 }
