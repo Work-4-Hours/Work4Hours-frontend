@@ -12,10 +12,10 @@ export const StatusUsersAdmin = () => {
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
   }
-  
+
   return (
-    <div className='position_relative' >
-      <p className={'op_state_user_initial ' + stateColor}  onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
+    <div className='position_relative'>
+      <p className={'op_state_user_initial ' + stateColor} onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
       <PopUp className='content_options' isOpen={isOpen} >
         <h5 className='spacing'>Estados del usuario</h5>
         <p className='op_state_user spacing green' onClick={event=>changeStateUsers(event)}>Habilitado</p>
