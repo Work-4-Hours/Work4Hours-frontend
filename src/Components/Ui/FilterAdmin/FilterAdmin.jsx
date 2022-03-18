@@ -23,16 +23,16 @@ export const FilterAdmin = () => {
     <div className='position_relative content_filter'>
         <Button className=" button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>setIsOpen(!isOpen)}/>
       <PopUp className='content_options filter_options' isOpen={isOpen} > 
-      <div className="typ_report spacing spacing_type_suspension">
+      <div className="typ_report  spacing_type_suspension">
         <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
       </div>
-        <div className="typ_report spacing">
+        <div className="typ_report ">
           <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
-        <div className="typ_report spacing">
+        <div className="typ_report ">
           <p>Correo</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
-        <div className="typ_report spacing">
+        <div className="typ_report ">
           <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
         </div>
       </PopUp>

@@ -1,12 +1,11 @@
 import { Button } from 'Components/Ui/Button/Button';
 import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './MenuAdmin.css';
 
 export const MenuAdmin = ({nameAdmin, btnActive, btnInactive}) => {
-  const [buttonActive, setButton] = useState(true)
   return (
     <div className='menu_admin'>
       <div>

@@ -1,7 +1,7 @@
 .typ_report{
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    align-items: baseline;
 }
 
 .count_reports{
