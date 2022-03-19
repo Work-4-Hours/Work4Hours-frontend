@@ -2,7 +2,7 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import React, {useState, useEffect} from 'react'
 import { Button } from '../Button/Button';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
-import './FilterAdmin.css'
+import './FilterAdmin.css';
 
 export const FilterAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +20,8 @@ export const FilterAdmin = () => {
   
 
   return (
-    <div className='position_relative content_filter'>
-        <Button className=" button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>setIsOpen(!isOpen)}/>
+    <div className='content_filter'>
+        <Button className="button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>setIsOpen(!isOpen)}/>
       <PopUp className='content_options filter_options' isOpen={isOpen} > 
       <div className="typ_report  spacing_type_suspension">
         <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>

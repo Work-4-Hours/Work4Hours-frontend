@@ -9,7 +9,7 @@ import './Users.css'
 export const Users = () => {
   
   return (
-    <div className='admin_menu'>
+    <div className='container_admin'>
       <MenuAdmin nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Usuarios"}/>
