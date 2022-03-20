@@ -111,11 +111,20 @@ code {
 
 /*Animation Popup Options*/
 
-@keyframes animationPopupOptions {
+@keyframes animationPopupOptionsActivate {
   from{
-    transform: translateY(-50px) scale(.1);
+    transform: translateY(-50px) scale(0);
   }
   to{
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes animationPopupOptionsDeactivate {
+  from{
+    transform: translateY(0) scale(1);
+  }
+  to{
+    transform: translateY(-50px) scale(0) ;
   }
 }

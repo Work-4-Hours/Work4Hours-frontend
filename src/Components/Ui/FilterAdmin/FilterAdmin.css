@@ -13,16 +13,13 @@
     right: 0;
     width: 13.75rem;
     z-index: 1;
-    animation: animationPopupOptions .4s forwards;
 }
 
 /*Checkboxs*/
 
 .span_filter::after{
     background-color: var(--bg-blue);
-    
     border: 1px solid #ffff;
-    
 }
 
 /*Color Circle User Status*/

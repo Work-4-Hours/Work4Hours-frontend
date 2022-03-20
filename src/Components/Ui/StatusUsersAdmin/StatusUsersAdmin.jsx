@@ -1,4 +1,4 @@
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUpOptions } from 'Components/StyleComponets/PopupOptions';
 import {React,useState} from 'react'
 import './StatusUsersAdmin.css'
 
@@ -6,6 +6,7 @@ export const StatusUsersAdmin = () => {
   const [stateUser, setStateUser]=useState("Habilitado");
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('green');
+  const [display, setDisplay]=useState('none');
 
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
@@ -15,13 +16,13 @@ export const StatusUsersAdmin = () => {
 
   return (
     <div className='position_relative'>
-      <p className={'op_state_user_initial ' + stateColor} onClick={event=>setIsOpen(!isOpen)}>{stateUser}</p>
-      <PopUp className='content_options' isOpen={isOpen} >
+      <p className={'op_state_user_initial ' + stateColor} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>{stateUser}</p>
+      <PopUpOptions className='content_options' isOpen={isOpen} visibilidad={display}>
         <h5 className='spacing'>Estados del usuario</h5>
         <p className='op_state_user spacing green' onClick={event=>changeStateUsers(event)}>Habilitado</p>
         <p className='op_state_user spacing yellow' onClick={event=>changeStateUsers(event)}>Suspendido 3 dias</p>
         <p className='op_state_user spacing red' onClick={event=>changeStateUsers(event)}>Inhabilitado</p>
-      </PopUp>
+      </PopUpOptions>
     </div>
   )
 }
