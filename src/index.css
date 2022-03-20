@@ -40,6 +40,7 @@
   /*border*/
 
   --bd-checkbox-grey:#848484;
+  --bg-dashboard-grey:#ebebeb;
 } 
 
 * {
@@ -89,8 +90,7 @@ code {
 
 /*Admin*/
 .container_admin{
-  width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
 }
 .manager_control{

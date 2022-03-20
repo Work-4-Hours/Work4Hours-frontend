@@ -1,13 +1,12 @@
 .dashboard_header{
     background-color: #ebebeb;
-    margin: 2% 0%;
-    padding: 1%;
-    padding-left: 2%;
-    border-radius: 1rem;
+    margin: 2% 0;
+    padding: 1% 2%;
+    border-radius: 1em;
     display: grid;
     justify-content: flex-start;
-    grid-template-columns: 3vw 14vw 14vw 14vw 5vw 8vw 8vw;
-    gap: 1%;
-    color: #848484;
+    grid-template-columns: 2.375em 11.25em 11.25em 11.25em 4.125em 6.75em 6.25em;
+    gap: 1em;
+    color: var(--bd-checkbox-grey);
 }
-.report{color:#ff3e3e}
+.report{color:var(--status-red)}

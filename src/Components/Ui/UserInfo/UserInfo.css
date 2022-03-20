@@ -1,17 +1,17 @@
 .user_info{
   display: grid;
-  grid-template-columns: 3vw 14vw 14vw 14vw 5vw 9vw 4vw;
-  justify-content: flex-start;
-  gap: 1%;
-  background-color: #e0e0e0;
-  border-radius: 1rem;
+  grid-template-columns: 2.375em 11.25em 11.25em 11.25em 4.125em 6.75em 6.25em;
+  gap: 1em;
+  align-items: center;
+  background-color: var(--bg-checkbox-grey);
+  border-radius: 1em;
   padding: 1%;
   margin-bottom: 1%;
 }
 
 .admin_user_photo{
-  height: 3.4vh;
-  width: 2.2vw;
+  height: 1.875em;
+  width: 1.875em;
 	object-fit: cover;
 	border-radius: 50%;
 }

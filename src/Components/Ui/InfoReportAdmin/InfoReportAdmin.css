@@ -1,3 +1,7 @@
+.content_type_report{
+    left: -3.125em;
+}
+
 .typ_report{
     display: flex;
     justify-content: space-between;
@@ -7,4 +11,5 @@
 
 .count_reports{
     cursor: pointer;
+    user-select: none;
 }

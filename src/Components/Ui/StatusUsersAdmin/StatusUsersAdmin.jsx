@@ -1,5 +1,5 @@
 import { PopUpOptions } from 'Components/StyleComponets/PopupOptions';
-import {React,useState} from 'react'
+import React,{useState} from 'react'
 import './StatusUsersAdmin.css'
 
 export const StatusUsersAdmin = () => {
@@ -16,7 +16,7 @@ export const StatusUsersAdmin = () => {
 
   return (
     <div className='position_relative'>
-      <p className={'op_state_user_initial ' + stateColor} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>{stateUser}</p>
+      <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>{stateUser}</p>
       <PopUpOptions className='content_options' isOpen={isOpen} visibilidad={display}>
         <h5 className='spacing'>Estados del usuario</h5>
         <p className='op_state_user spacing green' onClick={event=>changeStateUsers(event)}>Habilitado</p>

@@ -1,4 +1,3 @@
-
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import React from 'react'
 import './PopupConfirmChangesContentObjects.css'

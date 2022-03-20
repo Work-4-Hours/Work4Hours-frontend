@@ -1,5 +1,5 @@
 import { PopUpOptions } from 'Components/StyleComponets/PopupOptions';
-import {React,useState} from 'react'
+import React,{useState} from 'react'
 import './InfoReportAdmin.css'
 
 export const InfoReportAdmin = () => {
@@ -10,7 +10,7 @@ export const InfoReportAdmin = () => {
   return (
     <div className='position_relative' >
       <p className='text_center count_reports'  onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>1000</p>
-      <PopUpOptions className='content_options' isOpen={isOpen} visibilidad={display}> 
+      <PopUpOptions className='content_options content_type_report' isOpen={isOpen} visibilidad={display}> 
         <h5 className='spacing'>Tipos de Reportes</h5>
         <div className="typ_report spacing">
           <p>Ofensivo</p><p>1</p>
