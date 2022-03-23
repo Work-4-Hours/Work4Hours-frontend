@@ -3,6 +3,7 @@ import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHead
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
 import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { Search } from 'Components/Layout/Search/Search';
+import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import React from 'react';
 import './Users.css'
 
@@ -14,7 +15,7 @@ export const Users = () => {
       <div className='manager_control'>
         <Search nameSearch={"Buscar Usuarios"}/>
         <DashboardHeader header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
-        <Dashboard/>
+        <Dashboard content={<UserInfo/> }/>
         <PopupConfirmChanges/>
       </div>
     </div>
