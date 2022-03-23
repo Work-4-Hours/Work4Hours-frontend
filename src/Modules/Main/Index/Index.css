@@ -13,3 +13,29 @@
     flex-wrap: wrap;
     /* justify-content: center; */
 }
+
+/* Popups */
+
+.center_popup_profile {
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.padding_info_user {
+    width: 50%;
+    padding: 20px;
+}
+
+.image_profile {
+    width: 50%;
+} 
+
+.popup_profile {
+    width: 100%;
+    display: flex;
+}

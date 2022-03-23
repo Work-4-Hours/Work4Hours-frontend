@@ -6,6 +6,8 @@ import { DivShadow } from "Components/StyleComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 
 import './Index.css'
+import { DivPopUp } from "Components/StyleComponets/DivPopUp"
+import { Title } from "Components/StyleComponets/Titlte"
 
 export const Index = () => {
     const service = {
@@ -23,6 +25,20 @@ export const Index = () => {
 
     return (
         <>
+            
+            <DivPopUp isOpen={true}>
+                <div className="center_popup_profile">
+                    <DivShadow className='popup_profile'>
+                        <div className="padding_info_user">
+                            <Title>Perfil</Title>
+                        </div>
+                        <div className="image_profile">
+                            xd
+                        </div>
+                    </DivShadow>
+                </div>
+            </DivPopUp>
+
             <Header />
             <SerchEngine/>
             <main>
