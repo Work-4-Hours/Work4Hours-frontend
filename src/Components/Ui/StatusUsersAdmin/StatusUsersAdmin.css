@@ -18,7 +18,7 @@
 
 .op_state_user{
     cursor: pointer;
-    padding-left: 1em;
+    padding-left: 20%;
     position: relative;
     user-select: none;
 }
@@ -31,7 +31,7 @@
     border-radius: 50%;
     position: absolute;
     top:0.4375em;
-    left: 0;
+    left: 0.375em;
 }
 
 .yellow::before{

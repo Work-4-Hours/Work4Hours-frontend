@@ -8,7 +8,7 @@ export const InfoReportAdmin = () => {
   const [display, setDisplay]=useState('none');
   
   return (
-    <div className='position_relative' >
+    <div className='position_relative fieldSize5' >
       <p className='text_center count_reports'  onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>1000</p>
       <PopUpOptions className='content_options content_type_report' isOpen={isOpen} visibilidad={display}> 
         <h5 className='spacing'>Tipos de Reportes</h5>
