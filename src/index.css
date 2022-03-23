@@ -137,4 +137,4 @@ code {
 @keyframes animationOpacityDeactivate {
   from { opacity: 1; }
 	to { opacity: 0; }
-}
+}/*esta aun no funciona por el display block*/
