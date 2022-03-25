@@ -14,7 +14,7 @@ export const Services = () => {
       <MenuAdmin nameAdmin={"Servicios"} btnActive={"button btn_change_color_gray btn_with_admin"} btnInactive={"button btn_with_admin"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Servicios"}/>
-        <DashboardHeader header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"report"}/>
+        <DashboardHeader space1={'fieldSize15 '} space2={'fieldSize15 '} space3={'fieldSize21 '} space4={'fieldSize21 '} space5={'fieldSize5 '} space6={'fieldSize8 '} space7={'fieldSize8 '} header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"report"}/>
         <Dashboard content={<ServiceInfo/>}/>
         <div className='btn_save_changes_admin_position'>
           <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>
