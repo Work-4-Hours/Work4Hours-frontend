@@ -1,10 +1,47 @@
 :root {
+  /* Backgrounds */
   --bg-buttons: #289fa5;
   --clr-titles: #303030;
   --clr-paragrhap: #303030;
-
   --color-one: #26c9d1;
-}
+  
+  --bg-ligth-blue: #F4F8FF;
+  --bg-blue: #14A2D6;
+
+
+  --bg-layout-grey:#f1f1f1;
+  --bg-checkbox-grey:#e0e0e0;
+
+  /* Shadows */
+  --gray-shadow-1: #9f9f9f33;
+
+  /* Text colos */
+  --gray-text-1: #494949;
+  --gray-text-2: #6D6D6D;
+  --gray-text-3: #858585;
+  --white-text-1:#ffff;
+
+  /* Gradients */
+  --color-gradient-1: #616161;
+
+  /* Border radius */
+  --border-radius-1: 10px;
+  --border-radius-2: 7px;
+
+  /* Fonts */
+  --font-1: 'coco gothic';
+
+  /*status users*/
+  --status-yellow:#ffcc00;
+  --status-red:#ff3e3e;
+  --status-green:#7dd725;
+  --status-grey:#6c757d;
+
+  /*border*/
+
+  --bd-checkbox-grey:#848484;
+  --bg-dashboard-grey:#ebebeb;
+} 
 
 * {
   margin: 0;
@@ -19,6 +56,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-ligth-blue);
 }
 
 code {
@@ -45,3 +83,58 @@ code {
   background: #289fa510;
 }
 
+/*text*/
+.text_center{
+  text-align: center;
+}
+
+/*Admin*/
+.container_admin{
+  height: 100vh;
+  display: flex;
+}
+.manager_control{
+  width: 80%;
+  padding: 3% 2% 1.3%
+}
+
+.btn_save_changes_admin_position{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_save_changes_admin{
+  width: 18%;
+  margin-top: 2%;
+}
+
+/*Animation Popup Options*/
+
+@keyframes animationPopupOptionsActivate {
+  from{
+    transform: translateY(-50px) scale(0);
+  }
+  to{
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes animationPopupOptionsDeactivate {
+  from{
+    transform: translateY(0) scale(1);
+  }
+  to{
+    transform: translateY(-50px) scale(0) ;
+  }
+}
+
+@keyframes animationOpacityActivate {
+  from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes animationOpacityDeactivate {
+  from { opacity: 1; }
+	to { opacity: 0; }
+}/*esta aun no funciona por el display block*/

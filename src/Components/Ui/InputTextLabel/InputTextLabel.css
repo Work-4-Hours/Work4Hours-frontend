@@ -1,0 +1,5 @@
+.title_label_input {
+    color: var(--gray-text-1);
+    font-family: var(--font-1);
+    font-size: 18px;
+}

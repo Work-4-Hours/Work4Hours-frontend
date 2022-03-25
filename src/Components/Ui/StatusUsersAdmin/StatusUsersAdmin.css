@@ -1,0 +1,52 @@
+.position_relative{
+    position: relative;
+}
+
+.content_options{
+    background-color: var(--bg-blue);
+    color:var(--white-text-1);
+    width: 10.4375em;
+    padding: 10%;
+    position: absolute;
+    top: 1.5em;
+    z-index: 1;
+}
+
+.spacing{
+    margin-bottom: 4%;
+}
+
+.op_state_user{
+    cursor: pointer;
+    padding-left: 20%;
+    position: relative;
+    user-select: none;
+}
+
+.op_state_user::before{
+    content: "";
+    display: block;
+    height: 0.625em;
+    width: 0.625em;
+    border-radius: 50%;
+    position: absolute;
+    top:0.4375em;
+    left: 0.375em;
+}
+
+.yellow::before{
+    background-color: var(--status-yellow);
+}
+
+.green::before{
+    background-color: var(--status-green);
+}
+
+.red::before{
+    background-color: var(--status-red);
+}
+
+
+
+
+
