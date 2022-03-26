@@ -7,8 +7,6 @@ export const DashboardHeader = ({space1,space2,space3,space4,space5,space6,space
       <p className={space1}>{header1}</p>
       <p className={space2}>{header2}</p>
       <p className={space3}>{header3}</p>
-      {/* Cambiar el space 4  
-      el header 3 y 4 lo necesito con 15*/}
       <p className={space4}>{header4}</p>
       <p className={space5 + propsReport}>{header5}</p>
       <p className={space6}>{header6}</p>
