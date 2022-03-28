@@ -1,6 +1,7 @@
 import { DivNavBar } from 'Components/StyleComponets/DivNavBar';
 import { Title } from 'Components/StyleComponets/Titlte';
 import { Button } from 'Components/Ui/Button/Button';
+import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
 import { LinkOption } from 'Components/Ui/LinkOption/LinkOption';
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile';
 import React, { useState, useEffect, useRef } from 'react';
@@ -20,6 +21,15 @@ export const Header = () => {
         color: "#a11d1d",
         imageprofile: "",
         name: "Camilo Lopez",
+        email: "carlos@gmail.com",
+        phone: "3166529009",
+        calification: 73.6
+    }
+
+    const profile2 = {
+        color: "#811ed1",
+        imageprofile: "",
+        name: "Luis Alverto",
         email: "carlos@gmail.com",
         phone: "3166529009",
         calification: 73.6
@@ -54,7 +64,30 @@ export const Header = () => {
                                         <LinkOption link='/profile' text='Administrar servicios'/>
                                         <LinkOption link='/chat' text='Chat'/>
                                     </div>
-                                
+
+                                    <div className="notifications_nav">
+                                        <LinkOption link='/profile' text='Notificaciones'/>
+
+                                        <div className="notifications">
+                                            <Link className='link_notification' to='/'>
+                                                <InfoNotification infoProfile={profile2} />
+                                            </Link>
+                                            <Link className='link_notification' to='/'>
+                                                <InfoNotification infoProfile={profile2} />
+                                            </Link>
+                                            <Link className='link_notification' to='/'>
+                                                <InfoNotification infoProfile={profile2} />
+                                            </Link>
+                                            <Link className='link_notification' to='/'>
+                                                <InfoNotification infoProfile={profile2} />
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    <div className="option_logout">
+                                        <LinkOption isLink={false} text='Cerrar sesión' />
+                                    </div>
+                      
                                 </DivNavBar>
                             </>
                             :

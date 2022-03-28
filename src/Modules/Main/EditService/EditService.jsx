@@ -9,13 +9,9 @@ import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
 
-import './AddService.css'
-import { useUploadImage } from 'CustomHooks/useUploadImage'
-import { useEffect } from 'react'
+import './EditService.css'
 
-export const AddService = () => {
-
-    const { loading, data, uploadImage } = useUploadImage();
+export const EditService = () => {
 
     const optionsl = [
         {
@@ -57,33 +53,17 @@ export const AddService = () => {
             <main className='main_add_service'>
                 <div className="center_main_add_service">
                     <DivShadow className='image_add'>
-                        
-
-                    
-                            <>
-                                <input type="file" name="" id="input_file_image" onChange={e=> uploadImage(e.target.files[0])} />
-                                <label htmlFor="input_file_image">
-                                    <div className="drag_drop_image">
-                                        <img className='icon_add_image' src={IconAddImage} alt="" />
-                                        <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
-                                    </div>
-                                </label>
-                            </>
-                            
-                            <>
-                                {
-                                loading ? 
-                                <p>Cargando...</p>
-                                : 
-                                <img className='image_service_selected' src={data} alt="" />
-                                }          
-                            </>
-                        
-
+                        <input type="file" name="" id="input_file_image" />
+                        <label htmlFor="input_file_image">
+                            <div className="drag_drop_image">
+                                <img className='icon_add_image' src={IconAddImage} alt="" />
+                                <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
+                            </div>
+                        </label>
                     </DivShadow>
                     <DivShadow className='form_add_service'>
                         <div className="padding_form_add_service">              
-                            <Title className='title_add_service'>Nuevo servicio</Title>
+                            <Title className='title_add_service'>Editar servicio</Title>
                             <form action="" className='form_register_service'>
                                 <InputTextLabel titleLabel='Titulo' placeholder='Servicio' />
 
@@ -115,7 +95,7 @@ export const AddService = () => {
                             </form>
                         </div>
                         <div className="flex_button_register_service">
-                            <Button style='button_big' value='Publicar servicio' />
+                            <Button style='button_big' value='Guardar cambios' />
                         </div>
                     </DivShadow>
                     

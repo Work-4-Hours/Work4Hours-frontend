@@ -42,7 +42,7 @@ export const Index = () => {
     return (
         <>
             
-            <DivPopUp isOpen={true} >
+            <DivPopUp isOpen={false} >
                 <div className="center_popup_profile">
                     <DivShadow className='popup_profile'>
                         <div className="padding_info_user">
