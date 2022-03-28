@@ -44,7 +44,7 @@ export const Profile = () => {
                         <div className="sticky_informacion_user">
                             <DivShadow>
                                 <header className='photo_user_profile'>
-                                    <PhotoUserProfile infoProfile={profileU} style='' small={false}/>
+                                    <PhotoUserProfile infoProfile={profileU} style='medium_profile' small={false}/>
                                 </header>
                                 <section className='info_user_profile'>
                                     <p className='name_user_profile'>{profileU.name}</p>

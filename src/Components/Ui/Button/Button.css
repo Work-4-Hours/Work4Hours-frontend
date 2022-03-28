@@ -8,6 +8,17 @@
   font-family: 'coco gothic';
 }
 
-.button:hover {
+.button_big {
+  padding: 15px 14px;
+  /* border-radius: 5px; */
+  border: none;
+  background: var(--bg-blue);
+  color: #FFFF;
+  font-size: 17px;
+  font-family: 'coco gothic';
+}
+
+.button,
+.button_big:hover {
   cursor: pointer;
 }

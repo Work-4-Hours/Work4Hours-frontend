@@ -86,7 +86,7 @@ export const InfoService = () => {
                                 </div>
                             </div>
                             <div className='button_contact'>
-                                <Button value='Contactar' />
+                                <Button style='button_big' value='Contactar' />
                             </div>
                         </DivShadow>
                     </section>

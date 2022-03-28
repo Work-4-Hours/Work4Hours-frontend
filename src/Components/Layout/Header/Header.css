@@ -39,3 +39,34 @@
     font-family: 'coco gothic';
     color: var(--gray-text-3);
 }
+
+/* Nav bar header */
+.nav_bar_header {
+    width: 250px;
+}
+
+.info_nav_bar_user {
+    padding: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.options_nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+}
+
+.info_user_profile_nav_bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.username_nav_bar {
+    color: var(--gray-text-2);
+    font-family: var(--font-1);
+    font-size: 18px;
+}
+
+.email_nav_bar {
+    color: var(--gray-text-3);
+    font-size: 13px;
+} 

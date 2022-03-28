@@ -1,18 +1,30 @@
+import { DivNavBar } from 'Components/StyleComponets/DivNavBar';
+import { Title } from 'Components/StyleComponets/Titlte';
 import { Button } from 'Components/Ui/Button/Button';
+import { LinkOption } from 'Components/Ui/LinkOption/LinkOption';
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
 export const Header = () => {
+
+    const [isOcult, setIsOcult] = useState(true) 
+    const nav_bar = useRef()
+
+    const ocult = () => {
+        setIsOcult(!isOcult)
+    }
+
     const profile = {
         color: "#a11d1d",
-        imageprofile: "https://avatars.githubusercontent.com/u/85415169?v=4",
+        imageprofile: "",
         name: "Camilo Lopez",
         email: "carlos@gmail.com",
         phone: "3166529009",
         calification: 73.6
     }
+
     return (
         <header className="header">
             <div className="center_nav_bar">
@@ -25,7 +37,25 @@ export const Header = () => {
                             true ? 
                             <>
                                 <p className='username_header'>{profile.name}</p>               
-                                <PhotoUserProfile infoProfile={profile} style='small_profile' small={true}/>
+                                <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} onClick={ocult}/>
+                                
+                                <DivNavBar isOcult={isOcult} className='nav_bar_header' ref={nav_bar}>
+                                    
+                                    <div className="info_nav_bar_user">
+                                        <PhotoUserProfile infoProfile={profile}  style='small_profile' small={true} />                             
+                                        <div className="info_user_profile_nav_bar">
+                                            <p className='username_nav_bar'>{profile.name}</p>
+                                            <p className='email_nav_bar'>{profile.email}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="options_nav">
+                                        <LinkOption link='/profile' text='Perfil'/>
+                                        <LinkOption link='/profile' text='Administrar servicios'/>
+                                        <LinkOption link='/chat' text='Chat'/>
+                                    </div>
+                                
+                                </DivNavBar>
                             </>
                             :
                             <>

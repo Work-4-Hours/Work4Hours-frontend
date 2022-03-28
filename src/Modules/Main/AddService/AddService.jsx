@@ -6,10 +6,10 @@ import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
-
-import './AddService.css'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
+
+import './AddService.css'
 
 export const AddService = () => {
 
