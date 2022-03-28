@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import'./MessageUserAdmin.css'
 
 import { PopUpOptions } from 'Components/StyleComponets/PopupOptions';
 
@@ -7,11 +8,11 @@ export const MessageUserAdmin = () => {
     const [display, setDisplay]=useState('none');
     
   return (
-    <div className='position_relative fieldSize8'>
-      <p onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
-      <PopUpOptions className='content_options' isOpen={isOpen} visibilidad={display}>
-        <h5 className='spacing'>Mensaje</h5>
-        <p className='op_state_user spacing green '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
+    <div className='fieldSize8'>
+      <p className='position_relative' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
+      <PopUpOptions className='content_description' isOpen={isOpen} visibilidad={display}>
+        <h5 className='spacing title_popup_description'>Mensaje</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
       </PopUpOptions>
     </div>
   )

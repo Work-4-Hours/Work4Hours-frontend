@@ -1,0 +1,9 @@
+.content_description{background-color: var(--bg-popup-description);
+    color:var(--gray-text-4);
+    width: 5em;
+    padding: 10%;
+    position: absolute;
+    top: 12em;
+    z-index: 1;}
+
+.title_popup_description{color:var(--gray-text-5)}
