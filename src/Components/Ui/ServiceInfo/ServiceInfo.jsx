@@ -5,6 +5,7 @@ import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import { DescriptionServiceAdmin } from '../DescriptionServiceAdmin/DescriptionServiceAdmin';
+import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 export const ServiceInfo = () => {
   return (
@@ -15,7 +16,7 @@ export const ServiceInfo = () => {
         <p className='ellipsis'>Fantasmita </p>
       </div>
       <DescriptionServiceAdmin/>
-      <p className='ellipsis fieldSize21'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
+      <MessageUserAdmin/>
       <InfoReportAdmin/>
       <StatusUsersAdmin/>
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
