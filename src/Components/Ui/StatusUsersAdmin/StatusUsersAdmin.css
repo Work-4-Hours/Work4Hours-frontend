@@ -10,7 +10,7 @@
 
 .op_state_user{
     cursor: pointer;
-    padding-left: 20%;
+    text-align: end;
     position: relative;
     user-select: none;
 }
@@ -38,7 +38,16 @@
     background-color: var(--status-red);
 }
 
+.field105px{
+    width: 6.5625em;
+}
+.field116px{
+    width: 7.25em;
+}
 
+.field160px{
+    width: 10em;
+}
 
 
 

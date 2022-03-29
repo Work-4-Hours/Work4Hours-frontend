@@ -20,10 +20,10 @@ export const StatusUsersAdmin = () => {
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}></div>
         <div className='content_options'>
-        <h5 className='spacing'>Estados del usuario</h5>
-        <p className='op_state_user spacing green ' onClick={event=>changeStateUsers(event)}>Habilitado</p>
-        <p className='op_state_user spacing yellow' onClick={event=>changeStateUsers(event)}>Suspendido 3 dias</p>
-        <p className='op_state_user spacing red' onClick={event=>changeStateUsers(event)}>Inhabilitado</p>
+          <h5 className='spacing'>Estados del usuario</h5>
+          <p className='op_state_user spacing green field105px' onClick={event=>changeStateUsers(event)}>Habilitado</p>
+          <p className='op_state_user spacing yellow field160px' onClick={event=>changeStateUsers(event)}>Suspendido 3 dias</p>
+          <p className='op_state_user spacing red field116px' onClick={event=>changeStateUsers(event)}>Inhabilitado</p>
         </div>
       </PopUp>
     </div>
