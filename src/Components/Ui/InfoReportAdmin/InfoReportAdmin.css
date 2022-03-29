@@ -5,7 +5,7 @@
 .typ_report{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     height: 1.625em;
 }
 

@@ -27,7 +27,7 @@ export const FilterUserAdmin = () => {
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options filter_options'>
-          <div className="typ_report spacing_type_suspension">
+          <div className="typ_report">
               <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
             </div>
             <div className="typ_report ">

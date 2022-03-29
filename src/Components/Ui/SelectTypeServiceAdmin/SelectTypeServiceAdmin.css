@@ -1,0 +1,3 @@
+.select_option_type_service{background:var(--bg-blue); color:var(--white-text-1); outline:none; height: 1.5625rem; border:0; font-size: 0.9375rem;cursor:pointer;}
+.option_select_type_service{cursor:pointer;}
+.option_select_type_service:hover{background-color:#fff; color: #000;}
