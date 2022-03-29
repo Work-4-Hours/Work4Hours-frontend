@@ -13,8 +13,8 @@ export const DescriptionServiceAdmin = () => {
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}></div>
         <div className='content_description'>
-        <h5 className='spacing title_popup_description'>Descripción</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
+          <h5 className='spacing title_popup_description'>Descripción</h5>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, veniam sit exercitationem minus dolorum, aspernatur, ullam voluptate voluptates labore nam minima quae eos neque ipsum. Beatae ad eos similique veniam.</p>
         </div>
       </PopUp>
     </div>

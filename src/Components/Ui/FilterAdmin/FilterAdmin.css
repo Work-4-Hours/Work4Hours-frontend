@@ -6,6 +6,9 @@
     position: absolute;
     top: 1.5em;
     z-index: 2;
+    animation: animationPopupOptionsActivate .2s forwards;
+    border-radius: var(--border-radius-2);
+    box-shadow: 0 0 10px var(--gray-shadow-1);
 }
 
 .content_filter{
