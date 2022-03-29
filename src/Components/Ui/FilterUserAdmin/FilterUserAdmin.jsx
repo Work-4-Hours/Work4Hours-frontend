@@ -10,7 +10,6 @@ export const FilterUserAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor] = useState('');
   const [count, setCount] = useState(0);
-  const [display, setDisplay]=useState('none');
 
   const color_state=[ "grey" , "green", "yellow", "red"];
 
@@ -24,9 +23,9 @@ export const FilterUserAdmin = () => {
 
   return (
     <div className='content_filter'>
-        <Button className="button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}/>
+        <Button className="button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>{setIsOpen(!isOpen)}}/>
       <PopUp isOpen={isOpen}> 
-        <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}></div>
+        <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options filter_options'>
           <div className="typ_report spacing_type_suspension">
               <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
@@ -41,7 +40,6 @@ export const FilterUserAdmin = () => {
               <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
             </div>
         </div>
-         
       </PopUp>
     </div>
   )
