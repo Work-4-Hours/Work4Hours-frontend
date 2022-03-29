@@ -2,15 +2,12 @@ import React from 'react';
 import './Search.css';
 
 import { SearchBox } from 'Components/Ui/SearchBox/SearchBox';
-import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
 
-
-
-export const Search = ({nameSearch}) => {
+export const Search = ({nameSearch,filter}) => {
   return (
     <div className='search_filter_admin_users'>
       <SearchBox typeSearch={nameSearch}/>
-      <FilterAdmin/>
+      {filter}
     </div>
   )
 }

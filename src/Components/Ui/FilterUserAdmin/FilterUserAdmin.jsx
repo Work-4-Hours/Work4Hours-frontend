@@ -1,8 +1,10 @@
+import React, {useState, useEffect} from 'react';
+import './FilterUserAdmin.css';
+
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import React, {useState, useEffect} from 'react'
 import { Button } from '../Button/Button';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
-import './FilterUserAdmin.css';
 
 export const FilterUserAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
