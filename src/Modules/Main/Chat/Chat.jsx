@@ -8,6 +8,7 @@ import { PhotoUserProfile } from "Components/Ui/PhotoUserProfile/PhotoUserProfil
 import './Chat.css';
 import { CardMessage } from "Components/Ui/CardMessage/CardMessage";
 import { InputText } from "Components/Ui/InputText/InputText";
+import { ButtonSend } from "Components/Ui/ButtonSend/ButtonSend";
 
 export const Chat = () => {
     const profile = {
@@ -60,6 +61,7 @@ export const Chat = () => {
                             </div>
                             <div className="input_message_chat">
                                 <InputText placeholder='Mensaje...'/>
+                                <ButtonSend onClick={e => console.log(e)} />
                             </div>
                         </div>                   
                     </DivShadow>
