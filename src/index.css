@@ -8,6 +8,9 @@
   --bg-ligth-blue: #F4F8FF;
   --bg-blue: #14A2D6;
 
+  /* Borders */
+  --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
+
   /* Shadows */
   --gray-shadow-1: #9f9f9f33;
 

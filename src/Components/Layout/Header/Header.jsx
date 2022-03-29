@@ -1,10 +1,10 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { DivNavBar } from 'Components/StyleComponets/DivNavBar';
 import { Title } from 'Components/StyleComponets/Titlte';
 import { Button } from 'Components/Ui/Button/Button';
 import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
 import { LinkOption } from 'Components/Ui/LinkOption/LinkOption';
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile';
-import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
