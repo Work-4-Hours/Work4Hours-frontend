@@ -2,9 +2,9 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import React, {useState, useEffect} from 'react'
 import { Button } from '../Button/Button';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
-import './FilterAdmin.css';
+import './FilterUserAdmin.css';
 
-export const FilterAdmin = () => {
+export const FilterUserAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor] = useState('');
   const [count, setCount] = useState(0);
@@ -39,7 +39,7 @@ export const FilterAdmin = () => {
               <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
             </div>
         </div>
-        
+         
       </PopUp>
     </div>
   )

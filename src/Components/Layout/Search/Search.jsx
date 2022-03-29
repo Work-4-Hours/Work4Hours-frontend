@@ -1,7 +1,8 @@
-import { FilterAdmin } from 'Components/Ui/FilterAdmin/FilterAdmin';
-import { SearchBox } from 'Components/Ui/SearchBox/SearchBox';
 import React from 'react';
 import './Search.css';
+
+import { SearchBox } from 'Components/Ui/SearchBox/SearchBox';
+import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
 
 
 
