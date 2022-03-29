@@ -24,7 +24,7 @@ export const FilterAdmin = () => {
     <div className='content_filter'>
         <Button className="button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}/>
       <PopUp className='content_options filter_options' isOpen={isOpen} visibilidad={display}> 
-        <div className="typ_report  spacing_type_suspension">
+        <div className="typ_report spacing_type_suspension">
           <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
         </div>
           <div className="typ_report ">

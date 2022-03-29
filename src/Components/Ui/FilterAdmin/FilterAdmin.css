@@ -1,3 +1,13 @@
+.content_options{
+    background-color: var(--bg-blue);
+    color:var(--white-text-1);
+    width: 10.4375em;
+    padding: 10%;
+    position: absolute;
+    top: 1.5em;
+    z-index: 1;
+}
+
 .content_filter{
     width: 10%;
     position: relative;
