@@ -23,19 +23,23 @@ export const FilterAdmin = () => {
   return (
     <div className='content_filter'>
         <Button className="button btn_search_filter_admin_users" value={"Filtro"} onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}/>
-      <PopUp className='content_options filter_options' isOpen={isOpen} visibilidad={display}> 
-        <div className="typ_report spacing_type_suspension">
-          <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
+      <PopUp isOpen={isOpen}> 
+        <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}></div>
+        <div className='content_options filter_options'>
+          <div className="typ_report spacing_type_suspension">
+              <p>Tipos de suspensión</p><p className={'color_state_user ' + stateColor} onClick={()=>setCount(count+1) }></p>
+            </div>
+            <div className="typ_report ">
+              <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
+            </div>
+            <div className="typ_report ">
+              <p>Correo</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
+            </div>
+            <div className="typ_report ">
+              <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
+            </div>
         </div>
-          <div className="typ_report ">
-            <p>Reportes</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
-          </div>
-          <div className="typ_report ">
-            <p>Correo</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
-          </div>
-          <div className="typ_report ">
-            <p>Nombres y Apellidos</p><CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"}/>
-          </div>
+        
       </PopUp>
     </div>
   )
