@@ -5,13 +5,12 @@ import './InfoReportAdmin.css'
 export const InfoReportAdmin = () => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [display, setDisplay]=useState('none');
   
   return (
     <div className='position_relative fieldSize5' >
-      <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}>1000</p>
+      <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen)}}>1000</p>
       <PopUp isOpen={isOpen}> 
-        <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen); setDisplay('block')}}></div>
+        <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_type_report'>
           <h5 className='spacing'>Tipos de Reportes</h5>
           <div className="typ_report spacing">
