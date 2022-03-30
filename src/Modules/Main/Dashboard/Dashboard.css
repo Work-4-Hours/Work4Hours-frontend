@@ -8,7 +8,7 @@
 }
 
 .aside_operations_dashboard {
-    width: 30%;
+    width: 20%;
 
     display: flex;
     flex-direction: column;
@@ -26,7 +26,17 @@
     font-weight: 700;
 }
 
+.operations_dashboard {
+    padding: 10px 0 0 0;
+}
+
 .main_dashboard {
-    width: 70%;
+    width: 80%;
     padding: 30px;
+}
+
+.padding_button_service_add {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
 }
