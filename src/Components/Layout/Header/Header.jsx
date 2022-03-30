@@ -61,7 +61,7 @@ export const Header = () => {
 
                                     <div className="options_nav">
                                         <LinkOption link='/profile' text='Perfil'/>
-                                        <LinkOption link='/profile' text='Administrar servicios'/>
+                                        <LinkOption link='/dashboard' text='Administrar servicios'/>
                                         <LinkOption link='/chat' text='Chat'/>
                                     </div>
 
@@ -89,6 +89,9 @@ export const Header = () => {
                                     </div>
                       
                                 </DivNavBar>
+                                {
+                                    !isOcult && <div className='ocult_nav_bar' onClick={() => setIsOcult(true)}></div>
+                                }
                             </>
                             :
                             <>

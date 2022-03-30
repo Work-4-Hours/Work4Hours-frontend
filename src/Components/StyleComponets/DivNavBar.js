@@ -10,5 +10,5 @@ export const DivNavBar = styled.div`
     top: 20px;
     right: ${props => props.isOcult ? '-300px' : '20px'};
     transition: all .2s ease-in-out;
-    z-index: 1;
+    z-index: 3;
 `;

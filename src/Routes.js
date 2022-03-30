@@ -10,6 +10,7 @@ import { InfoService } from 'Modules/Main/InfoService/InfoService'
 import { AddService } from 'Modules/Main/AddService/AddService'
 import { EditService } from 'Modules/Main/EditService/EditService'
 import { Claim } from 'Modules/Main/Claim/Claim'
+import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 
 export const AllRoutes = () => {
   return (
@@ -20,9 +21,10 @@ export const AllRoutes = () => {
         <Route path='/profile' element={<Profile/>} />
         <Route path='/registry' element={<Registry />} /> 
         <Route path='/infoservice' element={<InfoService />} /> 
-        <Route path='service/add' element={<AddService />} /> 
-        <Route path='service/edit' element={<EditService />} /> 
-        <Route path='claim' element={<Claim />} /> 
+        <Route path='/service/add' element={<AddService />} /> 
+        <Route path='/service/edit' element={<EditService />} /> 
+        <Route path='/dashboard' element={<Dashboard />} /> 
+        <Route path='/claim' element={<Claim />} /> 
         <Route path='/chat' element={<Chat/>} />
         <Route path='/AdminUsers' element={<Users />} />
         <Route path='*' element={<h1>Not found</h1>} />     

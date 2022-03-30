@@ -87,3 +87,12 @@
 .link_notification {
     text-decoration: none;
 }
+
+.ocult_nav_bar {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
