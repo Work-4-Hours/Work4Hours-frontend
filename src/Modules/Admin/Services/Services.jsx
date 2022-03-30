@@ -8,6 +8,8 @@ import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
 import { Button } from 'Components/Ui/Button/Button';
 import { ServiceInfo } from 'Components/Ui/ServiceInfo/ServiceInfo';
 import { FilterServiceAdmin } from 'Components/Ui/FilterServiceAdmin/FilterServiceAdmin';
+import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
+import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 
 export const Services = () => {
   return (
@@ -17,9 +19,7 @@ export const Services = () => {
         <Search nameSearch={"Buscar Servicios"} filter={<FilterServiceAdmin/>}/>
         <DashboardHeader space1={'fieldSize15 '} space2={'fieldSize15 '} space3={'fieldSize21 '} space4={'fieldSize21 '} space5={'fieldSize5 '} space6={'fieldSize8 '} space7={'fieldSize8 '} header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"report"}/>
         <Dashboard content={<ServiceInfo/>}/>
-        <div className='btn_save_changes_admin_position'>
-          <Button className="button btn_save_changes_admin" value="Guardar Cambios"/>
-        </div>
+        <PopupConfirmChanges nameTitle={"Esta seguro de querer eliminar: "} valueButton={"Eliminar"} objectContent={<ObjectDelete/>} styleObjects={"popup_confirm_changes_content_objects_services"}/>
       </div>
     </div>
   )

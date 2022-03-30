@@ -1,15 +1,11 @@
-import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import React from 'react'
 import './PopupConfirmChangesContentObjects.css'
 
-export const PopupConfirmChangesContentObjects = () => {
+
+export const PopupConfirmChangesContentObjects = ({content, object}) => {
   return (
-    <div className='popup_confirm_changes_content_objects scroll'>
-    <ObjectStatus/>
-    <ObjectStatus/>
-    <ObjectStatus/>
-    <ObjectStatus/>
-    
+    <div className= {'scroll ' + object}>
+      {content}
     </div>
   )
 }

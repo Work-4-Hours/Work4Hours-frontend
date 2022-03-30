@@ -8,6 +8,7 @@ import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/Popup
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
+import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 
 export const Users = () => {
   
@@ -18,7 +19,7 @@ export const Users = () => {
         <Search nameSearch={"Buscar Usuarios"} filter={<FilterUserAdmin/>}/>
         <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize21 '} space3={'fieldSize21 '} space4={'fieldSize22 '} space5={'fieldSize5 '} space6={'fieldSize8 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         <Dashboard content={<UserInfo/> }/>
-        <PopupConfirmChanges/>
+        <PopupConfirmChanges nameTitle={"Esta seguro de querer actualizar el estado de: "} valueButton={"Actualizar"} objectContent={<ObjectStatus/>} styleObjects={"popup_confirm_changes_content_objects_users"}/>
       </div>
     </div>
   )
