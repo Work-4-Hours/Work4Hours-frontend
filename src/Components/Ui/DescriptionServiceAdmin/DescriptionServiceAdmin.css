@@ -1,0 +1,2 @@
+.content_description{background-color: var(--bg-popup-description);color:var(--gray-text-4);width: 18em;padding: 5%;position: absolute; top:1.5em;z-index: 1; text-align: justify; animation: animationPopupOptionsActivate .2s forwards;}
+.title_popup_description{color:var(--gray-text-5)}

@@ -15,6 +15,7 @@
     padding: 2%;
     border-radius: 10px;
     width: 28%;
+    animation:animationOpacityActivate .2s forwards;
 }
 
 .password_admin_save_changes_admin{

@@ -1,6 +1,6 @@
 .dashborard{
     background-color:var(--bg-dashboard-grey);
-    height: 72%;
+    height: 100%;
     border-radius: 1em;
     padding: 1%;
     display: flex;
