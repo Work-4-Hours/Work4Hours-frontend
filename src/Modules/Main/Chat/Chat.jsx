@@ -39,8 +39,7 @@ export const Chat = () => {
                             <Title>Chat</Title>
                         </div>
                         <div className="cards_aside_chat">
-                            <CardUser infoUser={profile} nameService='Servicios sexuales'/>
-                            <CardUser infoUser={profile} nameService='Servicios sexuales'/>                      
+                            <CardUser infoUser={profile} nameService='Servicio'/>
                         </div>
                     </DivShadow>
 
