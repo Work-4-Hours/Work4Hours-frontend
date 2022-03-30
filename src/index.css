@@ -123,21 +123,14 @@ code {
   }
 }
 
-@keyframes animationPopupOptionsDeactivate {
-  from{
-    transform: translateY(0) scale(1);
-  }
-  to{
-    transform: translateY(-50px) scale(0) ;
-  }
-}
-
 @keyframes animationOpacityActivate {
   from { opacity: 0; }
 	to { opacity: 1; }
 }
 
-@keyframes animationOpacityDeactivate {
-  from { opacity: 1; }
-	to { opacity: 0; }
-}/*esta aun no funciona por el display block*/
+
+@keyframes enlargeLetter {
+  to{
+    transform: scale(1.1);
+  }
+}
