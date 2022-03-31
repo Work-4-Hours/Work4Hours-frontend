@@ -1,0 +1,35 @@
+.table_services {
+    margin: 20px 0;
+}
+
+.row_table_services_header {
+    display: grid;
+	grid-template-columns: repeat(4, 1fr);
+    border-bottom: 2px solid #f0f0f0;
+
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 19px;
+    margin: 0 0 10px 0;
+}
+
+.body_table_services {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row_table_services {
+	display: grid;
+    height: 150px;
+	grid-template-columns: repeat(4, 1fr);
+
+    border-radius: 10px;
+    overflow: hidden;
+    background: #a3a3a3;    
+} 
+
+.image_info_service_table {
+    width: 200px;
+    object-fit: cover;
+}

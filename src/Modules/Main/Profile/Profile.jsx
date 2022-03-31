@@ -18,7 +18,7 @@ export const Profile = () => {
             name: "Carlos Alverto",
             email: "carlos@gmail.com",
             phone: "3166529009",
-            calification: 73.6
+            calification: 50.6
         },
         services: [
             {
