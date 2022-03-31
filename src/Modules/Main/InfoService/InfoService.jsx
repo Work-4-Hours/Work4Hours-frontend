@@ -49,7 +49,6 @@ export const InfoService = () => {
                                             <p className='report'>Reportar</p>
                                             <IconFlag className='icon_flag_btn_report' />
                                         </div>
-<<<<<<< HEAD
 
                                         <PopUp className='popup_report' isOpen={isOpen} bg='#FFFF'>
                                             <div className="padding_popup_report">
@@ -85,14 +84,6 @@ export const InfoService = () => {
                                         <p className='description_info_service'>{service.description}</p>
                                     </div>
                                 </div>
-=======
-                                    </div>    
-                                </PopUp>
-                            </header>
-                            <div className="user_profile">
-                                <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
-                                <p>{profile.name}</p>
->>>>>>> a15e1011c92e2370272c57b2c505640c20b577f5
                             </div>
                             <div className='button_contact'>
                                 <Button style='button_big' value='Contactar' />

@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-.color {
-    color: rgba(104, 104, 104, 0.459);
-}
-=======
 .search_filter_admin_users{
     display: flex;
     justify-content: space-between;
+    color: rgba(104, 104, 104, 0.459);
 }
-
->>>>>>> a15e1011c92e2370272c57b2c505640c20b577f5
