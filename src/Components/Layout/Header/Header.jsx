@@ -61,7 +61,7 @@ export const Header = () => {
 
                                     <div className="options_nav">
                                         <LinkOption link='/profile' text='Perfil'/>
-                                        <LinkOption link='/dashboard' text='Administrar servicios'/>
+                                        <LinkOption link='/dashboard/publications' text='Administrar servicios'/>
                                         <LinkOption link='/chat' text='Chat'/>
                                     </div>
 

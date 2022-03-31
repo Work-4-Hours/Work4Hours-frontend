@@ -16,52 +16,33 @@ export const Saved = () => {
 
     return (
         <main>
-            <Title>Mis servicios - Borradores</Title>         
+            <Title>Mis servicios - Borradores</Title>
 
-            <table className="table_publication_service">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Informacion</th>
-                        <th>Reportes</th>
-                        <th>Operaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className='row_table_info_service'>
-                        <td className='td_start'><img className='image_service_saved_dashboard' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" /></td>
-                        <td>
-                            <p>{service.title}</p> 
-                            <p>{service.city} {service.departament}</p>   
-                            <p>$ {service.price} por hora</p>   
-                        </td>
-                        <td>
-                            Ninguno
-                        </td>
-                        <td className='td_end'>
-                            <Button value='Editar'/>
-                            <Button value='Elimnar'/>
-                        </td>
-                    </tr>
+            <section className='table_services'>
+                <div clasS="header_table_services">
+                    <div class="row_table_services_header">
+                        <div></div>
+                        <div>Informacion</div>
+                        <div>Reportes</div>
+                        <div>Operaciones</div>
+                    </div>
+                </div>
+                <div clasS="body_table_services">
+                    <div class="row_table_services">
+                        <img className='image_info_service_table' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" />
+                        <div>Dato Fila 1 Columna 2</div>
+                        <div>Dato Fila 1 Columna 3</div>
+                        <div>Dato Fila 1 Columna 4</div>
+                    </div>
 
-                    <tr className='row_table_info_service'>
-                        <td className='td_start'><img className='image_service_saved_dashboard' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" /></td>
-                        <td>
-                            <p>{service.title}</p> 
-                            <p>{service.city} {service.departament}</p>   
-                            <p>$ {service.price} por hora</p>   
-                        </td>
-                        <td>
-                            Ninguno
-                        </td>
-                        <td className='td_end'>
-                            <Button value='Editar'/>
-                            <Button value='Elimnar'/>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+                    <div class="row_table_services">
+                        <img className='image_info_service_table' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" />
+                        <div>Dato Fila 1 Columna 2</div>
+                        <div>Dato Fila 1 Columna 3</div>
+                        <div>Dato Fila 1 Columna 4</div>
+                    </div>
+                </div>
+            </section>
         </main>
     )
 }
