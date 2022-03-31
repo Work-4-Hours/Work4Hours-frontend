@@ -21,6 +21,7 @@
 
 .row_table_services {
 	display: grid;
+    height: 150px;
 	grid-template-columns: repeat(4, 1fr);
 
     border-radius: 10px;
@@ -29,8 +30,6 @@
 } 
 
 .image_info_service_table {
-
-    height: 100%;
-
+    width: 200px;
     object-fit: cover;
 }
