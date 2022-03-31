@@ -1,12 +1,16 @@
 .dashboard_header{
     background-color: #ebebeb;
-    margin: 2% 0%;
-    padding: 1%;
-    padding-left: 2%;
-    border-radius: 1rem;
-    display: grid;
-    grid-template-columns: 5% 14% 14% 15% 18% 13% 13%;
-    align-items: center;
-    gap: 1%;
-    color: #848484;
+    padding: 1% 2%;
+    border-radius: 1em;
+    display: flex;
+    gap: 2%;
+    color: var(--bd-checkbox-grey);
 }
+.report{color:var(--status-red)}
+
+.fieldSize3{width: 3%;}
+.fieldSize21{width: 21%;}
+.fieldSize22{width: 22%;}
+.fieldSize5{width: 5%;}
+.fieldSize8{width: 8%;}
+.fieldSize15{width: 15%;}

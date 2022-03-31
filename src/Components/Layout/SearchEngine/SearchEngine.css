@@ -1,0 +1,9 @@
+.serch_engine {
+    background: #FFFF;
+}
+
+.center_serch_engine {
+    max-width: 1100px;
+    margin: auto;
+    padding: 10px 20px;
+}

@@ -1,0 +1,57 @@
+.position_relative{
+    position: relative;
+}
+
+
+.spacing{
+    margin-bottom: 4%;
+}
+
+.op_state_user{
+    cursor: pointer;
+    text-align: end;
+    position: relative;
+    user-select: none;
+
+}
+
+.prueba{
+    display: flex;
+}
+
+.op_state_user::before{
+    content: "";
+    display: block;
+    height: 0.625em;
+    width: 0.625em;
+    border-radius: 50%;
+    position: absolute;
+    top:0.4375em;
+    left: 0.375em;
+}
+
+.yellow::before{
+    background-color: var(--status-yellow);
+}
+
+.green::before{
+    background-color: var(--status-green);
+}
+
+.red::before{
+    background-color: var(--status-red);
+}
+
+.field105px{
+    width: 6.5625em;
+}
+.field116px{
+    width: 7.25em;
+}
+
+.field160px{
+    width: 10em;
+}
+
+
+
