@@ -1,3 +1,6 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
 :root {
   /* Max width containers */
   --max-width-container: 1450px; 
@@ -48,6 +51,7 @@
 
   --bd-checkbox-grey:#848484;
   --bg-dashboard-grey:#ebebeb;
+  --font-2: 'Alata';
 } 
 
 * {

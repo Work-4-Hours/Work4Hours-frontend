@@ -81,3 +81,7 @@
     width: 200px;
     text-align: center;
 }
+
+.link_card_service {
+    text-decoration: none;
+}

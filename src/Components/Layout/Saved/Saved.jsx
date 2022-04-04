@@ -1,8 +1,11 @@
 import React from 'react'
 import { Title } from 'Components/StyleComponets/Titlte'
+import { Services } from 'Modules/Admin/Services/Services'
+import { Button } from 'Components/Ui/Button/Button'
+import IconChecked from 'Assets/Icons/IconChecked.png'
+import IconDanger from 'Assets/Icons/IconDanger.png'
 
 import './Saved.css'
-import { Button } from 'Components/Ui/Button/Button'
 
 export const Saved = () => {
 
@@ -11,7 +14,8 @@ export const Saved = () => {
         image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
         city: "Armenia",
         departament: "Quindio",
-        title: "Pinto casas a domicilio Lorem"
+        title: "Pinto casas a domicilio Lorem",
+        reports: 0
     }
 
     return (
@@ -28,21 +32,36 @@ export const Saved = () => {
                     </div>
                 </div>
                 <div clasS="body_table_services">
-                    <div class="row_table_services">
-                        <img className='image_info_service_table' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" />
-                        <div>Dato Fila 1 Columna 2</div>
-                        <div>Dato Fila 1 Columna 3</div>
-                        <div>Dato Fila 1 Columna 4</div>
-                    </div>
 
                     <div class="row_table_services">
-                        <img className='image_info_service_table' src="https://avatars.githubusercontent.com/u/85415169?v=4" alt="" />
-                        <div>Dato Fila 1 Columna 2</div>
-                        <div>Dato Fila 1 Columna 3</div>
-                        <div>Dato Fila 1 Columna 4</div>
+                        <img className='image_info_service_table' src="https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png" alt="" />
+                        <div className='info_service_table'>
+                            <p className='title_service_table'>{service.title}</p>
+                            <p className='location_service_table'>{service.city} {service.departament}</p> 
+                            <p className='price_service_table'>$ {service.price} por hora</p>
+                        </div>
+                        <div className='report_info_table'>
+                            {
+                                service.reports > 0 ?
+                                <div className="danger_reports">
+                                    <img className='icon_danger_table' src={IconDanger} alt="" />
+                                    <p className='value_report'>{service.reports}</p>
+                                </div>
+                                :
+                                <div className="danger_reports">
+                                    <img className='icon_checked_table' src={IconChecked} alt="" />
+                                    <p className='value_not_report'>No hay reportes</p>
+                                </div>
+                            }
+                        </div>
+                        <div className='operations_info_table'>
+                            <Button value='Editar'/>
+                            <Button value='Eliminar'/>
+                        </div>
                     </div>
                 </div>
             </section>
+
         </main>
     )
 }

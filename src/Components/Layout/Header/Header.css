@@ -96,3 +96,11 @@
     top: 0;
     left: 0;
 }
+
+.ocult_popup {
+    position: fixed;
+    z-index: -1;
+    background: rgba(192, 192, 192, 0.534);
+    width: 100vw;
+    height: 100vh;
+}
