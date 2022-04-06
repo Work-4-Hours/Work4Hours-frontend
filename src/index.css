@@ -99,7 +99,6 @@ code {
 .input:focus {
   outline: 2px solid var(--bg-buttons);
   background: #289fa510;
-<<<<<<< HEAD
 }
 
 /*text*/
@@ -151,6 +150,4 @@ code {
   to{
     transform: scale(1.1);
   }
-=======
->>>>>>> d37a9917a5ebda74d73c2976f1dad16051286b3d
 }
