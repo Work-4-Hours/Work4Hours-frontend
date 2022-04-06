@@ -1,3 +1,13 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+/* Font 1 */
+@font-face {
+  font-family: 'coco gothic';
+  src: url(./Assets/Fonts/CocoGothic/CocoGothic_trial.ttf)
+  format("truetype");
+}
+
 :root {
   /* Max width containers */
   --max-width-container: 1450px; 
@@ -48,6 +58,8 @@
 
   --bd-checkbox-grey:#848484;
   --bg-dashboard-grey:#ebebeb;
+
+  --font-2: 'Alata';
 } 
 
 * {
@@ -71,7 +83,6 @@ code {
     monospace;
 }
 
-
 /* Buttons */
 .input {
   padding: 10px;
@@ -88,6 +99,7 @@ code {
 .input:focus {
   outline: 2px solid var(--bg-buttons);
   background: #289fa510;
+<<<<<<< HEAD
 }
 
 /*text*/
@@ -139,4 +151,6 @@ code {
   to{
     transform: scale(1.1);
   }
+=======
+>>>>>>> d37a9917a5ebda74d73c2976f1dad16051286b3d
 }

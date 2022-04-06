@@ -58,24 +58,27 @@ export const AddService = () => {
             <main className='main_add_service'>
 
                 <div className="center_main_add_service">
+            
                     <DivShadow className='image_add'>
 
-                        <input type="file" name="" id="input_file_image" onChange={e => uploadImage(e.target.files[0])} />
-                        <label htmlFor="input_file_image">
-                            <div className="drag_drop_image">
-                                <img className='icon_add_image' src={IconAddImage} alt="" />
-                                <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
-                            </div>
-                        </label>
+                            <input type="file" name="" id="input_file_image" onChange={e => uploadImage(e.target.files[0])} />
+                            <label htmlFor="input_file_image">
+                                <div className="drag_drop_image">
+                                    <img className='icon_add_image' src={IconAddImage} alt="" />
+                                    <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
+                                </div>
+                            </label>
 
-                        {
-                            loading ?
-                                <LoadingAnimation/>
-                                :
-                                <img className='image_service_selected' src={data} alt="" />
-                        }
+                            {/* {
+                                loading ?
+                                    <LoadingAnimation/>
+                                    :
+                                    <img className='image_service_selected' src={data} alt="" />
+                            } */}
 
                     </DivShadow>
+
+
                     <DivShadow className='form_add_service'>
                         <div className="padding_form_add_service">
                             <Title className='title_add_service'>Nuevo servicio</Title>
