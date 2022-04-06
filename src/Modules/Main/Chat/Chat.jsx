@@ -15,7 +15,7 @@ export const Chat = () => {
         color: "#236d36",
         imageprofile: "",
         name: "Jose Maria",
-        email: "carlos@gmail.com",
+        email: "carlos@gmail.co",
         phone: "3166529009",
         calification: 73.6
     }
