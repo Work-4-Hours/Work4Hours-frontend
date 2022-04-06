@@ -66,7 +66,6 @@ code {
     monospace;
 }
 
-
 /* Buttons */
 .input {
   padding: 10px;
@@ -84,4 +83,3 @@ code {
   outline: 2px solid var(--bg-buttons);
   background: #289fa510;
 }
-
