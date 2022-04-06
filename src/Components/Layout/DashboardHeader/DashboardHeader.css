@@ -6,7 +6,7 @@
     gap: 2%;
     color: var(--bd-checkbox-grey);
 }
-.report{color:var(--status-red)}
+.reportColor{color:var(--status-red)}
 
 .fieldSize3{width: 3%;}
 .fieldSize21{width: 21%;}
