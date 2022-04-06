@@ -123,6 +123,7 @@ code {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  display: block;
 }
 
 .btn_save_changes_admin{
