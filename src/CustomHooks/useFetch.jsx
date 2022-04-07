@@ -6,18 +6,36 @@ export const useFetch = (url_default = null) => {
     const [data, setData] = useState({});
     const [error, setError] = useState(null);
 
-    useEffect(()=> {
+    // useEffect(()=> {
+    //     setLoading(true)
+    //     Axios.get(url_default)
+    //     .then(response => setData(response.data))
+    //     .catch(setError)          
+    //     .finally(() => setLoading(false))
+    // },[])
+
+    const get = (url) => {
         setLoading(true)
-        Axios.get(url_default)
+        Axios.get(url)
         .then(response => setData(response.data))
         .catch(setError)          
         .finally(() => setLoading(false))
-    },[])
+    }
 
-    
-    
+    const post = (url, data) => {
+        setLoading(true)
+        Axios.post(url, {
+            data: {...data}
+        })
+        .then(response => setData(response.data))
+        .catch(setError)          
+        .finally(() => setLoading(false))
+    }
+
 
     return {
+        get,
+        post,
         data,
         loading,
         error

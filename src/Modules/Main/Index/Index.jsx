@@ -43,10 +43,7 @@ export const Index = () => {
     }
 
     return (
-        <>
-            
-            
-
+        <>                    
             <Header />
             <SerchEngine/>
             <main>
