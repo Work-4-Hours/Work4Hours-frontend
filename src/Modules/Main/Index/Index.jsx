@@ -13,7 +13,6 @@ import axios from "axios"
 import './Index.css'
 
 export const Index = () => {
-    const { isAuth } = useContext(UserContext)
     const [results, setResults] = useState([])
     const { loading, data } = useFetch('https://rickandmortyapi.com/api/character')
     
