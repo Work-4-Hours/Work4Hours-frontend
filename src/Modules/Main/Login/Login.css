@@ -26,8 +26,8 @@
 }
 
 .padding_container_form_login {
-    width: 300px;
-    padding: 25px;
+    width: 350px;
+    padding: 40px;
 
     display: flex;
     flex-direction: column;

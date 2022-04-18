@@ -17,16 +17,15 @@ export const useFetch = (url_default = null) => {
     const get = (url) => {
         setLoading(true)
         Axios.get(url)
-        .then(response => setData(response.data))
+        .then(response => response)
+        .then(response => setData(response))    
         .catch(setError)          
         .finally(() => setLoading(false))
     }
 
-    const post = (url, data) => {
+    const post = (url, data, config) => {
         setLoading(true)
-        Axios.post(url, {
-            data: {...data}
-        })
+        Axios.post(url, data, config)
         .then(response => setData(response.data))
         .catch(setError)          
         .finally(() => setLoading(false))

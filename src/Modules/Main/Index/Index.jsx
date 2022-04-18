@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Header } from "Components/Layout/Header/Header"
 import { CardService } from 'Components/Ui/CardService/CardService'
 import { Banner } from "Components/Layout/Banner/Banner"
@@ -6,19 +6,16 @@ import { DivShadow } from "Components/StyleComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 import { Link } from "react-router-dom"
 import { useFetch } from "CustomHooks/useFetch"
+import { UserContext } from "Context/UserContext"
 import axios from "axios"
 
 
 import './Index.css'
 
 export const Index = () => {
-    
+    const { isAuth } = useContext(UserContext)
     const [results, setResults] = useState([])
-    const {loading, data} = useFetch('https://rickandmortyapi.com/api/character')
-   
-    useEffect(()=> {  
-        if(loading == false) setResults(data.results)
-    },[loading])
+    const { loading, data } = useFetch('https://rickandmortyapi.com/api/character')
     
     const service = {
         price: "200.000",
