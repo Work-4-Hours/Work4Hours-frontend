@@ -7,16 +7,19 @@
     margin-bottom: 4%;
 }
 
+.op_text_state_users{
+    cursor: pointer;
+    text-align: end;
+    position: relative;
+    user-select: none;
+}
+
 .op_state_user{
     cursor: pointer;
     text-align: end;
     position: relative;
     user-select: none;
-
-}
-
-.prueba{
-    display: flex;
+    color: var(--white-text-1)
 }
 
 .op_state_user::before{
@@ -30,15 +33,27 @@
     left: 0.375em;
 }
 
-.yellow::before{
-    background-color: var(--status-yellow);
+.green{
+    color: var(--status-green);
 }
 
-.green::before{
+.yellow{
+    color: var(--status-yellow);
+}
+
+.red{
+    color: var(--status-red);
+}
+
+.state_1::before{
     background-color: var(--status-green);
 }
 
-.red::before{
+.state_2::before{
+    background-color: var(--status-yellow);
+}
+
+.state_3::before{
     background-color: var(--status-red);
 }
 
@@ -52,6 +67,4 @@
 .field160px{
     width: 10em;
 }
-
-
 
