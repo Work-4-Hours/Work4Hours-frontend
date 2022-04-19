@@ -1,29 +1,41 @@
 .user_info{
-  display: flex;
-  gap: 2%;
-  align-items: center;
-  background-color: var(--bg-checkbox-grey);
-  border-radius: 1em;
-  padding: 1%;
-  margin-bottom: 1%;
+    display: grid;
+    grid-template-columns: 3% 13% 13% 16% 14% 15% 7%;
+    align-items: center;
+    gap: 2.5%;
+    background-color: #e0e0e0;
+    border-radius: 1rem;
+    padding: 1%;
+    margin-bottom: 1%;
+    
 }
 
+
 .admin_user_photo{
-  height: 1.875em;
-  width: 1.875em;
+    height:100%;
+	width:100%;
 	object-fit: cover;
-	border-radius: 50%;
+	object-position: center;
+	border-radius: 100%;
 }
 
 .ellipsis{
-  text-overflow:ellipsis;
-  overflow:hidden;
-  white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
 }
-
-.center_img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cb_state_user{
+    appearance: none;
+    background-color: #e0e0e0;
+    border: 0px;
+    cursor: pointer;
+    outline: none;
 }
+.cb_confirm_changes{
+    appearance: none;
+    background-color:#e0e0e0 ;
+    border: 1px solid #848484;
+    width: 2.3vh;
+    height: 2.3vh;
 
+}

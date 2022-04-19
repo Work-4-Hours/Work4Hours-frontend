@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { DivNavBar } from 'Components/StyleComponets/DivNavBar';
 import { Title } from 'Components/StyleComponets/Titlte';
 import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
@@ -12,9 +12,10 @@ import  IconAddImage  from 'Assets/Icons/IconAddImageWhite.png'
 
 import './Header.css';
 import { DivShadow } from 'Components/StyleComponets/DivShadow';
+import { UserContext } from 'Context/UserContext';
 
 export const Header = () => {
-
+    const { user, isAuth, logout } = useContext(UserContext)
     const [isOcult, setIsOcult] = useState(true)
     const [isOcultProfile, setIsOcultProfile] = useState(false)
     const nav_bar = useRef()
@@ -87,18 +88,18 @@ export const Header = () => {
                     <nav>
                         <div className="nav_login">
                             {
-                                true ?
+                                isAuth() ?
                                     <>
-                                        <p className='username_header'>{profile.name}</p>
-                                        <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} onClick={ocult} />
+                                        <p className='username_header'>{user.info[0].name} {user.info[0].lastName}</p>
+                                        <PhotoUserProfile infoProfile={user.info[0]} style='small_profile' small={true} onClick={ocult} />
 
                                         <DivNavBar isOcult={isOcult} className='nav_bar_header' ref={nav_bar}>
 
                                             <div className="info_nav_bar_user">
-                                                <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
+                                                <PhotoUserProfile infoProfile={user.info[0]} style='small_profile' small={true} />
                                                 <div className="info_user_profile_nav_bar">
-                                                    <p className='username_nav_bar'>{profile.name}</p>
-                                                    <p className='email_nav_bar'>{profile.email}</p>
+                                                    <p className='username_nav_bar'>{user.info[0].name} {user.info[0].lastName}</p>
+                                                    <p className='email_nav_bar'>{user.info[0].email}</p>
                                                 </div>
                                             </div>
 
@@ -132,7 +133,7 @@ export const Header = () => {
                                             </div>
 
                                             <div className="option_logout">
-                                                <LinkOption isLink={false} text='Cerrar sesión' />
+                                                <LinkOption isLink={false} text='Cerrar sesión' onClick={logout} />
                                             </div>
 
                                         </DivNavBar>
