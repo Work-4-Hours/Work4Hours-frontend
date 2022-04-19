@@ -3,14 +3,14 @@ import React from 'react'
 
 import './PhotoUserProfile.css'
 
-export const PhotoUserProfile = ({ infoProfile, style, small}) => {
+export const PhotoUserProfile = ({ infoProfile, style, small, ...props}) => {
     const getCharaterName = (value) => {
         const character = value.substring(1,0).toUpperCase()
         return character
     }
     const {name,color, imageprofile} = infoProfile
     return (
-        <div className={style}>
+        <div className={style} {...props}>
             {
                 imageprofile ? 
 

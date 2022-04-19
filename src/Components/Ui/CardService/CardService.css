@@ -35,23 +35,10 @@
 }
 
 .information_price_service {
-    display: flex;
-    align-items: center;
+    font-family: var(--font-2);
     font-size: 17px;
     color: #FFFF;
-    gap: 5px;
-}
-
-.information_price_service p:first-child {
-    font-family: 'coco gothic';
-}
-
-.information_price_service p:nth-child(2) {
-    font-family: Arial;
-}
-
-.information_price_service p:last-child {
-    font-family: 'coco gothic';
+   
 }
 
 .body_card_service {

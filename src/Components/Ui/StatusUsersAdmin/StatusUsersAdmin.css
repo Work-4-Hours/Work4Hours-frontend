@@ -9,25 +9,20 @@
 
 .op_state_user{
     cursor: pointer;
-    text-align: end;
     position: relative;
     user-select: none;
-
-}
-
-.prueba{
     display: flex;
+    align-items: center;
 }
+
 
 .op_state_user::before{
     content: "";
-    display: block;
+    display: flex;
     height: 0.625em;
     width: 0.625em;
     border-radius: 50%;
-    position: absolute;
-    top:0.4375em;
-    left: 0.375em;
+    margin-right: 0.125rem;
 }
 
 .yellow::before{

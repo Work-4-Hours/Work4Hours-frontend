@@ -6,7 +6,7 @@
 } 
 
 .image_profile_user_ {
-    height: 189px;
+    height: 100%;
 }
 
 .image_user_ {
@@ -22,6 +22,10 @@
     overflow: hidden;
 }
 
+.small_profile:hover {
+    cursor: pointer;
+}
+
 /* Small design */
 
 .small_profile .first_letter_name_user {
@@ -34,4 +38,19 @@
     width: 40px;
     height: 40px;
     object-fit: cover;
+}
+
+/* Big design */
+
+.big_profile {
+    height: 100%;
+}
+
+.big_profile .first_letter_name_user {
+    font-size: 11em;
+    font-weight: 400;
+}
+
+.medium_profile {
+    height: 200px;
 }

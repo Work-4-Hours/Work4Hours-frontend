@@ -1,13 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import { Header } from "Components/Layout/Header/Header"
 import { CardService } from 'Components/Ui/CardService/CardService'
 import { Banner } from "Components/Layout/Banner/Banner"
 import { DivShadow } from "Components/StyleComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
+import { Link } from "react-router-dom"
+
 
 import './Index.css'
 
 export const Index = () => {
+    
+    const [isOpen, setIsOpen] = useState(true)
+    
     const service = {
         price: "200.000",
         image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
@@ -21,8 +26,20 @@ export const Index = () => {
         info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
     }
 
+    const profile = {
+        color: "#a11d1d",
+        imageprofile: "",
+        name: "Camilo Lopez",
+        email: "carlos@gmail.com",
+        phone: "3166529009",
+        calification: 73.6
+    }
+
     return (
         <>
+            
+            
+
             <Header />
             <SerchEngine/>
             <main>
@@ -32,7 +49,9 @@ export const Index = () => {
                     </section>
                     <section className='services_index'>
                         <DivShadow className='container_pricipal_servieces'> 
-                            <CardService info={service} />
+                            <Link to='/infoservice' className='link_card_service'>
+                                <CardService info={service} />
+                            </Link>
                         </DivShadow>                 
                     </section>
                 </div>
