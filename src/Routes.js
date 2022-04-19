@@ -14,6 +14,7 @@ import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
+import { Services } from 'Modules/Admin/Services/Services'
 
 export const AllRoutes = () => {
   
