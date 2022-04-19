@@ -15,7 +15,7 @@ export const StatusUsersAdmin = () => {
   }
 
   return (
-    <div className='position_relative fieldSize8'>
+    <div className='position_relative fieldSize13'>
       <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
