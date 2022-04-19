@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Header } from "Components/Layout/Header/Header";
 import { DivShadow } from "Components/StyleComponets/DivShadow";
 import { Title } from "Components/StyleComponets/Titlte";
@@ -18,14 +18,14 @@ export const Chat = () => {
     const [message, setMessage] = useState()
     const [chats, setChats] = useState() 
     const [currentChat, setCurrentChat] = useState(null);
-
+    const chatRef = useRef()
     // Hook Chat
     const { connectionRoom, sendMessage, closeConnection, messages } = useChat()
     
     const { getJwt, user } = useContext(UserContext) 
 
     useEffect(()=> {
-        fetch(`https://workforhours-api.somee.com/Room/chats/${getJwt()}`, {
+        fetch(`${process.env.REACT_APP_API_CS}/Room/chats/${getJwt()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,53 +38,12 @@ export const Chat = () => {
         })
     },[])
 
-    const rooms = [
-        {
-          apellidos: "Garcia",
-          nombres: "Juan",
-          fotop: "https://pbs.twimg.com/media/EkAcuwFWAAYchiz.jpg",
-          idusuario: 28,
-          idsala: "1",
-          nombreservicio: "Pinto casas a domicilio",
-          foto: "",
-          idservicio: 1
-        },
-        {
-          apellidos: "Torres",
-          nombres: "David",
-          fotop: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3cNYfl7_TJj0XTzWiHJQr7Dz_PXvZBPsq4cQQzXzvh3BUOjfwa1XlRnzG9CHZ48eXoM&usqp=CAU",
-          idusuario: 30,
-          idsala: "4",
-          nombreservicio: "Pinto casas a domicilio",
-          foto: "",
-          idservicio: 1
-        },
-        {
-          apellidos: "Florez",
-          nombres: "Majo",
-          fotop: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3cNYfl7_TJj0XTzWiHJQr7Dz_PXvZBPsq4cQQzXzvh3BUOjfwa1XlRnzG9CHZ48eXoM&usqp=CAU",
-          idusuario: 36,
-          idsala: "2",
-          nombreservicio: "Podar Jardines",
-          foto: "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg",
-          idservicio: 2
+    useEffect(()=> {
+        if (chatRef && chatRef.current) {
+            const { scrollHeight, clientHeight } = chatRef.current;
+            chatRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight, behavior: 'smooth' });
         }
-    ]
-
-    const profile = {
-        color: "#236d36",
-        imageprofile: "",
-        name: "Jose Maria",
-        email: "carlos@gmail.com",
-        phone: "3166529009",
-        calification: 73.6,
-        room: "3"
-    }
-
-    const message2 = {
-        message: "Hola solicito servicio Lorem ipsum dolor sit amet consectetur, am!",
-        date: "feb 29 2022"
-    }
+    },[messages])
 
     const DateNow = () => {
         const current = new Date();
@@ -118,12 +77,12 @@ export const Chat = () => {
                             <DivShadow className='main_messages'>
                                 <div className="header_messages_chat">
                                     <div className="information_user_header_chat">
-                                        <PhotoUserProfile infoProfile={profile} small={false} style='small_profile' />
+                                        <PhotoUserProfile infoProfile={{name: currentChat.nombre, color: '', userPicture: currentChat.fotop}} small={false} style='small_profile' />
                                         <p className="name_user_header_chat">{currentChat.nombres}</p>
                                     </div>
                                 </div>
                                 <div className="main_messages_chat">
-                                    <div className="messages_chat">
+                                    <div ref={chatRef} className="messages_chat">
                                         {
                                             messages?.map((item, index) => (
                                                 <CardMessage key={index} info={item} user={user.info[0].name} />
@@ -141,6 +100,7 @@ export const Chat = () => {
                                                     sendMessage(
                                                         message, 
                                                         user.info[0].name,
+                                                        getJwt(),
                                                         DateNow()                                                
                                                     )   
                                                     setMessage('')                                           
