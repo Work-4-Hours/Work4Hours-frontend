@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
 
     const login = async (credencials) => {
         setIsLoading(true)
-        fetch(`https://work4hours.herokuapp.com/login`, {
+        fetch(`${process.env.REACT_APP_API}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
