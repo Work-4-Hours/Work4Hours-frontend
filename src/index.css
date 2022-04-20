@@ -1,6 +1,13 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
+/* Font 1 */
+@font-face {
+  font-family: 'coco gothic';
+  src: url(./Assets/Fonts/CocoGothic/CocoGothic_trial.ttf)
+  format("truetype");
+}
+
 :root {
   /* Max width containers */
   --max-width-container: 1450px; 
@@ -74,7 +81,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 /* Buttons */
 .input {

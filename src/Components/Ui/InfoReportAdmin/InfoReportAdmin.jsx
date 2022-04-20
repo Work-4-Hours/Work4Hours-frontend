@@ -7,7 +7,7 @@ export const InfoReportAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className='position_relative fieldSize5' >
+    <div className='position_relative fieldSize8' >
       <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen)}}>1000</p>
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
