@@ -1,9 +1,10 @@
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import React,{useState} from 'react'
 import './StatusUsersAdmin.css'
 
-export const StatusUsersAdmin = () => {
-  const [stateUser, setStateUser]=useState("Habilitado");
+export const StatusUsersAdmin = ({UserStatus}) => {
+  const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('green');
 
