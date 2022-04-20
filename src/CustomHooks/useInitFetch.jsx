@@ -7,24 +7,29 @@ export const useInitFetch = ({ url }) => {
 
     useEffect(() => {
         const get = async () => {
-        setLoading(true)
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            }
-        })
-        .then(response => response.json())
-        .then(user => setData(user))
-        .finally(() => setLoading(false))
+            setLoading(true)
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+            .then(response => response.json())
+            .then(user => {
+                setData(user)
+                console.log(user);
+            })
+            .finally(setLoading(false))
         }
+
+        get()
     }, [])
 
 
-return {
-    data,
-    loading,
-    error
-}
+    return {
+        data,
+        loading,
+        error
+    }
 }

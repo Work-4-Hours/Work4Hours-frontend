@@ -38,12 +38,20 @@ export const Chat = () => {
         })
     },[])
 
+    useEffect(()=>{
+        if (chatRef && chatRef.current) {
+            const { scrollHeight, clientHeight } = chatRef.current;
+            chatRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight});
+        }
+    },[])
+
     useEffect(()=> {
         if (chatRef && chatRef.current) {
             const { scrollHeight, clientHeight } = chatRef.current;
             chatRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight, behavior: 'smooth' });
         }
     },[messages])
+
 
     const DateNow = () => {
         const current = new Date();
