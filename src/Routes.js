@@ -14,7 +14,7 @@ import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
-import { SerachService } from 'Modules/Main/SearchService/SerachService'
+import { SearchService } from 'Modules/Main/SearchService/SearchService'
 
 export const AllRoutes = () => {
   
@@ -35,7 +35,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path='/claim' element={<Claim />} />
           <Route path='/chat' element={<Chat />} />
-          <Route path='/search/:question' element={<SerachService />} />
+          <Route path='/search/q/:question' element={<SearchService />} />
           <Route path='/AdminUsers' element={<Users />} />
           <Route path='*' element={<h1>Not found</h1>} />
         </Routes>
