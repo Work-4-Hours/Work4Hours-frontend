@@ -12,6 +12,7 @@
 }
 
 .info_service_search {
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -21,8 +22,8 @@
 
 .header_service_search {
     display: flex;
-    align-self: center;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .name_service_search {

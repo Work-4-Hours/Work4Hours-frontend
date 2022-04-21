@@ -1,24 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SerchEngine } from 'Components/Layout/SearchEngine/SearchEngine'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { useParams } from 'react-router'
 import { Title } from 'Components/StyleComponets/Titlte'
-
-import './SearchService.css'
 import { Header } from 'Components/Layout/Header/Header'
 import { CardServiceSearch } from 'Components/Ui/CardServiceSearch/CardServiceSearch'
+
+import './SearchService.css'
+import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
+import { Link } from 'react-router-dom'
+import { LoadingCardSearch } from 'Components/Ui/LoadingCardSearch/LoadingCardSearch'
 
 export const SearchService = () => {
 
     const params = useParams()
+    const [results, setResults] = useState([])
+    const [loading, setLoading] = useState(false)
 
-    const service = {
-        price: "200.000",
-        photo: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        name: "Pinto casas a domicilio Lorem lorem lorem lorem lorem"
-    }
+    useEffect(()=> {
+        const get = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}/searchServices`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    serviceName : params.question
+                })
+
+            })
+            .then(response => response.json())
+            .then(user => {
+                setResults(user)
+            })
+            .finally(() => setLoading(false))
+        }
+        get()
+    },[params])
 
     return (
         <>
@@ -29,16 +49,22 @@ export const SearchService = () => {
                     <DivShadow className='search_info'>
                         <header className="header_search_info">
                             <Title>{params.question}</Title>
-                            <p>2.000 Resultados</p>
+                            <p className=''>{results.length} Busquedas</p>
                         </header>  
                         <div className="filter_search_info">
                             <p>Filtros de busqueda</p>
                         </div>
                     </DivShadow>
                     <DivShadow className='search_services'>
-                        <CardServiceSearch info_service={service}/>
-                        <CardServiceSearch info_service={service}/>
-                        <CardServiceSearch info_service={service}/>
+                            {
+                                loading ?   
+                                <>
+                                    <LoadingCardSearch/>
+                                    <LoadingCardSearch/>
+                                </>                          
+                                :
+                                results.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardServiceSearch info_service={item}/></Link>)
+                            }                      
                     </DivShadow>
                 </div>
             </main>
