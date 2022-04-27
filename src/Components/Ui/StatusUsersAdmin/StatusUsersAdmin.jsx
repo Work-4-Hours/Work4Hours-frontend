@@ -1,13 +1,14 @@
 
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import React,{useState} from 'react'
+import { GetAdmin } from 'Functions/ReusableFunctions';
+import React,{useState, useEffect} from 'react'
 import './StatusUsersAdmin.css'
+
 
 export const StatusUsersAdmin = ({UserStatus}) => {
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('green');
-
 
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
