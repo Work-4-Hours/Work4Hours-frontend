@@ -1,11 +1,12 @@
 
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import { GetAdmin } from 'Functions/ReusableFunctions';
-import React,{useState, useEffect} from 'react'
+
+import React,{useState} from 'react'
 import './StatusUsersAdmin.css'
 
 
-export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
+export const StatusUsersAdmin = ({UserStatus, data}) => {
+  console.log(data)
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('green');
@@ -15,8 +16,7 @@ export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
   }
-  console.log(objectAllStates)
-  
+
   return (
     <div className='position_relative fieldSize13'>
       <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
@@ -24,9 +24,9 @@ export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>
           <h5 className='spacing'>Estados del usuario</h5>
-          <p className='op_state_user spacing green field105px' onClick={event=>changeStateUsers(event)}>Habilitado</p>
-          <p className='op_state_user spacing yellow field160px' onClick={event=>changeStateUsers(event)}>Suspendido 3 dias</p>
-          <p className='op_state_user spacing red field116px' onClick={event=>changeStateUsers(event)}>Inhabilitado</p>
+          <p className='op_state_user spacing green ' onClick={event=>changeStateUsers(event)}>Habilitado</p>
+          <p className='op_state_user spacing yellow ' onClick={event=>changeStateUsers(event)}>Suspendido 3 dias</p>
+          <p className='op_state_user spacing red ' onClick={event=>changeStateUsers(event)}>Inhabilitado</p>
         </div>
       </PopUp>
     </div>
