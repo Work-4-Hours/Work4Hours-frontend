@@ -1,3 +1,5 @@
+
+
 .card_service {
     width: 220px;
     height: 304px;
@@ -71,4 +73,10 @@
     font-size: 18px;
     text-overflow: ellipsis;
     color: var(--gray-text-1);
+}
+
+@media screen and (max-width: 480px) {
+    .card_service {
+        width: calc(100% - 40px);
+    }
 }

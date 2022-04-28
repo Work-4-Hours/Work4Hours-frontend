@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { DivPopUp } from "Components/StyleComponets/DivPopUp"
 import { InputTextLabel } from "Components/Ui/InputTextLabel/InputTextLabel"
 import { Button } from "Components/Ui/Button/Button"
-import  IconAddImage  from 'Assets/Icons/IconAddImageWhite.png'
+import IconAddImage from 'Assets/Icons/IconAddImageWhite.png'
 
 import './Header.css';
 import { DivShadow } from 'Components/StyleComponets/DivShadow';
@@ -45,7 +45,7 @@ export const Header = () => {
     return (
         <>
             <DivPopUp isOpen={isOcultProfile} >
-                <div className="ocult_popup" onClick={()=>setIsOcultProfile(false)}></div>
+                <div className="ocult_popup" onClick={() => setIsOcultProfile(false)}></div>
                 <div className="center_popup_profile">
                     <DivShadow className='popup_profile'>
                         <div className="padding_info_user">
@@ -53,17 +53,17 @@ export const Header = () => {
                             <Title className='title_form_my_profile'>Perfil</Title>
                             <form className='form_my_profile'>
 
-                                <div className="padding_form_my_profile">                         
-                                    <InputTextLabel titleLabel='Nombres' type='text' placeholder={profile.name}/>
+                                <div className="padding_form_my_profile">
+                                    <InputTextLabel titleLabel='Nombres' type='text' placeholder={profile.name} />
                                     <InputTextLabel titleLabel='Apellidos' type='text' />
                                     <InputTextLabel titleLabel='Celular' type='number' />
                                     <InputTextLabel titleLabel='Correo' type='email' />
                                     <InputTextLabel titleLabel='Fecha de nacimiento' type='text' />
                                 </div>
                                 <div className="input_save_profile">
-                                    <Button style='button_big' value='Guardar'/>
+                                    <Button style='button_big' value='Guardar' />
                                 </div>
-                            </form>                           
+                            </form>
                         </div>
 
                         <div className="image_profile">
@@ -95,43 +95,51 @@ export const Header = () => {
 
                                         <DivNavBar isOcult={isOcult} className='nav_bar_header' ref={nav_bar}>
 
-                                            <div className="info_nav_bar_user">
-                                                <PhotoUserProfile infoProfile={user.info[0]} style='small_profile' small={true} />
-                                                <div className="info_user_profile_nav_bar">
-                                                    <p className='username_nav_bar'>{user.info[0].name} {user.info[0].lastName}</p>
-                                                    <p className='email_nav_bar'>{user.info[0].email}</p>
+                                            <div  className='scroll_nav_bar'>
+                                                <div className="info_nav_bar_user">
+                                                    <PhotoUserProfile infoProfile={user.info[0]} style='small_profile' small={true} />
+                                                    <div className="info_user_profile_nav_bar">
+                                                        <p className='username_nav_bar'>{user.info[0].name} {user.info[0].lastName}</p>
+                                                        <p className='email_nav_bar'>{user.info[0].email}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+
+                                                    <div className="options_nav">
+                                                        <LinkOption link='' text='Perfil' onClick={() => {
+                                                            ocult();
+                                                            setIsOcultProfile(true)
+                                                        }
+                                                        } />
+                                                        <LinkOption link='/dashboard/publications' text='Administrar servicios' />
+                                                        <LinkOption link='/chat' text='Chat' />
+                                                    </div>
+
+                                                    <div className="notifications_nav">
+                                                        <LinkOption link='' isLink={false} text='Notificaciones' />
+
+                                                        <div className="notifications">
+                                                            <Link className='link_notification' to='/'>
+                                                                <InfoNotification infoProfile={profile2} />
+                                                            </Link>
+                                                            <Link className='link_notification' to='/'>
+                                                                <InfoNotification infoProfile={profile2} />
+                                                            </Link>
+                                                            <Link className='link_notification' to='/'>
+                                                                <InfoNotification infoProfile={profile2} />
+                                                            </Link>
+                                                            <Link className='link_notification' to='/'>
+                                                                <InfoNotification infoProfile={profile2} />
+                                                            </Link>
+                                                            <Link className='link_notification' to='/'>
+                                                                <InfoNotification infoProfile={profile2} />
+                                                            </Link>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div className="options_nav">
-                                                <LinkOption link='' text='Perfil'  onClick={() => {
-                                                    ocult();
-                                                    setIsOcultProfile(true)
-                                                } 
-                                                }/>
-                                                <LinkOption link='/dashboard/publications' text='Administrar servicios' />
-                                                <LinkOption link='/chat' text='Chat' />
-                                            </div>
-
-                                            <div className="notifications_nav">
-                                                <LinkOption link='' isLink={false} text='Notificaciones' />
-
-                                                <div className="notifications">
-                                                    <Link className='link_notification' to='/'>
-                                                        <InfoNotification infoProfile={profile2} />
-                                                    </Link>
-                                                    <Link className='link_notification' to='/'>
-                                                        <InfoNotification infoProfile={profile2} />
-                                                    </Link>
-                                                    <Link className='link_notification' to='/'>
-                                                        <InfoNotification infoProfile={profile2} />
-                                                    </Link>
-                                                    <Link className='link_notification' to='/'>
-                                                        <InfoNotification infoProfile={profile2} />
-                                                    </Link>
-                                                </div>
-                                            </div>
-
                                             <div className="option_logout">
                                                 <LinkOption isLink={false} text='Cerrar sesión' onClick={logout} />
                                             </div>
@@ -145,7 +153,7 @@ export const Header = () => {
                                     <>
                                         <Link to='/login' className='link_header_login'>Iniciar sesion</Link>
                                         <p className='or_nav_login'>o</p>
-                                        <Link to='/registry'><Button value='Registro' /></Link>
+                                        <Link to='/registry' className='link_header_login'><Button value='Registro' /></Link>
                                     </>
                             }
 

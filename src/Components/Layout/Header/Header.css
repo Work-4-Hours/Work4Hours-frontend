@@ -43,6 +43,13 @@
 /* Nav bar header */
 .nav_bar_header {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.scroll_nav_bar {
+    overflow-y: auto;
 }
 
 .info_nav_bar_user {
@@ -86,6 +93,11 @@
 
 .link_notification {
     text-decoration: none;
+}
+
+.option_logout {
+    /* width: 100%; */
+    /* align-self: flex-start; */
 }
 
 .ocult_nav_bar {
