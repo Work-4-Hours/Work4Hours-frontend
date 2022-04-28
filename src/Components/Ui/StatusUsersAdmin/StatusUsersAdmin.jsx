@@ -5,7 +5,7 @@ import React,{useState, useEffect} from 'react'
 import './StatusUsersAdmin.css'
 
 
-export const StatusUsersAdmin = ({UserStatus}) => {
+export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('green');
@@ -15,7 +15,8 @@ export const StatusUsersAdmin = ({UserStatus}) => {
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
   }
-
+  console.log(objectAllStates)
+  
   return (
     <div className='position_relative fieldSize13'>
       <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>

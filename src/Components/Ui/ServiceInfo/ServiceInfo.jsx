@@ -10,7 +10,7 @@ import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 
 export const ServiceInfo = ({objectServiceInfo}) => {
-  console.log(objectServiceInfo)
+
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
 
   return (
