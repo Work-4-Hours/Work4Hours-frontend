@@ -1,9 +1,7 @@
 
+import React,{useState} from 'react';
+import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import { GetAdmin } from 'Functions/ReusableFunctions';
-import React,{useState, useEffect} from 'react'
-import './StatusUsersAdmin.css'
-
 
 export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
   const [stateUser, setStateUser]=useState(UserStatus);
@@ -15,11 +13,23 @@ export const StatusUsersAdmin = ({UserStatus, objectAllStates}) => {
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
   }
+
+  const changeColorStateUsers= ({UserStatus}) =>{
+    if(UserStatus == "Habilitado"){
+      setStateColor('green');
+    }
+    else if (UserStatus == "Suspendido por 3 días"){
+      setStateColor('yellow');
+    }
+    else if (UserStatus == "Inhabilitado"){
+      setStateColor('red');
+    }
+  }
   console.log(objectAllStates)
   
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
+      <p className={'op_state_user ' + stateColor } onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>
