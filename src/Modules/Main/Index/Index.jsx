@@ -7,6 +7,7 @@ import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 import { Link } from "react-router-dom"
 import { UserContext } from "Context/UserContext"
 import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
+import { useInitFetch } from "CustomHooks/useInitFetch"
 
 import './Index.css'
 
@@ -15,6 +16,7 @@ export const Index = () => {
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
     
+    // const { data, loading } = useInitFetch(`${process.env.REACT_APP_API}`)
 
     useEffect(()=> {
         const get = async () => {
@@ -35,15 +37,6 @@ export const Index = () => {
         get()
     },[])
     
-    
-    const service = {
-        price: "200.000",
-        photo: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        name: "Pinto casas a domicilio Lorem"
-    }
-
     return (
         <>                    
             <Header />
@@ -53,6 +46,7 @@ export const Index = () => {
                     <section className="banner_index">
                         <Banner informaction={{title: "Services", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit."}} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />               
                     </section>
+                    <p className="title_index">Mejor calificados</p>
                     <section className='services_index'>
                         <DivShadow className='container_pricipal_servieces'>                                                 
                             {
@@ -62,7 +56,7 @@ export const Index = () => {
                                     <LoadingCard/>
                                 </>                          
                                 :
-                                results.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardService info={item} /></Link>)
+                                results?.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardService info={item} /></Link>)
                             }                                
                         </DivShadow>                 
                     </section>

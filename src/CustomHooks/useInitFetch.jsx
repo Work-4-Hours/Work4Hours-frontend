@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 export const useInitFetch = ({ url }) => {
     const [loading, setLoading] = useState(null);
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -15,10 +15,10 @@ export const useInitFetch = ({ url }) => {
                     'Access-Control-Allow-Origin': '*'
                 }
             })
-            .then(response => response.json())
-            .then(user => {
-                setData(user)
-                console.log(user);
+            .then(response => response)
+            .then(response => {
+                // setData(response)
+                console.log(response);
             })
             .finally(setLoading(false))
         }

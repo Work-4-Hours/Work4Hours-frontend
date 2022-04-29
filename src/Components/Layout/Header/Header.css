@@ -116,3 +116,10 @@
     width: 100vw;
     height: 100vh;
 }
+
+@media screen and (max-width: 480px) {
+    .username_header {
+        display: none;
+    }
+
+}
