@@ -1,4 +1,6 @@
 
+import React,{useState} from 'react';
+import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
 
 import React,{useState} from 'react'
@@ -19,7 +21,7 @@ export const StatusUsersAdmin = ({UserStatus, data}) => {
 
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_user ' + stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
+      <p className={'op_state_user ' + stateColor } onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>

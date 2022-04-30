@@ -9,7 +9,6 @@ import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
-
 import { GetAdmin } from 'Functions/ReusableFunctions';
 
 
@@ -20,9 +19,6 @@ export const Users = () => {
   
   
   
-
-
-
   return (
     <div className='container_admin'>
       <MenuAdmin nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>

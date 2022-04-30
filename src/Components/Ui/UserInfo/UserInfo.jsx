@@ -22,7 +22,7 @@ export const UserInfo = ({objectAllUsers, objectAllStatus}) => {
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin UserStatus={nombre_estado} />
+      <StatusUsersAdmin objectAllStates={objectAllStates} UserStatus={nombre_estado}/>
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>
   )
