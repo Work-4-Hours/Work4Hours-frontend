@@ -1,17 +1,13 @@
 
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
-
-import React,{useState} from 'react'
-import './StatusUsersAdmin.css'
-
 
 export const StatusUsersAdmin = ({UserStatus, data}) => {
   console.log(data)
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
-  const [stateColor, setStateColor]=useState('green');
+  const [stateColor, setStateColor]=useState('');
 
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
@@ -19,6 +15,22 @@ export const StatusUsersAdmin = ({UserStatus, data}) => {
     setStateColor(event.target.classList[2])
   }
 
+  const changeColorStateUsers= ({UserStatus}) =>{
+    if(UserStatus == "Habilitado"){
+      setStateColor('green');
+    }
+    else if (UserStatus == "Suspendido por 3 días"){
+      setStateColor('yellow');
+    }
+    else if (UserStatus == "Inhabilitado"){
+      setStateColor('red');
+    }
+  }
+  useEffect(() => {
+    changeColorStateUsers({UserStatus}) 
+  }, [''])
+  
+  
   return (
     <div className='position_relative fieldSize13'>
       <p className={'op_state_user ' + stateColor } onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>

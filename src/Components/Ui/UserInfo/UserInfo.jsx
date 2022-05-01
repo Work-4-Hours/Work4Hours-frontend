@@ -8,10 +8,10 @@ import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
 
-export const UserInfo = ({objectAllUsers, objectAllStatus}) => {
+export const UserInfo = ({objectAllUsers}) => {
 
   const { fotop, apellidos, nombres, correo, cantidadReportes, nombre_estado} = objectAllUsers;
-  const {data} =objectAllStatus;
+  
 
   return (
     <div className='user_info'>
@@ -22,7 +22,7 @@ export const UserInfo = ({objectAllUsers, objectAllStatus}) => {
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin objectAllStates={objectAllStates} UserStatus={nombre_estado}/>
+      <StatusUsersAdmin  UserStatus={nombre_estado}/>
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>
   )
