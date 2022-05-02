@@ -144,9 +144,38 @@ code {
 	to { opacity: 1; }
 }
 
+/*Media Queries*/
 
-@keyframes enlargeLetter {
-  to{
-    transform: scale(1.1);
+@media (max-width: 600px) {
+  .menu_admin{
+    font-size: 14px;
   }
+  .dashboard_header{
+    font-size: 13px;
+  }
+  .fieldSize3 {
+    width: 6%;
+  }
+  .fieldSize20 {
+    width: 18%;
+  }
+  .fieldSize8 {
+    width: 12%;
+  }
+  .search_box{
+    font-size: 13px;
+    width: 80%;
+  }
+  .content_filter{
+    font-size: 13px;
+    width: 15%;
+  }
+
+  .btn_save_changes_admin{
+    font-size: 13px;
+    width: 33%;
+  }
+  
+
+
 }
