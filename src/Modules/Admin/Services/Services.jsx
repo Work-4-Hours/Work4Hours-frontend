@@ -15,6 +15,7 @@ import { GetAdmin } from 'Functions/ReusableFunctions';
 
 export const Services = () => {
   const { data } = GetAdmin('Services');
+  const dataState= GetAdmin('State');
   
   return (
     <div className='container_admin'>
@@ -24,7 +25,7 @@ export const Services = () => {
         <DashboardHeader space1={'fieldSize15 '} space2={'fieldSize15 '} space3={'fieldSize15 '} space4={'fieldSize15 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"reportColor"}/>
         <Dashboard componetContent={ 
           data?.map(item=>
-            <ServiceInfo objectServiceInfo={item}/>
+            <ServiceInfo objectServiceInfo={item} objectAllStatus={dataState}/>
           )}/>
         <PopupConfirmChanges nameTitle={"Esta seguro de querer eliminar: "} valueButton={"Eliminar"} objectContent={<ObjectDelete/>} styleObjects={"popup_confirm_changes_content_objects_services"}/>
       </div>

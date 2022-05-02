@@ -9,10 +9,10 @@ import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 
 
-export const ServiceInfo = ({objectServiceInfo}) => {
+export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
 
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
-
+  const {data}= objectAllStatus;
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
@@ -23,7 +23,7 @@ export const ServiceInfo = ({objectServiceInfo}) => {
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin UserStatus={estado}/>
+      <StatusUsersAdmin UserStatus={estado} data={data}/>
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>
   )
