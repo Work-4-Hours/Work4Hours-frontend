@@ -1,6 +1,5 @@
 .header {
     background: #FFFF;
-    box-sizing: none;
 }
 
 .center_nav_bar {
@@ -19,6 +18,7 @@
 }
 
 .nav_login {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -27,6 +27,17 @@
 .username_header {
     font-family: var(--font-1);
     color: var(--gray-text-2);
+}
+
+.simbol_alert {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #FFFF;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 .link_header_login {

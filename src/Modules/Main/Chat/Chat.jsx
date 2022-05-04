@@ -15,14 +15,12 @@ import './Chat.css';
 
 export const Chat = () => {
 
+    const chatRef = useRef()
     const [message, setMessage] = useState()
     const [chats, setChats] = useState() 
     const [currentChat, setCurrentChat] = useState(null);
-    const chatRef = useRef()
-    // Hook Chat
     const { connectionRoom, sendMessage, closeConnection, messages } = useChat()
-    
-    const { getJwt, user } = useContext(UserContext) 
+    const { getJwt, user, sendNotification } = useContext(UserContext) 
 
     useEffect(()=> {
         fetch(`${process.env.REACT_APP_API_CS}/Room/chats/${getJwt()}`, {
@@ -38,20 +36,12 @@ export const Chat = () => {
         })
     },[])
 
-    useEffect(()=>{
-        if (chatRef && chatRef.current) {
-            const { scrollHeight, clientHeight } = chatRef.current;
-            chatRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight});
-        }
-    },[])
-
     useEffect(()=> {
         if (chatRef && chatRef.current) {
             const { scrollHeight, clientHeight } = chatRef.current;
             chatRef.current.scrollTo({ left: 0, top: scrollHeight - clientHeight, behavior: 'smooth' });
         }
     },[messages])
-
 
     const DateNow = () => {
         const current = new Date();
@@ -77,6 +67,7 @@ export const Chat = () => {
                                     }} />
                                 ))
                             }
+
                         </div>
                     </DivShadow>
 
@@ -105,13 +96,15 @@ export const Chat = () => {
                                         }} className="input_message_chat">    
                                             <InputText placeholder='Mensaje...' onChange={e =>setMessage(e.target.value)} value={message}/>
                                             <ButtonSend onClick={() => { 
+                                                    console.log(currentChat.idusuario);
+                                                    sendNotification(currentChat.idusuario, "Nuevo mensage", user.info[0].name, "#289fa5", user.info[0].userPicture)                                         
                                                     sendMessage(
                                                         message, 
                                                         user.info[0].name,
                                                         getJwt(),
                                                         DateNow()                                                
                                                     )   
-                                                    setMessage('')                                           
+                                                    setMessage('')  
                                                 }                          
                                             } />
                                         </form>
@@ -129,8 +122,6 @@ export const Chat = () => {
                                 </div>      
                             </DivShadow>
                     }
-
-
                 </div>
             </main>
         </>

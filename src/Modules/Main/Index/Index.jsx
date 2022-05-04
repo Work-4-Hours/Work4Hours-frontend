@@ -8,6 +8,8 @@ import { Link } from "react-router-dom"
 import { UserContext } from "Context/UserContext"
 import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
 import { useInitFetch } from "CustomHooks/useInitFetch"
+import { faCalendarMinus } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import './Index.css'
 
@@ -16,8 +18,6 @@ export const Index = () => {
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
     
-    // const { data, loading } = useInitFetch(`${process.env.REACT_APP_API}`)
-
     useEffect(()=> {
         const get = async () => {
             setLoading(true)
@@ -62,6 +62,7 @@ export const Index = () => {
                     </section>
                 </div>
             </main>
+            <FontAwesomeIcon icon={ faCalendarMinus}></FontAwesomeIcon>
         </>
     )
 }

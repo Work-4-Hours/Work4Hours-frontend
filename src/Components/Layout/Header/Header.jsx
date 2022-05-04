@@ -15,7 +15,7 @@ import { DivShadow } from 'Components/StyleComponets/DivShadow';
 import { UserContext } from 'Context/UserContext';
 
 export const Header = () => {
-    const { user, isAuth, logout } = useContext(UserContext)
+    const { user, isAuth, logout, notifications, isAlert } = useContext(UserContext)
     const [isOcult, setIsOcult] = useState(true)
     const [isOcultProfile, setIsOcultProfile] = useState(false)
     const nav_bar = useRef()
@@ -92,6 +92,7 @@ export const Header = () => {
                                     <>
                                         <p className='username_header'>{user.info[0].name} {user.info[0].lastName}</p>
                                         <PhotoUserProfile infoProfile={user.info[0]} style='small_profile' small={true} onClick={ocult} />
+                                        { isAlert && <div className="simbol_alert"></div> }
 
                                         <DivNavBar isOcult={isOcult} className='nav_bar_header' ref={nav_bar}>
 
@@ -120,22 +121,15 @@ export const Header = () => {
                                                         <LinkOption link='' isLink={false} text='Notificaciones' />
 
                                                         <div className="notifications">
-                                                            <Link className='link_notification' to='/'>
-                                                                <InfoNotification infoProfile={profile2} />
-                                                            </Link>
-                                                            <Link className='link_notification' to='/'>
-                                                                <InfoNotification infoProfile={profile2} />
-                                                            </Link>
-                                                            <Link className='link_notification' to='/'>
-                                                                <InfoNotification infoProfile={profile2} />
-                                                            </Link>
-                                                            <Link className='link_notification' to='/'>
-                                                                <InfoNotification infoProfile={profile2} />
-                                                            </Link>
-                                                            <Link className='link_notification' to='/'>
-                                                                <InfoNotification infoProfile={profile2} />
-                                                            </Link>
-
+                                                            {
+                                                                notifications?.map(item => (
+                                                                    <Link className='link_notification' to='/'>
+                                                                        <InfoNotification infoProfile={{name: item.username, color: item.color, userPicture: item.imageProfile}} />
+                                                                    </Link>
+                                                                ))
+                                                            }
+                                                            
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>

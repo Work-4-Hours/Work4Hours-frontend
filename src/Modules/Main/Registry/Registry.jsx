@@ -74,6 +74,26 @@ export const Registry = () => {
         }
     ]
 
+    useEffect(()=> {
+        const fetchTest = async () => {
+                await fetch(`${process.env.REACT_APP_API}/locationInfo/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                })
+                .then(response => response)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => console.log(error))
+        }
+
+        fetchTest()
+
+    },[])
+
     return (
         <main className='registry'>
             <div className="background_registry"></div>
