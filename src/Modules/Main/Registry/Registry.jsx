@@ -10,7 +10,8 @@ import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 export const Registry = () => {
 
-    const [results, setResults] = useState([])
+    const [cities, setCities] = useState([])
+    const [departments, setDepartments] = useState([])
     const [loading, setLoading] = useState(false)
 
     const [name, setName] = useState(null)
@@ -23,7 +24,7 @@ export const Registry = () => {
     const [picture, setPicture] = useState(null)
     const [city, setCity] = useState(null)
 
-    const login = async () => {
+    const registry = async () => {
         setLoading(true)
         fetch(`${process.env.REACT_APP_API}/registry`, {
             method: 'POST',
@@ -46,46 +47,47 @@ export const Registry = () => {
         })
         .then(response => response.json())
         .then(user => {
-            setResults(user)
             console.log(user);
         })
         .finally(() => setLoading(false))
     }
 
-    const optionsl = [
-        {
-            id: 1,
-            name: "Quindio"
-        },
-        {
-            id: 2,
-            name: "Choco"
-        }
-    ]
-
-    const options2 = [
-        {
-            id: 1,
-            name: "Armenia"
-        },
-        {
-            id: 2,
-            name: "Choco"
-        }
-    ]
-
+    const getCitises = (iddepartament) => {
+        fetch(`${process.env.REACT_APP_API}/cities/${iddepartament}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            setCities(response.cities)
+            // setDepartments(response.departments.map(item => {
+            //     return {id: item.departmentId, name: item.departmentName}
+            // }))
+           
+        })
+        .catch(error => console.log(error))
+    }
+ 
     useEffect(()=> {
         const fetchTest = async () => {
-                await fetch(`${process.env.REACT_APP_API}/locationInfo/`, {
-                    method: 'POST',
+                fetch(`${process.env.REACT_APP_API}/departments`, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
                     }
                 })
-                .then(response => response)
+                .then(response => response.json())
                 .then(response => {
-                    console.log(response);
+                    console.log(response.departments);
+                    setDepartments(response.departments.map(item => {
+                        return {id: item.id, name: item.name}
+                    }))
+                   
                 })
                 .catch(error => console.log(error))
         }
@@ -106,7 +108,7 @@ export const Registry = () => {
                             <Title>Registro</Title>
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link> 
                         </header>
-                        <form className='form_registry' onSubmit={login}>
+                        <form className='form_registry' onSubmit={registry}>
                             <div className="subtitle_form_registry">
                                 <p>Datos basicos</p>
                             </div>
@@ -118,13 +120,13 @@ export const Registry = () => {
                                 <SelectTextLabel
                                  titleLabel='Seleccione su departamento'
                                  nameSelect='Departamento'
-                                 options={optionsl}
-                                 onChange={(e) => console.log(e.target.value)}/>
+                                 options={departments}
+                                 onChange={(e) => getCities(e.target.value)}/>
 
                                  <SelectTextLabel
                                  titleLabel='Seleccione su ciudad'
                                  nameSelect='Ciudad'
-                                 options={options2}
+                                 options={cities}
                                  onChange={(e) => console.log(e.target.value)}/>
                             
                             </section>

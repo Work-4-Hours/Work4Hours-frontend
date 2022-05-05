@@ -62,7 +62,6 @@ export const Index = () => {
                     </section>
                 </div>
             </main>
-            <FontAwesomeIcon icon={ faCalendarMinus}></FontAwesomeIcon>
         </>
     )
 }
