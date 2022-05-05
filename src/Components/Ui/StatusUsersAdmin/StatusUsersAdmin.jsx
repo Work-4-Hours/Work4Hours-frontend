@@ -3,7 +3,7 @@ import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
-export const StatusUsersAdmin = ({UserStatus, data}) => {
+export const StatusUsersAdmin = ({UserStatus, data, capturarid}) => {
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
@@ -30,6 +30,10 @@ export const StatusUsersAdmin = ({UserStatus, data}) => {
     setStateColor(event.target.classList[2])
     setIdStateUser(event.target.id)
   }
+  useEffect(() => {
+    capturarid(idStateUser);
+    
+  }, [idStateUser])
 
   return (
     <div className='position_relative fieldSize13'>

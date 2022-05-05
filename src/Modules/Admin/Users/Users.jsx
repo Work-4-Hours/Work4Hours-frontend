@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Users.css';
 
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -16,6 +16,9 @@ export const Users = () => {
 
   const {data} = GetAdmin('Users');
   const dataState= GetAdmin('State');
+  
+  const [listUsersSelect, setListUserSelect]=useState({});
+
   
   
   

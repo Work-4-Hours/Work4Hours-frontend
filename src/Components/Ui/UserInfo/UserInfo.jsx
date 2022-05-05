@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
@@ -10,9 +10,16 @@ import './UserInfo.css';
 
 export const UserInfo = ({objectAllUsers,objectAllStatus}) => {
 
-  const { fotop, apellidos, nombres, correo, cantidadReportes, nombre_estado} = objectAllUsers;
-  
+  const { fotop, apellidos, nombres, correo, cantidadReportes, nombre_estado, idusuario} = objectAllUsers;
   const {data}=objectAllStatus;
+
+  const [idStatus, setIdStatus]=useState("");
+
+  const capid=(idUserStatus)=>{
+    console.log(idUserStatus);
+  }
+
+  
 
   return (
     <div className='user_info'>
@@ -23,8 +30,8 @@ export const UserInfo = ({objectAllUsers,objectAllStatus}) => {
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin  UserStatus={nombre_estado} data={data}/>
-      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
+      <StatusUsersAdmin  UserStatus={nombre_estado} data={data} capturarid={capid}/>
+      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} />
     </div>
   )
 }
