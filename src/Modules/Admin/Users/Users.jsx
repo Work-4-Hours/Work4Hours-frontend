@@ -30,7 +30,7 @@ export const Users = () => {
         <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         <Dashboard componetContent={
           data?.map(item=>
-            <UserInfo objectAllUsers={item} objectAllStatus={dataState}/>
+            <UserInfo objectAllUsers={item} objectAllStatus={dataState} key={item.idusuario}/>
           ) }/>
         <PopupConfirmChanges nameTitle={"Esta seguro de querer actualizar el estado de: "} valueButton={"Actualizar"} objectContent={<ObjectStatus/>} styleObjects={"popup_confirm_changes_content_objects_users"}/>
       </div>

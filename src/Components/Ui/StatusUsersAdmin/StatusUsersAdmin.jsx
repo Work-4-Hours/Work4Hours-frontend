@@ -3,11 +3,11 @@ import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
-export const StatusUsersAdmin = ({UserStatus, data, capturarid}) => {
+export const StatusUsersAdmin = ({UserStatus,idUserStatus, data, capturarid}) => {
   const [stateUser, setStateUser]=useState(UserStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
-  const [idStateUser, setIdStateUser]=useState('');
+  const [idStateUser, setIdStateUser]=useState(idUserStatus);
 
   const changeColorStateUsers= (UserState) =>{  
     if(UserState == "Habilitado"){
@@ -42,8 +42,7 @@ export const StatusUsersAdmin = ({UserStatus, data, capturarid}) => {
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>
           <h5 className='spacing'>Estados del usuario</h5>
-          {data?.map(item=>(<OptionStatusUserAdmin objectAllStatus={item} bringStatus={changeStateUsers} colorStatus={changeColorStateUsers} />))}
-          
+          {data?.map(item=>(<OptionStatusUserAdmin objectAllStatus={item} bringStatus={changeStateUsers} colorStatus={changeColorStateUsers} key={item.id} />))}
         </div>
       </PopUp>
     </div>

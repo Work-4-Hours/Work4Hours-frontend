@@ -10,16 +10,15 @@ import './UserInfo.css';
 
 export const UserInfo = ({objectAllUsers,objectAllStatus}) => {
 
-  const { fotop, apellidos, nombres, correo, cantidadReportes, nombre_estado, idusuario} = objectAllUsers;
+  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario} = objectAllUsers;
   const {data}=objectAllStatus;
 
   const [idStatus, setIdStatus]=useState("");
 
   const capid=(idUserStatus)=>{
-    console.log(idUserStatus);
+    setIdStatus(idUserStatus);
   }
 
-  
 
   return (
     <div className='user_info'>
@@ -30,8 +29,8 @@ export const UserInfo = ({objectAllUsers,objectAllStatus}) => {
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin  UserStatus={nombre_estado} data={data} capturarid={capid}/>
-      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} />
+      <StatusUsersAdmin  UserStatus={nombre_estado} idUserStatus={idEstado} data={data} capturarid={capid}/>
+      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} />
     </div>
   )
 }
