@@ -28,11 +28,11 @@ export const StatusUsersAdmin = ({UserStatus,idUserStatus, data, capturarid}) =>
     setStateUser(event.target.textContent)
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
-    setIdStateUser(event.target.id)
+    setIdStateUser(parseInt(event.target.id))
   }
   useEffect(() => {
     capturarid(idStateUser);
-    
+
   }, [idStateUser])
 
   return (
