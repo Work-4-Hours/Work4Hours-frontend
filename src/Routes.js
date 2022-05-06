@@ -15,6 +15,7 @@ import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
+import { IsAuth } from 'Context/IsAuth'
 
 export const AllRoutes = () => {
   
@@ -26,7 +27,7 @@ export const AllRoutes = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/registry' element={<Registry />} />
-          <Route path='/infoservice' element={<InfoService />} />
+          <Route path='/infoservice' element={<IsAuth> <InfoService /> </IsAuth>} />
           <Route path='/service/add' element={<AddService />} />
           <Route path='/service/edit' element={<EditService />} />
           <Route path='/dashboard/*' element={<Dashboard />} >

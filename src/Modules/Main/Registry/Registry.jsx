@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Title } from 'Components/StyleComponets/Titlte'
-
-import './Registry.css'
 import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
+
+import './Registry.css'
 export const Registry = () => {
 
     const [cities, setCities] = useState([])
@@ -21,10 +21,10 @@ export const Registry = () => {
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
     const [birthdate, setBirthdate] = useState(null)
-    const [picture, setPicture] = useState(null)
     const [city, setCity] = useState(null)
 
-    const registry = async () => {
+    const registry = async (e) => {
+        e.preventDefault()
         setLoading(true)
         fetch(`${process.env.REACT_APP_API}/registry`, {
             method: 'POST',
@@ -36,12 +36,13 @@ export const Registry = () => {
                 name : name,
                 lastName: surname,
                 phoneNumber: phone,
-                address: address,
+                address: 'null',
                 email: email,
                 password: password,
                 birthDate: birthdate,
-                picture: picture,
-                city: city                   
+                picture: 'null',
+                city: parseInt(city),
+                color: '#831a1a'                       
             })
 
         })
@@ -52,7 +53,7 @@ export const Registry = () => {
         .finally(() => setLoading(false))
     }
 
-    const getCitises = (iddepartament) => {
+    const getCities = (iddepartament) => {
         fetch(`${process.env.REACT_APP_API}/cities/${iddepartament}`, {
             method: 'GET',
             headers: {
@@ -62,12 +63,8 @@ export const Registry = () => {
         })
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             setCities(response.cities)
-            // setDepartments(response.departments.map(item => {
-            //     return {id: item.departmentId, name: item.departmentName}
-            // }))
-           
+            console.log(response);
         })
         .catch(error => console.log(error))
     }
@@ -83,7 +80,6 @@ export const Registry = () => {
                 })
                 .then(response => response.json())
                 .then(response => {
-                    console.log(response.departments);
                     setDepartments(response.departments.map(item => {
                         return {id: item.id, name: item.name}
                     }))
@@ -108,7 +104,7 @@ export const Registry = () => {
                             <Title>Registro</Title>
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link> 
                         </header>
-                        <form className='form_registry' onSubmit={registry}>
+                        <form className='form_registry' onSubmit={e => registry(e)}>
                             <div className="subtitle_form_registry">
                                 <p>Datos basicos</p>
                             </div>
@@ -121,13 +117,13 @@ export const Registry = () => {
                                  titleLabel='Seleccione su departamento'
                                  nameSelect='Departamento'
                                  options={departments}
-                                 onChange={(e) => getCities(e.target.value)}/>
+                                 onChange={e => getCities(e.target.value)}/>
 
                                  <SelectTextLabel
                                  titleLabel='Seleccione su ciudad'
                                  nameSelect='Ciudad'
                                  options={cities}
-                                 onChange={(e) => console.log(e.target.value)}/>
+                                 onChange={e => setCity(e.target.value)}/>
                             
                             </section>
 
@@ -138,13 +134,14 @@ export const Registry = () => {
                                 <InputTextLabel titleLabel='Email' placeholder='correo' type='email' onChange={e => setEmail(e.target.value)} />
                                 <InputTextLabel titleLabel='Contraseña' placeholder='contraseña' type='password' onChange={e => setPassword(e.target.value)} />
                             </section>
-                            <Button value='Registrar cuenta' isLoading={loading} />
+                            <Button value='Registrar cuenta' isLoading={loading}  />
                         </form>    
                     </div>
                 </DivShadow>
 
                 <div className="information_app">
                     <h1 className='title_info_app'>Work 4 Hours</h1>
+                    <p className='text_info_registry'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, omnis optio. Impedit amet molestias repellat possimus sint blanditiis ipsam sapiente.</p>
                 </div>
             </div> 
 
