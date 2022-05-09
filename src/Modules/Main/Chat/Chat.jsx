@@ -97,7 +97,7 @@ export const Chat = () => {
                                         }} className="input_message_chat">    
                                             <InputText placeholder='Mensaje...' onChange={e =>setMessage(e.target.value)} value={message}/>
                                             <ButtonSend onClick={() => { 
-                                                    sendNotification(currentChat.idusuario, message, user.info[0].name, "#289fa5", user.info[0].userPicture)                                         
+                                                    sendNotification(currentChat.idusuario, message, user.info[0].name, user.info[0].color, user.info[0].userPicture)                                         
                                                     sendMessage(
                                                         message, 
                                                         user.info[0].name,

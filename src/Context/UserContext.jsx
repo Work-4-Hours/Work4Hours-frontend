@@ -7,13 +7,13 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
-    const music = new Audio(Notification);
     const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('loggerAuthUser')))
     const [isLoading, setIsLoading] = useState(null)
     const [notifications, setNotifications] = useState([]);
     const [isAlert, setIsAlert] = useState(false);
     const [connectionNotf, setConnectionNotf] = useState();
-
+    
+    const music = new Audio(Notification);
     const userConnection = async (user) => {
         const connection = new HubConnectionBuilder()
             .withUrl(`${process.env.REACT_APP_API_CS_NOTF}/notifications`)
@@ -71,17 +71,16 @@ export const UserProvider = ({ children }) => {
                 }
             )
         })
-            .then(response => response.json())
-            .then(user => {
-                if (user.userInfo.token) {
-                    setUser(user.userInfo)
-                    window.localStorage.setItem(
-                        'loggerAuthUser', JSON.stringify(user.userInfo)
-                    )
-                    userConnection(jwt_decode(user.userInfo.token).id)
-                    console.log(jwt_decode(user.userInfo.token));
-                }
-            }).finally(() => setIsLoading(false))
+        .then(response => response.json())
+        .then(user => {
+            if (user.userInfo.token) {
+                setUser(user.userInfo)
+                window.localStorage.setItem(
+                    'loggerAuthUser', JSON.stringify(user.userInfo)
+                )
+                userConnection(jwt_decode(user.userInfo.token).id)
+            }
+        }).finally(() => setIsLoading(false))
     }
 
     const isAuth = () => {

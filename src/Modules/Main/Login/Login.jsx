@@ -5,12 +5,14 @@ import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
+import jwt_decode from "jwt-decode";
+
 
 import './Login.css'
 
 export const Login = () => {
     const navigate = useNavigate()
-    const { login, isAuth, isLoading } = useContext(UserContext)
+    const { login, isAuth, isLoading, user } = useContext(UserContext)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
@@ -20,10 +22,15 @@ export const Login = () => {
     }
 
     useEffect(()=> {
-        !isLoading && isAuth() ? 
-            navigate('/') 
-            :
+        if(!isLoading && isAuth()) {  
+            if(jwt_decode(user.token).rol == process.env.REACT_APP_USER_ROL)         
+                navigate('/')           
+            else if(jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) 
+                navigate('/AdminUsers')
+        }
+        else {
             console.log('Error credencials');
+        }
     },[isLoading])
 
     return (

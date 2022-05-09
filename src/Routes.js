@@ -38,6 +38,7 @@ export const AllRoutes = () => {
           <Route path='/chat' element={<Chat />} />
           <Route path='/search/q/:question' element={<SearchService />} />
           <Route path='/AdminUsers' element={<Users />} />
+          
           <Route path='*' element={<h1>Not found</h1>} />
         </Routes>
       </BrowserRouter>

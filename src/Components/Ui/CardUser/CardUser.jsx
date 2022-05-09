@@ -3,7 +3,6 @@ import { PhotoUserProfile } from '../PhotoUserProfile/PhotoUserProfile'
 import './CardUser.css'
 
 export const CardUser = ({ infoUser, ...props }) => {
-    console.log(infoUser);
     const infoUserN = {
         name: infoUser.nombres,
         color: infoUser.color,
