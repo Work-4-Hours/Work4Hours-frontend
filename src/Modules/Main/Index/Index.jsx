@@ -7,9 +7,7 @@ import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 import { Link } from "react-router-dom"
 import { UserContext } from "Context/UserContext"
 import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
-import { useInitFetch } from "CustomHooks/useInitFetch"
-import { faCalendarMinus } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 import './Index.css'
 

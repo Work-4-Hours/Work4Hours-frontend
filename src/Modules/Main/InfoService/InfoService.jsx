@@ -39,12 +39,27 @@ export const InfoService = () => {
             <Header />
             <main className='main_info_service'>
                 <div className="center_info_service">
+                    <section className="image_service_">
+                        <DivShadow>
+                            <div className="subtitle_image_info_service">
+                                Trabajos realizados por {profile.name}
+                            </div>
+                            <div className="image_info_service">
+                                <img className='image_service' src={service.image} alt="" />
+                            </div>
+                        </DivShadow>
+                    </section>
                     <section className="information_service_">
                         <DivShadow>
                             <div className="padding_info_service">
                                 <header className="header_info_service">
-                                    <p className='tipe_info_service'>{service.type}</p>
+                                    <div className="user_profile">
+                                        <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
+                                        <p className='name_user_info_service'>{profile.name}</p>
+                                    </div>
+
                                     <div className='btn_report' onClick={e => setIsOpen(!isOpen)}>
+
                                         <div className="elements_btn_report">
                                             <p className='report'>Reportar</p>
                                             <IconFlag className='icon_flag_btn_report' />
@@ -63,12 +78,10 @@ export const InfoService = () => {
                                     </div>
                                 </header>
 
-                                <div className="user_profile">
-                                    <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
-                                    <p className='name_user_info_service'>{profile.name}</p>
-                                </div>
+                               
 
                                 <div className="title_info_service">
+                                    <p className='tipe_info_service'>{service.type}</p>
                                     <h1 className='title_name_service'>{service.title}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
@@ -91,16 +104,6 @@ export const InfoService = () => {
                         </DivShadow>
                     </section>
 
-                    <section className="image_service_">
-                        <DivShadow>
-                            <div className="subtitle_image_info_service">
-                                Trabajos realizados por {profile.name}
-                            </div>
-                            <div className="image_info_service">
-                                <img className='image_service' src={service.image} alt="" />
-                            </div>
-                        </DivShadow>
-                    </section>
                 </div>
             </main>
         </>

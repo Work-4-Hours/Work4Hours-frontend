@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
         connection.on("ReciveMessage", (userId, message, username, color, imageProfile) => {
             music.play();
             setIsAlert(true)
-            setNotifications(notifications => [...notifications, { userId, message, username, color, imageProfile }])       
+            setNotifications(notifications => [...notifications, { userId, message, username, color, imageProfile }])
         })
 
         connection.on("ShowConnected", (connection) => {
@@ -37,7 +37,6 @@ export const UserProvider = ({ children }) => {
         await connection.start()
         await connection.invoke("ConnectionNotf", String(user))
         setConnectionNotf(await connection)
-        console.clear()
     }
 
     const sendNotification = async (userId, message, username, color, imageProfile) => {
@@ -50,6 +49,11 @@ export const UserProvider = ({ children }) => {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const logout = () => {
+        window.localStorage.removeItem('loggerAuthUser')
+        window.location.reload()
     }
 
     const login = async (credencials) => {
@@ -70,12 +74,12 @@ export const UserProvider = ({ children }) => {
             .then(response => response.json())
             .then(user => {
                 if (user.userInfo.token) {
-                    console.log("Logueado");
                     setUser(user.userInfo)
                     window.localStorage.setItem(
                         'loggerAuthUser', JSON.stringify(user.userInfo)
                     )
                     userConnection(jwt_decode(user.userInfo.token).id)
+                    console.log(jwt_decode(user.userInfo.token));
                 }
             }).finally(() => setIsLoading(false))
     }
@@ -93,10 +97,6 @@ export const UserProvider = ({ children }) => {
         return user.token
     }
 
-    const logout = () => {
-        window.localStorage.removeItem('loggerAuthUser')
-        window.location.reload()
-    }
 
     useEffect(() => {
         if (isAuth()) {

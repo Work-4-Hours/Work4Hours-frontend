@@ -43,11 +43,11 @@
 .link_header_login {
     text-decoration: none;
     color: var(--bg-blue);
-    font-family: 'coco gothic';
+    font-family: var(--font-1);
 }
 
 .or_nav_login {
-    font-family: 'coco gothic';
+    font-family: var(--font-1);
     color: var(--gray-text-3);
 }
 
@@ -76,6 +76,7 @@
 
 .notifications_nav {
     border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+    position: relative;
 }
 
 .info_user_profile_nav_bar {
@@ -92,6 +93,7 @@
 .email_nav_bar {
     color: var(--gray-text-3);
     font-size: 13px;
+    font-family: var(--font-1);
 } 
 
 .notifications {
@@ -103,7 +105,12 @@
 }
 
 .link_notification {
-    text-decoration: none;
+    text-decoration: none;    
+}
+
+.option_notification {
+    right: 5em;
+    top: 10px;
 }
 
 .option_logout {

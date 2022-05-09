@@ -11,4 +11,4 @@ export const Button = ({style='button', value = 'boton', isLoading = false, ...p
             }
         </button>
     )
-}
+}   

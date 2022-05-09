@@ -9,9 +9,11 @@
 }
 
 .name_service_header_card {
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #FFFF;
-    font-size: 20px;
+    font-size: 17px;
+    font-family: var(--font-1);
+
 }
 
 .body_card_user {

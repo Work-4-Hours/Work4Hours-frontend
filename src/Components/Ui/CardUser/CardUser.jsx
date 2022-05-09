@@ -3,9 +3,10 @@ import { PhotoUserProfile } from '../PhotoUserProfile/PhotoUserProfile'
 import './CardUser.css'
 
 export const CardUser = ({ infoUser, ...props }) => {
+    console.log(infoUser);
     const infoUserN = {
         name: infoUser.nombres,
-        color: '',
+        color: infoUser.color,
         userPicture: infoUser.fotop
     }
     return (
@@ -15,7 +16,7 @@ export const CardUser = ({ infoUser, ...props }) => {
             </div>
             <div className="body_card_user">
                 <PhotoUserProfile infoProfile={infoUserN} style='small_profile' small={true} />
-                <p className='name_card_user'>{infoUser.apellidos}</p>
+                <p className='name_card_user'>{infoUser.nombres} {infoUser.apellidos}</p>
             </div>
         </div>
     )

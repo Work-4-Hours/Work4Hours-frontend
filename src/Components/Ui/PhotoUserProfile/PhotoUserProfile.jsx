@@ -8,7 +8,7 @@ export const PhotoUserProfile = ({ infoProfile, style, small, ...props}) => {
         const character = value.substring(1,0).toUpperCase()
         return character
     }
-    const {name,color, userPicture} = infoProfile
+    const {name, color, userPicture} = infoProfile
     return (
         <div className={style} {...props}>
             {

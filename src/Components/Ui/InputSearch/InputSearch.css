@@ -22,7 +22,7 @@
     color: var(--gray-text-2);
 
     font-size: 18px;
-    font-family: 'coco gothic';
+    font-family: var(--font-1);
 }
 
 .input_search::placeholder {

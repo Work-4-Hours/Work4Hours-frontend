@@ -99,14 +99,15 @@
 }
 
 .title_app_info_chat {
-    font-size: 3em;
-    font-family: var(--font-2);
-    color: var(--gray-text-2);
+    font-size: 2.5em;
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
 }
 
 .info_chat {
     font-family: var(--font-1);
     width: 400px;
+    text-align: center;
     border-top: 2px solid #f0f0f0;
     padding: 10px 0;
     color: #b8b8b8;

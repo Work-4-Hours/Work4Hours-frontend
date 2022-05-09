@@ -8,11 +8,10 @@ export const useChat = () => {
 
     const connectionRoom = async (room) => {
         const connection = new HubConnectionBuilder()
-        .withUrl(`${process.env.REACT_APP_API_CS}/chat`)
-        .configureLogging(LogLevel.Information)
-        .build()
-        
-        
+            .withUrl(`${process.env.REACT_APP_API_CS}/chat`)
+            .configureLogging(LogLevel.Information)
+            .build()
+
         connection.on("Recive", (messagess, usuario, fecha) => {
             setMessages(messages => [...messages, { messagess, usuario, fecha }])
         })
@@ -36,11 +35,11 @@ export const useChat = () => {
     const sendMessage = async (message, name, token, date) => {
         await connectionChat.invoke("SendMessage", currentRoom, message, name, date)
         await saveMessage({
-            mensaje: message, 
-            fecha: '2022-04-18', 
-            idsala: currentRoom, 
+            mensaje: message,
+            fecha: '2022-04-18',
+            idsala: currentRoom,
             token: token
-        })       
+        })
     }
 
     const saveMessage = async (data) => {
@@ -52,25 +51,25 @@ export const useChat = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+            .then(response => response.json())
     }
 
     const getMessage = async (room) => {
         fetch(`${process.env.REACT_APP_API_CS}/Room/messages/${room}`)
-        .then(response => response.json())
-        .then(response => {
-            setMessages(response)
-        })
+            .then(response => response.json())
+            .then(response => {
+                setMessages(response)
+            })
     }
 
     const closeConnection = async () => {
         try {
-          await connectionChat.stop();
+            await connectionChat.stop();
+
         } catch (e) {
-          console.log(e);
         }
     }
-    
+
     return {
         connectionRoom,
         sendMessage,

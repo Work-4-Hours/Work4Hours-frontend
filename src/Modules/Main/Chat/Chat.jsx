@@ -33,6 +33,7 @@ export const Chat = () => {
         .then(response => response.json())
         .then(response => { 
             setChats(response)
+            // console.log(response);
         })
     },[])
 
@@ -76,7 +77,7 @@ export const Chat = () => {
                             <DivShadow className='main_messages'>
                                 <div className="header_messages_chat">
                                     <div className="information_user_header_chat">
-                                        <PhotoUserProfile infoProfile={{name: currentChat.nombre, color: '', userPicture: currentChat.fotop}} small={false} style='small_profile' />
+                                        <PhotoUserProfile infoProfile={{name: currentChat.nombres, color: currentChat.color, userPicture: currentChat.fotop}} small={false} style='small_profile' />
                                         <p className="name_user_header_chat">{currentChat.nombres}</p>
                                     </div>
                                 </div>
@@ -96,8 +97,7 @@ export const Chat = () => {
                                         }} className="input_message_chat">    
                                             <InputText placeholder='Mensaje...' onChange={e =>setMessage(e.target.value)} value={message}/>
                                             <ButtonSend onClick={() => { 
-                                                    console.log(currentChat.idusuario);
-                                                    sendNotification(currentChat.idusuario, "Nuevo mensage", user.info[0].name, "#289fa5", user.info[0].userPicture)                                         
+                                                    sendNotification(currentChat.idusuario, message, user.info[0].name, "#289fa5", user.info[0].userPicture)                                         
                                                     sendMessage(
                                                         message, 
                                                         user.info[0].name,
