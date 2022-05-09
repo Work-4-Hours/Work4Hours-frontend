@@ -3,7 +3,7 @@
     padding: 1.5%;
     width: 88%;
     display: flex;
-    justify-content: baseline;
+    align-items: center;
     border-radius: 1em;
 }
 .box_search{

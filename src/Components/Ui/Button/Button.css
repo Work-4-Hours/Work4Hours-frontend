@@ -8,6 +8,7 @@
   font-family: var(--font-1);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .button_big {
