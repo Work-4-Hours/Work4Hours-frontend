@@ -2,15 +2,20 @@ import React from 'react'
 import { PhotoUserProfile } from '../PhotoUserProfile/PhotoUserProfile'
 import './CardUser.css'
 
-export const CardUser = ({ nameService='Nombre del servicio', infoUser }) => {
+export const CardUser = ({ infoUser, ...props }) => {
+    const infoUserN = {
+        name: infoUser.nombres,
+        color: infoUser.color,
+        userPicture: infoUser.fotop
+    }
     return (
-        <div className="card_user">
+        <div className="card_user" {...props}>
             <div className="header_card_user">
-                <p className='name_service_header_card'>{nameService}</p>
+                <p className='name_service_header_card'>{infoUser.nombreservicio}</p>
             </div>
             <div className="body_card_user">
-                <PhotoUserProfile infoProfile={infoUser} style='small_profile' small={true} />
-                <p className='name_card_user'>{infoUser.name}</p>
+                <PhotoUserProfile infoProfile={infoUserN} style='small_profile' small={true} />
+                <p className='name_card_user'>{infoUser.nombres} {infoUser.apellidos}</p>
             </div>
         </div>
     )

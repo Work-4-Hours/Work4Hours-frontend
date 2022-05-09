@@ -1,6 +1,7 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+  
 /* Font 1 */
 @font-face {
   font-family: 'coco gothic';
@@ -58,6 +59,7 @@
 
   --bd-checkbox-grey:#848484;
   --bg-dashboard-grey:#ebebeb;
+  --font-1: 'Sora', sans-serif;
   --font-2: 'Alata';
 } 
 

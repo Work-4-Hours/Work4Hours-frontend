@@ -85,3 +85,10 @@
 .link_card_service {
     text-decoration: none;
 }
+
+.title_index {
+    font-family: var(--font-1);
+    font-size: 1.5em;
+    color: var(--gray-text-2);
+    margin: 1.5em 0 0 0;
+}
