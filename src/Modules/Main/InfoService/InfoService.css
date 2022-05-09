@@ -8,11 +8,11 @@
 }
 
 .information_service_ {
-    width: 40%;
+    width: 30%;
 }
 
 .image_service_ {
-    width: 60%;
+    width: 70%;
 }
 
 .padding_info_service {
@@ -29,8 +29,9 @@
 }
 
 .tipe_info_service {
-    color: var(--bg-blue);
-    font-size: 1.5em;
+    color: var(--gray-text-3);
+    font-family: var(--font-1);
+    font-size: 1em;
 }
 
 .btn_report {
@@ -129,6 +130,7 @@
 .price_info_service {
     font-size: 25px;
     color: var(--gray-text-2);
+    font-family: var(--font-1);
 }
 
 .description_info_service {
@@ -137,6 +139,7 @@
 
 .subtitle_info_service {
     color: var(--gray-text-1);
+    font-family: var(--font-1);
     margin: 0 0 10px 0;
 }
 

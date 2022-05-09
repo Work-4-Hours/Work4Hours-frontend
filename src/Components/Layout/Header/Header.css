@@ -1,6 +1,5 @@
 .header {
     background: #FFFF;
-    box-sizing: none;
 }
 
 .center_nav_bar {
@@ -19,6 +18,7 @@
 }
 
 .nav_login {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -29,20 +29,38 @@
     color: var(--gray-text-2);
 }
 
+.simbol_alert {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #FFFF;
+    background: red;
+    border-radius: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .link_header_login {
     text-decoration: none;
     color: var(--bg-blue);
-    font-family: 'coco gothic';
+    font-family: var(--font-1);
 }
 
 .or_nav_login {
-    font-family: 'coco gothic';
+    font-family: var(--font-1);
     color: var(--gray-text-3);
 }
 
 /* Nav bar header */
 .nav_bar_header {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.scroll_nav_bar {
+    overflow-y: auto;
 }
 
 .info_nav_bar_user {
@@ -58,6 +76,7 @@
 
 .notifications_nav {
     border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+    position: relative;
 }
 
 .info_user_profile_nav_bar {
@@ -74,6 +93,7 @@
 .email_nav_bar {
     color: var(--gray-text-3);
     font-size: 13px;
+    font-family: var(--font-1);
 } 
 
 .notifications {
@@ -85,7 +105,17 @@
 }
 
 .link_notification {
-    text-decoration: none;
+    text-decoration: none;    
+}
+
+.option_notification {
+    right: 5em;
+    top: 10px;
+}
+
+.option_logout {
+    /* width: 100%; */
+    /* align-self: flex-start; */
 }
 
 .ocult_nav_bar {
@@ -103,4 +133,11 @@
     background: rgba(192, 192, 192, 0.534);
     width: 100vw;
     height: 100vh;
+}
+
+@media screen and (max-width: 480px) {
+    .username_header {
+        display: none;
+    }
+
 }

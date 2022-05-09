@@ -5,7 +5,7 @@
   background: var(--bg-blue);
   color: #FFFF;
   font-size: 17px;
-  font-family: 'coco gothic';
+  font-family: var(--font-1);
   display: flex;
   justify-content: center;
 }
@@ -17,7 +17,7 @@
   background: var(--bg-blue);
   color: #FFFF;
   font-size: 17px;
-  font-family: 'coco gothic';
+  font-family: var(--font-1);
 }
 
 .button,
@@ -29,8 +29,8 @@
 .loader {
   font-size: 10px;
   text-indent: -9999em;
-  width: 2em;
-  height: 2em;
+  width: 2.1em;
+  height: 2.1em;
   border-radius: 50%;
   background: #ffffff;
   background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
@@ -45,6 +45,7 @@
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+
 .loader:before {
   width: 50%;
   height: 50%;
@@ -55,6 +56,7 @@
   left: 0;
   content: '';
 }
+
 .loader:after {
   background: var(--bg-blue);
   width: 75%;
@@ -68,21 +70,25 @@
   bottom: 0;
   right: 0;
 }
+
 @-webkit-keyframes load3 {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
+
 @keyframes load3 {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);

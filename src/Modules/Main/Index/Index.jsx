@@ -5,9 +5,8 @@ import { Banner } from "Components/Layout/Banner/Banner"
 import { DivShadow } from "Components/StyleComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 import { Link } from "react-router-dom"
-import { useFetch } from "CustomHooks/useFetch"
 import { UserContext } from "Context/UserContext"
-import axios from "axios"
+import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
 
 
 import './Index.css'
@@ -15,30 +14,27 @@ import './Index.css'
 export const Index = () => {
     const { isAuth } = useContext(UserContext)
     const [results, setResults] = useState([])
-    const { loading, data } = useFetch('https://rickandmortyapi.com/api/character')
+    const [loading, setLoading] = useState(false)
     
-    const service = {
-        price: "200.000",
-        image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        title: "Pinto casas a domicilio Lorem"
-    }
-
-    const informacionBanner = {
-        title: "Services",
-        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
-    }
-
-    const profile = {
-        color: "#a11d1d",
-        imageprofile: "",
-        name: "Camilo Lopez",
-        email: "carlos@gmail.com",
-        phone: "3166529009",
-        calification: 73.6
-    }
-
+    useEffect(()=> {
+        const get = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+            .then(response => response.json())
+            .then(user => {
+                setResults(user)
+            })
+            .finally(() => setLoading(false))
+        }
+        get()
+    },[])
+    
     return (
         <>                    
             <Header />
@@ -46,23 +42,20 @@ export const Index = () => {
             <main>
                 <div className="center_main_index">
                     <section className="banner_index">
-                        <Banner informaction={informacionBanner} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />               
+                        <Banner informaction={{title: "Services", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit."}} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />               
                     </section>
+                    <p className="title_index">Mejor calificados</p>
                     <section className='services_index'>
-                        <DivShadow className='container_pricipal_servieces'> 
-                            <Link to='/infoservice' className='link_card_service'>
-                                <CardService info={service} />
-                                {
-                                    loading ?
-                                    <p>Cargando</p>
-                                    :
-                                    <>
-                                    {
-                                        results.map((item, index) =>  <p key={index}>{item.name}</p> )
-                                    }
-                                    </>
-                                }
-                            </Link>
+                        <DivShadow className='container_pricipal_servieces'>                                                 
+                            {
+                                loading ?   
+                                <>
+                                    <LoadingCard/>
+                                    <LoadingCard/>
+                                </>                          
+                                :
+                                results?.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardService info={item} /></Link>)
+                            }                                
                         </DivShadow>                 
                     </section>
                 </div>
