@@ -1,20 +1,15 @@
 import React,{useState} from 'react'
 import './CheckBoxAdmin.css'
 
-export const CheckBoxAdmin = ({designCheckBoxAdmin, id, correo, idStatus, listUserSelectSet, selectUsers }) => {
+export const CheckBoxAdmin = ({deleteUserSelect,designCheckBoxAdmin, id, correo, idStatus,fotop, listUserSelectSet, selectUsers }) => {
  
   const validarcheckbox=(e)=>{
     if(e.target.checked){
-      const datauser={idEstado:idStatus, email:correo, idUsuario:id}
+      const datauser={idEstado:idStatus, email:correo, idUsuario:id, fotoUser:fotop}
       listUserSelectSet([...selectUsers, datauser]);
     }
     else{
-      selectUsers.map(item=>{
-        if(item.idUsuario===id){
-          const index=selectUsers.indexOf(item);
-          selectUsers.splice(index,1)
-        }
-      })
+      deleteUserSelect(id);
     }
  }
   return (
