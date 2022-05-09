@@ -1,10 +1,10 @@
 import React from 'react';
 import './Dashboard.css';
 
-export const Dashboard = ({content}) => {
+export const Dashboard = ({componetContent}) => {
   return (
     <div className='dashborard scroll'>
-      {content}
+      {componetContent}
     </div>
   )
 }

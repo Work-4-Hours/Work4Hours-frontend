@@ -1,6 +1,7 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+  
 /* Font 1 */
 @font-face {
   font-family: 'coco gothic';
@@ -58,7 +59,7 @@
 
   --bd-checkbox-grey:#848484;
   --bg-dashboard-grey:#ebebeb;
-
+  --font-1: 'Sora', sans-serif;
   --font-2: 'Alata';
 } 
 
@@ -145,9 +146,39 @@ code {
 	to { opacity: 1; }
 }
 
+/*Media Queries*/
 
-@keyframes enlargeLetter {
-  to{
-    transform: scale(1.1);
+@media (max-width: 600px) {
+  .menu_admin{
+    font-size: 14px;
   }
+  .dashboard_header, .dashborard{
+    font-size: 13px;
+  }
+  .fieldSize3 {
+    width: 6%;
+  }
+  .fieldSize20 {
+    width: 18%;
+  }
+  .fieldSize8 {
+    width: 12%;
+  }
+  .search_box{
+    font-size: 13px;
+    width: 80%;
+  }
+  .content_filter{
+    font-size: 13px;
+    width: 15%;
+  }
+
+  .btn_save_changes_admin{
+    font-size: 13px;
+    width: 33%;
+  }
+  
+
+
 }
+

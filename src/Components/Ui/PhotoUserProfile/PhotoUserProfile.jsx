@@ -8,14 +8,14 @@ export const PhotoUserProfile = ({ infoProfile, style, small, ...props}) => {
         const character = value.substring(1,0).toUpperCase()
         return character
     }
-    const {name,color, imageprofile} = infoProfile
+    const {name, color, userPicture} = infoProfile
     return (
         <div className={style} {...props}>
             {
-                imageprofile ? 
+                userPicture ? 
 
                 <div className="image_profile_user_">
-                    <img className='image_user_' src={imageprofile} alt="" />
+                    <img className='image_user_' src={userPicture} alt="" />
                 </div>
                 :
                 <DefaultProfile color={color} small={small}>

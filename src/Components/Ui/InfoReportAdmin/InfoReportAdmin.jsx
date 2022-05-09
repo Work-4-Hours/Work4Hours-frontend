@@ -2,13 +2,13 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import React,{useState} from 'react'
 import './InfoReportAdmin.css'
 
-export const InfoReportAdmin = () => {
+export const InfoReportAdmin = ({NumberReports}) => {
 
   const [isOpen, setIsOpen] = useState(false);
   
   return (
     <div className='position_relative fieldSize8' >
-      <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen)}}>1000</p>
+      <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen)}}>{NumberReports}</p>
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_type_report'>

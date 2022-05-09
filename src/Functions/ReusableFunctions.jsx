@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { Navigate } from 'react-router-dom'
+import axios from 'axios';
+
 
 export function VerifyUserInSession(){
     let getRawData = localStorage.getItem('userData')
@@ -29,3 +31,28 @@ export function verifyTypeOfLogin(){
         return GetUserInSessionData()
     }
 }
+
+
+export function GetAdmin(url){  
+    const [loading, setLoading] = useState(null)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        setLoading(true)
+        fetch(`https://localhost:44342/api/${url}`)
+        .then(response => response.json())
+        .then(response => {
+            setData(response)
+        })
+        .catch(error => {
+            console.log(error);
+        })  
+        .finally(() => setLoading(false))
+    },[url])
+
+    return {
+        loading,
+        data
+    }
+}
+

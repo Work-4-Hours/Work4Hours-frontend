@@ -8,7 +8,7 @@ export const InfoNotification = ({infoProfile}) => {
             <PhotoUserProfile infoProfile={infoProfile} style='small_profile' small={true} />
             <div className="info_nav_bar_notification">
                 <p className='username_nav_bar_notification'>{infoProfile.name}</p>
-                <p className='message_nav_bar_notification'>Nuevo mensage</p>
+                <p className='message_nav_bar_notification'>{infoProfile.message}</p>
             </div>
         </div>
     )
