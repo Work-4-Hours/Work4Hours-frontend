@@ -34,7 +34,10 @@ export const Index = () => {
         }
         get()
     },[])
-    
+
+    const formatName = (name)=> {
+        return  name.split(' ').join('-').toLowerCase()
+    }       
     return (
         <>                    
             <Header />
@@ -54,7 +57,7 @@ export const Index = () => {
                                     <LoadingCard/>
                                 </>                          
                                 :
-                                results?.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardService info={item} /></Link>)
+                                results?.map((item, index) =>  <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
                             }                                
                         </DivShadow>                 
                     </section>
