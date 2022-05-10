@@ -28,9 +28,7 @@ export const Users = () => {
     })
     setListUserSelect([...listUsersSelect]);
   }
-  
-  
-  
+
   return (
     <div className='container_admin'>
       <MenuAdmin nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>

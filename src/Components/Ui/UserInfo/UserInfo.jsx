@@ -11,10 +11,20 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
   const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario} = objectAllUsers;
   const {data}=objectAllStatus;
 
-  const [idStatus, setIdStatus]=useState(0);
+  const [idStatus, setIdStatus] = useState(0);
+  const [changeStatus, setChangeStatus]=useState(false);
 
-  const captureId=(idUserStatus)=>{
-    setIdStatus(idUserStatus);
+  const userSelectListSelectSetStatus =(statusChange, idUser, idStatus)=>{
+
+    if (statusChange===true){
+      selectUsers.map(item=>{
+        if(item.idUsuario===idUser){
+          item.idEstado=idStatus
+        }
+      })
+      listUserSelectSet=([...selectUsers]);
+      setChangeStatus(!changeStatus);
+    }
   }
 
   return (
@@ -26,7 +36,7 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin  UserStatus={nombre_estado} idUserStatus={idEstado} data={data} capturarid={captureId}/>
+      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={data} capturarid={setIdStatus}/>
       <CheckBoxAdmin deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
     </div>
   )
