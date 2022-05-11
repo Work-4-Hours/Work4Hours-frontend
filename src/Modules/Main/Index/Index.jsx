@@ -10,12 +10,14 @@ import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
 
 
 import './Index.css'
+import { useLocalStorage } from "CustomHooks/useLocalStorage"
 
 export const Index = () => {
     const { isAuth } = useContext(UserContext)
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
-    
+    const [id, setId] = useLocalStorage('id', '')
+
     useEffect(()=> {
         const get = async () => {
             setLoading(true)
@@ -29,6 +31,8 @@ export const Index = () => {
             .then(response => response.json())
             .then(user => {
                 setResults(user)
+                setId("oe")
+                console.log(id);
             })
             .finally(() => setLoading(false))
         }
