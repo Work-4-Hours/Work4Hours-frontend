@@ -18,14 +18,12 @@
   --clr-titles: #303030;
   --clr-paragrhap: #303030;
   --color-one: #26c9d1;
-  
+
   --bg-ligth-blue: #F4F8FF;
   --bg-blue: #14A2D6;
 
-  --bg-layout-grey:#f1f1f1;
-  --bg-checkbox-grey:#e0e0e0;
-
-  --bg-popup-description:#e0e0e0;
+  /* Borders */
+  --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
 
   /* Shadows */
   --gray-shadow-1: #9f9f9f33;
@@ -34,9 +32,6 @@
   --gray-text-1: #494949;
   --gray-text-2: #6D6D6D;
   --gray-text-3: #858585;
-  --gray-text-4: #303030;
-  --gray-text-5: #848484;
-  --white-text-1:#ffff;
 
   /* Gradients */
   --color-gradient-1: #616161;

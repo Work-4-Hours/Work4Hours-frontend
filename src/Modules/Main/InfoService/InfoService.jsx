@@ -1,18 +1,20 @@
+import React, { useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { PopUp } from 'Components/StyleComponets/PopUp'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconFlag } from 'Assets/Icons/IconFlag.svg'
 import { ReactComponent as IconLocation } from "Assets/Icons/IconLocation.svg"
-
-
-import React, { useState } from 'react'
-
-import './InfoService.css'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
 
+import './InfoService.css'
+
+
+
 export const InfoService = () => {
+
+    const [params, setParams] = useSearchParams()
 
     const [isOpen, setIsOpen] = useState(false)
     const profile = {
@@ -82,7 +84,7 @@ export const InfoService = () => {
 
                                 <div className="title_info_service">
                                     <p className='tipe_info_service'>{service.type}</p>
-                                    <h1 className='title_name_service'>{service.title}</h1>
+                                    <h1 className='title_name_service'>{service.name}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
                                         <p className='location_name'>{service.city} {service.departament}</p>

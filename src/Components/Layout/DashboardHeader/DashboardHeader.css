@@ -1,11 +1,16 @@
 .dashboard_header{
     background-color: #ebebeb;
-    padding: 1% 2%;
-    border-radius: 1em;
-    display: flex;
-    gap: 2%;
-    color: var(--bd-checkbox-grey);
+    margin: 2% 0%;
+    padding: 1%;
+    padding-left: 2%;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 5% 14% 14% 15% 18% 13% 13%;
+    align-items: center;
+    gap: 1%;
+    color: #848484;
 }
+<<<<<<< HEAD
 .reportColor{color:var(--status-red)}
 
 .fieldSize3{width: 3%;}
@@ -17,3 +22,5 @@
 .fieldSize13{width: 13%;}
 .fieldSize17{width: 17%;}
 .fieldSize20{width: 20%;}
+=======
+>>>>>>> d06b93eab29c3762fff3cc10c8ff6fb3ade48770

@@ -1,7 +1,7 @@
 .dashborard{
-    background-color:var(--bg-dashboard-grey);
-    height: 100%;
-    border-radius: 1em;
+    background-color:#ebebeb;
+    height: 65vh;
+    border-radius: 1rem;
     padding: 1%;
     display: flex;
     flex-direction: column;
@@ -22,6 +22,6 @@
 
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: var(--bd-checkbox-grey);
+    background-color: #848484;
     border-radius: 20px;
 }

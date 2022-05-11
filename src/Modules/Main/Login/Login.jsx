@@ -1,5 +1,5 @@
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import React, { useContext, useEffect, useState } from 'react'
+import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { Title } from 'Components/StyleComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
@@ -28,15 +28,12 @@ export const Login = () => {
             else if(jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) 
                 navigate('/AdminUsers')
         }
-        else {
-            console.log('Error credencials');
-        }
     },[isLoading])
 
     return (
         <main className='login'>
             <div className="background_registry"></div>
-            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1647117029/k8fv4rdcwvk6bwtcqzid.png" alt="" />
+            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" />
             <div className="center_main_login">
                 <div className="information_login_app">
                     <h1 className='title_info_login_app'>Work 4 Hours</h1>
