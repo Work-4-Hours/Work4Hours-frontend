@@ -5,7 +5,7 @@ import React from 'react'
 import './PhotoUserProfile.css'
 
 export const PhotoUserProfile = ({ infoProfile, style, small, ...props}) => {
-
+    console.log(infoProfile)
     const getCharaterName = (value) => {
         const character = value.substring(1,0).toUpperCase()
         return character
