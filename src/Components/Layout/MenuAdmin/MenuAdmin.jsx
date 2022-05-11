@@ -1,9 +1,12 @@
+import { Button } from 'Components/Ui/Button/Button';
 import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 import './MenuAdmin.css';
 
-export const MenuAdmin = () => {
+export const MenuAdmin = ({nameAdmin,btnInactive,btnActive}) => {
   return (
     <div className='menu_admin'>
       <div>

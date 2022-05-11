@@ -7,9 +7,9 @@
   
 .span_confirm_changes{
     display: inline-block;
-    cursor: pointer; 
-    height: 100%;
+    cursor: pointer;
 }
+
 .span_confirm_changes::after{
     content: "";
     display: block;
@@ -28,8 +28,4 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-}
-.position_flex_end{
-    display: flex;
-    align-content: flex-end;
 }

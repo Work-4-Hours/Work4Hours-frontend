@@ -1,5 +1,4 @@
 import React from 'react'
-import './ObjectStatus.css'
 import { BsX } from 'react-icons/bs';
 
 export const ObjectStatus = ({userSelect, deleteUserSelect}) => {

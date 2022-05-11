@@ -1,7 +1,7 @@
 import React from 'react';
 import './DashboardHeader.css';
 
-export const DashboardHeader = () => {
+export const DashboardHeader = ({space1,space2,space3,space4,space5,space6,space7,header1,header2,header3,header4,header5,header6,header7,propsReport}) => {
   return (
     <div className='dashboard_header'>
       <p className={space1}>{header1}</p>
