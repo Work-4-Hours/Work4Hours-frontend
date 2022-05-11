@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
-import {PhotoUserProfile} from '../PhotoUserProfile/PhotoUserProfile';	
 
 import './UserInfo.css';
 
 
 export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
-  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario,color} = objectAllUsers;
-  console.log(color);
+
+  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario} = objectAllUsers;
   const {data}=objectAllStatus;
-  const infoPhoto={name:nombres, color:color, userPicture:fotop}  
 
   const [idStatus, setIdStatus] = useState(0);
   const [changeStatus, setChangeStatus]=useState(false);
@@ -31,8 +29,7 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
 
   return (
     <div className='user_info'>
-      <div className='fieldSize3 center_img'>
-         {/* <PhotoUserProfile infoProfile={infoPhoto} style={"small_profile"} small={true}/> */}
+      <div className='fieldSize3 center_img'> 
         <img className='admin_user_photo' src={fotop} alt="user_photo" />
       </div>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
