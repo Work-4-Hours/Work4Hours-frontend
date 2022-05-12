@@ -7,7 +7,8 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
-    const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('loggerAuthUser')))
+    const [user, setUser] = 
+    // const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('loggerAuthUser')))
     const [isLoading, setIsLoading] = useState(null)
     const [notifications, setNotifications] = useState([]);
     const [isAlert, setIsAlert] = useState(false);
