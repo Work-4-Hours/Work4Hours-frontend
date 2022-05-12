@@ -8,5 +8,5 @@ export const DesignLetters = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-
+    width: 1.875em;
 `;

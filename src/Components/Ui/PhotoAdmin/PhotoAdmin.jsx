@@ -1,5 +1,6 @@
 import { DesignLetters } from 'Components/StyleComponets/DesignLetters'
 import React from 'react'
+import './PhotoAdmin.css'
 
 
 export const PhotoAdmin = ({photoData}) => {
@@ -15,7 +16,7 @@ export const PhotoAdmin = ({photoData}) => {
                 <img className='admin_user_photo' src={userPicture} alt={userPicture} />
             :
             <DesignLetters color={color}>
-                <h1 >{getCharaterName(name)}</h1>
+                <p className='first_letter_name_user_admin'>{getCharaterName(name)}</p>
             </DesignLetters>    
                 
                
