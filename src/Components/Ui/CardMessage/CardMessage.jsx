@@ -8,6 +8,7 @@ export const CardMessage = ({ info, location, user }) => {
             <div className='card_message' >
                 <div className="message_card">{messagess}</div>
                 <div className="date_card">{fecha}</div>
+                
             </div>
         </div>
     )

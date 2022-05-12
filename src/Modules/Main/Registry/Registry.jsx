@@ -23,6 +23,8 @@ export const Registry = () => {
     const [birthdate, setBirthdate] = useState(null)
     const [city, setCity] = useState(null)
 
+    const [disable, setDisable] = useState(true);
+
     const registry = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -33,7 +35,7 @@ export const Registry = () => {
                 'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
-                name : name,
+                name: name,
                 lastName: surname,
                 phoneNumber: phone,
                 address: 'null',
@@ -42,15 +44,15 @@ export const Registry = () => {
                 birthDate: birthdate,
                 picture: 'null',
                 city: parseInt(city),
-                color: '#831a1a'                       
+                color: '#831a1a'
             })
 
         })
-        .then(response => response.json())
-        .then(user => {
-            console.log(user);
-        })
-        .finally(() => setLoading(false))
+            .then(response => response.json())
+            .then(user => {
+                console.log(user);
+            })
+            .finally(() => setLoading(false))
     }
 
     const getCities = (iddepartament) => {
@@ -61,69 +63,73 @@ export const Registry = () => {
                 'Access-Control-Allow-Origin': '*'
             }
         })
-        .then(response => response.json())
-        .then(response => {
-            setCities(response.cities)
-            console.log(response);
-        })
-        .catch(error => console.log(error))
+            .then(response => response.json())
+            .then(response => {
+                setCities(response.cities)
+                setDisable(false)
+            })
+            .catch(error => console.log(error))
     }
- 
-    useEffect(()=> {
+
+    useEffect(() => {
         const fetchTest = async () => {
-                fetch(`${process.env.REACT_APP_API}/departments`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*'
-                    }
-                })
+            fetch(`${process.env.REACT_APP_API}/departments`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
                 .then(response => response.json())
                 .then(response => {
                     setDepartments(response.departments.map(item => {
-                        return {id: item.id, name: item.name}
-                    }))                   
+                        return { id: item.id, name: item.name }
+                    }))
                 })
                 .catch(error => console.log(error))
         }
 
         fetchTest()
-
-    },[])
+    }, [])
 
     return (
         <main className='registry'>
             <div className="background_registry"></div>
             <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" />
 
-           <div className="center_main_registry">
+            <div className="center_main_registry">
                 <DivShadow className='container_form_registry'>
-                    <div className="padding_form_register"> 
+                    <div className="padding_form_register">
                         <header className='header_registry'>
                             <Title>Registro</Title>
-                            <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link> 
+                            <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link>
                         </header>
                         <form className='form_registry' onSubmit={e => registry(e)}>
                             <div className="subtitle_form_registry">
                                 <p>Datos basicos</p>
                             </div>
-                            <section className="basic_data">                     
+                            <section className="basic_data">
                                 <InputTextLabel titleLabel='Nombres' placeholder='Camilo' onChange={e => setName(e.target.value)} />
-                                <InputTextLabel titleLabel='Apellidos' placeholder='Lopez' onChange={e => setSurname(e.target.value)}  />
-                                <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number'  onChange={e => setPhone(e.target.value)}  />
-                                <InputTextLabel titleLabel='Fecha de nacimiento' type='text' onChange={e => setBirthdate(e.target.value)} />                         
+                                <InputTextLabel titleLabel='Apellidos' placeholder='Lopez' onChange={e => setSurname(e.target.value)} />
+                                <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number' onChange={e => setPhone(e.target.value)} />
+                                <InputTextLabel titleLabel='Fecha de nacimiento' type='text' onChange={e => setBirthdate(e.target.value)} />
                                 <SelectTextLabel
-                                 titleLabel='Seleccione su departamento'
-                                 nameSelect='Departamento'
-                                 options={departments}
-                                 onChange={e => getCities(e.target.value)}/>
+                                    titleLabel='Seleccione su departamento'
+                                    nameSelect='Departamento'
+                                    options={departments}
+                                    disable={false}
+                                    onChange={e => {
+                                        getCities(e.target.value)
+                                    }} />
 
-                                 <SelectTextLabel
-                                 titleLabel='Seleccione su ciudad'
-                                 nameSelect='Ciudad'
-                                 options={cities}
-                                 onChange={e => setCity(e.target.value)}/>
-                            
+                                <SelectTextLabel
+                                    titleLabel='Seleccione su ciudad'
+                                    nameSelect='Ciudad'
+                                    options={cities}
+                                    disable={disable}
+                                    onChange={e => setCity(e.target.value)}
+                                />
+
                             </section>
 
                             <div className="subtitle_form_registry">
@@ -133,8 +139,8 @@ export const Registry = () => {
                                 <InputTextLabel titleLabel='Email' placeholder='correo' type='email' onChange={e => setEmail(e.target.value)} />
                                 <InputTextLabel titleLabel='Contraseña' placeholder='contraseña' type='password' onChange={e => setPassword(e.target.value)} />
                             </section>
-                            <Button value='Registrar cuenta' isLoading={loading}  />
-                        </form>    
+                            <Button value='Registrar cuenta' isLoading={loading} />
+                        </form>
                     </div>
                 </DivShadow>
 
@@ -142,7 +148,7 @@ export const Registry = () => {
                     <h1 className='title_info_app'>Work 4 Hours</h1>
                     <p className='text_info_registry'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, omnis optio. Impedit amet molestias repellat possimus sint blanditiis ipsam sapiente.</p>
                 </div>
-            </div> 
+            </div>
 
         </main>
     )

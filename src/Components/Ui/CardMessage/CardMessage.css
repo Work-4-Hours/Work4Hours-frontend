@@ -14,11 +14,12 @@
 
 .message_card {
     font-family: var(--font-1);
-    font-size: 19px;
+    font-size: 17px;
 }
 
 .date_card {
-    font-size: 16px;
+    font-size: 11px;
+    font-family: var(--font-1);
 }
 
 /* Location card */
