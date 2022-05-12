@@ -12,7 +12,7 @@ export const PopupConfirmChanges = ({nameTitle, valueButton, objectContent, styl
     <div className='btn_save_changes_admin_position'>
         <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={event=>setIsOpen(!isOpen)}/>
         <PopUp isOpen={isOpen}>  
-            <div className="overlay">
+            <div className="overlay_Popup_Confirm_Changes_Content_Object">
                 <div className='popup_admin_save_changes_admin'>
                     <PopupTitleAdmin title={nameTitle}/>
                     <PopupConfirmChangesContentObjects content={objectContent} object={styleObjects}/>
