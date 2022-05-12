@@ -114,7 +114,7 @@ export const Registry = () => {
                                 <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number' onChange={e => setPhone(e.target.value)} />
                                 <InputTextLabel titleLabel='Fecha de nacimiento' type='text' onChange={e => setBirthdate(e.target.value)} />
                                 <SelectTextLabel
-                                    titleLabel='Seleccione su departamento'
+                                    titleLabel='Departamento'
                                     nameSelect='Departamento'
                                     options={departments}
                                     disable={false}
@@ -123,7 +123,7 @@ export const Registry = () => {
                                     }} />
 
                                 <SelectTextLabel
-                                    titleLabel='Seleccione su ciudad'
+                                    titleLabel='Ciudad'
                                     nameSelect='Ciudad'
                                     options={cities}
                                     disable={disable}

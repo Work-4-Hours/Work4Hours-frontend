@@ -49,6 +49,7 @@ export const InfoService = () => {
                 .then(response => response.json())
                 .then(response => {
                     setService(response)
+                    console.log(response);
                 })
                 .finally(() => setLoading(false))
         }
