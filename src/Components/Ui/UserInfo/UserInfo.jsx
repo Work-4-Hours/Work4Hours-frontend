@@ -35,7 +35,7 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-      <InfoReportAdmin NumberReports={cantidadReportes}/>
+      <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
       <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={data} capturarid={setIdStatus}/>
       <CheckBoxAdmin deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
     </div>

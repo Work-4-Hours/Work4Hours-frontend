@@ -17,7 +17,7 @@ export const SearchBox = ({typeSearch, wordSearchSet}) => {
             console.log(e);
         })
     }
-}
+  }
   return (
     <div className='search_box'>
       <BsSearch/>
