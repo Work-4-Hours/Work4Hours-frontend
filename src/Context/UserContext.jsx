@@ -1,106 +1,38 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
-import Notification from 'Assets/Sounds/Notification.mp3'
 import jwt_decode from "jwt-decode";
+import { sha256 } from 'js-sha256';
+import { useLocalStorage } from 'CustomHooks/useLocalStorage';
+import { useLogin } from 'CustomHooks/useLogin';
+import { useNotification } from 'CustomHooks/useNotification';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
-    const [user, setUser] = 
-    // const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('loggerAuthUser')))
-    const [isLoading, setIsLoading] = useState(null)
-    const [notifications, setNotifications] = useState([]);
-    const [isAlert, setIsAlert] = useState(false);
-    const [connectionNotf, setConnectionNotf] = useState();
-    
-    const music = new Audio(Notification);
-    const userConnection = async (user) => {
-        const connection = new HubConnectionBuilder()
-            .withUrl(`${process.env.REACT_APP_API_CS_NOTF}/notifications`)
-            .configureLogging(LogLevel.Information)
-            .build()
+    const [user, setUser, removeUser] = useLocalStorage(sha256('userAuth'),'')
 
-        connection.on("ReciveMessage", (userId, message, username, color, imageProfile) => {
-            music.play();
-            setIsAlert(true)
-            setNotifications(notifications => [...notifications, { userId, message, username, color, imageProfile }])
-        })
+    const { 
+        userConnection, 
+        sendNotification, 
+        closeConnection, 
+        notifications, 
+        isAlert 
+    } = useNotification()
 
-        connection.on("ShowConnected", (connection) => {
-            console.log(connection);
-        })
-
-        connection.onclose(() => {
-            setConnectionNotf()
-        });
-
-        await connection.start()
-        await connection.invoke("ConnectionNotf", String(user))
-        setConnectionNotf(await connection)
-    }
-
-    const sendNotification = async (userId, message, username, color, imageProfile) => {
-        await connectionNotf.invoke("SendNotification", String(userId), message, username, color, imageProfile)
-    }
-
-    const closeConnectionNotf = async () => {
-        try {
-            await connectionNotf.stop();
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const logout = () => {
-        window.localStorage.removeItem('loggerAuthUser')
-        window.location.reload()
-    }
-
-    const login = async (credencials) => {
-        setIsLoading(true)
-        fetch(`${process.env.REACT_APP_API}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify(
-                {
-                    email: credencials.email,
-                    password: credencials.password
-                }
-            )
-        })
-            .then(response => response.json())
-            .then(response => {
-                if (response.userInfo.token) {
-                    setUser(response.userInfo)
-                    window.localStorage.setItem(
-                        'loggerAuthUser', JSON.stringify(response.userInfo)
-                    )
-                    userConnection(jwt_decode(response.userInfo.token).id)
-                }
-            }).finally(() => setIsLoading(false))
-    }
-
-    const isAuth = () => {
-        const logged = window.localStorage.getItem('loggerAuthUser')
-        if (logged) {
-            return true
-        } else {
-            return false
-        }
-    }
+    const { 
+        login, 
+        logout, 
+        isLoading, 
+        isAuth
+    } = useLogin( user, setUser, removeUser, userConnection)
 
     const getJwt = () => {
         return user.token
     }
 
-
     useEffect(() => {
         if (isAuth()) {
-            closeConnectionNotf()
+            closeConnection()
             userConnection(jwt_decode(user.token).id);
         }
     }, [])
