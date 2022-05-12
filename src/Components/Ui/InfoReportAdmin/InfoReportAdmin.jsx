@@ -1,5 +1,6 @@
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import React,{useState} from 'react'
+import './InfoReportAdmin.css'
 
 export const InfoReportAdmin = ({NumberReports}) => {
 
