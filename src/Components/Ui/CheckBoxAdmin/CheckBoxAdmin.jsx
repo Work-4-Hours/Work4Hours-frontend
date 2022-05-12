@@ -14,7 +14,7 @@ export const CheckBoxAdmin = ({deleteUserSelect,designCheckBoxAdmin, id, correo,
  }
   return (
     <div className='text_center fieldSize8' >
-      <label className='position_flex_end'>
+      <label className='position_flex_center'>
           <input type="checkbox" className='cb_confirm_changes' id={id}  onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
