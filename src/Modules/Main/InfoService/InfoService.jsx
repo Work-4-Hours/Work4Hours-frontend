@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { PopUp } from 'Components/StyleComponets/PopUp'
@@ -7,16 +7,54 @@ import { ReactComponent as IconFlag } from 'Assets/Icons/IconFlag.svg'
 import { ReactComponent as IconLocation } from "Assets/Icons/IconLocation.svg"
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
+import jwt_decode from 'jwt-decode'
+import { UserContext } from 'Context/UserContext'
 
 import './InfoService.css'
-
-
 
 export const InfoService = () => {
 
     const [params, setParams] = useSearchParams()
-
+    const { user } = useContext(UserContext)
+    const [loading, setLoading] = useState(false)
+    const [service, setService] = useState({})
     const [isOpen, setIsOpen] = useState(false)
+
+    const createRoom = (serviceuser, idservice) => {
+        fetch(`${process.env.REACT_APP_API_CS}/Room/room/new/${jwt_decode(user.token).id}/${jwt_decode(serviceuser).userId}/${idservice}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+            setService(response)
+            console.log(response);
+        })
+        .catch(error => console.log(error))
+    }
+
+    useEffect(() => {
+        const get = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}/serviceInfo/${params.get('sid')}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    setService(response)
+                })
+                .finally(() => setLoading(false))
+        }
+        get()
+    }, [])
+
     const profile = {
         color: "#a11d1d",
         imageprofile: "",
@@ -26,15 +64,15 @@ export const InfoService = () => {
         calification: 73.6
     }
 
-    const service = {
-        price: "200.000",
-        type: "Oferta",
-        image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        title: "Pinto casas a domicilio Lorem",
-        description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus consequuntur vero vel voluptates ducimus dolores dolor inventore vitae labore natus suscipit. Voluptatum, minima. Numquam."
-    }
+    // const service = {
+    //     price: "200.000",
+    //     type: "Oferta",
+    //     photo: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
+    //     city_name: "Armenia",
+    //     departament_name: "Quindio",
+    //     name: "Pinto casas a domicilio Lorem",
+    //     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus consequuntur vero vel voluptates ducimus dolores dolor inventore vitae labore natus suscipit. Voluptatum, minima. Numquam."
+    // }
 
     return (
         <>
@@ -47,7 +85,7 @@ export const InfoService = () => {
                                 Trabajos realizados por {profile.name}
                             </div>
                             <div className="image_info_service">
-                                <img className='image_service' src={service.image} alt="" />
+                                <img className='image_service' src={service.photo} alt="" />
                             </div>
                         </DivShadow>
                     </section>
@@ -80,14 +118,14 @@ export const InfoService = () => {
                                     </div>
                                 </header>
 
-                               
+
 
                                 <div className="title_info_service">
                                     <p className='tipe_info_service'>{service.type}</p>
                                     <h1 className='title_name_service'>{service.name}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
-                                        <p className='location_name'>{service.city} {service.departament}</p>
+                                        <p className='location_name'>{service.city_name} {service.department_name}</p>
                                     </div>
                                 </div>
 
@@ -101,7 +139,7 @@ export const InfoService = () => {
                                 </div>
                             </div>
                             <div className='button_contact'>
-                                <Button style='button_big' value='Contactar' />
+                                <Button style='button_big' value='Contactar' onClick={() => createRoom(service.user, service.id)} />
                             </div>
                         </DivShadow>
                     </section>

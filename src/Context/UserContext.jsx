@@ -79,7 +79,6 @@ export const UserProvider = ({ children }) => {
                         'loggerAuthUser', JSON.stringify(response.userInfo)
                     )
                     userConnection(jwt_decode(response.userInfo.token).id)
-                    console.log(response);
                 }
             }).finally(() => setIsLoading(false))
     }
