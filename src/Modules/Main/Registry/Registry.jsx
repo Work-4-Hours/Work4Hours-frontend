@@ -14,6 +14,10 @@ export const Registry = () => {
     const [departments, setDepartments] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const [nameIsValidate, setNameIsValidate] = useState(true)
+    const [messageError, setMessageError] = useState('Correo invalido')
+
+
     const [name, setName] = useState(null)
     const [surname, setSurname] = useState(null)
     const [phone, setPhone] = useState(null)
@@ -92,6 +96,10 @@ export const Registry = () => {
         fetchTest()
     }, [])
 
+    useEffect(() => {
+        setNameIsValidate(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(name));
+    },[name])
+
     return (
         <main className='registry'>
             <div className="background_registry"></div>
@@ -109,10 +117,11 @@ export const Registry = () => {
                                 <p>Datos basicos</p>
                             </div>
                             <section className="basic_data">
-                                <InputTextLabel titleLabel='Nombres' placeholder='Camilo' onChange={e => setName(e.target.value)} />
+                                <InputTextLabel titleLabel='Nombres' isValidate={nameIsValidate}
+                                error_message={!nameIsValidate && messageError} placeholder='Camilo' onChange={e => setName(e.target.value)} />
                                 <InputTextLabel titleLabel='Apellidos' placeholder='Lopez' onChange={e => setSurname(e.target.value)} />
                                 <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number' onChange={e => setPhone(e.target.value)} />
-                                <InputTextLabel titleLabel='Fecha de nacimiento' type='text' onChange={e => setBirthdate(e.target.value)} />
+                                <InputTextLabel titleLabel='Fecha de nacimiento' type='date' onChange={e => setBirthdate(e.target.value)} />
                                 <SelectTextLabel
                                     titleLabel='Departamento'
                                     nameSelect='Departamento'
