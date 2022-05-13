@@ -17,9 +17,7 @@ export const PhotoAdmin = ({photoData}) => {
             :
             <DesignLetters color={color}>
                 <p className='first_letter_name_user_admin'>{getCharaterName(name)}</p>
-            </DesignLetters>    
-                
-               
+            </DesignLetters>
         }
     </div>
   )
