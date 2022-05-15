@@ -7,9 +7,9 @@ import './UserInfo.css';
 
 
 export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
-  console.log(objectAllUsers);
+  // console.log(objectAllUsers);
   const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
-  const {data}=objectAllStatus;
+
   const [idStatus, setIdStatus] = useState(0);
   const [changeStatus, setChangeStatus]=useState(false);
   const photoData={name:nombres, color:color, userPicture:fotop};
@@ -34,7 +34,7 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
       <p className='ellipsis fieldSize20'> {nombres}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={data} capturarid={setIdStatus}/>
+      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus}/>
       <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
     </div>
   )

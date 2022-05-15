@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Users.css';
 
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -14,11 +14,28 @@ import { GetAdmin } from 'Functions/ReusableFunctions';
 
 export const Users = () => {
 
+  const [usersData,setUsersData]=useState([]);
+  const [stateData,setStateData]=useState([]);
+
   const dataUsers = GetAdmin('Users');
   const dataState= GetAdmin('State');
+  
+  useEffect(()=> {
+    if(dataUsers.loading === false) {
+      setUsersData(dataUsers.data);
+    }
+  },[dataUsers.loading])
+
+  useEffect(()=> {
+    if(dataState.loading === false) {
+      setStateData(dataState.data);
+    }
+  },[dataState.loading])
+
   const [listUsersSelect, setListUserSelect]=useState([]);
   const [searchUsersWord,setSearchUsersWord]=useState([]);
-  console.log(searchUsersWord)
+  // console.log(searchUsersWord)
+  // console.log(listUsersSelect);
 
   const deleteUserSelect =(id)=>{
     listUsersSelect.map(item=>{
@@ -38,8 +55,8 @@ export const Users = () => {
         <Search nameSearch={"Buscar Usuarios"} wordSearchSet={setSearchUsersWord} filter={<FilterUserAdmin/>}/>
         <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         <Dashboard componetContent={
-          dataUsers.data?.map(item=>
-            <UserInfo deleteUserSelect={deleteUserSelect} objectAllUsers={item} objectAllStatus={dataState} listUserSelectSet={setListUserSelect} selectUsers={listUsersSelect} key={item.idusuario}/>
+          usersData?.map(item=>
+            <UserInfo deleteUserSelect={deleteUserSelect} objectAllUsers={item} objectAllStatus={stateData} listUserSelectSet={setListUserSelect} selectUsers={listUsersSelect} key={item.idusuario}/>
           ) }/>
         <PopupConfirmChanges objectContent={
           listUsersSelect.map(item=>
