@@ -25,3 +25,7 @@
     background-color: var(--bd-checkbox-grey);
     border-radius: 20px;
 }
+.center_message{
+    align-items: center;
+    justify-content: center;
+}

@@ -7,7 +7,7 @@ import './UserInfo.css';
 
 
 export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
-  // console.log(objectAllUsers);
+
   const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
 
   const [idStatus, setIdStatus] = useState(0);
