@@ -9,6 +9,9 @@
 
 .information_service_ {
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .image_service_ {

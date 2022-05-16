@@ -18,8 +18,9 @@ export const Profile = () => {
             name: "Carlos Alverto",
             email: "carlos@gmail.com",
             phone: "3166529009",
-            calification: 50.6
+            calification: 30
         },
+        
         services: [
             {
                 price: "200.000",

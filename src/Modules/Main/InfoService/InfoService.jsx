@@ -18,6 +18,7 @@ export const InfoService = () => {
     const { user } = useContext(UserContext)
     const [loading, setLoading] = useState(false)
     const [service, setService] = useState({})
+    const [infoUser, setInfoUser] = useState({})
     const [isOpen, setIsOpen] = useState(false)
 
     const createRoom = (serviceuser, idservice) => {
@@ -28,12 +29,12 @@ export const InfoService = () => {
                 'Access-Control-Allow-Origin': '*'
             }
         })
-        .then(response => response.json())
-        .then(response => {
-            setService(response)
-            console.log(response);
-        })
-        .catch(error => console.log(error))
+            .then(response => response.json())
+            .then(response => {
+                setService(response)
+                console.log(response);
+            })
+            .catch(error => console.log(error))
     }
 
     useEffect(() => {
@@ -48,32 +49,13 @@ export const InfoService = () => {
             })
                 .then(response => response.json())
                 .then(response => {
-                    setService(response)
-                    console.log(response);
+                    setService(response.serviceInfo)
+                    setInfoUser(response.serviceUser)
                 })
                 .finally(() => setLoading(false))
         }
         get()
     }, [])
-
-    const profile = {
-        color: "#a11d1d",
-        imageprofile: "",
-        name: "Alverto",
-        email: "carlos@gmail.com",
-        phone: "3166529009",
-        calification: 73.6
-    }
-
-    // const service = {
-    //     price: "200.000",
-    //     type: "Oferta",
-    //     photo: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-    //     city_name: "Armenia",
-    //     departament_name: "Quindio",
-    //     name: "Pinto casas a domicilio Lorem",
-    //     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus consequuntur vero vel voluptates ducimus dolores dolor inventore vitae labore natus suscipit. Voluptatum, minima. Numquam."
-    // }
 
     return (
         <>
@@ -83,7 +65,7 @@ export const InfoService = () => {
                     <section className="image_service_">
                         <DivShadow>
                             <div className="subtitle_image_info_service">
-                                Trabajos realizados por {profile.name}
+                                Trabajos realizados por {infoUser?.name}
                             </div>
                             <div className="image_info_service">
                                 <img className='image_service' src={service.photo} alt="" />
@@ -95,8 +77,10 @@ export const InfoService = () => {
                             <div className="padding_info_service">
                                 <header className="header_info_service">
                                     <div className="user_profile">
-                                        <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
-                                        <p className='name_user_info_service'>{profile.name}</p>
+                                        <Link to='/profile'>
+                                            <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
+                                        </Link>
+                                        <p className='name_user_info_service'>{infoUser?.name}</p>
                                     </div>
 
                                     <div className='btn_report' onClick={e => setIsOpen(!isOpen)}>
@@ -141,6 +125,13 @@ export const InfoService = () => {
                             </div>
                             <div className='button_contact'>
                                 <Button style='button_big' value='Contactar' onClick={() => createRoom(service.user, service.id)} />
+                            </div>
+                        </DivShadow>
+
+                        <DivShadow>
+                            <div className="padding_info_service">
+                                <p className='name_user_info_service'>Comentarios</p>
+                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
                             </div>
                         </DivShadow>
                     </section>

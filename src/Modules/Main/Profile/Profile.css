@@ -56,9 +56,11 @@
 
 .email_user_profile {
     color: var(--gray-text-3);
+    font-family: var(--font-1);
 }
 
 .phone_user_profile {
+    font-family: var(--font-1);
     color: var(--gray-text-3);
 }
 
@@ -73,6 +75,7 @@
 
 .value_calification_user {
     font-size: 13px;
+    font-family: var(--font-1);
     color: var(--gray-text-3);
 }
 

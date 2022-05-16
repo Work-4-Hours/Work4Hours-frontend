@@ -16,8 +16,19 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.034);
 }
 
+.length_results {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
+}
+
 .filter_search_info {
     padding: 20px;
+}
+
+.subtitle_filter_search {
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 17px;
 }
 
 .search_services {

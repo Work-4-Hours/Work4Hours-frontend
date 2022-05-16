@@ -8,12 +8,14 @@ import { CardServiceSearch } from 'Components/Ui/CardServiceSearch/CardServiceSe
 
 import './SearchService.css'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { LoadingCardSearch } from 'Components/Ui/LoadingCardSearch/LoadingCardSearch'
 
 export const SearchService = () => {
 
-    const params = useParams()
+
+    const [params, setParams] = useSearchParams()
+
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
 
@@ -27,7 +29,7 @@ export const SearchService = () => {
                     'Access-Control-Allow-Origin': '*'
                 },
                 body: JSON.stringify({
-                    serviceName : params.question
+                    serviceName : params.get("n").split('-').join(' ')
                 })
 
             })
@@ -48,11 +50,11 @@ export const SearchService = () => {
                 <div className="center_main_search">
                     <DivShadow className='search_info'>
                         <header className="header_search_info">
-                            <Title>{params.question}</Title>
-                            <p className=''>{results.length} Busquedas</p>
+                            <Title>{params.get("n").split('-').join(' ')}</Title>
+                            <p className='length_results'>{results.length} Busquedas</p>
                         </header>  
                         <div className="filter_search_info">
-                            <p>Filtros de busqueda</p>
+                            <p className='subtitle_filter_search'>Filtros de busqueda</p>
                         </div>
                     </DivShadow>
                     <DivShadow className='search_services'>

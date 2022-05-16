@@ -16,19 +16,20 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 10px;
 }
 
 .header_service_search {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    flex-direction: column;
 }
 
 .name_service_search {
-    font-family: var(--font-1);
-    font-size: 2em;
+    font-family: var(--font-1   );
+    font-size: 1.5em;
     color: var(--gray-text-2);
     margin: 0 10px 0 0;
 }
@@ -45,7 +46,7 @@
     background: transparent;
 }
 .price_service_search {
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     font-size: 1.5em;
     color: var(--gray-text-3); 
 }

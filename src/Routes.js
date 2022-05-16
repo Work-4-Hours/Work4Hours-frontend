@@ -36,7 +36,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path='/claim' element={<Claim />} />
           <Route path='/chat' element={<Chat />} />
-          <Route path='/search/q/:question' element={<SearchService />} />
+          <Route path='/service/:query' element={<SearchService />} />
           <Route path='/AdminUsers' element={<Users />} />
           
           <Route path='*' element={<h1>Not found</h1>} />
