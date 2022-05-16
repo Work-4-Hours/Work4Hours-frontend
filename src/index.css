@@ -18,7 +18,7 @@
   --clr-titles: #303030;
   --clr-paragrhap: #303030;
   --color-one: #26c9d1;
-  
+
   --bg-ligth-blue: #F4F8FF;
   --bg-blue: #14A2D6;
 
@@ -26,6 +26,9 @@
   --bg-checkbox-grey:#e0e0e0;
 
   --bg-popup-description:#e0e0e0;
+
+  /* Borders */
+  --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
 
   /* Shadows */
   --gray-shadow-1: #9f9f9f33;
@@ -127,7 +130,7 @@ code {
 }
 
 .btn_save_changes_admin{
-  width: 18%;
+  width: 20%;
 }
 
 /*Animation Popup Options*/

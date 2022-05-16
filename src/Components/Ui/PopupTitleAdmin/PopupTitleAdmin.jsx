@@ -6,7 +6,7 @@ export const PopupTitleAdmin = ({title}) => {
   return (
     <div className='popup_title_admin'>
         <GoAlert className='icon_alert_admin'/>
-        <h3>{title}</h3>
+        <h2>{title}</h2>
     </div>
   )
 }

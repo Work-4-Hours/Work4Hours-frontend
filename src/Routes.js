@@ -8,13 +8,13 @@ import { Users } from 'Modules/Admin/Users/Users'
 import { Profile } from 'Modules/Main/Profile/Profile'
 import { InfoService } from 'Modules/Main/InfoService/InfoService'
 import { AddService } from 'Modules/Main/AddService/AddService'
-import { Services } from 'Modules/Admin/Services/Services'
 import { EditService } from 'Modules/Main/EditService/EditService'
 import { Claim } from 'Modules/Main/Claim/Claim'
 import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
+import { Services } from 'Modules/Admin/Services/Services'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 
@@ -24,11 +24,11 @@ export const AllRoutes = () => {
     <UserProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Index />} />
+           <Route path='/' element={<Index />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/registry' element={<Registry />} />
-          <Route path='/infoservice' element={<IsAuth> <InfoService /> </IsAuth>} />
+          <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
           <Route path='/service/add' element={<AddService />} />
           <Route path='/service/edit' element={<EditService />} />
           <Route path='/dashboard/*' element={<Dashboard />} >
@@ -45,6 +45,5 @@ export const AllRoutes = () => {
         </Routes>
       </BrowserRouter>
     </UserProvider>
-
   )
 }

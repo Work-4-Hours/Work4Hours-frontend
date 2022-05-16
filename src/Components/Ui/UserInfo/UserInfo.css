@@ -6,13 +6,7 @@
   border-radius: 1em;
   padding: 1%;
   margin-bottom: 1%;
-}
 
-.admin_user_photo{
-  height: 1.875em;
-  width: 1.875em;
-	object-fit: cover;
-	border-radius: 50%;
 }
 
 .ellipsis{
@@ -21,9 +15,5 @@
   white-space:nowrap;
 }
 
-.center_img{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
+  

@@ -1,26 +1,27 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
-export const CheckBoxAdmin = ({designCheckBoxAdmin, id, correo, idStatus, listUserSelectSet, selectUsers }) => {
- 
+export const CheckBoxAdmin = ({objectAllUsers,deleteUserSelect,designCheckBoxAdmin, id, correo, idStatus,fotop, listUserSelectSet, selectUsers }) => {
+  const [UserAllobject, setUserAllobject]=useState([]);
+  useEffect(()=>{
+    if(objectAllUsers!==undefined){
+      setUserAllobject(objectAllUsers)
+    }
+
+  },[''])
   const validarcheckbox=(e)=>{
     if(e.target.checked){
-      const datauser={idEstado:idStatus, email:correo, idUsuario:id}
+      const datauser={idEstado:idStatus, email:UserAllobject.correo, idUsuario:UserAllobject.idusuario, fotoUser:UserAllobject.fotop, nombres:UserAllobject.nombres, color:UserAllobject.color}
       listUserSelectSet([...selectUsers, datauser]);
     }
     else{
-      selectUsers.map(item=>{
-        if(item.idUsuario===id){
-          const index=selectUsers.indexOf(item);
-          selectUsers.splice(index,1)
-        }
-      })
+      deleteUserSelect(UserAllobject.idusuario);
     }
  }
   return (
     <div className='text_center fieldSize8' >
-      <label>
-          <input type="checkbox" className='cb_confirm_changes' id={id} onChange={(e)=>validarcheckbox(e)}/>
+      <label className='position_flex_center'>
+          <input type="checkbox" className='cb_confirm_changes' id={UserAllobject.id}  onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

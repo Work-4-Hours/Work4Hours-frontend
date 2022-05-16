@@ -1,4 +1,4 @@
-.overlay{
+.overlay_Popup_Confirm_Changes_Content_Object{
     background: rgba(0, 0, 0,.3);
     position: fixed;
     top:0;
@@ -14,7 +14,7 @@
     background-color: var(--white-text-1);
     padding: 2%;
     border-radius: 10px;
-    width: 28%;
+    width: 50%;
     animation:animationOpacityActivate .2s forwards;
 }
 

@@ -7,5 +7,4 @@ export const PopUp = styled.div`
     overflow: hidden;
     display: ${props => props.isOpen ? 'block' : 'none'};
     user-select: none;
-   
 `;

@@ -82,8 +82,7 @@ export const Registry = () => {
                 .then(response => {
                     setDepartments(response.departments.map(item => {
                         return {id: item.id, name: item.name}
-                    }))
-                   
+                    }))                   
                 })
                 .catch(error => console.log(error))
         }
