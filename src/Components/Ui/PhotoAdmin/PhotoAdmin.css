@@ -1,0 +1,20 @@
+.first_letter_name_user_admin{
+    font-weight: bold;
+    font-size: 1.4375rem;
+    color: var(--white-text-1);
+}
+
+.admin_user_photo{
+    height: 1.875em;
+    width: 1.875em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.center_img{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 1.875em;
+}
+    

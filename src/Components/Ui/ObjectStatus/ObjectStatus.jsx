@@ -1,12 +1,15 @@
 import React from 'react'
 import './ObjectStatus.css'
 import { BsX } from 'react-icons/bs';
+import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
+
 
 export const ObjectStatus = ({userSelect, deleteUserSelect}) => {
-  const {idEstado,email,idUsuario, fotoUser}=userSelect;
+  const {idEstado,email,idUsuario, fotoUser, nombres, color}=userSelect;
+  const photoData={name:nombres, color:color, userPicture:fotoUser};
   return (
     <div className='object_status'>
-      <img className='img_layout_status' src={fotoUser} alt={idUsuario}/>
+      <PhotoAdmin photoData={photoData}/>
       <p>{email}</p>
       <BsX className='delete_user_status' onClick={()=>{deleteUserSelect(idUsuario)}}/>
     </div>

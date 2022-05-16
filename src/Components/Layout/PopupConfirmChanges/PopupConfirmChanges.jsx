@@ -1,12 +1,39 @@
 import { Button } from 'Components/Ui/Button/Button';
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './PopupConfirmChanges.css'
 import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
 import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
+import axios from 'axios';
 
-export const PopupConfirmChanges = ({nameTitle, valueButton, objectContent, styleObjects}) => {
+
+
+export const PopupConfirmChanges = ({nameTitle, valueButton, objectContent, styleObjects, listUsersSelect}) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const sendListSelectedUsers =(event)=>{
+        console.log(listUsersSelect)
+        // axios({
+        //     method: 'post',
+        //     url: '/user/12345',
+        //     data: {
+        //       firstName: 'Fred',
+        //       lastName: 'Flintstone'
+        //     }
+        //   });
+        // axios.put('https://localhost:44342/api/Users',{
+        //     array:listUsersSelect
+        // })
+        // .then(function (response) {
+        //     console.log(response);
+        //   })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+
+
+        setIsOpen(!isOpen)
+    }
 
   return (
     <div className='btn_save_changes_admin_position'>
@@ -20,7 +47,7 @@ export const PopupConfirmChanges = ({nameTitle, valueButton, objectContent, styl
                     <div className='btns_save_changes_admin'>
                         <div className='btns_save_changes_admin_spacing'>
                             <Button value="Cancelar" className="button btn_change_color_gray" onClick={event=>setIsOpen(!isOpen)}/>
-                            <Button value={valueButton} onClick={event=>setIsOpen(!isOpen)}/>
+                            <Button value={valueButton} onClick={event=>{sendListSelectedUsers(event)}}/>
                         </div>
                     </div>
                 </div>
