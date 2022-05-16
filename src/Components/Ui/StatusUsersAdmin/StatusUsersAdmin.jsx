@@ -4,13 +4,21 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 
-export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,statusChange,statusChangeSet,userStatus,idUserStatus, data, capturarid}) => {
+export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,statusChange,statusChangeSet,userStatus,idUserStatus, data, capturarid, NumberReports}) => {
   const [stateUser, setStateUser]=useState(userStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
   const [idStateUser, setIdStateUser]=useState(idUserStatus);
   const [idUser, setIdUser]=useState(idUsuario);
 
+  const changeState = (NumberReports) => {
+    if(NumberReports === 25){
+      setStateUser("Suspendido por 3 días")
+    }
+    else if(NumberReports === 50){
+      setStateUser("Inhabilitado")
+    }
+  }
 
   const changeColorStateUsers= (UserState) =>{  
     if(UserState == "Habilitado"){
@@ -23,10 +31,16 @@ export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,status
       return 'red';
     }
   }
+
+
   useEffect(() => {
     setStateColor (changeColorStateUsers(stateUser))
-  }, [''])
+  })
   
+  useEffect(() =>{
+    changeState(NumberReports)
+},[changeColorStateUsers])
+
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
     setIsOpen(!isOpen)
