@@ -34,8 +34,7 @@ export const Users = () => {
 
   const [listUsersSelect, setListUserSelect]=useState([]);
   const [searchUsersWord,setSearchUsersWord]=useState([]);
-  const [validateSearchUserWord,setValidateSearchUserWord]=useState(true)
-
+  const [validateSearchUserWord,setValidateSearchUserWord]=useState(true);
 
   useEffect(()=>{
     if(searchUsersWord.length>0){
@@ -58,7 +57,6 @@ export const Users = () => {
   }
 
   
-  
   return (
     <div className='container_admin'>
       <MenuAdmin nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
@@ -73,7 +71,7 @@ export const Users = () => {
           :
           <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>}
 
-        <PopupConfirmChanges objectContent={
+        <PopupConfirmChanges listUsersSelect={listUsersSelect} objectContent={
           listUsersSelect.map(item=>
         <ObjectStatus userSelect={item} deleteUserSelect={deleteUserSelect} key={item.idUsuario}/> )} nameTitle={"Esta seguro de querer actualizar el estado de: "} valueButton={"Actualizar"}  styleObjects={"popup_confirm_changes_content_objects_users"}/>
       </div>
