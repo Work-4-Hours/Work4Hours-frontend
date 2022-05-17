@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React from 'react';
 import './SearchBox.css';
 import { BsSearch } from 'react-icons/bs';
 import axios from 'axios';
@@ -49,12 +49,15 @@ export const SearchBox = ({typeSearch, wordSearchSet, setValidateSearchUserWord}
       setValidateSearchUserWord(true)
     }
   }
-  
 
+  const handle = (e) => {
+    localStorage.setItem('word', e.target.value);
+  }
+  
   return (
     <div className='search_box'>
       <BsSearch/>
-      <input type="text" placeholder={typeSearch} onKeyUp={(e)=>{enterSearch(e)}}  className='box_search'/>
+      <input type="text" placeholder={typeSearch} onKeyUp={(e)=>{enterSearch(e); handle(e)}}  className='box_search'/>
     </div>
   )
 }
