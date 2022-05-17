@@ -18,6 +18,9 @@
     width: 100%;
     height: 3em;
     font-size: 1.0625em;
+    border-radius: 0.3125em;
+    color:var(--white-text-1);
+    cursor:pointer;
 }
 
 .btn_change_color_gray{

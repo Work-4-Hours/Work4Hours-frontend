@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, styleObjects, listUsersSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(listUsersSelect)
+
 
     const sendUsers = () =>{
         if(listUsersSelect.length != 0){

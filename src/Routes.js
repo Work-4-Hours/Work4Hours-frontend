@@ -18,11 +18,13 @@ import { Services } from 'Modules/Admin/Services/Services'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 
+
+
 export const AllRoutes = () => {
   
   return (
+    <BrowserRouter>
     <UserProvider>
-      <BrowserRouter>
         <Routes>
            <Route path='/' element={<Index />} />
           <Route path='/login' element={<Login />} />
@@ -38,12 +40,14 @@ export const AllRoutes = () => {
           <Route path='/claim' element={<Claim />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/search/q/:question' element={<SearchService />} />
-          <Route path='/AdminUsers' element={<Users />} />
-          <Route path='/AdminServices' element={<Services/>}/>
           
           <Route path='*' element={<h1>Not found</h1>} />
+
+          <Route path='/AdminUsers' element={<Users />} />
+          <Route path='/AdminServices' element={<Services/>}/>
+
         </Routes>
-      </BrowserRouter>
     </UserProvider>
+    </BrowserRouter>
   )
 }
