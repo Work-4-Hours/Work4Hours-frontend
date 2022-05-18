@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('loggerAuthUser')))
     const [isLoading, setIsLoading] = useState(null)
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState([]); 
     const [isAlert, setIsAlert] = useState(false);
     const [connectionNotf, setConnectionNotf] = useState();
     
