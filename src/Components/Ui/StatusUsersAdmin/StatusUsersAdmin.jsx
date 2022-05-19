@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import './StatusUsersAdmin.css';
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
-import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
+
 
 export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,statusChange,statusChangeSet,userStatus,idUserStatus, data, capturarid}) => {
   const [stateUser, setStateUser]=useState(userStatus);

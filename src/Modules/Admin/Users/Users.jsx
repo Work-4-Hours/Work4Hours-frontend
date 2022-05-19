@@ -14,7 +14,8 @@ import { UserContext } from 'Context/UserContext';
 
 
 export const Users = () => {
-  const { user, logout } = useContext(UserContext)
+  // const { admin, logoutAdmin, getToken } = useContext(UserContext)
+  // console.log(logoutAdmin)
   const [usersData,setUsersData]=useState([]);
   const [stateData,setStateData]=useState([]);
 
@@ -60,7 +61,7 @@ export const Users = () => {
   
   return (
     <div className='container_admin'>
-      <MenuAdmin logout={logout}  nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
+      <MenuAdmin logout={logoutAdmin}  nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
       <div className='manager_control'>
         <Search nameSearch={"Buscar Usuarios"} wordSearchSet={setSearchUsersWord} setValidateSearchUserWord={setValidateSearchUserWord} filter={<FilterUserAdmin/>}/>
         <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
