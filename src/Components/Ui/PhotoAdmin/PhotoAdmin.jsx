@@ -4,6 +4,7 @@ import './PhotoAdmin.css'
 
 
 export const PhotoAdmin = ({photoData}) => {
+    
     const {name, color, userPicture} = photoData;
     const getCharaterName = (value) => {
         let character = value.substring(1,0).toUpperCase()
