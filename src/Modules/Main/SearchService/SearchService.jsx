@@ -42,6 +42,10 @@ export const SearchService = () => {
         get()
     },[params])
 
+    const formatName = (name)=> {
+        return  name.split(' ').join('-').toLowerCase()
+    }  
+ 
     return (
         <>
             <Header/>
@@ -65,7 +69,7 @@ export const SearchService = () => {
                                     <LoadingCardSearch/>
                                 </>                          
                                 :
-                                results.map((item, index) =>  <Link key={index} to='/infoservice' className='link_card_service'><CardServiceSearch info_service={item}/></Link>)
+                                results.map((item, index) =>  <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`}  className='link_card_service'><CardServiceSearch info_service={item}/></Link>)
                             }                      
                     </DivShadow>
                 </div>
