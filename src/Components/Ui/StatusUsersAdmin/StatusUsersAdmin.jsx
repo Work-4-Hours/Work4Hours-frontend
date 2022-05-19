@@ -11,12 +11,14 @@ export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,status
   const [idStateUser, setIdStateUser]=useState(idUserStatus);
   const [idUser, setIdUser]=useState(idUsuario);
 
-  const changeState = (NumberReports) => {
-    if(NumberReports === 25){
+  const changeState = (reportsNumber) => {
+    if(reportsNumber === 25){
       setStateUser("Suspendido por 3 días")
+      setIdStateUser(2)
     }
-    else if(NumberReports === 50){
+    else if(reportsNumber === 50){
       setStateUser("Inhabilitado")
+      setIdStateUser(3)
     }
   }
 
@@ -39,7 +41,7 @@ export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,status
   
   useEffect(() =>{
     changeState(NumberReports)
-},[changeColorStateUsers])
+},[''])
 
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)

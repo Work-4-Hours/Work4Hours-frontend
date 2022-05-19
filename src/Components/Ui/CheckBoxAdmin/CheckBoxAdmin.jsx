@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({objectAllUsers,deleteUserSelect,designCheckBoxAdmin, id, correo, idStatus,fotop, listUserSelectSet, selectUsers }) => {
+
   const [UserAllobject, setUserAllobject]=useState([]);
   useEffect(()=>{
     if(objectAllUsers!==undefined){

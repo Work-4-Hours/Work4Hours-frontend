@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, styleObjects, listUsersSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    
 
     const sendUsers = () =>{
         if(listUsersSelect.length != 0){
@@ -37,7 +37,7 @@ export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, sty
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={event => setIsOpen(!isOpen)} />
-                                <Button value={valueButton} onClick={ sendUsers }  />
+                                <Button value={valueButton}  onClick={ sendUsers } />
                             </div>
                         </div>
                     </div>

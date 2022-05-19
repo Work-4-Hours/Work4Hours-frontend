@@ -36,7 +36,7 @@ export const Users = () => {
   const [listUsersSelect, setListUserSelect]=useState([]);
   const [searchUsersWord,setSearchUsersWord]=useState([]);
   const [validateSearchUserWord,setValidateSearchUserWord]=useState(true);
-
+  console.log(listUsersSelect)
   useEffect(()=>{
     if(searchUsersWord.length>0){
       setUsersData(searchUsersWord)
