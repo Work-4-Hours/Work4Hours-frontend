@@ -76,3 +76,16 @@
     z-index: 1;
     background: transparent;
 }
+
+input[type='radio']{
+    appearance: none; 
+    background-color: var(--bg-blue); 
+    border:1px solid var(--white-text-1);
+    width: 16px;
+    height: 16px;
+}
+
+input[type='radio']:checked{
+    background-color: var(--white-text-1);
+    border: 1px solid var(--status-grey);
+}

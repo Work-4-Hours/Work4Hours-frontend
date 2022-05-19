@@ -4,11 +4,12 @@ import './PhotoAdmin.css'
 
 
 export const PhotoAdmin = ({photoData}) => {
+    
+    const {name, color, userPicture} = photoData;
     const getCharaterName = (value) => {
-        const character = value.substring(1,0).toUpperCase()
+        let character = value.substring(1,0).toUpperCase()
         return character
     }
-    const {name, color, userPicture} = photoData
 
   return (
     <div className='fieldSize3 center_img'> 

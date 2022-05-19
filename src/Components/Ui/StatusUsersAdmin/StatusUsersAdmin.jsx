@@ -4,13 +4,23 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
 
-export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,statusChange,statusChangeSet,userStatus,idUserStatus, data, capturarid}) => {
+export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,statusChange,statusChangeSet,userStatus,idUserStatus, data, capturarid, NumberReports}) => {
   const [stateUser, setStateUser]=useState(userStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
   const [idStateUser, setIdStateUser]=useState(idUserStatus);
   const [idUser, setIdUser]=useState(idUsuario);
 
+  const changeState = (reportsNumber) => {
+    if(reportsNumber === 25){
+      setStateUser("Suspendido por 3 días")
+      setIdStateUser(2)
+    }
+    else if(reportsNumber === 50){
+      setStateUser("Inhabilitado")
+      setIdStateUser(3)
+    }
+  }
 
   const changeColorStateUsers= (UserState) =>{  
     if(UserState == "Habilitado"){
@@ -23,10 +33,16 @@ export const StatusUsersAdmin = ({userSelectListSelectSetStatus,idUsuario,status
       return 'red';
     }
   }
+
+
   useEffect(() => {
     setStateColor (changeColorStateUsers(stateUser))
-  }, [''])
+  })
   
+  useEffect(() =>{
+    changeState(NumberReports)
+},[''])
+
   const changeStateUsers=(event)=>{
     setStateUser(event.target.textContent)
     setIsOpen(!isOpen)
