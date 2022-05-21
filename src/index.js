@@ -4,6 +4,6 @@ import { AllRoutes } from './Routes'
 import './index.css';
 
 ReactDOM.render(
-      <AllRoutes />,
+  <AllRoutes />,
   document.getElementById('root')
 );

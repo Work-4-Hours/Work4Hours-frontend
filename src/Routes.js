@@ -23,7 +23,7 @@ export const AllRoutes = () => {
     <UserProvider>
       <BrowserRouter>
         <Routes>
-           <Route path='/' element={<Index />} />
+          <Route path='/' element={<Index />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/registry' element={<Registry />} />
@@ -37,9 +37,9 @@ export const AllRoutes = () => {
           <Route path='/claim' element={<Claim />} />
           <Route path='/chat' element={<Chat />} />
           <Route path='/service/:query' element={<SearchService />} />
-          <Route path='/AdminUsers' element={<Users />} />
-          
           <Route path='*' element={<h1>Not found</h1>} />
+          <Route path='/AdminUsers' element={<Users />} />
+          <Route path='/AdminServices' element={<Services />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

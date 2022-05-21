@@ -1,25 +1,10 @@
-import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import React from 'react';
 import './Dashboard.css';
 
-
-export const Dashboard = () => {
+export const Dashboard = ({componetContent, style}) => {
   return (
-    <div className='dashborard scroll'>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
-      <UserInfo/>
+    <div className={'dashborard scroll ' + style}>
+      {componetContent}
     </div>
   )
 }

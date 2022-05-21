@@ -1,0 +1,15 @@
+.content_type_report{
+    left: -3.125em;
+}
+
+.typ_report{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.625em;
+}
+
+.pointer_userSelect_none{
+    cursor: pointer;
+    user-select: none;
+}

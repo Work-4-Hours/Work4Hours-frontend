@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
+import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
+import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
+import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
-export const UserInfo = () => {
+
+export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
+
+  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
+
+  // const { data } = objectAllStatus;
+
+  const [idStatus, setIdStatus] = useState(0);
+  const [changeStatus, setChangeStatus]=useState(false);
+  const photoData={name:nombres, color:color, userPicture:fotop};
+
+  const userSelectListSelectSetStatus =(statusChange, idUser, idStatus)=>{
+
+    if (statusChange===true){
+      selectUsers.map(item=>{
+        if(item.idUsuario===idUser){
+          item.idEstado=idStatus
+        }
+      })
+      listUserSelectSet=([...selectUsers]);
+      setChangeStatus(!changeStatus);
+    }
+  }
+
   return (
     <div className='user_info'>
-      <img className='admin_user_photo' src="https://cdn.pixabay.com/photo/2021/09/12/08/49/headset-6617715_960_720.png" alt="user_photo" />
-      <p className='ellipsis'>Cactus</p>
-      <p className='ellipsis'>Fantasmita</p>
-      <p className='ellipsis'>FantasmistaCat27@gmail.com</p>
-      <p>10</p>
-      <select className='cb_state_user'>
-        <option value="Habilitado">Habilitado</option>
-        <option value="Suspendido 3 Dias" selected>Suspendido 3 Dias</option>
-        <option value="Inhabilitado">Inhabilitado</option>
-      </select>
-      <input type="checkbox" className='cb_confirm_changes'/>
+      <PhotoAdmin photoData={photoData}/>
+      <p className='ellipsis fieldSize20'>{apellidos}</p>
+      <p className='ellipsis fieldSize20'> {nombres}</p>
+      <p className='ellipsis fieldSize17'>{correo}</p>
+      <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
+      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
+      <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
     </div>
   )
 }
