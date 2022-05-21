@@ -9,7 +9,7 @@ export const SerchEngine = () => {
 
     const search =  (e) => {
         e.preventDefault()
-        navigate(`/search/q/${valueSearch}`)
+        navigate(`/service/search?n=${valueSearch.split(' ').join('-')}`)
     }
     return (
         <div className="serch_engine">

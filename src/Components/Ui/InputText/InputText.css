@@ -7,4 +7,17 @@
     background: #f9f9f9;
     font-family: var(--font-1);
     font-size: 18px;
+    transition: 500ms ease;
+}
+
+.input_not_validate {
+    background: #ffebeb;
+    outline: 2px solid #ac2828;
+    color: #ac2828;
+}
+
+.input_message_error {
+    margin: 7px 0 0 0;
+    font-family: var(--font-1);
+    color: #a10f0f;
 }

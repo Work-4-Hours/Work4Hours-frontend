@@ -14,14 +14,11 @@ import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
-
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 
-
-
 export const AllRoutes = () => {
-  
+
   return (
     <UserProvider>
       <BrowserRouter>
@@ -39,8 +36,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path='/claim' element={<Claim />} />
           <Route path='/chat' element={<Chat />} />
-          <Route path='/search/q/:question' element={<SearchService />} />
-          
+          <Route path='/service/:query' element={<SearchService />} />
           <Route path='*' element={<h1>Not found</h1>} />
 
         </Routes>
