@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState,useContext } from 'react'
-import { UserContext } from 'Context/UserContext';
 export const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
