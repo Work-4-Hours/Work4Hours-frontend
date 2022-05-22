@@ -25,20 +25,20 @@ export const AllRoutes = () => {
         <Routes>
           <Route path='/' element={<Index />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/registry' element={<Registry />} />
+          <Route path='/service/:query' element={<SearchService />} />
+
+          <Route path='/profile' element={ <IsAuth> <Profile /> </IsAuth>} />
           <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
-          <Route path='/service/add' element={<AddService />} />
-          <Route path='/service/edit' element={<EditService />} />
-          <Route path='/dashboard/*' element={<Dashboard />} >
-          <Route path='publications' element={<Publications />} />
+          <Route path='/service/add' element={ <IsAuth> <AddService /> </IsAuth>} />
+          <Route path='/service/edit' element={ <IsAuth> <EditService /> </IsAuth>} />
+          <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
+          <Route path='publications' element={ <Publications />} />
           <Route path='saved' element={<Saved />} />
           </Route>
-          <Route path='/claim' element={<Claim />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/service/:query' element={<SearchService />} />
+          <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
+          <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
           <Route path='*' element={<h1>Not found</h1>} />
-
         </Routes>
       </BrowserRouter>
     </UserProvider>

@@ -11,10 +11,11 @@ import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { UserContext } from 'Context/UserContext';
+import { AdminContext } from 'Context/AdminContext';
 
 
 export const Users = () => {
-  const { admin, logoutAdmin, getToken } = useContext(UserContext)
+  const { admin, logoutAdmin, getToken } = useContext(AdminContext)
   console.log(admin)
   const [usersData,setUsersData]=useState([]);
   const [stateData,setStateData]=useState([]);

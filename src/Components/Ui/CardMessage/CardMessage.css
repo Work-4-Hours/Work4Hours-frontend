@@ -15,6 +15,7 @@
 .message_card {
     font-family: var(--font-1);
     font-size: 17px;
+    overflow-wrap: break-word;  
 }
 
 .date_card {
