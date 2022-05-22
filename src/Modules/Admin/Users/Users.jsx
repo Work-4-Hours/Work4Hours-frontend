@@ -1,6 +1,4 @@
 import React, { useEffect, useState,useContext } from 'react';
-import './Users.css';
-
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
@@ -13,6 +11,7 @@ import { GetAdmin } from 'Functions/ReusableFunctions';
 import { UserContext } from 'Context/UserContext';
 import { AdminContext } from 'Context/AdminContext';
 
+import './Users.css';
 
 export const Users = () => {
   const { admin, logoutAdmin, getToken } = useContext(AdminContext)
