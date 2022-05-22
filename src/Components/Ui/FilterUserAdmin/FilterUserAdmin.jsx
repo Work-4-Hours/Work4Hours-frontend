@@ -20,26 +20,26 @@ export const FilterUserAdmin = ({setIdFilter}) => {
           <div className='typ_report'>
             <label>
               Tipos de suspensión
-              <input type="radio" value="1" name ="opcion1"/>
             </label>
+            <input type="radio" value="1" name ="opcion1"/>
           </div>
-          <div>
+          <div className='typ_report'>
             <label>
               Reportes
-              <input type="radio" value="2" name ="opcion1"/>
             </label>
+            <input type="radio" value="2" name ="opcion1"/>
           </div>
-          <div>
+          <div className='typ_report'>
             <label>
               Correo
-              <input type="radio" value="3" name ="opcion1"/>
             </label>
+            <input type="radio" value="3" name ="opcion1"/>
           </div>
-          <div>
+          <div className='typ_report'>
             <label>
               Nombres y Apellidos
-              <input type="radio" value="4" name ="opcion1"/>
             </label>
+            <input type="radio" value="4" name ="opcion1"/>
           </div>
         </div>
       </PopUp>
