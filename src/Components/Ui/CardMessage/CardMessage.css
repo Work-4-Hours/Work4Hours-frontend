@@ -6,22 +6,23 @@
     max-width: 500px;
     border-radius: 5px;
     padding: 15px;
+    overflow-wrap: break-word;
 
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }
 
 .message_card {
     font-family: var(--font-1);
     font-size: 17px;
     overflow-wrap: break-word;  
+    margin-bottom: 5px;
 }
 
 .date_card {
     font-size: 11px;
     font-family: var(--font-1);
 }
+
+/*No olvidar colocar la fecha alineada al mensaje derecha o izquierda y cambiar el formato*/
 
 /* Location card */
 
@@ -32,7 +33,7 @@
 
 .in > .card_message {
     background: var(--bg-blue);
-    align-items: flex-end;
+    align-items:flex-end;
     color: #FFFF;
 }
 
