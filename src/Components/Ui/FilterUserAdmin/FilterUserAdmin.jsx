@@ -20,39 +20,27 @@ export const FilterUserAdmin = ({setIdFilter}) => {
           <div className='typ_report'>
             <label>
               Tipos de suspensión
-              <input type="radio" value="1" />
+              <input type="radio" value="1" name ="opcion1"/>
             </label>
           </div>
           <div>
             <label>
               Reportes
-              <input type="radio" value="2" />
+              <input type="radio" value="2" name ="opcion1"/>
             </label>
           </div>
           <div>
             <label>
               Correo
-              <input type="radio" value="3" />
+              <input type="radio" value="3" name ="opcion1"/>
             </label>
           </div>
           <div>
             <label>
               Nombres y Apellidos
-              <input type="radio" value="4" />
+              <input type="radio" value="4" name ="opcion1"/>
             </label>
           </div>
-          {/* <div className="typ_report">
-            <p>Tipos de suspensión</p><CheckBoxFilterAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"} id={1} />
-          </div>
-          <div className="typ_report ">
-            <p>Reportes</p><CheckBoxFilterAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"} id={2} />
-          </div>
-          <div className="typ_report ">
-            <p>Correo</p><CheckBoxFilterAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"} id={3} />
-          </div>
-          <div className="typ_report ">
-            <p>Nombres y Apellidos</p><CheckBoxFilterAdmin designCheckBoxAdmin={"span_confirm_changes span_filter"} id={4} />
-          </div> */}
         </div>
       </PopUp>
     </div>
