@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 
-export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, styleObjects, listUsersSelect }) => {
+export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, styleObjects, listUsersSelect, sendNotification }) => {
     const [isOpen, setIsOpen] = useState(false);
     
 
@@ -20,6 +20,10 @@ export const PopupConfirmChanges = ({ nameTitle, valueButton, objectContent, sty
             })
             .catch(e => {
                 console.log(e);
+            })
+            listUsersSelect.map(item=>{
+                sendNotification(item.idUsuario, "hola mundo","Alertas", "#000", "")
+                console.log(item.idUsuario)
             })
         }
         setIsOpen(false);
