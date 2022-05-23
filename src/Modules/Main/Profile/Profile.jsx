@@ -4,12 +4,39 @@ import { CardService } from 'Components/Ui/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
 import { ReactComponent as IconEmail } from 'Assets/Icons/IconEmail.svg'
-import React from 'react'
-
-import './Profile.css'
+import React, { useContext, useEffect, useState } from 'react'
+import { UserContext } from 'Context/UserContext'
 import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUser'
 
+import './Profile.css'
+import { Link } from 'react-router-dom'
+import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
+
 export const Profile = () => {
+
+    const { isAuth, getJwt } = useContext(UserContext)
+    const [services, setServices] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(()=> {
+        const XD = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}/getUserServices/${37}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JSW ${getJwt()}`
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                setServices(response);
+            })
+            .finally(() => setLoading(false))
+        }
+
+        XD()
+
+    },[])
 
     const info_user = {
         profile: {
@@ -34,7 +61,9 @@ export const Profile = () => {
 
     const profileU = info_user.profile
     const servicesU = info_user.services
-
+    const formatName = (name)=> {
+        return  name.split(' ').join('-').toLowerCase()
+    }      
     return (
         <>
             <Header />
@@ -77,16 +106,18 @@ export const Profile = () => {
                             <div className="padding_publications_profile">
                                 <h1 className='subtilte_publications_user'>Publicaciones</h1>
                                 <div className="publications_user_profile">
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
-                                    <CardService info={servicesU[0]} />
+
+                                {
+                                    loading ?   
+                                    <>
+                                        <LoadingCard/>
+                                        <LoadingCard/>
+                                    </>                          
+                                    :
+                                    
+                                    services?.map((item, index) =>  <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
+                                }   
+
                                 </div>
                             </div>
                         </DivShadow>

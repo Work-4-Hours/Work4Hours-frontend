@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { Title } from 'Components/StyleComponets/Titlte'
@@ -8,11 +8,34 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
+import { UserContext } from 'Context/UserContext'
 
 import './EditService.css'
 
 export const EditService = () => {
 
+    const { getJwt } = useContext(UserContext)
+    
+    const updateService = async () => {
+        fetch(`${process.env.REACT_APP_API}/updateService`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Authorization':`Bearer ${getJwt()}`
+            },
+            body: JSON.stringify({
+                
+            })
+        
+        })
+        .then(response => response.json())
+        .then(user => {
+           console.log(user);
+        })
+        .finally()
+    }
+    
     const optionsl = [
         {
             id: 1,

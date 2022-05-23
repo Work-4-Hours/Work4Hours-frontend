@@ -15,6 +15,7 @@ export const Index = () => {
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
 
+
     useEffect(()=> {
         const get = async () => {
             setLoading(true)
@@ -32,6 +33,7 @@ export const Index = () => {
             .finally(() => setLoading(false))
         }
 
+        
         get()
     },[])
 
