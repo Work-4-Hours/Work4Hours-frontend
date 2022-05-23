@@ -10,16 +10,14 @@ import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import { GetAdmin } from 'Functions/ReusableFunctions';
-import { UserContext } from 'Context/UserContext';
 import { AdminContext } from 'Context/AdminContext';
-
 
 export const Users = () => {
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
-  console.log(admin)
   const [usersData,setUsersData]=useState([]);
   const [stateData,setStateData]=useState([]);
   const [idFilter, setIdFilter] = useState('');
+
 
   const dataUsers = GetAdmin('Users');
   const dataState= GetAdmin('State');
@@ -39,7 +37,7 @@ export const Users = () => {
   const [listUsersSelect, setListUserSelect]=useState([]);
   const [searchUsersWord,setSearchUsersWord]=useState([]);
   const [validateSearchUserWord,setValidateSearchUserWord]=useState(true);
-  console.log(listUsersSelect)
+
   useEffect(()=>{
     if(searchUsersWord.length>0){
       setUsersData(searchUsersWord)
@@ -73,7 +71,7 @@ export const Users = () => {
           :
           <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>}
 
-        <PopupConfirmChanges sendNotification={sendNotification} listUsersSelect={listUsersSelect} objectContent={
+        <PopupConfirmChanges infoAdmin={admin} token={getToken()} sendNotification={sendNotification} listUsersSelect={listUsersSelect} objectContent={
           listUsersSelect.map(item=>
         <ObjectStatus userSelect={item} deleteUserSelect={deleteUserSelect} key={item.idUsuario}/> )} nameTitle={"Esta seguro de querer actualizar el estado de: "} valueButton={"Actualizar"}  styleObjects={"popup_confirm_changes_content_objects_users"}/>
       </div>
