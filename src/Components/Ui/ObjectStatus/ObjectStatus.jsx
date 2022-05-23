@@ -7,7 +7,7 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 export const ObjectStatus = ({userSelect, deleteUserSelect}) => {
   const {idEstado,email,idUsuario, fotoUser, nombres, color}=userSelect;
   const photoData={name:nombres, color:color, userPicture:fotoUser};
-  console.log(userSelect)
+ 
   
   return (
     <div className='object_status'>

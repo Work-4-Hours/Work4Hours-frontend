@@ -13,39 +13,37 @@ export const PopupConfirmChanges = ({ infoAdmin, token, nameTitle, valueButton, 
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
     const API = process.env.REACT_APP_API;
+    
 
  
     const sendUsers = (e) =>{
         e.preventDefault();
-
-        axios.post(`${API}/allowChanges/${infoAdmin.info[0].email}/${passwordAdmin}`,{
-            headers:{
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*',
-            'authorization':token
+        if(passwordAdmin!==""){
+            fetch(`${API}/allowChanges/${infoAdmin.info[0].email}/${passwordAdmin}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': `JSW ${token}`
+                }
+            })
+            .then(response => {
+                console.log(response.ok)
+                if(response.ok===true && listUsersSelect.length != 0){
+                    axios.put(`https://localhost:44342/api/Users`, listUsersSelect)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+                    listUsersSelect.map(item=>{
+                        sendNotification(item.idUsuario, "hola mundo","Alertas", "#000", "")
+                    })
+                    
+                }
+            })    
+            .catch(error => console.log(error))
         }
-        })
-        .then(response=>{
-        console.log(response);
-
-        })
-        .catch(error=>
-        console.log(error)
-        );
-
-        // if(listUsersSelect.length != 0){
-        //     axios.put(`https://localhost:44342/api/Users`, listUsersSelect)
-        //     .then(response => {
-        //         console.log(response)
-        //     })
-        //     .catch(e => {
-        //         console.log(e);
-        //     })
-        //     listUsersSelect.map(item=>{
-        //         sendNotification(item.idUsuario, "hola mundo","Alertas", "#000", "")
-        //         console.log(item.idUsuario)
-        //     })
-        // }
         setIsOpen(false);
     }
 
@@ -58,7 +56,7 @@ export const PopupConfirmChanges = ({ infoAdmin, token, nameTitle, valueButton, 
                         <PopupTitleAdmin title={nameTitle} />
                         <PopupConfirmChangesContentObjects content={objectContent} object={styleObjects} />
                         <form onSubmit={(e)=>{sendUsers(e)}}>
-                            <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} />
+                            <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} required/>
                             <div className='btns_save_changes_admin'>
                                 <div className='btns_save_changes_admin_spacing'>
                                     <Button value="Cancelar" className="button btn_change_color_gray" onClick={event => setIsOpen(!isOpen)} />
