@@ -72,12 +72,30 @@ export const Users = () => {
     filter: <FilterUserAdmin setIdFilter={setIdFilter} />
   }
 
+  const dataDashboarHeader = {
+    columWidth1:'fieldSize3 ', 
+    columWidth2:'fieldSize20 ',
+    columWidth3:'fieldSize20 ',
+    columWidth4:'fieldSize17 ',
+    columWidth5:'fieldSize8 ',
+    columWidth6:'fieldSize13 ', 
+    columWidth7:'fieldSize8 ',
+    columText1:"Perfil",
+    columText2:"Apellidos",
+    columText3:"Nombres",
+    columText4:"Correo",
+    columText5:"Reportes",
+    columText6:"Estado Usuario",
+    columText7:"Conf. cambios",
+    colorTituleReport:" "
+  }
+
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
       <Search dataSearch={dataSearch} />
-        <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
+      <DashboardHeader dataDashboarHeader={dataDashboarHeader}/>
         {validateSearchUserWord ? 
           <Dashboard componetContent={
             usersData?.map(item=>
