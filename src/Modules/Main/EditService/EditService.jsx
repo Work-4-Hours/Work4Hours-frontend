@@ -88,7 +88,7 @@ export const EditService = () => {
                                     options={[{id: 'O', name: "Oferta" }, {id: 'D', name: "Demanda" }]}                          
                                     onChange={e => {setType(e.target.value)}}                              
                                 />
-                                <InputCheckbox name='Habilitar servicio'/>
+                                <InputCheckbox name='Habilitar servicio' onClick={e => console.log(e.target.value, '')}/>
                             </form>
                         </div>
                         <div className="flex_button_register_service">

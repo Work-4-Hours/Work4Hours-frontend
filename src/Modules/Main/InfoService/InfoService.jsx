@@ -15,7 +15,7 @@ import './InfoService.css'
 export const InfoService = () => {
 
     const [params, setParams] = useSearchParams()
-    const { user } = useContext(UserContext)
+    const { user, getJwt } = useContext(UserContext)
     const [loading, setLoading] = useState(false)
     const [service, setService] = useState({})
     const [infoUser, setInfoUser] = useState({})
@@ -51,11 +51,32 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response.serviceInfo)
                     setInfoUser(response.serviceUser)   
+                    console.log(response);
 
                 })
                 .finally(() => setLoading(false))
         }
         get()
+
+        const XD = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}/allowChanges/test@gmail.com/321`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JSW ${getJwt()}`
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    setService(response.serviceInfo)
+                    setInfoUser(response.serviceUser)   
+                    console.log(response);
+
+                })
+                .finally(() => setLoading(false))
+        }
+        XD()
     }, [])
     
     return (
