@@ -1,5 +1,5 @@
 import React from 'react'
-import 'Components/Ui/CardUser/CardUser.css'
+import 'Components/Ui/Cards/CardUser/CardUser.css'
 import './LoadingCardUser.css'
 
 export const LoadingCardUser = () => {

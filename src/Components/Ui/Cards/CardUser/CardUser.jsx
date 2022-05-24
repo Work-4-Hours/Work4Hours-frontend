@@ -1,5 +1,5 @@
 import React from 'react'
-import { PhotoUserProfile } from '../PhotoUserProfile/PhotoUserProfile'
+import { PhotoUserProfile } from '../../PhotoUserProfile/PhotoUserProfile'
 import './CardUser.css'
 
 export const CardUser = ({ infoUser, ...props }) => {

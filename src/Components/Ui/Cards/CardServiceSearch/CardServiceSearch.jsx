@@ -1,5 +1,5 @@
 import React from 'react'
-import { CalificationUser } from '../CalificationUser/CalificationUser'
+import { CalificationUser } from '../../CalificationUser/CalificationUser'
 
 import './CardServiceSearch.css'
 

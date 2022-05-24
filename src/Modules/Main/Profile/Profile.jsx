@@ -1,27 +1,29 @@
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import { CardService } from 'Components/Ui/CardService/CardService'
+import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
 import { ReactComponent as IconEmail } from 'Assets/Icons/IconEmail.svg'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { UserContext } from 'Context/UserContext'
 import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUser'
 
 import './Profile.css'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
 
 export const Profile = () => {
 
-    const { isAuth, getJwt } = useContext(UserContext)
+    const { user,isAuth, getJwt } = useContext(UserContext)
     const [services, setServices] = useState([])
+    const [profileU, setProfileU] = useState([])
     const [loading, setLoading] = useState(false)
+    const [params, setParams] = useSearchParams()
 
     useEffect(()=> {
-        const XD = async () => {
+        const getInfo = async () => {
             setLoading(true)
-            fetch(`${process.env.REACT_APP_API}/getUserServices/${37}`, {
+            fetch(`${process.env.REACT_APP_API}/getUserServices/${params.get('id')}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JSW ${getJwt()}`
@@ -29,41 +31,28 @@ export const Profile = () => {
             })
             .then(response => response.json())
             .then(response => {
-                setServices(response);
+                setServices(response[0]);
+                setProfileU(response[1]);
             })
             .finally(() => setLoading(false))
+
+            console.log(user.info[0]);
         }
 
-        XD()
+        getInfo()
 
     },[])
 
-    const info_user = {
-        profile: {
-            color: "#2736bb",
-            imageprofile: "",
-            name: "Carlos Alverto",
-            email: "carlos@gmail.com",
-            phone: "3166529009",
-            calification: 30
-        },
-        
-        services: [
-            {
-                price: "200.000",
-                image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-                city: "Armenia",
-                departament: "Quindio",
-                title: "Pinto casas a domicilio Lorem"
-            }
-        ]
+    const formatName = (name)=> {
+        return name.split(' ').join('-').toLowerCase()
+    }      
+
+    const inputRef = useRef(null)
+
+    const onFocus = () => {
+        inputRef.current.focus()
     }
 
-    const profileU = info_user.profile
-    const servicesU = info_user.services
-    const formatName = (name)=> {
-        return  name.split(' ').join('-').toLowerCase()
-    }      
     return (
         <>
             <Header />
@@ -74,10 +63,10 @@ export const Profile = () => {
                         <div className="sticky_informacion_user">
                             <DivShadow>
                                 <header className='photo_user_profile'>
-                                    <PhotoUserProfile infoProfile={profileU} style='medium_profile' small={false}/>
+                                    <PhotoUserProfile infoProfile={{name: profileU.name, color: profileU.color, userPicture: profileU.photo}} style='medium_profile' small={false}/>
                                 </header>
                                 <section className='info_user_profile'>
-                                    <p className='name_user_profile'>{profileU.name}</p>
+                                    <p className='name_user_profile'>{profileU.name} {profileU.lastName}</p>
                                     <p className='subtitle_user_profile'>Informacion</p>
                                     <div className="user_data_profile">
                                         <IconEmail className='icon_email' />
@@ -85,7 +74,7 @@ export const Profile = () => {
                                     </div>
                                     <div className="user_data_profile">
                                         <IconPhone className='icon_phone' />
-                                        <p className="phone_user_profile">{profileU.phone}</p>
+                                        <p className="phone_user_profile">{profileU.phoneNumber}</p>
                                     </div>
                                 </section>
                             </DivShadow>
@@ -120,6 +109,8 @@ export const Profile = () => {
 
                                 </div>
                             </div>
+
+
                         </DivShadow>
                     </section>
                 </div>

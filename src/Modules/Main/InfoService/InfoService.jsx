@@ -50,13 +50,14 @@ export const InfoService = () => {
                 .then(response => response.json())
                 .then(response => {
                     setService(response.serviceInfo)
-                    setInfoUser(response.serviceUser)
+                    setInfoUser(response.serviceUser)   
+
                 })
                 .finally(() => setLoading(false))
         }
         get()
     }, [])
-
+    
     return (
         <>
             <Header />
@@ -77,8 +78,8 @@ export const InfoService = () => {
                             <div className="padding_info_service">
                                 <header className="header_info_service">
                                     <div className="user_profile">
-                                        <Link to='/profile'>
-                                            <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
+                                        <Link to={`/profile/user?id=${27}`}>
+                                            <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser.photo }} style='small_profile' small={true} />
                                         </Link>
                                         <p className='name_user_info_service'>{infoUser?.name}</p>
                                     </div>
@@ -110,7 +111,7 @@ export const InfoService = () => {
                                     <h1 className='title_name_service'>{service.name}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
-                                        <p className='location_name'>{service.city_name} {service.department_name}</p>
+                                        <p className='location_name'>{service.city_name} • {service.department_name}</p>
                                     </div>
                                 </div>
 

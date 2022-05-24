@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Header } from "Components/Layout/Header/Header";
 import { DivShadow } from "Components/StyleComponets/DivShadow";
 import { Title } from "Components/StyleComponets/Titlte";
-import { CardUser } from "Components/Ui/CardUser/CardUser";
+import { CardUser } from "Components/Ui/Cards/CardUser/CardUser";
 import { PhotoUserProfile } from "Components/Ui/PhotoUserProfile/PhotoUserProfile";
-import { CardMessage } from "Components/Ui/CardMessage/CardMessage";
+import { CardMessage } from "Components/Ui/Cards/CardMessage/CardMessage";
 import { ButtonSend } from "Components/Ui/ButtonSend/ButtonSend";
 import { InputText } from "Components/Ui/InputText/InputText";
 import { useChat } from "CustomHooks/useChat";
 import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
-
-import './Chat.css';
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 
+import './Chat.css';
+    
 export const Chat = () => {
 
     const chatRef = useRef()
@@ -81,7 +81,6 @@ export const Chat = () => {
 
                         </div>
                     </DivShadow>
-
                     {
                         currentChat ?
                             <DivShadow className='main_messages'>

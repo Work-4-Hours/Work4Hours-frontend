@@ -19,6 +19,9 @@
   color: #FFFF;
   font-size: 17px;
   font-family: var(--font-1);
+  
+  display: flex;
+  justify-content: center;
 }
 
 .button,

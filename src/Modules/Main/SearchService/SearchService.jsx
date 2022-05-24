@@ -4,7 +4,7 @@ import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { useParams } from 'react-router'
 import { Title } from 'Components/StyleComponets/Titlte'
 import { Header } from 'Components/Layout/Header/Header'
-import { CardServiceSearch } from 'Components/Ui/CardServiceSearch/CardServiceSearch'
+import { CardServiceSearch } from 'Components/Ui/Cards/CardServiceSearch/CardServiceSearch'
 
 import './SearchService.css'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'

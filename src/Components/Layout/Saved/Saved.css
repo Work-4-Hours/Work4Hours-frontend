@@ -56,7 +56,7 @@
 }
 
 .price_service_table {
-    font-family: var(--font-2);
+    font-family: var(--font-1);
     color: var(--gray-text-3);
     font-size: 19px;
 }
@@ -70,12 +70,11 @@
 }
 
 .icon_danger_table {
-    width: 30px;
+    width: 18px;
 }
 
 .icon_checked_table {
-    width: 30px;
-
+    width: 18px;
 }
 
 .value_report {

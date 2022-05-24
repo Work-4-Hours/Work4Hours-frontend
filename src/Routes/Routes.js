@@ -28,13 +28,13 @@ export const AllRoutes = () => {
           <Route path='/registry' element={<Registry />} />
           <Route path='/service/:query' element={<SearchService />} />
 
-          <Route path='/profile' element={ <IsAuth> <Profile /> </IsAuth>} />
+          <Route path='/profile/:query' element={ <IsAuth> <Profile /> </IsAuth>} />
           <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
           <Route path='/service/add' element={ <IsAuth> <AddService /> </IsAuth>} />
           <Route path='/service/edit' element={ <IsAuth> <EditService /> </IsAuth>} />
           <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
-          <Route path='publications' element={ <Publications />} />
-          <Route path='saved' element={<Saved />} />
+            <Route path='publications' element={ <Publications />} />
+            <Route path='saved' element={<Saved />} />
           </Route>
           <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
           <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
