@@ -64,11 +64,19 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray"
   }
 
+  const dataSearch = {
+    nameSearch: "Buscar Usuarios",
+    wordSearchSet: setSearchUsersWord,
+    setValidateSearchUserWord: setValidateSearchUserWord,
+    idFilter: idFilter,
+    filter: <FilterUserAdmin setIdFilter={setIdFilter} />
+  }
+
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-        <Search nameSearch={"Buscar Usuarios"} wordSearchSet={setSearchUsersWord} setValidateSearchUserWord={setValidateSearchUserWord} idFilter={idFilter} filter={<FilterUserAdmin setIdFilter = {setIdFilter}/>}/>
+      <Search dataSearch={dataSearch} />
         <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
         {validateSearchUserWord ? 
           <Dashboard componetContent={
