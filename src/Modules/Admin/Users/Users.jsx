@@ -61,7 +61,8 @@ export const Users = () => {
     logout: logoutAdmin,
     nameAdmin: "Usuarios",
     buttonActivated: " ",
-    buttonDeactivated: " btn_change_color_gray"
+    buttonDeactivated: " btn_change_color_gray",
+
   }
 
   const dataSearch = {
