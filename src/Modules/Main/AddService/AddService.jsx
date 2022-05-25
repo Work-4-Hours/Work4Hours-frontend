@@ -33,20 +33,19 @@ export const AddService = () => {
     const createService = async () => {
         setLoadingCreate(true)
         fetch(`${process.env.REACT_APP_API}/serviceRegistry`, {
-
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWS ${getJwt()}`
             },
             body: JSON.stringify({
-                category: 'C01',
+                categories: 'C01',
                 name: name,
-                status: status,
+                statuses: status,
                 type: type,
                 price: parseInt(price),
                 description: description,
-                photo: data,
+                photo: '',
                 user: parseInt(jwt_decode(getJwt()).id)
             })
 
@@ -57,6 +56,10 @@ export const AddService = () => {
             })
             .finally(setLoadingCreate(false))
     }
+
+    useEffect(() => {
+        console.log(data);
+    },[loading])
 
     return (
         <>
@@ -80,7 +83,7 @@ export const AddService = () => {
                             <form action="" className='form_register_service'>
                                 <InputTextLabel titleLabel='Nombre del servicio' placeholder='Servicio' onChange={e => setName(e.target.value)} />
 
-                                <InputTextLabel titleLabel='Precio por hora' placeholder='' onChange={e => setPrice(e.target.value)} />
+                                <InputTextLabel titleLabel='Precio por hora' placeholder='Precio' onChange={e => setPrice(e.target.value)} />
 
                                 <InputTextLabel titleLabel='Descriptcion' placeholder='Lorem' onChange={e => setDescription(e.target.value)} />
 

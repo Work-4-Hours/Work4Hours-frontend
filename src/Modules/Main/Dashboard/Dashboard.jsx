@@ -23,7 +23,7 @@ export const Dashboard = () => {
                             <LinkOption link='publications' text='Publicados' />
                             <LinkOption link='saved' text='Borradores' />
                             <div className="padding_button_service_add"> 
-                                <Link to='/service/add'><Button value='Agregar servicio' /></Link>
+                                <Link className='link_add_service' to='/service/add'><Button value='Agregar servicio' /></Link>
                             </div>
                         </DivShadow>
                     </div>

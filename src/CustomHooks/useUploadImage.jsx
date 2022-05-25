@@ -12,7 +12,7 @@ export const useUploadImage = () => {
         const form_data = new FormData()
         form_data.append('upload_preset', 'kd1kvjbg')
         form_data.append('file', file)
-        Axios.post(
+        fetch(
             'https://api.cloudinary.com/v1_1/sena-quindio/image/upload', 
             form_data
         ).then(response => setData(response.data.url))

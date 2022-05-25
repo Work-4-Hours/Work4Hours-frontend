@@ -40,3 +40,7 @@
     flex-direction: column;
     padding: 10px 20px 20px 20px;
 }
+
+.link_add_service {
+    text-decoration: none;
+}

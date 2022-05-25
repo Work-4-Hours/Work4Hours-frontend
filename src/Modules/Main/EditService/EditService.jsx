@@ -62,7 +62,7 @@ export const EditService = () => {
             <Header/>
             <main className='main_add_service'>
                 <div className="center_main_add_service">
-                    <DivShadow className='image_add'>
+                    <DivShadow className='_image_add'>
                     {/* <img src={service.photo} alt="" /> */}
                         <input type="file" name="" id="input_file_image" />
                         <label htmlFor="input_file_image">

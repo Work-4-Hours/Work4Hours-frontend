@@ -16,9 +16,11 @@ export const InfoService = () => {
 
     const [params, setParams] = useSearchParams()
     const { user, getJwt } = useContext(UserContext)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(null)
     const [service, setService] = useState({})
     const [infoUser, setInfoUser] = useState({})
+    const [userId, setUserId] = useState(null)
+
     const [isOpen, setIsOpen] = useState(false)
 
     const createRoom = (serviceuser, idservice) => {
@@ -51,32 +53,13 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response.serviceInfo)
                     setInfoUser(response.serviceUser)   
-                    console.log(response);
+                   setUserId( jwt_decode(response.serviceInfo.user).userId);
 
                 })
                 .finally(() => setLoading(false))
         }
         get()
 
-        const XD = async () => {
-            setLoading(true)
-            fetch(`${process.env.REACT_APP_API}/allowChanges/test@gmail.com/321`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `JSW ${getJwt()}`
-                }
-            })
-                .then(response => response.json())
-                .then(response => {
-                    setService(response.serviceInfo)
-                    setInfoUser(response.serviceUser)   
-                    console.log(response);
-
-                })
-                .finally(() => setLoading(false))
-        }
-        XD()
     }, [])
     
     return (
@@ -90,7 +73,7 @@ export const InfoService = () => {
                                 Trabajos realizados por {infoUser?.name}
                             </div>
                             <div className="image_info_service">
-                                <img className='image_service' src={service.photo} alt="" />
+                                <img className='image_service' src={service?.photo} alt="" />
                             </div>
                         </DivShadow>
                     </section>
@@ -99,9 +82,15 @@ export const InfoService = () => {
                             <div className="padding_info_service">
                                 <header className="header_info_service">
                                     <div className="user_profile">
-                                        <Link to={`/profile/user?id=${27}`}>
-                                            <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser.photo }} style='small_profile' small={true} />
-                                        </Link>
+                                        {
+                                            loading ?
+                                            <p>...</p> 
+                                            :   
+                          
+                                            <Link to={`/profile/user?id=${userId}`}>
+                                                <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
+                                            </Link>
+                                        }
                                         <p className='name_user_info_service'>{infoUser?.name}</p>
                                     </div>
 
