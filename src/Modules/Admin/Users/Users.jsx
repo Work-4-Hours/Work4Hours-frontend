@@ -12,7 +12,7 @@ import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { AdminContext } from 'Context/AdminContext';
 
-export const Users = () => {
+export const Users = ({adminOption,adminOptionSet}) => {
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
   const [usersData,setUsersData]=useState([]);
   const [stateData,setStateData]=useState([]);
@@ -62,7 +62,8 @@ export const Users = () => {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
     buttonDeactivated: " btn_change_color_gray",
-
+    optionAdmin:!adminOption,
+    setOptionAdmin:adminOptionSet
   }
 
   const dataSearch = {

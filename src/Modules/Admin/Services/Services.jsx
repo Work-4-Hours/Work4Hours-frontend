@@ -13,14 +13,22 @@ import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { GetAdmin } from 'Functions/ReusableFunctions';
 
 
-export const Services = () => {
-  const { data } = GetAdmin('Services');
-  const dataState= GetAdmin('State');
+export const Services = ({adminOption,adminOptionSet}) => {
+  // const { data } = GetAdmin('Services');
+  // const dataState= GetAdmin('State');
+
+  const dataMenuAdmin = {
+    nameAdmin: "Servicios",
+    buttonActivated: "btn_change_color_gray",
+    buttonDeactivated: " ",
+    optionAdmin:!adminOption,
+    setOptionAdmin:adminOptionSet
+  }
   
   return (
     <div className='container_admin'>
-      <MenuAdmin nameAdmin={"Servicios"} btnActive={"button btn_change_color_gray btn_with_admin"} btnInactive={"button btn_with_admin"}/>
-      <div className='manager_control'>
+      <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
+      {/* <div className='manager_control'>
         <Search nameSearch={"Buscar Servicios"} filter={<FilterServiceAdmin/>}/>
         <DashboardHeader space1={'fieldSize15 '} space2={'fieldSize15 '} space3={'fieldSize15 '} space4={'fieldSize15 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Servicio"} header2={"Usuario"} header3={"Descripción"} header4={"Apelación"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Seleccionar"} propsReport={"reportColor"}/>
         <Dashboard componetContent={ 
@@ -28,7 +36,7 @@ export const Services = () => {
             <ServiceInfo objectServiceInfo={item} objectAllStatus={dataState} key={item.idservicio}/>
           )}/>
         <PopupConfirmChanges nameTitle={"Esta seguro de querer eliminar: "} valueButton={"Eliminar"} objectContent={<ObjectDelete/>} styleObjects={"popup_confirm_changes_content_objects_services"}/>
-      </div>
+      </div> */}
     </div>
   )
 }
