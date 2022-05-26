@@ -45,7 +45,7 @@ export const Header = () => {
                                         <div className="padding_form_my_profile">
                                             <InputTextLabel titleLabel='Nombres' type='text' value={user?.info[0]?.name} />
                                             <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />
-                                            <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phone} />
+                                            <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phoneNumber} />
                                             <InputTextLabel titleLabel='Correo' type='email' value={user.info[0]?.email} />
                                             <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />
                                         </div>

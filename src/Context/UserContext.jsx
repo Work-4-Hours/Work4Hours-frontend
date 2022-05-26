@@ -22,6 +22,7 @@ export const UserProvider = ({ children }) => {
     const { 
         login, 
         logout, 
+        error,
         isLoading, 
         isAuth
     } = useLogin( user, setUser, removeUser, userConnection)
@@ -37,7 +38,7 @@ export const UserProvider = ({ children }) => {
         }
     }, [])
 
-    const data = { user, login, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications }
+    const data = { user, login, error, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications }
 
     return (
         <UserContext.Provider value={data}>

@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 export const useLogin = ( user, setUser, removeUser, userConnection ) => {
 
     const [isLoading, setIsLoading] = useState(null)
+    const [error, setError] = useState(false);
 
     const login = async (credencials) => {
         setIsLoading(true)
@@ -25,8 +26,12 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
             if (response.userInfo.token) {
                 setUser(response.userInfo)
                 userConnection(jwt_decode(response.userInfo.token).id)
+            } else if(!response.userInfo.exist) {
+                setError(true)
             }
-        }).finally(() => setIsLoading(false))
+        })
+        .catch(response => setError(true))
+        .finally(() => setIsLoading(false))
     }
 
     const isAuth = () => {
@@ -46,6 +51,7 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
     return {
         login,
         logout,
+        error,
         isLoading,
         isAuth
     }

@@ -33,6 +33,7 @@ export const Profile = () => {
             .then(response => {
                 setServices(response[0]);
                 setProfileU(response[1]);
+                console.log(response);
             })
             .finally(() => setLoading(false))
 

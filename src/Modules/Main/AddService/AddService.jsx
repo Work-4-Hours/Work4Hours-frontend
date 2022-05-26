@@ -19,6 +19,9 @@ import jwt_decode from 'jwt-decode'
 export const AddService = () => {
 
     const { loading, data, uploadImage } = useUploadImage();
+
+    const otrafoto = useUploadImage();
+    
     const { getJwt } = useContext(UserContext)
 
     const [loadingCreate, setLoadingCreate] = useState(null);
@@ -74,7 +77,8 @@ export const AddService = () => {
                 <div className="center_main_add_service">
 
                     <DivShadow className='image_add'>
-                        <input type="file" name="" id="input_file_image" onChange={e => uploadImage(e.target.files[0])} />
+                        <input type="file" onChange={e => {uploadImage(e.target.files[0])}}/>
+                        <input type="file" name="send_image" id="input_file_image" onChange={e  => { console.log(e.target)}} />
                         <label htmlFor="input_file_image">
                             <div className="drag_drop_image">
                                 <img className='icon_add_image' src={IconAddImage} alt="" />

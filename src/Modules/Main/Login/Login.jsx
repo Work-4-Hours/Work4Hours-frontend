@@ -6,17 +6,20 @@ import { Button } from 'Components/Ui/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
+import { ReactComponent as IconDanger } from 'Assets/Icons/IconDanger.svg'
 
 import './Login.css'
+import { TextError } from 'Components/StyleComponets/MessageError'
 
 export const Login = () => {
     const navigate = useNavigate()
-    const { login, isAuth, isLoading, user } = useContext(UserContext)
+    const { login, error, isAuth, isLoading, user } = useContext(UserContext)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
     const handleLogin = (e) => {
         e.preventDefault()
+
         login({ email: email, password: password })
     }
 
@@ -29,12 +32,13 @@ export const Login = () => {
 
             else if (jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) {
                 navigate('/AdminUsers')
-
                 window.location.reload()
             }
 
         }
     }, [isLoading])
+
+
 
     return (
         <main className='login'>
@@ -49,10 +53,13 @@ export const Login = () => {
                     <div className="padding_container_form_login">
                         <Title>Iniciar sesión</Title>
                         <form className='form_login' onSubmit={handleLogin}>
-                            <InputTextLabel titleLabel='Correo' placeholder='Correo' onChange={e => setEmail(e.target.value)} />
-                            <InputTextLabel titleLabel='Contraseña' placeholder='Contraseña' type='password' onChange={e => setPassword(e.target.value)} />
+                            <InputTextLabel titleLabel='Correo' placeholder='Correo' isValidate={!error} onChange={e => setEmail(e.target.value)} />
+                            <div>
+                                <InputTextLabel titleLabel='Contraseña' placeholder='Contraseña' isValidate={!error} type='password' onChange={e => setPassword(e.target.value)} />
+                                <TextError isError={!error}>{<IconDanger className='icon_danger' />} Credenciales incorrectas</TextError>
+                            </div>
                             <Link className='link_recover_password' to='/'>Recuperar contraseña</Link>
-                            <Button value='Ingresar' isLoading={isLoading} />
+                            <Button value='Ingresar'  isLoading={isLoading} />
                         </form>
 
                         <div className="info_register">

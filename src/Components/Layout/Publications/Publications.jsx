@@ -22,6 +22,8 @@ export const Publications = () => {
                     setServicesUser(response[0]);
                 })
                 .finally()
+
+                console.log(jwt_decode(getJwt()));
         }
 
         getInfo()
