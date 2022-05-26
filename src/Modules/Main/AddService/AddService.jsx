@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { Title } from 'Components/StyleComponets/Titlte'
@@ -22,6 +22,7 @@ export const AddService = () => {
     const { getJwt } = useContext(UserContext)
 
     const [loadingCreate, setLoadingCreate] = useState(null);
+
     const [name, setName] = useState(null);
     const [type, setType] = useState(null);
     const [photo, setPhoto] = useState(null);
@@ -29,6 +30,9 @@ export const AddService = () => {
     const [status, setStatus] = useState(null);
     const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
+
+
+    const imagePreview = useRef();
 
     const createService = async () => {
         setLoadingCreate(true)
@@ -57,9 +61,11 @@ export const AddService = () => {
             .finally(setLoadingCreate(false))
     }
 
-    useEffect(() => {
-        console.log(data);
-    },[loading])
+    const photoPreview = (file) => {
+        console.log('XD');
+        imagePreview.src = 'https://res.cloudinary.com/sena-quindio/image/upload/v1650504672/gob17e9gehwee4w3lcj8.png'
+    }
+
 
     return (
         <>
@@ -75,6 +81,7 @@ export const AddService = () => {
                                 <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
                             </div>
                         </label>
+                        <img ref={imagePreview} src="" alt="" />
                     </DivShadow>
 
                     <DivShadow className='form_add_service'>
@@ -83,7 +90,7 @@ export const AddService = () => {
                             <form action="" className='form_register_service'>
                                 <InputTextLabel titleLabel='Nombre del servicio' placeholder='Servicio' onChange={e => setName(e.target.value)} />
 
-                                <InputTextLabel titleLabel='Precio por hora' placeholder='Precio' onChange={e => setPrice(e.target.value)} />
+                                <InputTextLabel titleLabel='Precio por hora' type='number' placeholder='Precio' onChange={e => setPrice(e.target.value)} />
 
                                 <InputTextLabel titleLabel='Descriptcion' placeholder='Lorem' onChange={e => setDescription(e.target.value)} />
 
@@ -93,6 +100,7 @@ export const AddService = () => {
                                     options={[{ id: 'O', name: "Oferta" }, { id: 'D', name: "Demanda" }]}
                                     onChange={(e) => setType(e.target.value)}
                                 />
+
                                 <InputCheckbox name='Habilitar servicio' onChange={e => setStatus(e.target.checked ? '1' : '3')} />
                             </form>
                         </div>

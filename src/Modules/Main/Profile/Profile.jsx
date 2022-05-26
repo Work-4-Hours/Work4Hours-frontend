@@ -36,7 +36,6 @@ export const Profile = () => {
             })
             .finally(() => setLoading(false))
 
-            console.log(user.info[0]);
         }
 
         getInfo()
