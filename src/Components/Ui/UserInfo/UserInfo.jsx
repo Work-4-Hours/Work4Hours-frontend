@@ -8,13 +8,11 @@ import './UserInfo.css';
 
 export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
 
-  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
-
-  // const { data } = objectAllStatus;
+  const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
 
   const [idStatus, setIdStatus] = useState(0);
   const [changeStatus, setChangeStatus]=useState(false);
-  const photoData={name:nombres, color:color, userPicture:fotop};
+  const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
   const userSelectListSelectSetStatus =(statusChange, idUser, idStatus)=>{
 
@@ -33,7 +31,7 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
     <div className='user_info'>
       <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
-      <p className='ellipsis fieldSize20'> {nombres}</p>
+      <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
       <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
