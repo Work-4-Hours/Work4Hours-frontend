@@ -131,24 +131,14 @@
     cursor: pointer;
 }
 
-
 .step_number {
     border: 2px solid gray;
-    padding: 10px 15px;
+    padding: 10px 18px;
     border-radius: 50%;
     font-family: var(--font-1);
 }
 
-.line_step {
-    width: 100px;
-    height: 2px;
-    background: var(--bg-blue);
-    border-radius: 5px;
-}
 
-.steps_registry > .line_step:last-child {
-    display: none;
-}
 
 .current_step > .step_number {
     color: var(--bg-blue);
@@ -161,6 +151,35 @@
     /* font-size: 18px; */
 }
 
+.complete_step > .step_number {
+    color: green;
+    font-weight: 700;
+    border: 2px solid green;
+}
+
+.complete_step > .step_info {
+    color: green;
+}
+
+.steps_registry > .c_line_step:last-child {
+    display: none;
+}
+
 .step_info {
     font-family: var(--font-1);
+}
+
+.line_step {
+    width: 100px;
+    height: 2px;
+    background: gray;
+    border-radius: 5px;
+}
+
+.line_current > .line_step {
+    background: var(--bg-blue);
+}
+
+.line_complete > .line_step {
+    background: green;
 }

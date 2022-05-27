@@ -9,6 +9,7 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useField } from 'CustomHooks/useField'
 
 import './Registry.css'
+import { useFetch } from 'CustomHooks/useFetch'
 
 const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
@@ -22,13 +23,11 @@ export const Registry = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [disable, setDisable] = useState(true);
     
-    const [steps, setSteps] = useState([{ step: 1, current: true, info: 'Cuenta' }, { step: 2, current: false, info: 'Datos basicos' }, { step: 3, current: false, info: 'Perfil' }])
-    
-    // const [name, setName] = useState(null)
-    // const [surname, setSurname] = useState(null)
-    // const [phone, setPhone] = useState(null)
-    // const [birthdate, setBirthdate] = useState(null)
-    // const [city, setCity] = useState(null)
+    const [steps, setSteps] = useState([
+        { step: 1, current: true, complete: false, info: 'Cuenta' }, 
+        { step: 2, current: false, complete: false, info: 'Datos basicos' }, 
+        { step: 3, current: false, complete: false, info: 'Perfil' }
+    ])
 
     const email = useField({ type: 'email', validate: regex_email, message_errors: 'Correo incorrecto' })
     const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta, debe contener almenos un numero' })
@@ -36,17 +35,23 @@ export const Registry = () => {
     const name = useField({ type: 'text', validate: regex_password, message_errors: 'Nombres incorrectos' })
     const surname = useField({ type: 'text', validate: regex_password, message_errors: 'Apellidos incorrectos' })
     const phone = useField({ type: 'text', validate: regex_password, message_errors: 'Numero telefonico incorrecto' })
-    const birthday = useField({ type: 'date', })
-    const city = useField({})
 
+    const birthday = useField({ type: 'date', })
+    const [city, setCity] = useState(null)
+
+    const {data, isLoading, error} = useFetch('https://rickandmortyapi.com/api/character/?page=19')
     
+    useEffect(() => {
+        isLoading == false && console.log(data);
+    },[isLoading])
+
     const changeStep = (value) => {
         setCurrentStep(currentStep + 1)
         steps[value - 1].current = true
+        steps[value - 2].complete = true
     }
 
     const registry = async () => {
-        // e.preventDefault()
         setLoading(true)
         fetch(`${process.env.REACT_APP_API}/registry`, {
             method: 'POST',
@@ -55,13 +60,13 @@ export const Registry = () => {
                 'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
-                name: name,
-                lastName: surname,
-                phoneNumber: phone,
+                name: name.value,
+                lastName: surname.value,
+                phoneNumber: phone.value,
                 address: 'null',
-                email: email,
-                password: password,
-                birthDate: birthday,
+                email: email.value,
+                password: password.value,
+                birthDate: birthday.value,
                 picture: 'null',
                 city: parseInt(city),
                 color: '#831a1a'
@@ -125,6 +130,8 @@ export const Registry = () => {
 
                 <DivShadow className='container_form_registry'>
                     <div className="padding_form_register">
+
+                        
                         <header className='header_registry'>
                             <Title>Registro</Title>
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link>
@@ -134,13 +141,15 @@ export const Registry = () => {
                             {
                                 steps.map(item => (
                                     <>
-                                        <div className={`step ${item.current && 'current_step'}`} >
+                                        <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
                                             <div className='step_number'>
                                                 {item.step}
                                             </div>
                                             <p className='step_info'>{item.info}</p>
                                         </div>
-                                        <div className="line_step"></div>
+                                        <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
+                                            <div className={`line_step`}></div>
+                                        </div>
                                     </>
                                 ))
                             }
@@ -152,6 +161,7 @@ export const Registry = () => {
                                 currentStep == 1 && (
                                     <>
                                         <section className="acount_data">
+
                                             <InputTextLabel titleLabel='Email' {...email} placeholder='Correo' />
 
                                             <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
@@ -189,7 +199,7 @@ export const Registry = () => {
                                                 nameSelect='Ciudad'
                                                 options={cities}
                                                 disable={disable}
-                                                onChange={e => city.onChange(e.target.value)}
+                                                onChange={e => setCity(e.target.value)}
                                             />
 
                                         </section>

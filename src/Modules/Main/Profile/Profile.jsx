@@ -17,8 +17,9 @@ export const Profile = () => {
     const { user,isAuth, getJwt } = useContext(UserContext)
     const [services, setServices] = useState([])
     const [profileU, setProfileU] = useState([])
-    const [loading, setLoading] = useState(false)
     const [params, setParams] = useSearchParams()
+    const [loading, setLoading] = useState(false)
+    const [qualification, setQualification] = useState(null)
 
     useEffect(()=> {
         const getInfo = async () => {
@@ -33,6 +34,7 @@ export const Profile = () => {
             .then(response => {
                 setServices(response[0]);
                 setProfileU(response[1]);
+                setQualification(response[2]);
                 console.log(response);
             })
             .finally(() => setLoading(false))
@@ -82,8 +84,8 @@ export const Profile = () => {
                                 <div className="padding_calification_user_profile">
                                     <p className="subtitle_user_profile">Calificacion</p>
                                     <div className="calification_user_profile">
-                                        <CalificationUser value={profileU.calification}/>
-                                        <p className='value_calification_user'>{profileU.calification}%</p>
+                                        <CalificationUser value={qualification?.qualification}/>
+                                        <p className='value_calification_user'>{qualification?.qualification}%</p>
                                     </div>
                                 </div>
                             </DivShadow>

@@ -51,9 +51,10 @@ export const InfoService = () => {
             })
                 .then(response => response.json())
                 .then(response => {
-                    setService(response.serviceInfo)
-                    setInfoUser(response.serviceUser)   
-                   setUserId( jwt_decode(response.serviceInfo.user).userId);
+                    setService(response[0].serviceInfo)
+                    setInfoUser(response[0].serviceUser)
+                    console.log(jwt_decode(response.serviceInfo.user).userId);
+                    setUserId(jwt_decode(response.serviceInfo.user).userId)
 
                 })
                 .finally(() => setLoading(false))
@@ -61,7 +62,7 @@ export const InfoService = () => {
         get()
 
     }, [])
-    
+
     return (
         <>
             <Header />
@@ -84,12 +85,12 @@ export const InfoService = () => {
                                     <div className="user_profile">
                                         {
                                             loading ?
-                                            <p>...</p> 
-                                            :   
-                          
-                                            <Link to={`/profile/user?id=${userId}`}>
-                                                <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
-                                            </Link>
+                                                <p>...</p>
+                                                :
+
+                                                <Link to={`/profile/user?id=${userId}`}>
+                                                    <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
+                                                </Link>
                                         }
                                         <p className='name_user_info_service'>{infoUser?.name}</p>
                                     </div>
@@ -117,25 +118,25 @@ export const InfoService = () => {
 
 
                                 <div className="title_info_service">
-                                    <p className='tipe_info_service'>{service.type}</p>
-                                    <h1 className='title_name_service'>{service.name}</h1>
+                                    <p className='tipe_info_service'>{service?.type}</p>
+                                    <h1 className='title_name_service'>{service?.name}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
-                                        <p className='location_name'>{service.city_name} • {service.department_name}</p>
+                                        <p className='location_name'>{service?.city_name} • {service?.department_name}</p>
                                     </div>
                                 </div>
 
-                                <p className='price_info_service'>$ {service.price} por hora</p>
+                                <p className='price_info_service'>$ {service?.price} por hora</p>
 
                                 <div>
                                     <div className="description_info_service">
                                         <p className='subtitle_info_service'>Descripcion del servicio</p>
-                                        <p className='description_info_service'>{service.description}</p>
+                                        <p className='description_info_service'>{service?.description}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className='button_contact'>
-                                <Button style='button_big' value='Contactar' onClick={() => createRoom(service.user, service.id)} />
+                                <Button style='button_big' value='Contactar' onClick={() => createRoom(service?.user, service?.id)} />
                             </div>
                         </DivShadow>
 
