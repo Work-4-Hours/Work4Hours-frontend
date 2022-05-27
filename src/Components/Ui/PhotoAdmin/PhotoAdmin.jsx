@@ -9,7 +9,6 @@ export const PhotoAdmin = ({photoData}) => {
         let character = value.substring(1,0).toUpperCase()
         return character
     }
-    console.log(photoData.name);
 
   return (
     <div className='fieldSize3 center_img'> 
