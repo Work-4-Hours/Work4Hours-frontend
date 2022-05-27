@@ -29,7 +29,7 @@
 }
 
 .padding_container_form_login {
-    width: 350px;
+    width: 370px;
     padding: 40px;
 
     display: flex;
@@ -62,9 +62,6 @@
     color: var(--bg-blue);
 }
 
-
-.icon_danger {
-    width: 17px;
-    height: 17px;
+.icon_alert {
     fill: #ac2828;
 }

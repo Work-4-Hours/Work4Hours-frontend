@@ -6,5 +6,6 @@ export const TextError = styled.div`
     
     display: flex;
     align-items: center;    
-    display: ${props => props.isError ? 'none' : 'block'};
+    gap: 6px;
+    display: ${props => props.isError && 'none'};
 `;

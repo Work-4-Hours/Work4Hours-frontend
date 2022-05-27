@@ -33,10 +33,14 @@
 
 .container_form_registry {
     width: 600px;
+    transition: ease-in 1s;
 }
 
 .padding_form_register {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .header_registry {
@@ -61,11 +65,15 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    animation: var(--animation-show-slow) 200ms;
+    margin: 0 0 20px 0;
 }
+
 
 .acount_data {
     margin: 0 0 20px 0;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 30px;
 }
@@ -96,4 +104,63 @@
     color: #FFFF;
     width: 500px;
     font-family: var(--font-1);    
+}
+
+/* Steps */
+.steps_registry {
+    border-top: 1px solid rgba(0, 0, 0, 0.034);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all ease 5s;
+}
+
+.step:hover {
+    cursor: pointer;
+}
+
+
+.step_number {
+    border: 2px solid gray;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-family: var(--font-1);
+}
+
+.line_step {
+    width: 100px;
+    height: 2px;
+    background: var(--bg-blue);
+    border-radius: 5px;
+}
+
+.steps_registry > .line_step:last-child {
+    display: none;
+}
+
+.current_step > .step_number {
+    color: var(--bg-blue);
+    font-weight: 700;
+    border: 2px solid  var(--bg-blue);
+}
+
+.current_step > .step_info {
+    color: var(--bg-blue);
+    /* font-size: 18px; */
+}
+
+.step_info {
+    font-family: var(--font-1);
 }

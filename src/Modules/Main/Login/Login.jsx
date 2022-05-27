@@ -6,21 +6,24 @@ import { Button } from 'Components/Ui/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
-import { ReactComponent as IconDanger } from 'Assets/Icons/IconDanger.svg'
+import { ReactComponent as IconAlert } from 'Assets/Icons/IconAlert.svg'
 
 import './Login.css'
 import { TextError } from 'Components/StyleComponets/MessageError'
+import { ModalTest } from 'CustomHooks/useClickOutside'
+import { useField } from 'CustomHooks/useField'
 
 export const Login = () => {
+
     const navigate = useNavigate()
     const { login, error, isAuth, isLoading, user } = useContext(UserContext)
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
+
+    const email = useField({ type: 'email', message_errors: '' })
+    const password = useField({ type: 'password',  message_errors: '' })
 
     const handleLogin = (e) => {
         e.preventDefault()
-
-        login({ email: email, password: password })
+        password.isValidate && email.isValidate && login({ email: email.value, password: password.value })
     }
 
     useEffect(() => {
@@ -34,11 +37,8 @@ export const Login = () => {
                 navigate('/AdminUsers')
                 window.location.reload()
             }
-
         }
     }, [isLoading])
-
-
 
     return (
         <main className='login'>
@@ -53,13 +53,15 @@ export const Login = () => {
                     <div className="padding_container_form_login">
                         <Title>Iniciar sesión</Title>
                         <form className='form_login' onSubmit={handleLogin}>
-                            <InputTextLabel titleLabel='Correo' placeholder='Correo' isValidate={!error} onChange={e => setEmail(e.target.value)} />
+
+                            <InputTextLabel titleLabel='Correo' {...email} placeholder='Correo' />
+
                             <div>
-                                <InputTextLabel titleLabel='Contraseña' placeholder='Contraseña' isValidate={!error} type='password' onChange={e => setPassword(e.target.value)} />
-                                <TextError isError={!error}>{<IconDanger className='icon_danger' />} Credenciales incorrectas</TextError>
+                                <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
                             </div>
+                                <TextError isError={!error}>{<IconAlert className='icon_alert' />} Credenciales incorrectas</TextError>
                             <Link className='link_recover_password' to='/'>Recuperar contraseña</Link>
-                            <Button value='Ingresar'  isLoading={isLoading} />
+                            <Button value='Ingresar' isLoading={isLoading} />
                         </form>
 
                         <div className="info_register">
@@ -69,6 +71,7 @@ export const Login = () => {
                     </div>
                 </DivShadow>
             </div>
+
         </main>
     )
 }

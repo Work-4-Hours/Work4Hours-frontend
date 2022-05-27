@@ -29,6 +29,7 @@
 
   /* Borders */
   --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
+  
 
   /* Shadows */
   --gray-shadow-1: #9f9f9f33;
@@ -64,7 +65,11 @@
   --bg-dashboard-grey:#ebebeb;
   --font-1: 'Sora', sans-serif;
   --font-2: 'Alata';
+
+  /* Animations */
+  --animation-show-slow: show_slow;
 } 
+
 
 * {
   margin: 0;
@@ -185,3 +190,13 @@ code {
 
 }
 
+/* Keyframes */
+
+@keyframes show_slow {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
