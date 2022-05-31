@@ -60,7 +60,7 @@ export const Login = () => {
                                 <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
                             </div>
                                 <TextError isError={!error}>{<IconAlert className='icon_alert' />} Credenciales incorrectas</TextError>
-                            <Link className='link_recover_password' to='/'>Recuperar contraseña</Link>
+                            <Link className='link_recover_password' to='/password/forgotten'>Recuperar contraseña</Link>
                             <Button value='Ingresar' isLoading={isLoading} />
                         </form>
 

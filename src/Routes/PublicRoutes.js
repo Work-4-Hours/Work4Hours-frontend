@@ -7,6 +7,7 @@ import { UserProvider } from 'Context/UserContext'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 import { InfoService } from 'Modules/Main/InfoService/InfoService'
+import { ForgottenPassword } from 'Modules/Main/ForgottenPassword/ForgottenPassword'
 
 export const PublicRoutes = () => {
     return (
@@ -18,6 +19,7 @@ export const PublicRoutes = () => {
                     <Route path='/registry' element={<Registry />} />
                     <Route path='/service/:query' element={<SearchService />} />
                     <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
+                    <Route path='/password/forgotten' element={<ForgottenPassword />} />
                 </Routes>
             </BrowserRouter>
         </UserProvider>

@@ -53,8 +53,8 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
-                    console.log(jwt_decode(response.serviceInfo.user).userId);
-                    setUserId(jwt_decode(response.serviceInfo.user).userId)
+                    console.log(jwt_decode(response[0].serviceInfo.user).userId);
+                    setUserId(jwt_decode(response[0].serviceInfo.user).userId)
 
                 })
                 .finally(() => setLoading(false))
@@ -87,7 +87,6 @@ export const InfoService = () => {
                                             loading ?
                                                 <p>...</p>
                                                 :
-
                                                 <Link to={`/profile/user?id=${userId}`}>
                                                     <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
                                                 </Link>

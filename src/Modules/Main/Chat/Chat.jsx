@@ -37,7 +37,7 @@ export const Chat = () => {
             .then(response => response.json())
             .then(response => {
                 setChats(response)
-                // console.log(response);
+                console.log(response);
             }).finally(() => setIsLoading(false))
     }, [])
 

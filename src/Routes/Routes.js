@@ -16,6 +16,7 @@ import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
+import { ForgottenPassword } from 'Modules/Main/ForgottenPassword/ForgottenPassword'
 
 export const AllRoutes = () => {
 
@@ -27,6 +28,7 @@ export const AllRoutes = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/registry' element={<Registry />} />
           <Route path='/service/:query' element={<SearchService />} />
+          <Route path='/password/forgotten' element={<ForgottenPassword />} />
 
           <Route path='/profile/:query' element={ <IsAuth> <Profile /> </IsAuth>} />
           <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
