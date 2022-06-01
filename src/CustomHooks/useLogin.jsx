@@ -8,7 +8,7 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
 
     const login = async (credencials) => {
         setIsLoading(true)
-        fetch(`${process.env.REACT_APP_API}/login`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -16,5 +16,5 @@ export const useField = ({ type = 'text', validate = /^/, message_errors='Campo 
         }
     }
 
-    return {type, value, onChange, isValidate, message_error}
+    return {type, value, onChange, isValidate, message_error, setIsValidate, setMessageError}
 }

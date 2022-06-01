@@ -46,9 +46,9 @@ export const EditService = () => {
                 photo: service.photo,
                 price: parseInt(price),
                 category: 'C01',
-                description: description
+                description: description,
+                status: "1"
             })
-        
         })
         .then(response => response.json())
         .then(response => {

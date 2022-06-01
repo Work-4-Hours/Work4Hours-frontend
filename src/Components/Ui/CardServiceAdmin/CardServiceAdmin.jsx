@@ -20,7 +20,7 @@ export const CardServiceAdmin = ({ service = {} }) => {
     }
 
     const deleteService = () => {
-        fetch(`${process.env.REACT_APP_API}/deleteService/${service.id}`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/deleteService/${service.id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JSW ${getJwt()}`

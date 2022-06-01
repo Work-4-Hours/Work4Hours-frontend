@@ -14,7 +14,7 @@ import { Button } from "Components/Ui/Button/Button"
 
 export const Index = () => {
 
-    const { isLoading, data } = useFetch(`${process.env.REACT_APP_API}`)
+    const { isLoading, data } = useFetch(`${process.env.REACT_APP_API_PRODUCTION}`)
 
     const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()

@@ -11,7 +11,7 @@ export const Publications = () => {
     useEffect(() => {
         const getInfo = async () => {
 
-            fetch(`${process.env.REACT_APP_API}/getUserServices/${jwt_decode(getJwt()).userId}`, {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${jwt_decode(getJwt()).userId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JSW ${getJwt()}`
