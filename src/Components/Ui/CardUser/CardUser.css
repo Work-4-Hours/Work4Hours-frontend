@@ -3,6 +3,10 @@
     overflow: hidden;
 }
 
+.card_user:hover {
+    cursor: pointer;
+}
+
 .header_card_user {
     padding: 6px 10px;
     background: var(--bg-blue);

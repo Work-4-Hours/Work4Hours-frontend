@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { PopUp } from 'Components/StyleComponets/PopUp'
@@ -7,34 +7,55 @@ import { ReactComponent as IconFlag } from 'Assets/Icons/IconFlag.svg'
 import { ReactComponent as IconLocation } from "Assets/Icons/IconLocation.svg"
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
+import jwt_decode from 'jwt-decode'
+import { UserContext } from 'Context/UserContext'
 
 import './InfoService.css'
-
-
 
 export const InfoService = () => {
 
     const [params, setParams] = useSearchParams()
-
+    const { user } = useContext(UserContext)
+    const [loading, setLoading] = useState(false)
+    const [service, setService] = useState({})
+    const [infoUser, setInfoUser] = useState({})
     const [isOpen, setIsOpen] = useState(false)
-    const profile = {
-        color: "#a11d1d",
-        imageprofile: "",
-        name: "Alverto",
-        email: "carlos@gmail.com",
-        phone: "3166529009",
-        calification: 73.6
+
+    const createRoom = (serviceuser, idservice) => {
+        fetch(`${process.env.REACT_APP_API_CS}/Room/room/new/${jwt_decode(user.token).id}/${jwt_decode(serviceuser).userId}/${idservice}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                setService(response)
+                console.log(response);
+            })
+            .catch(error => console.log(error))
     }
 
-    const service = {
-        price: "200.000",
-        type: "Oferta",
-        image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        title: "Pinto casas a domicilio Lorem",
-        description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus consequuntur vero vel voluptates ducimus dolores dolor inventore vitae labore natus suscipit. Voluptatum, minima. Numquam."
-    }
+    useEffect(() => {
+        const get = async () => {
+            setLoading(true)
+            fetch(`${process.env.REACT_APP_API}/serviceInfo/${params.get('sid')}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    setService(response.serviceInfo)
+                    setInfoUser(response.serviceUser)
+                })
+                .finally(() => setLoading(false))
+        }
+        get()
+    }, [])
 
     return (
         <>
@@ -44,10 +65,10 @@ export const InfoService = () => {
                     <section className="image_service_">
                         <DivShadow>
                             <div className="subtitle_image_info_service">
-                                Trabajos realizados por {profile.name}
+                                Trabajos realizados por {infoUser?.name}
                             </div>
                             <div className="image_info_service">
-                                <img className='image_service' src={service.image} alt="" />
+                                <img className='image_service' src={service.photo} alt="" />
                             </div>
                         </DivShadow>
                     </section>
@@ -56,8 +77,10 @@ export const InfoService = () => {
                             <div className="padding_info_service">
                                 <header className="header_info_service">
                                     <div className="user_profile">
-                                        <PhotoUserProfile infoProfile={profile} style='small_profile' small={true} />
-                                        <p className='name_user_info_service'>{profile.name}</p>
+                                        <Link to='/profile'>
+                                            <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
+                                        </Link>
+                                        <p className='name_user_info_service'>{infoUser?.name}</p>
                                     </div>
 
                                     <div className='btn_report' onClick={e => setIsOpen(!isOpen)}>
@@ -80,14 +103,14 @@ export const InfoService = () => {
                                     </div>
                                 </header>
 
-                               
+
 
                                 <div className="title_info_service">
                                     <p className='tipe_info_service'>{service.type}</p>
                                     <h1 className='title_name_service'>{service.name}</h1>
                                     <div className="location_info_service">
                                         <IconLocation className='icon_location_info_service' />
-                                        <p className='location_name'>{service.city} {service.departament}</p>
+                                        <p className='location_name'>{service.city_name} {service.department_name}</p>
                                     </div>
                                 </div>
 
@@ -101,7 +124,14 @@ export const InfoService = () => {
                                 </div>
                             </div>
                             <div className='button_contact'>
-                                <Button style='button_big' value='Contactar' />
+                                <Button style='button_big' value='Contactar' onClick={() => createRoom(service.user, service.id)} />
+                            </div>
+                        </DivShadow>
+
+                        <DivShadow>
+                            <div className="padding_info_service">
+                                <p className='name_user_info_service'>Comentarios</p>
+                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
                             </div>
                         </DivShadow>
                     </section>

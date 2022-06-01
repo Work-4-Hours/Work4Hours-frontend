@@ -4,7 +4,7 @@ import { Chat } from 'Modules/Main/Chat/Chat'
 import { Index } from 'Modules/Main/Index/Index'
 import { Login } from 'Modules/Main/Login/Login'
 import { Registry } from 'Modules/Main/Registry/Registry'
-import { Users } from 'Modules/Admin/Users/Users'
+
 import { Profile } from 'Modules/Main/Profile/Profile'
 import { InfoService } from 'Modules/Main/InfoService/InfoService'
 import { AddService } from 'Modules/Main/AddService/AddService'
@@ -14,40 +14,33 @@ import { Dashboard } from 'Modules/Main/Dashboard/Dashboard'
 import { Publications } from 'Components/Layout/Publications/Publications'
 import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
-import { Services } from 'Modules/Admin/Services/Services'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 
-
-
 export const AllRoutes = () => {
-  
+
   return (
-    <BrowserRouter>
     <UserProvider>
+      <BrowserRouter>
         <Routes>
-           <Route path='/' element={<Index />} />
+          <Route path='/' element={<Index />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />
           <Route path='/registry' element={<Registry />} />
+          <Route path='/service/:query' element={<SearchService />} />
+
+          <Route path='/profile' element={ <IsAuth> <Profile /> </IsAuth>} />
           <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
-          <Route path='/service/add' element={<AddService />} />
-          <Route path='/service/edit' element={<EditService />} />
-          <Route path='/dashboard/*' element={<Dashboard />} >
-            <Route path='publications' element={<Publications />} />
-            <Route path='saved' element={<Saved />} />
+          <Route path='/service/add' element={ <IsAuth> <AddService /> </IsAuth>} />
+          <Route path='/service/edit' element={ <IsAuth> <EditService /> </IsAuth>} />
+          <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
+          <Route path='publications' element={ <Publications />} />
+          <Route path='saved' element={<Saved />} />
           </Route>
-          <Route path='/claim' element={<Claim />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/search/q/:question' element={<SearchService />} />
-          
+          <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
+          <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
           <Route path='*' element={<h1>Not found</h1>} />
-
-          <Route path='/AdminUsers' element={<Users />} />
-          <Route path='/AdminServices' element={<Services/>}/>
-
         </Routes>
+      </BrowserRouter>
     </UserProvider>
-    </BrowserRouter>
   )
 }

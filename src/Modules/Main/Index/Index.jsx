@@ -8,14 +8,13 @@ import { Link } from "react-router-dom"
 import { UserContext } from "Context/UserContext"
 import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
 
-
 import './Index.css'
 
 export const Index = () => {
-    const { isAuth } = useContext(UserContext)
+    const { isAuth, getJwt } = useContext(UserContext)
     const [results, setResults] = useState([])
     const [loading, setLoading] = useState(false)
-    
+
     useEffect(()=> {
         const get = async () => {
             setLoading(true)
@@ -32,12 +31,14 @@ export const Index = () => {
             })
             .finally(() => setLoading(false))
         }
+
         get()
     },[])
 
     const formatName = (name)=> {
         return  name.split(' ').join('-').toLowerCase()
     }       
+    
     return (
         <>                    
             <Header />

@@ -6,8 +6,9 @@ export const CardMessage = ({ info, location, user }) => {
     return (
         <div className={`contaner_message ${usuario != user ? 'out' : 'in'}`} >
             <div className='card_message' >
-                <div className="message_card">{messagess}</div>
+                <p className="message_card">{messagess}</p>
                 <div className="date_card">{fecha}</div>
+                
             </div>
         </div>
     )

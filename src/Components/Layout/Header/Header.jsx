@@ -47,7 +47,7 @@ export const Header = () => {
                                             <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />
                                             <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phone} />
                                             <InputTextLabel titleLabel='Correo' type='email' value={user.info[0]?.email} />
-                                            <InputTextLabel titleLabel='Fecha de nacimiento' type='text' />
+                                            <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />
                                         </div>
                                         <div className="input_save_profile">
                                             <Button style='button_big' value='Guardar' />

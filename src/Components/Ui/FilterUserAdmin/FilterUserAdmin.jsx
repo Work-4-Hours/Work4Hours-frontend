@@ -33,19 +33,19 @@ export const FilterUserAdmin = ({setIdFilter}) => {
             <label>
               Reportes
             </label>
-            <input type="radio" value="2" name ="filters" onClick={(e)=>unSelect(e)}/>
+            <input type="radio" value="2" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
           </div>
           <div className='typ_report'>
             <label>
               Correo
             </label>
-            <input type="radio" value="3" name ="filters" onClick={(e)=>unSelect(e)}/>
+            <input type="radio" value="3" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
           </div>
           <div className='typ_report'>
             <label>
               Nombres y Apellidos
             </label>
-            <input type="radio" value="4" name ="filters" onClick={(e)=>unSelect(e)}/>
+            <input type="radio" value="4" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
           </div>
         </div>
       </PopUp>

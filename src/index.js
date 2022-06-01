@@ -1,11 +1,12 @@
+import './index.css';
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AllRoutes } from './Routes'
-import './index.css';
+import { ConfigRoutes } from 'ConfigRoutes';
+import { UserContext } from 'Context/UserContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-      <AllRoutes />
-  </React.StrictMode>,
+    
+    <ConfigRoutes />
+  ,
   document.getElementById('root')
 );

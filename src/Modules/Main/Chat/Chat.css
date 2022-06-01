@@ -18,7 +18,7 @@
 }
 
 .cards_aside_chat {
-    height: 300px;
+    /* height: 300px; */
     gap: 15px;
 
     display: flex;

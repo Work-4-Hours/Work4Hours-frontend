@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
 
-
 import './Login.css'
 
 export const Login = () => {
@@ -18,17 +17,24 @@ export const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        login({email: email, password: password})
+        login({ email: email, password: password })
     }
 
-    useEffect(()=> {
-        if(!isLoading && isAuth()) {  
-            if(jwt_decode(user.token).rol == process.env.REACT_APP_USER_ROL)         
-                navigate('/')           
-            else if(jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) 
+    useEffect(() => {
+        if (!isLoading && isAuth()) {
+            if (jwt_decode(user.token).rol == process.env.REACT_APP_USER_ROL) {
+                navigate('/')
+                window.location.reload()
+            }
+
+            else if (jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) {
                 navigate('/AdminUsers')
+
+                window.location.reload()
+            }
+
         }
-    },[isLoading])
+    }, [isLoading])
 
     return (
         <main className='login'>

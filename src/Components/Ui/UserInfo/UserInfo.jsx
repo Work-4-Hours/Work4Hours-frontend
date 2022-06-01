@@ -27,40 +27,44 @@ export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listU
     }
   }
 
-  const returnUsers = (cantidadReportes) =>  {
-    if (cantidadReportes === 25 || cantidadReportes === 50 ){
-      return (
-        <div className='user_info2'>
-          <PhotoAdmin photoData={photoData}/>
-          <p className='ellipsis fieldSize20'>{apellidos}</p>
-          <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
-          <p className='ellipsis fieldSize17'>{correo}</p>
-          <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
-          <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
-          <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
-        </div>
-      )
-    }
-    else{
-      return(
-        <div className='user_info'>
-          <PhotoAdmin photoData={photoData}/>
-          <p className='ellipsis fieldSize20'>{apellidos}</p>
-          <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
-          <p className='ellipsis fieldSize17'>{correo}</p>
-          <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
-          <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
-          <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
-        </div>
-      )
-    }
-  }
+  // const returnUsers = (cantidadReportes) =>  {
+  //   if (cantidadReportes === 25 || cantidadReportes === 50 ){
+  //     return (
+  //       <div className='user_info2'>
+  //         <PhotoAdmin photoData={photoData}/>
+  //         <p className='ellipsis fieldSize20'>{apellidos}</p>
+  //         <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
+  //         <p className='ellipsis fieldSize17'>{correo}</p>
+  //         <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
+  //         <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
+  //         <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
+  //       </div>
+  //     )
+  //   }
+  //   else{
+  //     return(
+  //       <div className='user_info'>
+  //         <PhotoAdmin photoData={photoData}/>
+  //         <p className='ellipsis fieldSize20'>{apellidos}</p>
+  //         <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
+  //         <p className='ellipsis fieldSize17'>{correo}</p>
+  //         <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
+  //         <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
+  //         <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return (
-    <>
-      {
-        returnUsers(cantidadReportes)
-      }
-    </>
+    <div className='user_info'>
+      <PhotoAdmin photoData={photoData}/>
+      <p className='ellipsis fieldSize20'>{apellidos}</p>
+      <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
+      <p className='ellipsis fieldSize17'>{correo}</p>
+      <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
+      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
+      <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
+    </div>
   )
 }

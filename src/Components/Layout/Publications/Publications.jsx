@@ -43,7 +43,8 @@ export const Publications = () => {
                                     <img className='icon_danger_table' src={IconDanger} alt="" />
                                     <p className='value_report'>{service.reports}</p>
                                 </div>
-                                :
+                                : 
+                                
                                 <div className="danger_reports">
                                     <img className='icon_checked_table' src={IconChecked} alt="" />
                                     <p className='value_not_report'>No hay reportes</p>
