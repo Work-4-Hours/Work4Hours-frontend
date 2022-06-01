@@ -30,7 +30,11 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray"
   }
 
+  const dataUsers={
+    objectAllStatus:dataState
+  }
 
+  
 
   return (
     <div className='container_admin'>
@@ -38,9 +42,8 @@ export const Users = () => {
       <div className='manager_control'>
       <Dashboard componetContent={
         data?.map(item=>(
-          <UserInfo objectAllUsers={item} key={item.idusuario}/>
+          <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
         )
-          
         ) }/>
       
       </div>
