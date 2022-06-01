@@ -92,3 +92,9 @@
     color: var(--gray-text-2);
     margin: 1.5em 0 0 0;
 }
+
+.information_services {
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+}

@@ -63,11 +63,11 @@ export const Registry = () => {
                 name: name.value,
                 lastName: surname.value,
                 phoneNumber: phone.value,
-                address: 'null',
+                address: '',
                 email: email.value,
                 password: password.value,
                 birthDate: birthday.value,
-                picture: 'null',
+                picture: '',
                 city: parseInt(city),
                 color: '#831a1a'
             })

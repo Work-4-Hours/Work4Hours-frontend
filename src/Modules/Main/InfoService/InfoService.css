@@ -187,3 +187,56 @@
     right:0;
     background-color: transparent;
 }
+
+
+
+/* Skeleton animation */
+.image_info_service_loading {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.image_service_loading {
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+}
+
+
+.animation_loading_info_service {
+    position: relative;
+}
+
+.circle_profile_loading {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eeeeee;
+}
+
+.text_loading {
+    background: #eeeeee;
+    border-radius: 5px;
+    width: 100px;
+    height: 18px;
+}
+
+.text_loading_title {
+    background: #eeeeee;
+    border-radius: 5px;
+    width: 70%;
+    height: 18px;
+}
+
+.animation_location {
+    gap: 10px;
+}
+
+.paragraph_loading {
+    background: #eeeeee;
+    border-radius: 5px;
+    width: 100%;
+    height: 100px;
+}

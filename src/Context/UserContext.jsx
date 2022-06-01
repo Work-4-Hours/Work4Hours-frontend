@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         if (isAuth()) {
             closeConnection()
-            userConnection(jwt_decode(user.token).id);
+            userConnection(jwt_decode(user.token).userId);
         }
     }, [])
 

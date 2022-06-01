@@ -25,7 +25,7 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
         .then(response => {
             if (response[0].userInfo.token) {
                 setUser(response[0].userInfo)
-                userConnection(jwt_decode(response[0].userInfo.token).id)
+                userConnection(jwt_decode(response[0].userInfo.token).userId)
             } else if(!response[0].userInfo.exist) {
                 setError(true)
             }

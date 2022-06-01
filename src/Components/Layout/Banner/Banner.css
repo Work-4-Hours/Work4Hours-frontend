@@ -39,6 +39,7 @@
     color: #FFFF;
     font-size: 1.3em;
     line-height: 25px;    
+    margin: 0 0 15px 0;
     font-family: var(--font-1);
 }
 
