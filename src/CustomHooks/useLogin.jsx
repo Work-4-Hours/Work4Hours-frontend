@@ -22,9 +22,9 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
         })
         .then(response => response.json())
         .then(response => {
-            if (response.userInfo.token) {
-                setUser(response.userInfo)
-                userConnection(jwt_decode(response.userInfo.token).id)
+            if (response[0].userInfo.token) {
+                setUser(response[0].userInfo)
+                userConnection(jwt_decode(response[0].userInfo.token).id)
             }
         }).finally(() => setIsLoading(false))
     }
