@@ -30,12 +30,31 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray"
   }
 
+  const dashboardHeader = {
+    columWidth1 : 'fieldSize3',
+    columWidth2 : 'fieldSize20',
+    columWidth3 : 'fieldSize20',
+    columWidth4 : 'fieldSize17',
+    columWidth5 : 'fieldSize8',
+    columWidth6 : 'fieldSize13',
+    columWidth7 : 'fieldSize8', 
+    columText1 : 'Perfil',
+    columText2 : 'Apellidos',
+    columText3 : 'Nombres',
+    columText4 : 'Correo',
+    columText5 : 'Reportes',
+    columText6 : 'Estado Usuario',
+    columText7 : 'Conf. cambios',
+    colorTituleReport: ' '
+  }
 
+  console.log(dashboardHeader);
 
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
+      <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       <Dashboard componetContent={
         data?.map(item=>(
           <UserInfo objectAllUsers={item} key={item.idusuario}/>

@@ -30,15 +30,34 @@ export const Services = () => {
     buttonActivated: "btn_change_color_gray",
     buttonDeactivated: " ",
   }
-  console.log(data)
-  
+
+  const dashboardHeader = {
+    columWidth1 : 'fieldSize15',
+    columWidth2 : 'fieldSize15',
+    columWidth3 : 'fieldSize15',
+    columWidth4 : 'fieldSize15',
+    columWidth5 : 'fieldSize8 ',
+    columWidth6 : 'fieldSize13',
+    columWidth7 : 'fieldSize8', 
+    columText1 : 'Servicio',
+    columText2 : 'Usuario',
+    columText3 : 'Descripción',
+    columText4 : 'Apelación',
+    columText5 : 'Reportes',
+    columText6 : 'Estado Usuario',
+    columText7 : 'Seleccionar',
+    colorTituleReport: 'reportColor'
+  }
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
-      <Dashboard componetContent={
-        data?.map(item=>(
-          <ServiceInfo objectServiceInfo={item} key={item.idservicio}/>)
-        ) }/>
+      <div className='manager_control'>
+        <DashboardHeader dataDashboardHeader={dashboardHeader}/>
+        <Dashboard componetContent={
+          data?.map(item=>(
+            <ServiceInfo objectServiceInfo={item} key={item.idservicio}/>)
+          ) }/>
+      </div>
     </div>
   )
 }
