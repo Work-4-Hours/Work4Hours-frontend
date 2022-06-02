@@ -20,7 +20,7 @@ export const Users = () => {
 
   useEffect(()=>{
     getAdmin('Users');
-    getAdmin('State')
+    getAdmin('State');
   },[])
   
 
@@ -53,7 +53,6 @@ export const Users = () => {
     colorTituleReport: ' '
   }
 
-  console.log(dashboardHeader);
 
   return (
     <div className='container_admin'>

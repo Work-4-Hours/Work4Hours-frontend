@@ -16,13 +16,13 @@ import { useAdmin } from 'CustomHooks/useAdmin';
 
 
 export const Services = () => {
-  // const { data } = GetAdmin('Services');
-  // const dataState= GetAdmin('State');
 
-  const { data, getAdmin } = useAdmin();
+
+  const { data, getAdmin, dataState } = useAdmin();
 
   useEffect(()=>{
     getAdmin('Services');
+    getAdmin('State');
   },[])
     
   const dataMenuAdmin = {
@@ -48,6 +48,10 @@ export const Services = () => {
     columText7 : 'Seleccionar',
     colorTituleReport: 'reportColor'
   }
+
+  const dataServices={
+    objectAllStatus:dataState
+  }
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
@@ -55,7 +59,7 @@ export const Services = () => {
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         <Dashboard componetContent={
           data?.map(item=>(
-            <ServiceInfo objectServiceInfo={item} key={item.idservicio}/>)
+            <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
           ) }/>
       </div>
     </div>

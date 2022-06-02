@@ -11,19 +11,20 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
   const {objectAllStatus}=dataUsers;
 
+
   const [idStatus, setIdStatus] = useState(0);
   const [changeStatus, setChangeStatus]=useState(false);
 
   const dataStatusUsersAdmin={
     // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
-    // idObject:idusuario, 
+    idObject:idusuario, 
     statusChange:changeStatus, 
     statusChangeSet:setChangeStatus, 
     nameStatus:nombre_estado, 
-    // idObjectStatus:idEstado, 
+    idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    // capturarid:setIdStatus, 
-    // NumberReports:cantidadReportes
+    capturarid:setIdStatus, 
+    numberReports:cantidadReportes
   }
 
 
@@ -33,6 +34,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
+      <p>{cantidadReportes}</p>
       
       <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
       

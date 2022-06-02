@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './ServiceInfo.css';
 
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
@@ -9,9 +9,25 @@ import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 
 
-export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
-  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
-  
+export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
+  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
+  const {objectAllStatus}=dataServices;
+
+  const [idStatus, setIdStatus] = useState(0);
+  const [changeStatus, setChangeStatus]=useState(false);
+
+  const dataStatusUsersAdmin={
+    // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
+    idObject:idservicio, 
+    statusChange:changeStatus, 
+    statusChangeSet:setChangeStatus, 
+    nameStatus:estado, 
+    idObjectStatus:idEstado, 
+    data:objectAllStatus, 
+    capturarid:setIdStatus, 
+    numberReports:cantidadReportes
+  }
+
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
@@ -22,7 +38,7 @@ export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      {/* <StatusUsersAdmin UserStatus={estado} data={data}/> */}
+      <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>
   )

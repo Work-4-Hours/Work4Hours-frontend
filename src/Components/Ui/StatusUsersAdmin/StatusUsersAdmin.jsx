@@ -14,7 +14,7 @@ export const StatusUsersAdmin = ({dataStatusUsersAdmin}) => {
     idObjectStatus, 
     data, 
     capturarid, 
-    NumberReports
+    numberReports
   }=dataStatusUsersAdmin;
 
   const [stateUser, setStateUser]=useState(nameStatus);
@@ -22,6 +22,18 @@ export const StatusUsersAdmin = ({dataStatusUsersAdmin}) => {
   const [stateColor, setStateColor]=useState('');
   const [idStateUser, setIdStateUser]=useState(idObjectStatus);
   const [idUser, setIdUser]=useState(idObject);
+
+
+  const changeState = (reportsNumber) => {
+    if(reportsNumber === 25){
+      setStateUser("Suspendido por 3 días")
+      setIdStateUser(2)
+    }
+    else if(reportsNumber === 50){
+      setStateUser("Inhabilitado")
+      setIdStateUser(3)
+    }
+  }
 
   const changeColorStateUsers= (UserState) =>{  
     if(UserState == "Habilitado"){
@@ -46,6 +58,10 @@ export const StatusUsersAdmin = ({dataStatusUsersAdmin}) => {
   useEffect(() => {
     setStateColor (changeColorStateUsers(stateUser))
   },[stateColor])
+
+  useEffect(() =>{
+    changeState(numberReports)
+  },[''])
 
   const dataOptionStatusUserAdmin={
     colorStatus:changeColorStateUsers,
