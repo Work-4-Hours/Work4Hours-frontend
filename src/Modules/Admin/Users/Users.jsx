@@ -18,10 +18,23 @@ export const Users = () => {
     
   const { data, getAdmin, dataState} = useAdmin();
 
+  const [listUsersSelect, setListUserSelect]=useState([]);
+  
+
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
   },[])
+
+  const deleteUserSelect =(id)=>{
+    listUsersSelect.map(item=>{
+      if(item.idUsuario===id){
+        const index=listUsersSelect.indexOf(item);
+        listUsersSelect.splice(index,1)
+      }
+    })
+    setListUserSelect([...listUsersSelect]);
+  }
   
 
   const dataMenuAdmin = {

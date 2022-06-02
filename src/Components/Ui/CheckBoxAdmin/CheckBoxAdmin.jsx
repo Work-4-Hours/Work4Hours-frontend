@@ -1,18 +1,34 @@
 import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
-export const CheckBoxAdmin = ({objectAllUsers,deleteUserSelect,designCheckBoxAdmin, id, correo, idStatus,fotop, listUserSelectSet, selectUsers }) => {
+export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
+
+  const {
+    objectAllUsers, 
+    deleteUserSelect, 
+    designCheckBoxAdmin, 
+    idStatus, 
+    listUserSelectSet, 
+    selectUsers} = dataCheckBoxAdmin;
 
   const [UserAllobject, setUserAllobject]=useState([]);
+
   useEffect(()=>{
     if(objectAllUsers!==undefined){
       setUserAllobject(objectAllUsers)
     }
-
   },[''])
+
   const validarcheckbox=(e)=>{
     if(e.target.checked){
-      const datauser={idEstado:idStatus, email:UserAllobject.correo, idUsuario:UserAllobject.idusuario, fotoUser:UserAllobject.fotop, nombres:UserAllobject.nombres, color:UserAllobject.color}
+      const datauser={
+        idEstado:idStatus, 
+        email:UserAllobject.correo, 
+        idUsuario:UserAllobject.idusuario, 
+        fotoUser:UserAllobject.fotop, 
+        nombres:UserAllobject.nombres, 
+        color:UserAllobject.color
+      }
       listUserSelectSet([...selectUsers, datauser]);
     }
     else{

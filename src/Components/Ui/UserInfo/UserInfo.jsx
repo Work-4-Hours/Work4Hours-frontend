@@ -8,13 +8,22 @@ import './UserInfo.css';
 
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
-  const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
+  const { 
+    fotop, 
+    apellidos, 
+    nombreUsuario, 
+    correo, 
+    cantidadReportes, 
+    idEstado,
+    nombre_estado, 
+    idusuario, 
+    color} = objectAllUsers;
   const {objectAllStatus}=dataUsers;
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
 
   const [idStatus, setIdStatus] = useState(0);
-  const [changeStatus, setChangeStatus]=useState(false);
+  
 
   const dataStatusUsersAdmin={
     // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
@@ -28,6 +37,15 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     numberReports:cantidadReportes
   }
 
+  const dataCheckBoxAdmin={
+    objectAllUsers:objectAllUsers, 
+    designCheckBoxAdmin:"span_confirm_changes", 
+    idStatus:idStatus, 
+    // listUserSelectSet:listUserSelectSet, 
+    // selectUsers:selectUsers
+    // deleteUserSelect:deleteUserSelect, 
+  }
+
 
   return (
     <div className='user_info'>
@@ -36,9 +54,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
 
-      
       <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
-      
+      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    
   )
 }
