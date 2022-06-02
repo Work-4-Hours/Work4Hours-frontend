@@ -49,6 +49,11 @@ export const Users = () => {
   }
 
   console.log(dashboardHeader);
+  const dataUsers={
+    objectAllStatus:dataState
+  }
+
+  
 
   return (
     <div className='container_admin'>
@@ -57,9 +62,8 @@ export const Users = () => {
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       <Dashboard componetContent={
         data?.map(item=>(
-          <UserInfo objectAllUsers={item} key={item.idusuario}/>
+          <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
         )
-          
         ) }/>
       
       </div>

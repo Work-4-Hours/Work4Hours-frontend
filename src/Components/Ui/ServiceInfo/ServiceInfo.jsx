@@ -10,10 +10,8 @@ import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 
 export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
-  // console.log(objectAllStatus)
-
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
-  // const {data}= objectAllStatus;
+  
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
