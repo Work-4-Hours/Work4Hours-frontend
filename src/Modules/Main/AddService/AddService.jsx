@@ -8,19 +8,17 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import IconAddImage from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
-
-import './AddService.css'
+import jwt_decode from 'jwt-decode'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
 import { useEffect } from 'react'
 import { LoadingAnimation } from 'Components/Ui/LoadingAnimation/LoadingAnimation'
 import { UserContext } from 'Context/UserContext'
-import jwt_decode from 'jwt-decode'
+
+import './AddService.css'
 
 export const AddService = () => {
 
     const { loading, data, uploadImage } = useUploadImage();
-
-    const otrafoto = useUploadImage();
     
     const { getJwt } = useContext(UserContext)
 
@@ -39,7 +37,7 @@ export const AddService = () => {
 
     const createService = async () => {
         setLoadingCreate(true)
-        fetch(`${process.env.REACT_APP_API}/serviceRegistry`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/serviceRegistry`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,8 +50,8 @@ export const AddService = () => {
                 type: type,
                 price: parseInt(price),
                 description: description,
-                photo: '',
-                user: parseInt(jwt_decode(getJwt()).id)
+                photo: data,
+                user: parseInt(jwt_decode(getJwt()).userId)
             })
 
         })

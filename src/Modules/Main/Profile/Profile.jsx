@@ -24,7 +24,7 @@ export const Profile = () => {
     useEffect(()=> {
         const getInfo = async () => {
             setLoading(true)
-            fetch(`${process.env.REACT_APP_API}/getUserServices/${params.get('id')}`, {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${params.get('id')}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JSW ${getJwt()}`

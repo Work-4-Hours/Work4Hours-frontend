@@ -25,6 +25,7 @@ export const AllRoutes = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Index />} />
+          <Route path=' *' element={<h1>Not found</h1>} /> 
           <Route path='/login' element={<Login />} />
           <Route path='/registry' element={<Registry />} />
           <Route path='/service/:query' element={<SearchService />} />
@@ -40,7 +41,6 @@ export const AllRoutes = () => {
           </Route>
           <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
           <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
-          <Route path='*' element={<h1>Not found</h1>} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

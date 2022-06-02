@@ -240,3 +240,39 @@
     width: 100%;
     height: 100px;
 }
+
+.information_user {
+}
+
+.padding_info_user_ {
+    padding: 20px 20px 20px 20px;
+}
+
+.name_user_profile_service {
+    font-family: var(--font-1);
+    font-size: 27px;
+    color: var(--gray-text-1);
+    margin: 0 0 10px 0;
+}
+
+.email_user_info_service {
+    font-family: var(--font-1);
+    font-size: 16px;
+    color: var(--gray-text-2);
+    margin: 0 0 5px 0;
+}
+
+.phone_number_info_service {
+    font-family: var(--font-1);
+    font-size: 16px;
+    color: var(--gray-text-2);
+}
+
+.section_info_user {
+    width: 20%;
+}
+
+.button_info_service {
+    display: flex;
+    margin: 20px 0 0 0;
+}

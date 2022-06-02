@@ -9,10 +9,10 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
 import jwt_decode from 'jwt-decode'
 import { UserContext } from 'Context/UserContext'
+import { useNotification } from 'CustomHooks/useNotification'
+import { useLogin } from 'CustomHooks/useLogin'
 
 import './InfoService.css'
-import { useLogin } from 'CustomHooks/useLogin'
-import { useNotification } from 'CustomHooks/useNotification'
 
 export const InfoService = () => {
 
@@ -39,7 +39,7 @@ export const InfoService = () => {
                 console.log(response);
             })
             .catch(error => console.log(error))
-        
+
         sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solucitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
@@ -47,7 +47,7 @@ export const InfoService = () => {
     useEffect(() => {
         const get = async () => {
             setLoading(true)
-            fetch(`${process.env.REACT_APP_API}/serviceInfo/${params.get('sid')}`, {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/serviceInfo/${params.get('sid')}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
-                    // console.log(response[0]);
+                    console.log(response[0]);
                     // console.log(jwt_decode(response[0].serviceInfo.user).userId);
                     setUserId(jwt_decode(response[0].serviceInfo.user).userId)
 
@@ -74,6 +74,7 @@ export const InfoService = () => {
             <Header />
             <main className='main_info_service'>
                 <div className="center_info_service">
+
                     <section className="image_service_">
                         <DivShadow>
                             <div className="subtitle_image_info_service">
@@ -84,7 +85,7 @@ export const InfoService = () => {
                                         <p>
                                             Trabajos realizados por {infoUser?.name}
                                         </p>
-    
+
                                 }
                             </div>
                             <div className="image_info_service">
@@ -97,6 +98,7 @@ export const InfoService = () => {
                             </div>
                         </DivShadow>
                     </section>
+
                     <section className="information_service_">
 
                         <DivShadow>
@@ -136,15 +138,15 @@ export const InfoService = () => {
                                         <div className="padding_info_service">
                                             <header className="header_info_service">
                                                 <div className="user_profile">
-                                                    {
+                                                    {/* {
                                                         loading ?
                                                             <p>...</p>
                                                             :
                                                             <Link to={`/profile/user?id=${userId}`}>
                                                                 <PhotoUserProfile infoProfile={{ name: infoUser?.name, color: infoUser?.color, userPicture: infoUser?.photo }} style='small_profile' small={true} />
                                                             </Link>
-                                                    }
-                                                    <p className='name_user_info_service'>{infoUser?.name}</p>
+                                                    } */}
+                                                    {/* <p className='name_user_info_service'>{infoUser?.name}</p> */}
                                                 </div>
 
                                                 <div className='btn_report' onClick={e => setIsOpen(!isOpen)}>
@@ -165,6 +167,7 @@ export const InfoService = () => {
                                                         </div>
                                                     </PopUp>
                                                 </div>
+
                                             </header>
 
 
@@ -198,6 +201,21 @@ export const InfoService = () => {
                             <div className="padding_info_service">
                                 <p className='name_user_info_service'>Comentarios</p>
                                 <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
+                            </div>
+                        </DivShadow>
+                    </section>
+
+                    <section className='section_info_user'>
+
+                        <DivShadow className='information_user'>
+                            <PhotoUserProfile infoProfile={{ name: infoUser.name, color: infoUser.color, userPicture: infoUser.photo }} style='medium_profile' small={false} />
+                            <div className="padding_info_user_">
+                                <p className='name_user_profile_service'>{infoUser.name}</p>
+                                <p className='email_user_info_service'>{infoUser.email}</p>
+                                <p className='phone_number_info_service'>{infoUser.phoneNumber}</p>
+                                <div className="button_info_service">
+                                    <Button value='Ver perfil' />
+                                </div>
                             </div>
                         </DivShadow>
                     </section>

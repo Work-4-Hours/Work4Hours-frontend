@@ -38,6 +38,14 @@ export const Index = () => {
                                     <>
                                         <LoadingCard />
                                         <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
+                                        <LoadingCard />
                                     </>
                                     :
                                     data?.map((item, index) => <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
@@ -45,7 +53,7 @@ export const Index = () => {
                         </DivShadow>
                     </section>
                           
-                    <p className="title_index">Temas que pueden interezarte</p>
+                    <p className="title_index">Temas que pueden interesarte</p>
                     <section className='information_services'>
                         <Banner informaction={{ title: "Jardineria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, facere.  " }} image={"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg"} >                         
                             <Button value='Ver mas'/>

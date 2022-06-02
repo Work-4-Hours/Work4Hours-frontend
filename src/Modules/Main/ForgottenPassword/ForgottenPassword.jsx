@@ -6,22 +6,25 @@ import { InputText } from 'Components/Ui/InputText/InputText'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconUnlock } from 'Assets/Icons/IconUnlock.svg'
+import { ReactComponent as IconCheck } from 'Assets/Icons/IconCheck.svg'
 
 import './ForgottenPassword.css'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const regex_email = /^(([^<>()[\]\ \.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
 export const ForgottenPassword = () => {
+    const navigate = useNavigate()
     const email = useField({ type: 'email', validate: regex_email, message_errors: 'El correo ingresado es incorrecto' })
 
     const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta' })
     const confrimPassword = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta' })
 
-    const [value, setValue] = useLocalStorage('stateForgottenPassword', 1)
+    const [value, setValue, removeValue] = useLocalStorage('stateForgottenPassword', 1)
+
 
     useEffect(() => {
         if (password.value !== confrimPassword.value)
@@ -29,7 +32,10 @@ export const ForgottenPassword = () => {
             confrimPassword.setMessageError('Las contraseñas no coinciden')
     }, [confrimPassword.value])
 
-
+    const redirecLogin = () => {
+        removeValue()
+        navigate('/login')
+    }
 
     return (
         <main>
@@ -78,10 +84,10 @@ export const ForgottenPassword = () => {
                             value == 3 && ( 
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
-                                        <IconUnlock className='incon_unlock' />
+                                        <IconCheck className='incon_unlock' />
                                         <div>
                                             <h1 className='title_header_forgotten_password'>Contraseña actualizada</h1>
-                                            <Link to='/login'>Ir a login</Link>
+                                            <p onClick={() => redirecLogin()} className='btn_login'>Ir al login</p>
                                         </div>
                                     </header>
                                 </section>
