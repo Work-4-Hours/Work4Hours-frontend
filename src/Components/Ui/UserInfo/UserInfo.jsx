@@ -6,7 +6,7 @@ import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
 
-export const UserInfo = ({objectAllUsers,dataUsers}) => {
+export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUser }) => {
 
   const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
   const {objectAllStatus}=dataUsers;
@@ -26,6 +26,13 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     // NumberReports:cantidadReportes
   }
 
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idUserReports: idusuario, 
+    dataReport: dataUsers.dataReport,
+    idUser: dataUsers.idUser,
+    setIdUser: dataUsers.setIdUser
+  }
 
   return (
     <div className='user_info'>
@@ -33,7 +40,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-      
+      <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
       
     </div>    

@@ -13,8 +13,6 @@ import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { useAdmin } from 'CustomHooks/useAdmin';
 
-
-
 export const Services = () => {
   // const { data } = GetAdmin('Services');
   // const dataState= GetAdmin('State');

@@ -11,17 +11,17 @@ import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
 
 export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
-  
+
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
-      <div className='fieldSize15 space_photo_username'>
+       <div className='fieldSize15 space_photo_username'>
         <img className='admin_user_photo center_img' src={fotop} alt="user_photo" />
-        <p className='ellipsis'>{nombreUsuario} </p>
+        <p className='ellipsis'>{nombreUsuario}</p>
       </div>
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
-      <InfoReportAdmin NumberReports={cantidadReportes}/>
+      <InfoReportAdmin NumberReports={cantidadReportes}/> 
       {/* <StatusUsersAdmin UserStatus={estado} data={data}/> */}
       <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
     </div>

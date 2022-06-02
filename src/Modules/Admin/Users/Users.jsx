@@ -16,13 +16,18 @@ import { useAdmin } from 'CustomHooks/useAdmin';
 
 export const Users = () => {
     
-  const { data, getAdmin, dataState} = useAdmin();
+  const { data, getAdmin, dataState, getAdminReports, dataReport} = useAdmin();
+  const [idUser, setIdUser] = useState(0);
 
   useEffect(()=>{
     getAdmin('Users');
-    getAdmin('State')
+    getAdmin('State');
+    getAdminReports('ReportsUsers', idUser)
   },[])
   
+  // useEffect(()=>{
+
+  // },[dataReport])
 
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
@@ -48,12 +53,12 @@ export const Users = () => {
     colorTituleReport: ' '
   }
 
-  console.log(dashboardHeader);
   const dataUsers={
-    objectAllStatus:dataState
+    objectAllStatus:dataState,
+    dataReport:dataReport,
+    idUser:idUser,
+    setIdUser:setIdUser
   }
-
-  
 
   return (
     <div className='container_admin'>
@@ -65,9 +70,7 @@ export const Users = () => {
           <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
         )
         ) }/>
-      
       </div>
-
     </div>
   )
 }
