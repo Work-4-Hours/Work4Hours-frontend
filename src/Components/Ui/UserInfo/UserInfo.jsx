@@ -10,6 +10,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
   const {objectAllStatus}=dataUsers;
+  const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
 
   const [idStatus, setIdStatus] = useState(0);
@@ -30,11 +31,11 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   return (
     <div className='user_info'>
-      
+      <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-      <p>{cantidadReportes}</p>
+
       
       <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
       

@@ -6,6 +6,7 @@ import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import { DescriptionServiceAdmin } from '../DescriptionServiceAdmin/DescriptionServiceAdmin';
 import { MessageUserAdmin } from '../MessageUserAdmin/MessageUserAdmin';
+import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 
 
@@ -15,6 +16,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const [idStatus, setIdStatus] = useState(0);
   const [changeStatus, setChangeStatus]=useState(false);
+  const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
   const dataStatusUsersAdmin={
     // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
@@ -28,11 +30,12 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     numberReports:cantidadReportes
   }
 
+
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
       <div className='fieldSize15 space_photo_username'>
-        <img className='admin_user_photo center_img' src={fotop} alt="user_photo" />
+        <PhotoAdmin photoData={photoData}/>
         <p className='ellipsis'>{nombreUsuario} </p>
       </div>
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
