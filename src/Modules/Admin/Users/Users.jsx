@@ -71,6 +71,16 @@ export const Users = () => {
     colorTituleReport: ' '
   }
 
+  const dataPopupConfirmChanges = {
+    selectedList:selectedList, 
+    nameTitle:"Esta seguro de querer actualizar el estado de: ",
+    valueButton:"Actualizar",
+    styleObjects:"popup_confirm_changes_content_objects_users"
+
+    //infoAdmin, token,  
+    //sendNotification
+  }
+
 
   return (
     <div className='container_admin'>
@@ -80,11 +90,13 @@ export const Users = () => {
       <Dashboard componetContent={
         data?.map(item=>(
           <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
-        )
-        ) }/>
-      
+        ))}/>
       </div>
-
+      <PopupConfirmChanges objectContent={
+        selectedList.map(item=>(
+          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        ))
+      } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
     </div>
   )
 }

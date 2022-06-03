@@ -8,63 +8,17 @@ import axios from 'axios';
 
 
 
-export const PopupConfirmChanges = ({ infoAdmin, token, nameTitle, valueButton, objectContent, styleObjects, listUsersSelect, sendNotification }) => {
+export const PopupConfirmChanges = ({ dataPopupConfirmChanges }) => {
+    const {
+        selectedList, 
+        nameTitle,
+        valueButton,
+        styleObjects,
+        objectContent
+    }=dataPopupConfirmChanges;
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
-    const API = process.env.REACT_APP_API;
-
-    // const validatePasswordAdmin=()=>{
-    //     if(passwordAdmin!==""){
-    //         fetch(`${API}/allowChanges/${infoAdmin.info[0].email}/${passwordAdmin}`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'authorization': `JSW ${token}`
-    //             }
-    //         })
-    //         .then(response=>response.json())
-    //         .then(response => {
-    //             setPasswordAdminValidate(response)
-    //             console.log(response)
-    //         })    
-    //         .catch(error => console.log(error))
-    //     }
-    // }
-    
-
-
-    const sendUsers = (e) =>{
-        e.preventDefault();
-        if(passwordAdmin!==""){
-            fetch(`${API}/allowChanges/${infoAdmin.info[0].email}/${passwordAdmin}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `JSW ${token}`
-                }
-            })
-            .then(response=>response.json())
-            .then(response => {
-                if(response===true && listUsersSelect.length != 0){
-                    axios.put(`https://localhost:44342/api/Users`, listUsersSelect)
-                    .then(response => {
-                        console.log(response)
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    })
-                    listUsersSelect.map(item=>{
-                        sendNotification(item.idUsuario, "hola mundo","Alertas", "#000", "")
-                    })
-                }
-                console.log(response)
-            })    
-            .catch(error => console.log(error))
-        }
-
-        setIsOpen(false);
-    }
 
     return (
         <div className='btn_save_changes_admin_position'>
