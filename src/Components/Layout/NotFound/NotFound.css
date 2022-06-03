@@ -1,0 +1,47 @@
+.center_main_notfound {
+    max-width: var(--max-width-container);
+    height: 100vh;
+    margin: auto;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not_found {
+    width: 100%;
+    padding: 4em;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.info_not_found {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 4em 0 0 0;
+}
+
+.image_not_found {
+    width: 700px;
+}
+
+.title_not_found {
+    font-family: var(--font-1);
+    font-size: 4em;
+    color: var(--bg-blue);
+}
+
+.text_not_found {
+    font-family: var(--font-1);
+    font-size: 1.2em;
+    color: var(--gray-text-3);
+}
+
+.text_error_not_found {
+    font-family: var(--font-1);
+    font-size: 1.6em;
+    color: var(--gray-text-2);
+}
