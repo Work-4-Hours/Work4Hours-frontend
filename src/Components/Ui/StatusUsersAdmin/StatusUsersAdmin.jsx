@@ -4,38 +4,38 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
 
-export const StatusUsersAdmin = ({dataStatusUsersAdmin}) => {
+export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   const {
-    objectSelectListSelectSetStatus,
+    objectSelectedSetState,
     idObject,
-    statusChange,
-    statusChangeSet,
     nameStatus,
     idObjectStatus, 
     data, 
     capturarid, 
-    numberReports
-  }=dataStatusUsersAdmin;
+    numberReports,
+    changeStatus,
+    setChangeStatus
+  }=dataStatusAdmin;
 
-  const [stateUser, setStateUser]=useState(nameStatus);
+  const [stateObject, setStateObject]=useState(nameStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
-  const [idStateUser, setIdStateUser]=useState(idObjectStatus);
-  const [idUser, setIdUser]=useState(idObject);
+  const [idStateObject, setIdStateObject]=useState(idObjectStatus);
+
 
 
   const changeState = (reportsNumber) => {
     if(reportsNumber === 25){
-      setStateUser("Suspendido por 3 días")
-      setIdStateUser(2)
+      setStateObject("Suspendido por 3 días")
+      setIdStateObject(2)
     }
     else if(reportsNumber === 50){
-      setStateUser("Inhabilitado")
-      setIdStateUser(3)
+      setStateObject("Inhabilitado")
+      setIdStateObject(3)
     }
   }
 
-  const changeColorStateUsers= (UserState) =>{  
+  const changeColorStateObjects= (UserState) =>{  
     if(UserState == "Habilitado"){
       return 'green';
     }
@@ -47,30 +47,34 @@ export const StatusUsersAdmin = ({dataStatusUsersAdmin}) => {
     }
   }
 
-  const changeStateUsers=(event)=>{
-    setStateUser(event.target.textContent)
+  const changeStateObjects=(event)=>{
+    setStateObject(event.target.textContent)
     setIsOpen(!isOpen)
     setStateColor(event.target.classList[2])
-    setIdStateUser(parseInt(event.target.id))
-    statusChangeSet(!statusChange)
+    setIdStateObject(parseInt(event.target.id))
+    setChangeStatus(!changeStatus)
   }
 
   useEffect(() => {
-    setStateColor (changeColorStateUsers(stateUser))
+    setStateColor (changeColorStateObjects(stateObject))
   },[stateColor])
 
   useEffect(() =>{
     changeState(numberReports)
   },[''])
 
+  useEffect(()=>{
+    objectSelectedSetState(changeStatus, idObject, idStateObject)
+  },[changeStatus])
+
   const dataOptionStatusUserAdmin={
-    colorStatus:changeColorStateUsers,
-    bringStatus:changeStateUsers
+    colorStatus:changeColorStateObjects,
+    bringStatus:changeStateObjects
   }
 
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_user '+ stateColor} onClick={()=>{setIsOpen(!isOpen)}}>{stateUser}</p>
+      <p className={'op_state_user '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>

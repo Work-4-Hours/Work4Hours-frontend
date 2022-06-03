@@ -16,9 +16,17 @@ import { useAdmin } from 'CustomHooks/useAdmin';
 
 export const Users = () => {
     
-  const { data, getAdmin, dataState} = useAdmin();
+  const { data,
+    getAdmin, 
+    dataState, 
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus} = useAdmin();
 
-  const [listUsersSelect, setListUserSelect]=useState([]);
+  
   
 
   useEffect(()=>{
@@ -26,15 +34,6 @@ export const Users = () => {
     getAdmin('State');
   },[])
 
-  const deleteUserSelect =(id)=>{
-    listUsersSelect.map(item=>{
-      if(item.idUsuario===id){
-        const index=listUsersSelect.indexOf(item);
-        listUsersSelect.splice(index,1)
-      }
-    })
-    setListUserSelect([...listUsersSelect]);
-  }
   
 
   const dataMenuAdmin = {
@@ -44,7 +43,13 @@ export const Users = () => {
   }
 
   const dataUsers={
-    objectAllStatus:dataState
+    objectAllStatus:dataState,
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:objectSelectedSetState, 
+    selectedList:selectedList, 
+    setselectedList:setselectedList, 
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
   }
 
   

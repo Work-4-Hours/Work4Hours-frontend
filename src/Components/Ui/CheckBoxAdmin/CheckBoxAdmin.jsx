@@ -5,11 +5,11 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
   const {
     objectAll, 
-    deleteUserSelect, 
     designCheckBoxAdmin, 
     idStatus, 
-    listUserSelectSet, 
-    selectUsers,
+    deletingSelectedDeslectCheckbox,
+    selectedList,
+    setselectedList,
     boardType
   } = dataCheckBoxAdmin;
 
@@ -31,17 +31,18 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         nombres:allObject.nombres, 
         color:allObject.color
       }
-      listUserSelectSet([...selectUsers, datauser]);
+      setselectedList([...selectedList, datauser]);
     }
     else if(e.target.checked && boardType===false){
       const dataServices={
         idEstado:idStatus,
         id:allObject.id,
-        nombre:allObject.nombre,
+        nombre:allObject.nombreServicio
       }
+      setselectedList([...selectedList, dataServices]);
     }
     else{ 
-      deleteUserSelect(allObject.idusuario);
+      deletingSelectedDeslectCheckbox(allObject.idusuario);
     }
  }
   return (

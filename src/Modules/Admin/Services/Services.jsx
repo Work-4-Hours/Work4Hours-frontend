@@ -18,7 +18,15 @@ import { useAdmin } from 'CustomHooks/useAdmin';
 export const Services = () => {
 
 
-  const { data, getAdmin, dataState } = useAdmin();
+  const { data,
+    getAdmin, 
+    dataState, 
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus} = useAdmin();
 
   useEffect(()=>{
     getAdmin('Services');
@@ -50,7 +58,13 @@ export const Services = () => {
   }
 
   const dataServices={
-    objectAllStatus:dataState
+    objectAllStatus:dataState,
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:objectSelectedSetState, 
+    selectedList:selectedList, 
+    setselectedList:setselectedList, 
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
   }
   return (
     <div className='container_admin'>

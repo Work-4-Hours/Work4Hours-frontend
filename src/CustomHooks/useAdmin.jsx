@@ -44,6 +44,16 @@ export const useAdmin = () => {
     }
   }
 
-  return {data,getAdmin, dataState}
+  return {
+    data,
+    getAdmin, 
+    dataState, 
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus
+  }
 }
 

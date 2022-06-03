@@ -12,22 +12,38 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
-  const {objectAllStatus}=dataServices;
+  const {objectAllStatus,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus}=dataServices;
 
   const [idStatus, setIdStatus] = useState(0);
-  const [changeStatus, setChangeStatus]=useState(false);
+
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
-  const dataStatusUsersAdmin={
-    // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
+  const dataStatusAdmin={
+    objectSelectedSetState:objectSelectedSetState,
     idObject:idservicio, 
-    statusChange:changeStatus, 
-    statusChangeSet:setChangeStatus, 
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
     capturarid:setIdStatus, 
-    numberReports:cantidadReportes
+    numberReports:cantidadReportes,
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
+  }
+
+  const dataCheckBoxAdmin={
+    objectAll:objectServiceInfo, 
+    designCheckBoxAdmin:"span_confirm_changes", 
+    idStatus:idStatus, 
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList, 
+    setselectedList:setselectedList,
+    boardType:false
   }
 
 
@@ -41,8 +57,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
       <InfoReportAdmin NumberReports={cantidadReportes}/>
-      <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
-      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
+      <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
+      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>
   )
 }

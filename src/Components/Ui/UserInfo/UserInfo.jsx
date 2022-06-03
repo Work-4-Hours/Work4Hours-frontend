@@ -17,31 +17,43 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     idEstado,
     nombre_estado, 
     idusuario, 
-    color} = objectAllUsers;
-  const {objectAllStatus}=dataUsers;
+    color
+  } = objectAllUsers;
+  const {
+    objectAllStatus,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus
+  }=dataUsers;
+  
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
 
   const [idStatus, setIdStatus] = useState(0);
   
 
-  const dataStatusUsersAdmin={
-    // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
+  const dataStatusAdmin={
+    objectSelectedSetState:objectSelectedSetState, 
     idObject:idusuario,
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
     capturarid:setIdStatus, 
-    numberReports:cantidadReportes
+    numberReports:cantidadReportes,
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
   }
 
   const dataCheckBoxAdmin={
     objectAll:objectAllUsers, 
     designCheckBoxAdmin:"span_confirm_changes", 
     idStatus:idStatus, 
-    // listUserSelectSet:listUserSelectSet, 
-    // selectUsers:selectUsers
-    // deleteUserSelect:deleteUserSelect, 
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList, 
+    setselectedList:setselectedList,
     boardType:true
   }
 
@@ -53,7 +65,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
 
-      <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
+      <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    
   )
