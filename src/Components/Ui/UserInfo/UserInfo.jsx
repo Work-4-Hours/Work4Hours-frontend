@@ -27,9 +27,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const dataStatusUsersAdmin={
     // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
-    idObject:idusuario, 
-    statusChange:changeStatus, 
-    statusChangeSet:setChangeStatus, 
+    idObject:idusuario,
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
@@ -38,12 +36,13 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   }
 
   const dataCheckBoxAdmin={
-    objectAllUsers:objectAllUsers, 
+    objectAll:objectAllUsers, 
     designCheckBoxAdmin:"span_confirm_changes", 
     idStatus:idStatus, 
     // listUserSelectSet:listUserSelectSet, 
     // selectUsers:selectUsers
     // deleteUserSelect:deleteUserSelect, 
+    boardType:true
   }
 
 

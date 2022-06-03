@@ -24,7 +24,7 @@ export const useAdmin = () => {
 
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
-      if(item.idUsuario===id){
+      if(item.id===id){
         const index=selectedList.indexOf(item);
         selectedList.splice(index,1)
       }
@@ -35,8 +35,7 @@ export const useAdmin = () => {
   const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
     if (statusChange===true){
       selectedList.map(item=>{
-        //tiene que mirar como validar cual es cual para armar el objeto
-        if(item.idUsuario===idObject){
+        if(item.id===idObject){
           item.idEstado=idStatus
         }
       })
