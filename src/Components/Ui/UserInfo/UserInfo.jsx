@@ -19,6 +19,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     idusuario, 
     color
   } = objectAllUsers;
+
   const {
     objectAllStatus,
     deletingSelectedDeslectCheckbox, 
@@ -32,8 +33,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
 
-  const [idStatus, setIdStatus] = useState(0);
-  
+ 
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
@@ -41,7 +41,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    capturarid:setIdStatus, 
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus
@@ -50,7 +49,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   const dataCheckBoxAdmin={
     objectAll:objectAllUsers, 
     designCheckBoxAdmin:"span_confirm_changes", 
-    idStatus:idStatus, 
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,

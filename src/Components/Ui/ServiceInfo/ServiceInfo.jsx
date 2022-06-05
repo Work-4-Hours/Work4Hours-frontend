@@ -12,6 +12,7 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
+  
   const {objectAllStatus,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
@@ -39,7 +40,6 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const dataCheckBoxAdmin={
     objectAll:objectServiceInfo, 
     designCheckBoxAdmin:"span_confirm_changes", 
-    idStatus:idStatus, 
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,

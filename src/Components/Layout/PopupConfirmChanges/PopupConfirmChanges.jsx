@@ -8,14 +8,14 @@ import axios from 'axios';
 
 
 
-export const PopupConfirmChanges = ({ dataPopupConfirmChanges }) => {
+export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
+
     const {
         selectedList, 
         nameTitle,
-        valueButton,
-        styleObjects,
-        objectContent
+        valueButton
     }=dataPopupConfirmChanges;
+
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
@@ -27,8 +27,9 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges }) => {
                 <div className="overlay_Popup_Confirm_Changes_Content_Object">
                     <div className='popup_admin_save_changes_admin'>
                         <PopupTitleAdmin title={nameTitle} />
-                        <PopupConfirmChangesContentObjects content={objectContent} object={styleObjects} />
-                        <form onSubmit={(e)=>{sendUsers(e)}}>
+                        <PopupConfirmChangesContentObjects content={objectContent} />
+                        {/* <form onSubmit={(e)=>{sendUsers(e)}}> */}
+                        <form>
                             <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} required/>
                             <div className='btns_save_changes_admin'>
                                 <div className='btns_save_changes_admin_spacing'>

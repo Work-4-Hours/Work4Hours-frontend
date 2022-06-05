@@ -4,8 +4,8 @@ import { BsX } from 'react-icons/bs';
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 
-export const ObjectStatus = ({userSelect, deleteUserSelect}) => {
-  const {idEstado,email,idUsuario, fotoUser, nombres, color}=userSelect;
+export const ObjectStatus = ({userSelect, deletingSelectedDeslectCheckbox}) => {
+  const {email,id, fotoUser, nombres, color}=userSelect;
   const photoData={name:nombres, color:color, userPicture:fotoUser};
  
   
@@ -13,7 +13,7 @@ export const ObjectStatus = ({userSelect, deleteUserSelect}) => {
     <div className='object_status'>
       <PhotoAdmin photoData={photoData}/>
       <p>{email}</p>
-      <BsX className='delete_user_status' onClick={()=>{deleteUserSelect(idUsuario)}}/>
+      <BsX className='delete_user_status' onClick={()=>{deletingSelectedDeslectCheckbox(id)}}/>
     </div>
   )
 }

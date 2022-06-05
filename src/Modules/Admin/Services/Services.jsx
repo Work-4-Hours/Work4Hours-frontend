@@ -66,6 +66,17 @@ export const Services = () => {
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus
   }
+
+  const dataPopupConfirmChanges = {
+    selectedList:selectedList, 
+    nameTitle:"Esta seguro de querer actualizar el estado de: ",
+    valueButton:"Actualizar",
+
+
+    //infoAdmin, token,  
+    //sendNotification
+  }
+
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
@@ -75,6 +86,11 @@ export const Services = () => {
           data?.map(item=>(
             <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
           ) }/>
+        <PopupConfirmChanges objectContent={
+        selectedList?.map(item=>(
+          <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        ))
+      } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
     </div>
   )

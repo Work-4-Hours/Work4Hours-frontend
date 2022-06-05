@@ -4,7 +4,6 @@ import './Users.css';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
-import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
@@ -12,6 +11,7 @@ import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 
 
 export const Users = () => {
@@ -74,12 +74,12 @@ export const Users = () => {
   const dataPopupConfirmChanges = {
     selectedList:selectedList, 
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
-    valueButton:"Actualizar",
-    styleObjects:"popup_confirm_changes_content_objects_users"
+    valueButton:"Actualizar"
 
     //infoAdmin, token,  
     //sendNotification
   }
+  console.log(selectedList)
 
 
   return (
@@ -91,12 +91,12 @@ export const Users = () => {
         data?.map(item=>(
           <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
         ))}/>
-      </div>
       <PopupConfirmChanges objectContent={
-        selectedList.map(item=>(
+        selectedList?.map(item=>(
           <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
+      </div>
     </div>
   )
 }
