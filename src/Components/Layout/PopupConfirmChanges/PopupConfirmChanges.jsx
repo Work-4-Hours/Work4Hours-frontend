@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Header } from '../Header/Header';
 
 const apiAdmin = process.env.REACT_APP_API_ADMIN;
+const API = process.env.REACT_APP_API;
 
 
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
@@ -19,23 +20,34 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         nameTitle,
         valueButton,
         token,
-        infoAdmin,
+        email,
         typePetition
     }=dataPopupConfirmChanges;
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
-    const API = process.env.REACT_APP_API;
-    
+    console.log(token)
     const sendObjects=(e)=>{
-        axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(e => {
-            console.log(e);
-        })
+        if(passwordAdmin!==""){
+            axios.post(`${API}/allowChanges/${email}/${passwordAdmin}`,{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization': `JSW ${token}`
+                }
+
+            })
+            .then(res=>res.json())
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+        }
+        // axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
+        // .then(response => {
+        //     console.log(response)
+        // })
+        // .catch(e => {
+        //     console.log(e);
+        // })
         setIsOpen(!isOpen)
     }
 

@@ -78,7 +78,7 @@ export const Users = () => {
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
-    infoAdmin:admin.info[0].email,
+    email:admin.info[0].email,
     typePetition:"Users"
     //infoAdmin, token,  
     //sendNotification
