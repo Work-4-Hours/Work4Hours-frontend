@@ -1,0 +1,35 @@
+.card_user {
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.card_user:hover {
+    cursor: pointer;
+}
+
+.header_card_user {
+    padding: 6px 10px;
+    background: var(--bg-blue);
+}
+
+.name_service_header_card {
+    /* font-weight: 600; */
+    color: #FFFF;
+    font-size: 17px;
+    font-family: var(--font-1);
+
+}
+
+.body_card_user {
+    padding: 14px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+}
+
+.name_card_user {
+    color: var(--gray-text-2);
+    font-family: var(--font-1);
+    font-size: 18px;
+}

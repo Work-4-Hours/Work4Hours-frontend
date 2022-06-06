@@ -1,0 +1,43 @@
+.position_relative{
+    position: relative;
+}
+
+
+.spacing{
+    margin-bottom: 4%;
+}
+
+.op_state_user{
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+
+.op_state_user::before{
+    content: "";
+    display: flex;
+    height: 0.625em;
+    width: 0.625em;
+    border-radius: 50%;
+    margin-right: 0.125rem;
+}
+
+.yellow::before{
+    background-color: var(--status-yellow);
+}
+
+.green::before{
+    background-color: var(--status-green);
+}
+
+.red::before{
+    background-color: var(--status-red);
+}
+
+
+
+

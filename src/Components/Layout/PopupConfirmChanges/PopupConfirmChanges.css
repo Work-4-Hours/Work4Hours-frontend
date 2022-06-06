@@ -1,0 +1,44 @@
+.overlay_Popup_Confirm_Changes_Content_Object{
+    background: rgba(0, 0, 0,.3);
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup_admin_save_changes_admin{
+    background-color: var(--white-text-1);
+    padding: 2%;
+    border-radius: 10px;
+    width: 50%;
+    animation:animationOpacityActivate .2s forwards;
+}
+
+.password_admin_save_changes_admin{
+    background-color: var(--bg-layout-grey);
+    border:0;
+    padding: 2%;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 3%;
+    outline: none;
+}
+
+.password_admin_save_changes_admin::placeholder{
+    color:var(--gray-text-3)
+}
+
+.btns_save_changes_admin{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btns_save_changes_admin_spacing{
+    display: flex;
+    justify-content: space-between;
+    gap:4%;
+}

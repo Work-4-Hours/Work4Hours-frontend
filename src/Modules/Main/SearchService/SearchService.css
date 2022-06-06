@@ -1,0 +1,41 @@
+.center_main_search {
+    max-width: var(--max-width-container);
+    margin: 2em auto;
+    padding: 0 20px;
+
+    display: flex;
+    gap: 20px;
+}
+
+.search_info {
+    width: 20%;
+}
+
+.header_search_info {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+}
+
+.length_results {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
+}
+
+.filter_search_info {
+    padding: 20px;
+}
+
+.subtitle_filter_search {
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 17px;
+}
+
+.search_services {
+    width: 80%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

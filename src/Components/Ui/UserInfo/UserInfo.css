@@ -1,0 +1,19 @@
+.user_info{
+  display: flex;
+  gap: 2%;
+  align-items: center;
+  background-color: var(--bg-checkbox-grey);
+  border-radius: 1em;
+  padding: 1%;
+  margin-bottom: 1%;
+
+}
+
+.ellipsis{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+
+  
