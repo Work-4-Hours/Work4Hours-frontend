@@ -106,7 +106,7 @@ export const Profile = () => {
                                     </>                          
                                     :
                                     
-                                    services?.map((item, index) =>  <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
+                                    services?.map((item, index) =>  <Link key={index} to={`/CO/service/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
                                 }   
 
                                 </div>

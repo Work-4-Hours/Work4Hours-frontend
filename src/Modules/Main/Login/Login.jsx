@@ -7,11 +7,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
 import { ReactComponent as IconAlert } from 'Assets/Icons/IconAlert.svg'
+import { ModalTest } from 'CustomHooks/useClickOutside'
+import { TextError } from 'Components/StyleComponets/MessageError'
+import { useField } from 'CustomHooks/useField'
 
 import './Login.css'
-import { TextError } from 'Components/StyleComponets/MessageError'
-import { ModalTest } from 'CustomHooks/useClickOutside'
-import { useField } from 'CustomHooks/useField'
 
 export const Login = () => {
 
@@ -23,7 +23,7 @@ export const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        password.isValidate && email.isValidate && login({ email: email.value, password: password.value })
+        email.validator(email.value) && password.validator(password.value) && login({ email: email.value, password: password.value })
     }
 
     useEffect(() => {

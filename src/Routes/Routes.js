@@ -29,10 +29,10 @@ export const AllRoutes = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/registry' element={<Registry />} />
           <Route path='/service/:query' element={<SearchService />} />
-          <Route path='/password/forgotten' element={<ForgottenPassword />} />
+          <Route path='/password/:query' element={<ForgottenPassword />} />
 
           <Route path='/profile/:query' element={ <IsAuth> <Profile /> </IsAuth>} />
-          <Route path='/serivice/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
+          <Route path='/CO/service/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
           <Route path='/service/add' element={ <IsAuth> <AddService /> </IsAuth>} />
           <Route path='/service/edit' element={ <IsAuth> <EditService /> </IsAuth>} />
           <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
@@ -41,6 +41,7 @@ export const AllRoutes = () => {
           </Route>
           <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
           <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
+
           <Route path='*' element={<NotFound/>} /> 
         </Routes>
       </BrowserRouter>

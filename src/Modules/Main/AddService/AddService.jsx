@@ -15,25 +15,25 @@ import { LoadingAnimation } from 'Components/Ui/LoadingAnimation/LoadingAnimatio
 import { UserContext } from 'Context/UserContext'
 
 import './AddService.css'
+import { useImagePreview } from 'CustomHooks/useImagePreview'
 
 export const AddService = () => {
 
     const { loading, data, uploadImage } = useUploadImage();
-    
+
     const { getJwt } = useContext(UserContext)
 
     const [loadingCreate, setLoadingCreate] = useState(null);
 
     const [name, setName] = useState(null);
     const [type, setType] = useState(null);
-    const [photo, setPhoto] = useState(null);
+    const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
     const [status, setStatus] = useState(null);
     const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
 
-
-    const imagePreview = useRef();
+    const { previewImage, setPreviewImage } = useImagePreview()
 
     const createService = async () => {
         setLoadingCreate(true)
@@ -62,12 +62,6 @@ export const AddService = () => {
             .finally(setLoadingCreate(false))
     }
 
-    const photoPreview = (file) => {
-        console.log('XD');
-        imagePreview.src = 'https://res.cloudinary.com/sena-quindio/image/upload/v1650504672/gob17e9gehwee4w3lcj8.png'
-    }
-
-
     return (
         <>
             <Header />
@@ -75,15 +69,28 @@ export const AddService = () => {
                 <div className="center_main_add_service">
 
                     <DivShadow className='image_add'>
-                        <input type="file" onChange={e => {uploadImage(e.target.files[0])}}/>
-                        <input type="file" name="send_image" id="input_file_image" onChange={e  => { console.log(e.target)}} />
-                        <label htmlFor="input_file_image">
-                            <div className="drag_drop_image">
-                                <img className='icon_add_image' src={IconAddImage} alt="" />
-                                <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
-                            </div>
+                        <input type="file" className='input_add_image_service' id='input_add_image_service' onChange={e => { 
+                            setPreviewImage(e) 
+                            setFileImage(e.target.files[0])
+                        }} />
+
+                        <label htmlFor="input_add_image_service">
+                            {
+                                previewImage ?
+                                    <>
+                                        <img className='image_service_preview' src={previewImage} alt="" />
+                                        <div className="button_upload_image_service">
+                                            <Button value='Subir imagen' onClick={ () => uploadImage(fileImage)} isLoading={loading} />
+                                        </div>
+                                    </>
+
+                                    :
+                                    <div className="drag_drop_image">
+                                        <img className='icon_add_image' src={IconAddImage} alt="" />
+                                        <p className='info_drag_drop_image'>Agregue una imagen relacionada con su servicio</p>
+                                    </div>
+                            }
                         </label>
-                        <img ref={imagePreview} src="" alt="" />
                     </DivShadow>
 
                     <DivShadow className='form_add_service'>

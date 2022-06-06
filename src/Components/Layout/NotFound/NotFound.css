@@ -45,3 +45,7 @@
     font-size: 1.6em;
     color: var(--gray-text-2);
 }
+
+.link_index_notfound {
+    text-decoration: none;
+}

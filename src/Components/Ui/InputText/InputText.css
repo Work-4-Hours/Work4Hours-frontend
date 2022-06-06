@@ -16,6 +16,10 @@
     color: #ac2828;
 }
 
+.input_not_validate::placeholder {
+    color: #cf7878;
+}
+
 .input_message_error {
     margin: 7px 0 0 0;
     font-family: var(--font-1);

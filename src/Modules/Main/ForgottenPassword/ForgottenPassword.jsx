@@ -10,14 +10,19 @@ import { ReactComponent as IconCheck } from 'Assets/Icons/IconCheck.svg'
 
 import './ForgottenPassword.css'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import axios from 'axios'
 
 const regex_email = /^(([^<>()[\]\ \.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
 export const ForgottenPassword = () => {
+
+    const [params, setParams] = useSearchParams()
+
     const navigate = useNavigate()
+
     const email = useField({ type: 'email', validate: regex_email, message_errors: 'El correo ingresado es incorrecto' })
 
     const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta' })
@@ -25,11 +30,30 @@ export const ForgottenPassword = () => {
 
     const [value, setValue, removeValue] = useLocalStorage('stateForgottenPassword', 1)
 
+    
+    const sendEmail = () => {
+        axios.get(`${process.env.REACT_APP_API_PRODUCTION}/recoverPassword/cristian071del9@gmail.com`)
+        .then(response => {
+            console.log(response.data)
+        })
+        .catch(error => console.log(error))          
+
+        console.log('XD');
+    }
+
+    useEffect(() => {
+        if (params.get('id')) {
+            setValue(2)
+        } else {
+            setValue(1)
+
+        }
+    }, [params])
 
     useEffect(() => {
         if (password.value !== confrimPassword.value)
             confrimPassword.setIsValidate(false)
-            confrimPassword.setMessageError('Las contraseñas no coinciden')
+        confrimPassword.setMessageError('Las contraseñas no coinciden')
     }, [confrimPassword.value])
 
     const redirecLogin = () => {
@@ -53,9 +77,12 @@ export const ForgottenPassword = () => {
                                         </div>
                                     </header>
 
-                                    <form className='form_forgotten_password'>
+                                    <form onSubmit={(e) => e.preventDefault()} className='form_forgotten_password'>
                                         <InputTextLabel titleLabel='Correo' {...email} placeholder='Direccion de correo electronico' />
-                                        <Button value='Enviar correo electronico' onClick={() => setValue(value + 1)} />
+                                        <Button value='Enviar correo electronico' onClick={() => {
+                                            setValue(1)
+                                            sendEmail()
+                                        }} />
                                     </form>
                                 </>
                             )
@@ -63,7 +90,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 2 && ( 
+                            value == 2 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <div>
@@ -81,7 +108,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 3 && ( 
+                            value == 3 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <IconCheck className='incon_unlock' />

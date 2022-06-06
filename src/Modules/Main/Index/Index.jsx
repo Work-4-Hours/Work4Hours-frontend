@@ -48,7 +48,7 @@ export const Index = () => {
                                         <LoadingCard />
                                     </>
                                     :
-                                    data?.map((item, index) => <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
+                                    data?.map((item, index) => <Link key={index} to={`CO/service/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
                             }
                         </DivShadow>
                     </section>
