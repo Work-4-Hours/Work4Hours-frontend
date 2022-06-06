@@ -15,6 +15,8 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 
 
 export const Users = () => {
+
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
     
   const { data,
     getAdmin, 
@@ -74,12 +76,14 @@ export const Users = () => {
   const dataPopupConfirmChanges = {
     selectedList:selectedList, 
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
-    valueButton:"Actualizar"
-
+    valueButton:"Actualizar",
+    token:getToken(),
+    infoAdmin:admin.info[0].email,
+    typePetition:"Users"
     //infoAdmin, token,  
     //sendNotification
   }
-  console.log(selectedList)
+
 
 
   return (

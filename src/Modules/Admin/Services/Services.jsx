@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext} from 'react';
 import './Services.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
@@ -12,12 +12,14 @@ import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/Popup
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import { AdminContext } from 'Context/AdminContext';
+
 
 
 
 export const Services = () => {
 
-
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
   const { data,
     getAdmin, 
     dataState, 
@@ -71,7 +73,9 @@ export const Services = () => {
     selectedList:selectedList, 
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
-
+    token:getToken(),
+    infoAdmin:admin.info[0].email,
+    typePetition:"Services"
 
     //infoAdmin, token,  
     //sendNotification
