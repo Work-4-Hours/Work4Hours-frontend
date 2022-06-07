@@ -27,7 +27,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
-    console.log(token)
+
     const sendObjects=(e)=>{
         if(passwordAdmin!==""){
             axios.post(`${API}/allowChanges/${email}/${passwordAdmin}`,{

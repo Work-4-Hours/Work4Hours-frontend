@@ -7,6 +7,8 @@ export const useAdmin = () => {
   const [dataState, setDataState] = useState([]);
   const [selectedList, setselectedList]=useState([]);
   const [changeStatus, setChangeStatus]=useState(false);
+  const [searchWord,setSearchWord]=useState([]);
+  const [validateSearchWord,setValidateSearchWord]=useState(true);
   
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
@@ -21,6 +23,43 @@ export const useAdmin = () => {
     .catch(e=>{
       console.log(e)})
   }
+  const validateDataPostWorkSearch=(response)=>{
+    if(response.data.length>0){
+      setSearchWord(response.data)
+      setValidateSearchWord(true)
+    }
+    else{
+      setValidateSearchWord(false)
+    }
+  }
+
+  const postWorkSearch=(event,searchNumber,searchString)=>{
+    if(event.target.value!==""){
+      if(event.keyCode===13){
+        if(!isNaN(parseInt(event.target.value))){
+          axios.post(`${api}/${searchNumber}?value=${parseInt(event.target.value)}`)
+          .then(response=>{
+            validateDataPostWorkSearch(response)
+          })
+          .catch(e=>{console.log(e)})
+        }
+        else{
+          axios.post(`${api}/api/${searchString}?value=${event.target.value}`)
+          .then(response=>{
+            validateDataPostWorkSearch(response)
+          })
+          .catch(e=>{console.log(e)})
+        }
+      }
+    }
+    else{
+      setSearchWord([])
+      setValidateSearchWord(true)
+    }
+  }
+  
+  
+
 
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
@@ -46,6 +85,7 @@ export const useAdmin = () => {
 
   return {
     data,
+    setData,
     getAdmin, 
     dataState, 
     deletingSelectedDeslectCheckbox, 
@@ -53,7 +93,10 @@ export const useAdmin = () => {
     selectedList, 
     setselectedList, 
     changeStatus,
-    setChangeStatus
+    setChangeStatus,
+    postWorkSearch,
+    searchWord,
+    validateSearchWord
   }
 }
 
