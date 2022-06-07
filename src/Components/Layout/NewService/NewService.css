@@ -1,0 +1,22 @@
+.section_form_new_service {
+    animation: 500ms var(--animation-show-slow);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.preview_image_service {
+    width: 50%;
+}
+
+.form_new_service {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.state_new_service {
+    display: flex;
+    gap: 10px;
+}

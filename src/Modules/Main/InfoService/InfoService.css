@@ -276,3 +276,7 @@
     display: flex;
     margin: 20px 0 0 0;
 }
+
+.link_profile_info_user {
+    text-decoration: none;
+}

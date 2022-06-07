@@ -11,13 +11,9 @@ import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
 import { useFetch } from 'CustomHooks/useFetch'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
+import { regex_email, regex_names, regex_password, regex_phone } from 'Validations/RejexForms'
 
 import './Registry.css'
-
-const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-const regex_names = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
-const regex_phone = /3[0-9]{9}/
 
 export const Registry = () => {
 

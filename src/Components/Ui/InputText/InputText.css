@@ -25,3 +25,10 @@
     font-family: var(--font-1);
     color: #a10f0f;
 }
+
+/* Theme input dark */
+
+.input_dark   {
+    background: #2b323b;
+    color: #FFFF;
+} 

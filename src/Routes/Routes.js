@@ -18,6 +18,7 @@ import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
 import { ForgottenPassword } from 'Modules/Main/ForgottenPassword/ForgottenPassword'
 import { NotFound } from 'Components/Layout/NotFound/NotFound'
+import { NewService } from 'Components/Layout/NewService/NewService'
 
 export const AllRoutes = () => {
 
@@ -38,6 +39,8 @@ export const AllRoutes = () => {
           <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
             <Route path='publications' element={ <Publications />} />
             <Route path='saved' element={<Saved />} />
+            <Route path='new-service' element={<NewService />} />
+            <Route path='update-service' element={<NewService />} />
           </Route>
           <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
           <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />

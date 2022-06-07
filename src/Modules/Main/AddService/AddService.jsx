@@ -26,10 +26,10 @@ export const AddService = () => {
     const [loadingCreate, setLoadingCreate] = useState(null);
 
     const [name, setName] = useState(null);
+    const [status, setStatus] = useState(null);
     const [type, setType] = useState(null);
     const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
-    const [status, setStatus] = useState(null);
     const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './InputSelect.css'
 
-export const InputSelect = ({nameSelect, options, disabled, ...props}) => {
+export const InputSelect = ({nameSelect, options, disabled, input_style,...props}) => {
     const chatRef = useRef()
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export const InputSelect = ({nameSelect, options, disabled, ...props}) => {
     },[disabled])
 
     return (
-        <select className={`select_input`} ref={chatRef} {...props} >
+        <select className={`select_input ${input_style}`} ref={chatRef} {...props} >
             <option value="">{nameSelect}</option>
             {
                 options?.map((item,index) => (

@@ -214,7 +214,7 @@ export const InfoService = () => {
                                 <p className='email_user_info_service'>{infoUser.email}</p>
                                 <p className='phone_number_info_service'>{infoUser.phoneNumber}</p>
                                 <div className="button_info_service">
-                                    <Link to={`/profile/user?id=${userId}`}>
+                                    <Link className='link_profile_info_user' to={`/profile/user?id=${userId}`}>
                                         <Button value='Ver perfil' />
                                     </Link>
                                 </div>

@@ -18,7 +18,7 @@ export const PublicRoutes = () => {
                     <Route path='/login' element={<Login />} />
                     <Route path='/registry' element={<Registry />} />
                     <Route path='/service/:query' element={<SearchService />} />
-                    <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
+                    <Route path='/CO/service/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
                     <Route path='/password/forgotten' element={<ForgottenPassword />} />
                 </Routes>
             </BrowserRouter>
