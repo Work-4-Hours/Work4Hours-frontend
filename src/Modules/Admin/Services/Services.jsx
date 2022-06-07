@@ -5,16 +5,12 @@ import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
-import { Button } from 'Components/Ui/Button/Button';
 import { ServiceInfo } from 'Components/Ui/ServiceInfo/ServiceInfo';
 import { FilterServiceAdmin } from 'Components/Ui/FilterServiceAdmin/FilterServiceAdmin';
 import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
-import { GetAdmin } from 'Functions/ReusableFunctions';
 import { useAdmin } from 'CustomHooks/useAdmin';
 import { AdminContext } from 'Context/AdminContext';
-
-
 
 
 export const Services = () => {
@@ -32,7 +28,8 @@ export const Services = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord
+    validateSearchWord,
+    setIdFilter
   } = useAdmin();
 
   useEffect(()=>{
@@ -58,9 +55,9 @@ export const Services = () => {
   const dataSearch={
     nameSearch: "Buscar Usuarios",
     postWorkSearch:postWorkSearch,
-    searchNumber:"busquedaGeneralReportesServicios",
+    searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices"
-    /** 
+    /*
      * idFilter={idFilter} 
      * filter={<FilterUserAdmin 
      * setIdFilter = {setIdFilter}
@@ -109,7 +106,7 @@ export const Services = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
       <div className='manager_control'>
-        <Search dataSearch={dataSearch}/>
+        <Search dataSearch={dataSearch} filter={<FilterServiceAdmin setIdFilter={setIdFilter}/>}/>
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         {
           validateSearchWord ?

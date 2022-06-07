@@ -7,8 +7,7 @@ import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
-import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
-import { GetAdmin } from 'Functions/ReusableFunctions';
+import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
 import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
@@ -30,13 +29,9 @@ export const Users = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord
+    validateSearchWord,
+    setIdFilter
   } = useAdmin();
-
-
-
-  
-  
 
   useEffect(()=>{
     getAdmin('Users');
@@ -61,13 +56,8 @@ export const Users = () => {
   const dataSearch={
     nameSearch: "Buscar Usuarios",
     postWorkSearch:postWorkSearch,
-    searchNumber:"busquedaGeneralReportes",
+    searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
-    /** 
-     * idFilter={idFilter} 
-     * filter={<FilterUserAdmin 
-     * setIdFilter = {setIdFilter}
-    */
   }
 
   const dataUsers={
@@ -115,7 +105,7 @@ export const Users = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch}/>
+      <Search dataSearch={dataSearch} filter={<FilterUserAdmin setIdFilter={setIdFilter}/>}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={

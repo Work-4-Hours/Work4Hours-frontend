@@ -1,21 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './FilterUserAdmin.css';
 
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { Button } from '../Button/Button';
+import { OptionFilterUserAdmin } from '../OptionFilterUserAdmin/OptionFilterUserAdmin';
 
 export const FilterUserAdmin = ({setIdFilter}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const changeValueSelected = (e) => {
-    setIdFilter(e.target.value);
+    setIdFilter(e.target.id);
   }
   
-  const unSelect = (e) => {
-    return e.target.checked = false
-  }
-
-
+  const data=[
+    {nombre:"Tipo de Suspensión",id:1},
+    {nombre:"Reportes",id:2},
+    {nombre:"Correo",id:3},
+    {nombre:"Nombres y Apellidos",id:4}
+  ]
 
   return (
     <div className='content_filter'>
@@ -23,30 +25,7 @@ export const FilterUserAdmin = ({setIdFilter}) => {
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options filter_options' onChange={changeValueSelected}> 
-          <div className='typ_report'>
-            <label>
-              Tipos de suspensión
-            </label>
-            <input type="radio" value="1" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
-          </div>
-          <div className='typ_report'>
-            <label>
-              Reportes
-            </label>
-            <input type="radio" value="2" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
-          </div>
-          <div className='typ_report'>
-            <label>
-              Correo
-            </label>
-            <input type="radio" value="3" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
-          </div>
-          <div className='typ_report'>
-            <label>
-              Nombres y Apellidos
-            </label>
-            <input type="radio" value="4" name ="filters" onDoubleClick={(e)=>unSelect(e)}/>
-          </div>
+          {data.map(item=><OptionFilterUserAdmin option={item} setIdFilter={setIdFilter} key={item.id}/>)}
         </div>
       </PopUp>
     </div>

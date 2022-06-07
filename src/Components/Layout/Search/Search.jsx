@@ -3,12 +3,12 @@ import './Search.css';
 
 import { SearchBox } from 'Components/Ui/SearchBox/SearchBox';
 
-export const Search = ({dataSearch}) => {
+export const Search = ({dataSearch, filter}) => {
   
   return (
     <div className='search_filter_admin_users'>
       <SearchBox dataSearch={dataSearch} />
-      {/* {filter} */}
+      {filter}
     </div>
   )
 }

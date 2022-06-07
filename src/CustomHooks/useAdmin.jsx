@@ -9,7 +9,9 @@ export const useAdmin = () => {
   const [changeStatus, setChangeStatus]=useState(false);
   const [searchWord,setSearchWord]=useState([]);
   const [validateSearchWord,setValidateSearchWord]=useState(true);
-  
+  const [idFilter, setIdFilter] = useState(0);
+
+  //Consumo de get de usuarios, servicios y estados
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
     .then(response=>{ 
@@ -23,6 +25,8 @@ export const useAdmin = () => {
     .catch(e=>{
       console.log(e)})
   }
+
+  //Validacion de array si trae o no datos la consulta
   const validateDataPostWorkSearch=(response)=>{
     if(response.data.length>0){
       setSearchWord(response.data)
@@ -33,22 +37,28 @@ export const useAdmin = () => {
     }
   }
 
+  //Busqueda de palabras con filtrado desde los servicios y usuarios
   const postWorkSearch=(event,searchNumber,searchString)=>{
     if(event.target.value!==""){
       if(event.keyCode===13){
-        if(!isNaN(parseInt(event.target.value))){
-          axios.post(`${api}/${searchNumber}?value=${parseInt(event.target.value)}`)
-          .then(response=>{
-            validateDataPostWorkSearch(response)
-          })
-          .catch(e=>{console.log(e)})
+        if (idFilter===0){
+          if(!isNaN(parseInt(event.target.value))){
+            axios.post(`${api}/${searchNumber}?value=${parseInt(event.target.value)}`)
+            .then(response=>{
+              validateDataPostWorkSearch(response)
+            })
+            .catch(e=>{console.log(e)})
+          }
+          else{
+            axios.post(`${api}/api/${searchString}?value=${event.target.value}`)
+            .then(response=>{
+              validateDataPostWorkSearch(response)
+            })
+            .catch(e=>{console.log(e)})
+          }
         }
         else{
-          axios.post(`${api}/api/${searchString}?value=${event.target.value}`)
-          .then(response=>{
-            validateDataPostWorkSearch(response)
-          })
-          .catch(e=>{console.log(e)})
+          searchFilter(idFilter,event.target.value,searchString)
         }
       }
     }
@@ -57,10 +67,27 @@ export const useAdmin = () => {
       setValidateSearchWord(true)
     }
   }
-  
-  
 
+  //Validacion de palabra si es numero o string
+  const searchFilter=(id, word,searchString)=>{
+    if(!isNaN(parseInt(word))){
+      postSearhFilter(id,parseInt(word),searchString)
+    }
+    else{
+      postSearhFilter(id,word,searchString)
+    }
+  }
+  //peticion de filtrado de usuarios
+  const postSearhFilter=(id, word,searchString)=>{
+    console.log(id)
+    console.log(word)
+    console.log(searchString)
+    axios.post(`${api}/${searchString}/filter?value=${id}&word=${word}`)
+    .then(response=>{validateDataPostWorkSearch(response)})
+    .catch(e=>{console.log(e)})
+  }
 
+  //Eliminacion de objetos en la seleccion de los checkboxs
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){
@@ -70,7 +97,7 @@ export const useAdmin = () => {
     })
     setselectedList([...selectedList]);
   }
-  
+  //Actualizacion del estado asi este seleccionado
   const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
     if (statusChange===true){
       selectedList.map(item=>{
@@ -96,7 +123,8 @@ export const useAdmin = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord
+    validateSearchWord,
+    setIdFilter
   }
 }
 
