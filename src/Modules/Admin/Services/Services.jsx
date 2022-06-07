@@ -53,6 +53,7 @@ export const Services = () => {
     nameAdmin: "Servicios",
     buttonActivated: "btn_change_color_gray",
     buttonDeactivated: " ",
+    logoutAdmin: logoutAdmin
   }
   const dataSearch={
     nameSearch: "Buscar Usuarios",

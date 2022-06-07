@@ -55,7 +55,8 @@ export const Users = () => {
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
-    buttonDeactivated: " btn_change_color_gray"
+    buttonDeactivated: " btn_change_color_gray",
+    logoutAdmin: logoutAdmin
   }
   const dataSearch={
     nameSearch: "Buscar Usuarios",

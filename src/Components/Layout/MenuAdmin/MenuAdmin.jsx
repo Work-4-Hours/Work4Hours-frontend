@@ -8,10 +8,10 @@ import { Link,useNavigate } from 'react-router-dom';
 import './MenuAdmin.css';
 
 export const MenuAdmin = ({dataMenuAdmin}) => {
-  const {logout, nameAdmin, buttonActivated, buttonDeactivated}=dataMenuAdmin;
+  const {logoutAdmin, nameAdmin, buttonActivated, buttonDeactivated}=dataMenuAdmin;
   const navigate = useNavigate()
   const logoutApp = () => {
-    logout();
+    logoutAdmin();
     navigate('/');
   }
 
