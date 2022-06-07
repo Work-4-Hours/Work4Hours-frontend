@@ -1,5 +1,5 @@
 .main_dasboard {
-    background: #393E46;
+    /* background: #393E46; */
     height: 100vh;
 }
 
@@ -32,14 +32,14 @@
 
 .title_dashboard_info_small {
     font-family: var(--font-1);
-    color: #FFFF;
+    color: var(--gray-text-1);
     font-size: 19px;
     /* font-weight: 700; */
 }
 
 .title_dashboard_info {
     font-family: var(--font-1);
-    color: #FFFF;
+    color: var(--gray-text-1);
     font-size: 25px;
     font-weight: 700;
 }
@@ -54,7 +54,7 @@
 .options_show_my_services {
     padding: 15px 20px;
     border-radius: 20px;
-    background: #2b323b;
+    background: #f4f8ff;
 
     display: flex;
     align-items: center;
@@ -62,7 +62,7 @@
 }
 
 .show_only_title {
-    color: #FFFF;
+    color: var(--gray-text-3);
     font-family: var(--font-1);
 }
 
@@ -70,10 +70,10 @@
     padding: 5px 15px;
     width: 130px;
     border-radius: 30px;
-    border: 1px solid #a3a3a3;
+    border: 1px solid var(--gray-text-3);
     text-align: center;
 
-    color: #a3a3a3;
+    color: var(--gray-text-3);
     font-family: var(--font-1);
 }
 
@@ -84,8 +84,8 @@
 }
 
 .option_select_ {
-    border: 2px solid #FFFF;
-    color: #FFFF;
+    border: 2px solid var(--gray-text-1);
+    color: var(--gray-text-1);
 }
 
 .operations_dashboard {
@@ -93,7 +93,7 @@
 }
 
 .main_dashboard_ {
-    background: #222831;
+    background: #FFFF;
     width: 80%;
     padding: 40px;
 }
@@ -111,7 +111,7 @@
 
 .personal_info {
     width: 20%;
-    background: #222831;
+    background: #FFFF;
 }
 
 .image_profile_dashboard {
@@ -127,7 +127,7 @@
 
 .my_services_ {
     padding: 1.2em 0 0 0;
-    border-top: 1px solid #2b323b;
+    border-top: 1px solid #ecf3ff;
 
     display: flex;
     flex-direction: column;

@@ -1,7 +1,7 @@
 .card_service_dashboard {
     width: 100%;
     padding: 15px;
-    background: #282f38;
+    background: #ecf3ff;
     border-radius: 7px;
 
     display: flex;
@@ -33,7 +33,7 @@
 }
 
 .name_card_service {
-    color: #ffffff;
+    color: var(--gray-text-1);
     font-size: 23px;
     font-family: var(--font-1);
 }
@@ -54,7 +54,7 @@
 
 .subtitle_reports_card_service_dashboard {
     font-family: var(--font-1);
-    color: #FFFF;
+    color: var(--gray-text-1);
     font-size: 16px;
 }
 
@@ -70,7 +70,7 @@
 
 .value_report {
     font-family: var(--font-1);
-    color: #ffce30;
+    color: #fab431;
     font-size: 13px;
 }
 

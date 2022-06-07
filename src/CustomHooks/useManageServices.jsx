@@ -20,6 +20,7 @@ export const useManageServices = () => {
             .then(response => response.json())
             .then(response => {
                 setData(response[0]);
+                console.log(response);
             })
             .catch(error => setError(error))
             .finally(() => setLoading(false))

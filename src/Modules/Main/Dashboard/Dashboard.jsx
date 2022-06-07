@@ -16,19 +16,20 @@ export const Dashboard = () => {
 
     return (
         <>
+        <Header/>
             <main className='main_dasboard'>
                 <div className="center_dashboard">
 
-                        <DivShadowDark className='personal_info'>
-                            <div className="image_profile_dashboard">
-                                <img className='image_my_profile' src={user.info[0].userPicture} alt="" />
+                    <DivShadowDark className='personal_info'>
+                        <div className="image_profile_dashboard">
+                            <img className='image_my_profile' src={user.info[0].userPicture} alt="" />
 
-                                <p>{user.info[0].names}</p>
-                                <p>XD</p>
-                            </div>
+                            <p>{user.info[0].names}</p>
+                            <p>XD</p>
+                        </div>
 
-                        </DivShadowDark>
-                    
+                    </DivShadowDark>
+
                     <DivShadowDark className='main_dashboard_'>
                         {/* <Link to="/"><img className="logo_app_dashboard" src="https://res.cloudinary.com/sena-quindio/image/upload/v1646884944/qqdviu6wbgeum4hpp5m6.png" alt="" /></Link> */}
                         <p className='title_dashboard_info_small'>Panel</p>
@@ -70,7 +71,7 @@ export const Dashboard = () => {
 
                     </DivShadowDark>
 
-                    
+
                 </div>
             </main>
         </>

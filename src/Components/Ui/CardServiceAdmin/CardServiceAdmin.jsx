@@ -53,10 +53,10 @@ export const CardServiceAdmin = ({ service = {} }) => {
                 <div className="state_card_service_dashboard">
                     <p className='subtitle_reports_card_service_dashboard'>Reportes</p>
                     {
-                        reportss > 0 ?
+                        service.reports > 0 ?
                             <div className='info_state_card_service_dashboard'>
                                 <img className='icon_danger_' src={IconDanger} alt="" />
-                                <p className='value_report'>Tiene {reportss} reporte/s</p>
+                                <p className='value_report'>Tiene {service.reports} reporte/s</p>
                             </div>
                             :
                             <div className='info_state_card_service_dashboard'>
