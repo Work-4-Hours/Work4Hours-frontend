@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
-  
+  console.log(api);
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState([]);
   const [dataReport, setReport] = useState([]);
