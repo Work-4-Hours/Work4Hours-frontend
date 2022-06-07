@@ -20,6 +20,7 @@ export const Services = () => {
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
   const [id,setId] = useState(0);
   const { data,
+    setData,
     getAdmin, 
     dataState, 
     getAdminReports,
@@ -29,17 +30,42 @@ export const Services = () => {
     selectedList, 
     setselectedList, 
     changeStatus,
-    setChangeStatus} = useAdmin();
+    setChangeStatus,
+    postWorkSearch,
+    searchWord,
+    validateSearchWord
+  } = useAdmin();
 
   useEffect(()=>{
     getAdmin('Services');
     getAdmin('State');
   },[])
+
+  useEffect(()=>{
+    if(searchWord.length>0){
+      setData(searchWord)
+    }
+    else{
+      getAdmin('Services');
+    }
+  },[searchWord]) 
     
   const dataMenuAdmin = {
     nameAdmin: "Servicios",
     buttonActivated: "btn_change_color_gray",
     buttonDeactivated: " ",
+    logoutAdmin: logoutAdmin
+  }
+  const dataSearch={
+    nameSearch: "Buscar Usuarios",
+    postWorkSearch:postWorkSearch,
+    searchNumber:"busquedaGeneralReportesServicios",
+    searchString:"SearchServices"
+    /** 
+     * idFilter={idFilter} 
+     * filter={<FilterUserAdmin 
+     * setIdFilter = {setIdFilter}
+    */
   }
 
   const dashboardHeader = {
@@ -80,10 +106,8 @@ export const Services = () => {
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
-    infoAdmin:admin.info[0].email,
+    email:admin.info[0].email,
     typePetition:"Services"
-
-    //infoAdmin, token,  
     //sendNotification
   }
 
@@ -91,11 +115,17 @@ export const Services = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
       <div className='manager_control'>
+        <Search dataSearch={dataSearch}/>
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
-        <Dashboard componetContent={
-          data?.map(item=>(
-            <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
-          ) }/>
+        {
+          validateSearchWord ?
+          <Dashboard componetContent={
+            data?.map(item=>(
+              <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
+            ) }/>
+          :
+          <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
+        }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
           <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
