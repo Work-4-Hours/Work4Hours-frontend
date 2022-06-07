@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import './InfoReportAdmin.css'
 import axios from 'axios';
 import { PopUp } from 'Components/StyleComponets/PopUp';
@@ -19,13 +19,17 @@ export const InfoReportAdmin = ({dataReports}) => {
     }
   }
 
+  useEffect(()=>{
+
+  },[dataReport])
+
   const onClickNumberReport = () => {
     setIsOpen(!isOpen); 
     setId(idReports); 
     popupClose();
     getAdminReports(typeReport, id)
   }
-  console.log(id);
+  
   return (
     <div className='position_relative fieldSize8' >
       <p className='text_center pointer_userSelect_none'  onClick={()=>{onClickNumberReport()}}>{numberReports}</p>

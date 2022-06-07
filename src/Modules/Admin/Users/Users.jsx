@@ -35,12 +35,7 @@ export const Users = () => {
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
-  },[])
-
-  
-  // useEffect(()=>{
-
-  // },[dataReport])
+  },[])  
 
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",

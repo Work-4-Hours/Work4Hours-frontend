@@ -12,8 +12,6 @@ const apiAdmin = process.env.REACT_APP_API_ADMIN;
 
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
 
-
-
     const {
         selectedList, 
         nameTitle,

@@ -1,15 +1,15 @@
 import axios from 'axios';
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
-  console.log(api);
+  
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState([]);
-  const [dataReport, setReport] = useState([]);
+  const [dataReport, setReport] = useState([]); 
   const [selectedList, setselectedList]=useState([]);
   const [changeStatus, setChangeStatus]=useState(false);
-  
+
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
     .then(response=>{ 
@@ -24,22 +24,25 @@ export const useAdmin = () => {
       console.log(e)})
   }
 
-  const getAdminReports=(url, id)=>{
+  const getAdminReports =  (url, id) => {
     axios.get(`${api}/api/${url}?id=${id}`)
     .then(response=>{ 
       if(url==="ReportsUsers"){
-        setReport(response.data)
-        console.log(response.data)
+        setReport(response.data) // trae datos anteriores
       }
       else {
         setReport(response.data)
-        console.log(response.data)
       }
       })
     .catch(e=>{
       console.log(e)})
   }
 
+  // el useEffect no lo soluciona y con funciones asincronas tampoco
+  
+  // useEffect(()=>{
+  // },[dataReport])
+  
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){
