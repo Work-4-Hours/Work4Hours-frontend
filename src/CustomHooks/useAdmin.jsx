@@ -3,9 +3,12 @@ import React,{useState} from 'react'
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
-  const [data, setData] = useState([])
-  const [dataState, setDataState] = useState([])
-  const [dataReport, setReport] = useState([])
+  
+  const [data, setData] = useState([]);
+  const [dataState, setDataState] = useState([]);
+  const [dataReport, setReport] = useState([]);
+  const [selectedList, setselectedList]=useState([]);
+  const [changeStatus, setChangeStatus]=useState(false);
   
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
@@ -37,5 +40,39 @@ export const useAdmin = () => {
       console.log(e)})
   }
 
-  return {data,getAdmin, dataState, getAdminReports, dataReport}
+  const deletingSelectedDeslectCheckbox =(id)=>{
+    selectedList.map(item=>{
+      if(item.id===id){
+        const index=selectedList.indexOf(item);
+        selectedList.splice(index,1)
+      }
+    })
+    setselectedList([...selectedList]);
+  }
+  
+  const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
+    if (statusChange===true){
+      selectedList.map(item=>{
+        if(item.id===idObject){
+          item.idEstado=idStatus
+        }
+      })
+      setselectedList([...selectedList]);
+      setChangeStatus(!changeStatus);
+    }
+  }
+
+  return {
+    data,
+    getAdmin, 
+    dataState, 
+    getAdminReports,
+    dataReport,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus
+  }
 }

@@ -1,4 +1,4 @@
-.popup_confirm_changes_content_objects_users{
+.popup_confirm_changes_content_objects{
     background-color: var(--bg-layout-grey);
     height: 12.625em;
     margin: 3% 0;
@@ -11,13 +11,3 @@
     gap:0.5625em;
 }
 
-.popup_confirm_changes_content_objects_services{background-color: var(--bg-layout-grey);
-    height: 12.625em;
-    margin: 3% 0;
-    border-radius: 10px;
-    padding: 2%;
-    display: flex;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-    gap:0.5625em;}

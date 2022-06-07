@@ -4,7 +4,6 @@ import './Users.css';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
-import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
@@ -12,18 +11,35 @@ import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 
 
 export const Users = () => {
+
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
     
-  const { data, getAdmin, dataState, getAdminReports, dataReport} = useAdmin();
+  const { data,
+    getAdmin, 
+    dataState, 
+    getAdminReports,
+    dataReport,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus} = useAdmin();
+    
   const [idUser, setIdUser] = useState(0);
+  
+  
 
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
     getAdminReports('ReportsUsers', idUser)
   },[])
+
   
   // useEffect(()=>{
 
@@ -35,6 +51,19 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray"
   }
 
+  const dataUsers={
+    objectAllStatus:dataState,
+    dataReport:dataReport,
+    idUser:idUser,
+    setIdUser:setIdUser,
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:objectSelectedSetState, 
+    selectedList:selectedList, 
+    setselectedList:setselectedList, 
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
+  }
+  
   const dashboardHeader = {
     columWidth1 : 'fieldSize3',
     columWidth2 : 'fieldSize20',
@@ -53,12 +82,18 @@ export const Users = () => {
     colorTituleReport: ' '
   }
 
-  const dataUsers={
-    objectAllStatus:dataState,
-    dataReport:dataReport,
-    idUser:idUser,
-    setIdUser:setIdUser
+  const dataPopupConfirmChanges = {
+    selectedList:selectedList, 
+    nameTitle:"Esta seguro de querer actualizar el estado de: ",
+    valueButton:"Actualizar",
+    token:getToken(),
+    infoAdmin:admin.info[0].email,
+    typePetition:"Users"
+    //infoAdmin, token,  
+    //sendNotification
   }
+
+
 
   return (
     <div className='container_admin'>
@@ -68,8 +103,12 @@ export const Users = () => {
       <Dashboard componetContent={
         data?.map(item=>(
           <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
-        )
-        ) }/>
+        ))}/>
+      <PopupConfirmChanges objectContent={
+        selectedList?.map(item=>(
+          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        ))
+      } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
     </div>
   )

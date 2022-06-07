@@ -8,24 +8,59 @@ import './UserInfo.css';
 
 export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUser }) => {
 
+<<<<<<< HEAD
   const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
   const {objectAllStatus}=dataUsers;
+=======
+  const { 
+    fotop, 
+    apellidos, 
+    nombreUsuario, 
+    correo, 
+    cantidadReportes, 
+    idEstado,
+    nombre_estado, 
+    idusuario, 
+    color
+  } = objectAllUsers;
+>>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
 
-  const [idStatus, setIdStatus] = useState(0);
-  const [changeStatus, setChangeStatus]=useState(false);
+  const {
+    objectAllStatus,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus
+  }=dataUsers;
+  
+  const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
-  const dataStatusUsersAdmin={
-    // objectSelectListSelectSetStatus:userSelectListSelectSetStatus, 
-    // idObject:idusuario, 
-    statusChange:changeStatus, 
-    statusChangeSet:setChangeStatus, 
+
+ 
+
+  const dataStatusAdmin={
+    objectSelectedSetState:objectSelectedSetState, 
+    idObject:idusuario,
     nameStatus:nombre_estado, 
-    // idObjectStatus:idEstado, 
+    idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    // capturarid:setIdStatus, 
-    // NumberReports:cantidadReportes
+    numberReports:cantidadReportes,
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
   }
 
+  const dataCheckBoxAdmin={
+    objectAll:objectAllUsers, 
+    designCheckBoxAdmin:"span_confirm_changes", 
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList, 
+    setselectedList:setselectedList,
+    boardType:true
+  }
+
+<<<<<<< HEAD
   const dataReports = {
     numberReports: cantidadReportes,
     idUserReports: idusuario, 
@@ -33,16 +68,24 @@ export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUse
     idUser: dataUsers.idUser,
     setIdUser: dataUsers.setIdUser
   }
+=======
+>>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
 
   return (
     <div className='user_info'>
-      
+      <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
+<<<<<<< HEAD
       <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
       
+=======
+
+      <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
+      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
+>>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
     </div>    
   )
 }

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext} from 'react';
 import './Services.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
@@ -12,15 +12,25 @@ import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/Popup
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { GetAdmin } from 'Functions/ReusableFunctions';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import { AdminContext } from 'Context/AdminContext';
+
 
 export const Services = () => {
-  // const { data } = GetAdmin('Services');
-  // const dataState= GetAdmin('State');
 
-  const { data, getAdmin } = useAdmin();
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const { data,
+    getAdmin, 
+    dataState, 
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus} = useAdmin();
 
   useEffect(()=>{
     getAdmin('Services');
+    getAdmin('State');
   },[])
     
   const dataMenuAdmin = {
@@ -46,6 +56,29 @@ export const Services = () => {
     columText7 : 'Seleccionar',
     colorTituleReport: 'reportColor'
   }
+
+  const dataServices={
+    objectAllStatus:dataState,
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:objectSelectedSetState, 
+    selectedList:selectedList, 
+    setselectedList:setselectedList, 
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
+  }
+
+  const dataPopupConfirmChanges = {
+    selectedList:selectedList, 
+    nameTitle:"Esta seguro de querer actualizar el estado de: ",
+    valueButton:"Actualizar",
+    token:getToken(),
+    infoAdmin:admin.info[0].email,
+    typePetition:"Services"
+
+    //infoAdmin, token,  
+    //sendNotification
+  }
+
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
@@ -53,8 +86,13 @@ export const Services = () => {
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         <Dashboard componetContent={
           data?.map(item=>(
-            <ServiceInfo objectServiceInfo={item} key={item.idservicio}/>)
+            <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
           ) }/>
+        <PopupConfirmChanges objectContent={
+        selectedList?.map(item=>(
+          <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        ))
+      } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
     </div>
   )
