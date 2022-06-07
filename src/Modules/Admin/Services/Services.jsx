@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useEffect,useContext, useState} from 'react';
 import './Services.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
@@ -18,9 +18,12 @@ import { AdminContext } from 'Context/AdminContext';
 export const Services = () => {
 
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const [id,setId] = useState(0);
   const { data,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -59,6 +62,11 @@ export const Services = () => {
 
   const dataServices={
     objectAllStatus:dataState,
+    getAdminReports:getAdminReports,
+    dataReport:dataReport,
+    id:id,
+    setId:setId,
+    typeReport:"ReportsServices",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 

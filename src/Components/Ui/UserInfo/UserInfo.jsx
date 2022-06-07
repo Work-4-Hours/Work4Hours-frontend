@@ -6,12 +6,8 @@ import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
 
-export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUser }) => {
+export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
-<<<<<<< HEAD
-  const { fotop, apellidos, nombreUsuario, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
-  const {objectAllStatus}=dataUsers;
-=======
   const { 
     fotop, 
     apellidos, 
@@ -23,10 +19,14 @@ export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUse
     idusuario, 
     color
   } = objectAllUsers;
->>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
 
   const {
     objectAllStatus,
+    getAdminReports,
+    dataReport,
+    id,
+    setId,
+    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -36,9 +36,6 @@ export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUse
   }=dataUsers;
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
-
-
- 
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
@@ -60,16 +57,15 @@ export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUse
     boardType:true
   }
 
-<<<<<<< HEAD
   const dataReports = {
     numberReports: cantidadReportes,
-    idUserReports: idusuario, 
-    dataReport: dataUsers.dataReport,
-    idUser: dataUsers.idUser,
-    setIdUser: dataUsers.setIdUser
+    idReports: idusuario, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    id: id,
+    setId: setId, 
+    typeReport:typeReport
   }
-=======
->>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
 
   return (
     <div className='user_info'>
@@ -77,15 +73,9 @@ export const UserInfo = ({objectAllUsers,dataUsers, dataReport, idUser, setIdUse
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-<<<<<<< HEAD
       <InfoReportAdmin dataReports={dataReports} />
-      <StatusUsersAdmin dataStatusUsersAdmin={dataStatusUsersAdmin} />
-      
-=======
-
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
->>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
     </div>    
   )
 }

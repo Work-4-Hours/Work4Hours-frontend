@@ -30,14 +30,11 @@ export const Users = () => {
     changeStatus,
     setChangeStatus} = useAdmin();
     
-  const [idUser, setIdUser] = useState(0);
+  const [id, setId] = useState(0);
   
-  
-
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
-    getAdminReports('ReportsUsers', idUser)
   },[])
 
   
@@ -53,9 +50,11 @@ export const Users = () => {
 
   const dataUsers={
     objectAllStatus:dataState,
+    getAdminReports:getAdminReports,
     dataReport:dataReport,
-    idUser:idUser,
-    setIdUser:setIdUser,
+    id:id,
+    setId:setId,
+    typeReport:"ReportsUsers",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 

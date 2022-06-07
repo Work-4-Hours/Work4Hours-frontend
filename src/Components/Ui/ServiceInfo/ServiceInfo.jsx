@@ -10,14 +10,15 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 
 
-<<<<<<< HEAD
-export const ServiceInfo = ({objectServiceInfo, objectAllStatus}) => {
-  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario}=objectServiceInfo;
-=======
 export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
   
   const {objectAllStatus,
+    getAdminReports,
+    dataReport,
+    id,
+    setId,
+    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -28,6 +29,16 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const [idStatus, setIdStatus] = useState(0);
 
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
+
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idReports: idservicio, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    id: id,
+    setId: setId, 
+    typeReport:typeReport
+  }
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState,
@@ -50,32 +61,19 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     boardType:false
   }
 
->>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
 
   return (
     <div className='user_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
-<<<<<<< HEAD
-       <div className='fieldSize15 space_photo_username'>
-        <img className='admin_user_photo center_img' src={fotop} alt="user_photo" />
-        <p className='ellipsis'>{nombreUsuario}</p>
-      </div>
-      <DescriptionServiceAdmin textDescription={descripcionServicio}/>
-      <MessageUserAdmin textMessage={apelacion}/>
-      <InfoReportAdmin NumberReports={cantidadReportes}/> 
-      {/* <StatusUsersAdmin UserStatus={estado} data={data}/> */}
-      <CheckBoxAdmin designCheckBoxAdmin={"span_confirm_changes"}/>
-=======
       <div className='fieldSize15 space_photo_username'>
         <PhotoAdmin photoData={photoData}/>
         <p className='ellipsis'>{nombreUsuario} </p>
       </div>
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
-      <InfoReportAdmin NumberReports={cantidadReportes}/>
+      <InfoReportAdmin dataReports={dataReports}/>
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
->>>>>>> 76a04240989fa484184e71d70533a4a03e0973b0
     </div>
   )
 }
