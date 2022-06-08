@@ -13,7 +13,7 @@ import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 
 import './Chat.css';
-    
+
 export const Chat = () => {
 
     const chatRef = useRef()
@@ -66,8 +66,8 @@ export const Chat = () => {
                             {
                                 isLoading ?
                                     <>
-                                    <LoadingCardUser/>
-                                    <LoadingCardUser/>
+                                        <LoadingCardUser />
+                                        <LoadingCardUser />
                                     </>
                                     :
                                     chats?.map((item, index) => (
