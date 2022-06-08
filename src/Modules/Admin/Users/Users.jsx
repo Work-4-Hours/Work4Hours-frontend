@@ -2,79 +2,138 @@ import React, { useEffect, useState,useContext } from 'react';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
-import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
-import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
-import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
-import { GetAdmin } from 'Functions/ReusableFunctions';
-import { UserContext } from 'Context/UserContext';
+
+import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
+import { useAdmin } from 'CustomHooks/useAdmin';
+import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 
 import './Users.css';
 
 export const Users = () => {
+
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
-  console.log(admin)
-  const [usersData,setUsersData]=useState([]);
-  const [stateData,setStateData]=useState([]);
-  const [idFilter, setIdFilter] = useState('');
+    
+  const { data,
+    setData,
+    getAdmin, 
+    dataState, 
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus,
+    postWorkSearch,
+    searchWord,
+    validateSearchWord,
+    changeFilteringOptionId,
+    unSelect
+  } = useAdmin();
 
-  const dataUsers = GetAdmin('Users');
-  const dataState= GetAdmin('State');
-  
-  useEffect(()=> {
-    if(dataUsers.loading === false) {
-      setUsersData(dataUsers.data);
-    }
-  },[dataUsers.loading])
-
-  useEffect(()=> {
-    if(dataState.loading === false) {
-      setStateData(dataState.data);
-    }
-  },[dataState.loading])
-
-  const [listUsersSelect, setListUserSelect]=useState([]);
-  const [searchUsersWord,setSearchUsersWord]=useState([]);
-  const [validateSearchUserWord,setValidateSearchUserWord]=useState(true);
-  console.log(listUsersSelect)
   useEffect(()=>{
-    if(searchUsersWord.length>0){
-      setUsersData(searchUsersWord)
+    getAdmin('Users');
+    getAdmin('State');
+  },[])
+
+  useEffect(()=>{
+    if(searchWord.length>0){
+      setData(searchWord)
     }
     else{
-      setUsersData(dataUsers.data)
+      getAdmin('Users');
     }
-  },[searchUsersWord])
+  },[searchWord]) 
 
-  const deleteUserSelect =(id)=>{
-    listUsersSelect.map(item=>{
-      if(item.idUsuario===id){
-        const index=listUsersSelect.indexOf(item);
-        listUsersSelect.splice(index,1)
-      }
-    })
-    setListUserSelect([...listUsersSelect]);
+  const dataMenuAdmin = {
+    nameAdmin: "Usuarios",
+    buttonActivated: " ",
+    buttonDeactivated: " btn_change_color_gray",
+    logoutAdmin: logoutAdmin
   }
+  const dataSearch={
+    nameSearch: "Buscar Usuarios",
+    postWorkSearch:postWorkSearch,
+    searchNumber:"generalSearchReports",
+    searchString:"SearchUsers"
+  }
+
+
+  const dataFilter={
+    changeFilteringOptionId:changeFilteringOptionId,
+    unSelect:unSelect,
+    data:[
+      {nombre:"Tipo de Suspensión",id:1},
+      {nombre:"Reportes",id:2},
+      {nombre:"Correo",id:3},
+      {nombre:"Nombres y Apellidos",id:4}
+    ]
+  }
+
+  const dataUsers={
+    objectAllStatus:dataState,
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:objectSelectedSetState, 
+    selectedList:selectedList, 
+    setselectedList:setselectedList, 
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus
+  }
+
+  
+  const dashboardHeader = {
+    columWidth1 : 'fieldSize3',
+    columWidth2 : 'fieldSize20',
+    columWidth3 : 'fieldSize20',
+    columWidth4 : 'fieldSize17',
+    columWidth5 : 'fieldSize8',
+    columWidth6 : 'fieldSize13',
+    columWidth7 : 'fieldSize8', 
+    columText1 : 'Perfil',
+    columText2 : 'Apellidos',
+    columText3 : 'Nombres',
+    columText4 : 'Correo',
+    columText5 : 'Reportes',
+    columText6 : 'Estado Usuario',
+    columText7 : 'Conf. cambios',
+    colorTituleReport: ' '
+  }
+
+  const dataPopupConfirmChanges = {
+    selectedList:selectedList, 
+    nameTitle:"Esta seguro de querer actualizar el estado de: ",
+    valueButton:"Actualizar",
+    token:getToken(),
+    email:admin.info[0].email,
+    typePetition:"Users"
+    //sendNotification
+  }
+
+
 
   return (
     <div className='container_admin'>
-      <MenuAdmin logout={logoutAdmin} nameAdmin={"Usuarios"} btnActive={"button btn_with_admin"} btnInactive={"button btn_change_color_gray btn_with_admin"}/>
+      <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-        <Search nameSearch={"Buscar Usuarios"} wordSearchSet={setSearchUsersWord} setValidateSearchUserWord={setValidateSearchUserWord} idFilter={idFilter} filter={<FilterUserAdmin setIdFilter = {setIdFilter}/>}/>
-        <DashboardHeader space1={'fieldSize3 '} space2={'fieldSize20 '} space3={'fieldSize20 '} space4={'fieldSize17 '} space5={'fieldSize8 '} space6={'fieldSize13 '} space7={'fieldSize8 '} header1={"Perfil"} header2={"Apellidos"} header3={"Nombres"} header4={"Correo"} header5={"Reportes"} header6={"Estado Usuario"} header7={"Conf. cambios"} />
-        {validateSearchUserWord ? 
-          <Dashboard componetContent={
-            usersData?.map(item=>
-              <UserInfo deleteUserSelect={deleteUserSelect} objectAllUsers={item} objectAllStatus={stateData} listUserSelectSet={setListUserSelect} selectUsers={listUsersSelect} key={item.idusuario}/>
-            ) }/>
-          :
-          <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>}
-
-        <PopupConfirmChanges sendNotification={sendNotification} listUsersSelect={listUsersSelect} objectContent={
-          listUsersSelect.map(item=>
-        <ObjectStatus userSelect={item} deleteUserSelect={deleteUserSelect} key={item.idUsuario}/> )} nameTitle={"Esta seguro de querer actualizar el estado de: "} valueButton={"Actualizar"}  styleObjects={"popup_confirm_changes_content_objects_users"}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+      <DashboardHeader dataDashboardHeader={dashboardHeader}/>
+      {validateSearchWord ?
+        <Dashboard componetContent={
+          data?.map(item=>(
+            <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
+          ))}
+        />
+        :
+        <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
+      
+    }
+      <PopupConfirmChanges objectContent={
+        selectedList?.map(item=>(
+          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        ))
+      } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
     </div>
   )
