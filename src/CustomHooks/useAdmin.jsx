@@ -68,17 +68,25 @@ export const useAdmin = () => {
     }
   }
 
-  //Validation of word if it is a number or string
+  //Validation of word if it is a number or string from reports
   const searchFilter=(id, word,searchString)=>{
-    if(!isNaN(parseInt(word))){
-      postSearhFilter(id,parseInt(word),searchString)
+    if((searchString==="SearchUsers" && id==="2") || (searchString==="SearchServices" && id==="1")){
+      if(!isNaN(parseInt(word))){
+        postSearhFilter(id,word,searchString)
+      }
+      else{
+        //Alerta
+        console.log("selecciono la opcion reportes y solo recibe numeros")
+      }
     }
     else{
       postSearhFilter(id,word,searchString)
     }
+
   }
   //data filtering request
   const postSearhFilter=(id, word,searchString)=>{
+    console.log("entro")
     axios.post(`${api}/${searchString}/filter?value=${id}&word=${word}`)
     .then(response=>{validateDataPostWorkSearch(response)})
     .catch(e=>{console.log(e)})
