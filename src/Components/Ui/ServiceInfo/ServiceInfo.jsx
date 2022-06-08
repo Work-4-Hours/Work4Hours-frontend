@@ -14,6 +14,11 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
   
   const {objectAllStatus,
+    getAdminReports,
+    dataReport,
+    id,
+    setId,
+    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -24,6 +29,16 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const [idStatus, setIdStatus] = useState(0);
 
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
+
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idReports: idservicio, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    id: id,
+    setId: setId, 
+    typeReport:typeReport
+  }
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState,
@@ -56,7 +71,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
       </div>
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
-      <InfoReportAdmin NumberReports={cantidadReportes}/>
+      <InfoReportAdmin dataReports={dataReports}/>
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>

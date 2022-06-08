@@ -3,8 +3,10 @@ import React,{useState,useEffect} from 'react'
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
+  
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState([]);
+  const [dataReport, setReport] = useState([]); 
   const [selectedList, setselectedList]=useState([]);
   const [changeStatus, setChangeStatus]=useState(false);
   const [searchWord,setSearchWord]=useState([]);
@@ -18,9 +20,9 @@ export const useAdmin = () => {
       if(url==="State"){
         setDataState(response.data)
       }
-      else{
-        setData(response.data)}
-
+      else {
+        setData(response.data)
+      }
       })
     .catch(e=>{
       console.log(e)})
@@ -103,8 +105,25 @@ export const useAdmin = () => {
   }
 
 
+  const getAdminReports =  (url, id) => {
+    axios.get(`${api}/api/${url}?id=${id}`)
+    .then(response=>{ 
+      if(url==="ReportsUsers"){
+        setReport(response.data) // trae datos anteriores
+      }
+      else {
+        setReport(response.data)
+      }
+      })
+    .catch(e=>{
+      console.log(e)})
+  }
 
-  //Eliminacion de objetos en la seleccion de los checkboxs
+  // el useEffect no lo soluciona y con funciones asincronas tampoco
+  
+  // useEffect(()=>{
+  // },[dataReport])
+  
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){
@@ -132,6 +151,8 @@ export const useAdmin = () => {
     setData,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -145,4 +166,3 @@ export const useAdmin = () => {
     unSelect
   }
 }
-

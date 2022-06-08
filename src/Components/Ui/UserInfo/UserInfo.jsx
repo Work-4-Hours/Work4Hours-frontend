@@ -22,6 +22,11 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const {
     objectAllStatus,
+    getAdminReports,
+    dataReport,
+    id,
+    setId,
+    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -31,9 +36,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   }=dataUsers;
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
-
-
- 
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
@@ -55,6 +57,15 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     boardType:true
   }
 
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idReports: idusuario, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    id: id,
+    setId: setId, 
+    typeReport:typeReport
+  }
 
   return (
     <div className='user_info'>
@@ -62,7 +73,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-
+      <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    

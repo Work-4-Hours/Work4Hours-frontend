@@ -6,14 +6,13 @@ import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
 import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
 import axios from 'axios';
 import { Header } from '../Header/Header';
+import { Alert } from 'Components/Ui/Alert';
 
 const apiAdmin = process.env.REACT_APP_API_ADMIN;
 const API = process.env.REACT_APP_API;
 
 
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
-
-
 
     const {
         selectedList, 
@@ -27,28 +26,33 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
-
     const sendObjects=(e)=>{
         if(passwordAdmin!==""){
-            axios.post(`${API}/allowChanges/${email}/${passwordAdmin}`,{
+            fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
+                method:"POST",
                 headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': `JSW ${token}`
+                    'Authorization': `JWT ${token}`
                 }
-
             })
             .then(res=>res.json())
-            .then(res=>console.log(res))
+            .then(res=>{
+                if (!res){
+                    Alert("Error", "La contraseña ingresada en incorrecta.", "error", "Ok")
+                }
+                else{
+                    axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
+                    .then(response => {
+                        console.log(response)
+                        setIsOpen(!isOpen)
+    
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+                }
+            })
             .catch(err=>console.log(err))
         }
-        // axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
-        // .then(response => {
-        //     console.log(response)
-        // })
-        // .catch(e => {
-        //     console.log(e);
-        // })
-        setIsOpen(!isOpen)
     }
 
     return (

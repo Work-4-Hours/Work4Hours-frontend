@@ -21,6 +21,8 @@ export const Users = () => {
     setData,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -34,10 +36,14 @@ export const Users = () => {
     unSelect
   } = useAdmin();
 
+
+    
+  const [id, setId] = useState(0);
+  
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
-  },[])
+  },[])  
 
   useEffect(()=>{
     if(searchWord.length>0){
@@ -75,6 +81,11 @@ export const Users = () => {
 
   const dataUsers={
     objectAllStatus:dataState,
+    getAdminReports:getAdminReports,
+    dataReport:dataReport,
+    id:id,
+    setId:setId,
+    typeReport:"ReportsUsers",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -82,7 +93,6 @@ export const Users = () => {
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus
   }
-
   
   const dashboardHeader = {
     columWidth1 : 'fieldSize3',
