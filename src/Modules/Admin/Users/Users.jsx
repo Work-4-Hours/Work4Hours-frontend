@@ -107,7 +107,8 @@ export const Users = () => {
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
-    typePetition:"Users"
+    typePetition:"Users",
+    typeAdmin: "usuario"
     //sendNotification
   }
 

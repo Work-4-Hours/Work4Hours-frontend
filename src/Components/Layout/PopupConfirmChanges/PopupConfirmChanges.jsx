@@ -20,12 +20,22 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         valueButton,
         token,
         email,
-        typePetition
+        typePetition,
+        typeAdmin
     }=dataPopupConfirmChanges;
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
     const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
+
+    const popUpOpen = () => {
+        if(selectedList.length===0){
+            Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
+        }
+        else{
+            setIsOpen(!isOpen);
+        }
+    }
     const sendObjects=(e)=>{
         if(passwordAdmin!==""){
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
@@ -44,6 +54,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                     .then(response => {
                         console.log(response)
                         setIsOpen(!isOpen)
+                        window.location.reload()
     
                     })
                     .catch(e => {
@@ -57,7 +68,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     return (
         <div className='btn_save_changes_admin_position'>
-            <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={event => setIsOpen(!isOpen)} />
+            <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={() => popUpOpen()} />
             <PopUp isOpen={isOpen}>
                 <div className="overlay_Popup_Confirm_Changes_Content_Object">
                     <div className='popup_admin_save_changes_admin'>

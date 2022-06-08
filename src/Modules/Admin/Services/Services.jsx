@@ -107,7 +107,8 @@ export const Services = () => {
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
-    typePetition:"Services"
+    typePetition:"Services",
+    typeAdmin: "servicio"
     //sendNotification
   }
 
