@@ -86,7 +86,6 @@ export const useAdmin = () => {
   }
   //data filtering request
   const postSearhFilter=(id, word,searchString)=>{
-    console.log("entro")
     axios.post(`${api}/${searchString}/filter?value=${id}&word=${word}`)
     .then(response=>{validateDataPostWorkSearch(response)})
     .catch(e=>{console.log(e)})
