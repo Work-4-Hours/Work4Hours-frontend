@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './FilterUserAdmin.css';
 
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import { Button } from '../Button/Button';
 
 export const FilterUserAdmin = ({setIdFilter}) => {

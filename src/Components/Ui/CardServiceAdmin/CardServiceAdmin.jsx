@@ -20,24 +20,8 @@ export const CardServiceAdmin = ({ service = {} }) => {
 
     const updateService = () => {
         setValue({ id: service.id, service })
-        navigate('/service/edit')
+        navigate('/dashboard/update-service')
     }
-
-    // const deleteService = () => {
-    //     fetch(`${process.env.REACT_APP_API_PRODUCTION}/deleteService/${service.id}`, {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `JSW ${getJwt()}`
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .finally()
-    // }
-
-    const reportss = 0
 
     return (
         <div className="card_service_dashboard">
@@ -69,7 +53,8 @@ export const CardServiceAdmin = ({ service = {} }) => {
 
             <div className="actions_card_service_dashboard">
                 <div className="edit_card_service_dashboard">
-                    <IconEdit className='icon_edit_card_service' />
+
+                    <IconEdit className='icon_edit_card_service' onClick={() => updateService()} />
                 </div>
                 <div className="delete_card_service_dashboard">
                     <IconDelete className='icon_delete_card_service' onClick={() => deleteService(service.id)} />

@@ -20,7 +20,7 @@ export const useManageServices = () => {
             .then(response => response.json())
             .then(response => {
                 setData(response[0]);
-                console.log(response);
+                // console.log(response);
             })
             .catch(error => setError(error))
             .finally(() => setLoading(false))
@@ -46,13 +46,13 @@ export const useManageServices = () => {
                 setData(response);
             })
             .catch(error => setError(error))
-            .finally(setLoading(false))
+            .finally(() => setLoading(false))
     }
 
 
     const updateService = async (data) => {
         setLoading(true)
-        fetch(`${process.env.REACT_APP_API}/updateService`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/updateService`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export const useManageServices = () => {
                 setData(response)
             })
             .catch(error => setError(error))
-            .finally(setLoading(false))
+            .finally(() => setLoading(false))
     }
 
     const deleteService = async (id_service) => {
@@ -83,7 +83,7 @@ export const useManageServices = () => {
                 setData(response);
             })
             .catch(error => setError(error))
-            .finally(setLoading(false))
+            .finally(() => setLoading(false))
     }
 
     return {

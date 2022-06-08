@@ -1,6 +1,6 @@
 .main_dasboard {
     /* background: #393E46; */
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .logo_app_dashboard {
@@ -12,9 +12,10 @@
     max-width: var(--max-width-container);
     margin: auto;
     padding: 20px;
-    height: 100%;
+    /* height: 100%; */
 
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 
@@ -119,10 +120,32 @@
     /* height: 1px; */
 }
 
-.image_my_profile {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.information_user_profile_dashboard {
+    padding: 2em 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 2px;
+}
+
+.name_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.email_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
+    font-size: 1em;
+}
+
+.phone_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--bg-blue);
+    font-size: 1.2em;
+    margin: 1em 0;
 }
 
 .my_services_ {

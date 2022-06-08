@@ -1,5 +1,5 @@
 
-import { DefaultProfile } from 'Components/StyleComponets/DefaultProfile'
+import { DefaultProfile } from 'Components/StyledComponets/DefaultProfile'
 import React from 'react'
 
 import './PhotoUserProfile.css'

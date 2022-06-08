@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 
 import { Button } from '../Button/Button';
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { SelectTypeServiceAdmin } from '../SelectTypeServiceAdmin/SelectTypeServiceAdmin';
 

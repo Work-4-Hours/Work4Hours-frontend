@@ -1,5 +1,5 @@
 import { Button } from 'Components/Ui/Button/Button';
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import React, { useState, useEffect } from 'react'
 import './PopupConfirmChanges.css'
 import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';

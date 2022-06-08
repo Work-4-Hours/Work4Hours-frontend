@@ -1,4 +1,4 @@
-import { DesignLetters } from 'Components/StyleComponets/DesignLetters'
+import { DesignLetters } from 'Components/StyledComponets/DesignLetters'
 import React from 'react'
 import './PhotoAdmin.css'
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import { PopUp } from 'Components/StyleComponets/PopUp'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
+import { PopUp } from 'Components/StyledComponets/PopUp'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconFlag } from 'Assets/Icons/IconFlag.svg'
 import { ReactComponent as IconLocation } from "Assets/Icons/IconLocation.svg"

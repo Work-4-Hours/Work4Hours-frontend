@@ -26,6 +26,12 @@ export const Publications = () => {
                     ))
             }
 
+            {
+                ! service && (
+                    <p>No tienes servicios creados</p>
+                )
+            }
+
         </>
 
     )

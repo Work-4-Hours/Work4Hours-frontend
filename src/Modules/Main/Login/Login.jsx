@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import { Title } from 'Components/StyleComponets/Titlte'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
+import { Title } from 'Components/StyledComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
 import { ReactComponent as IconAlert } from 'Assets/Icons/IconAlert.svg'
 import { ModalTest } from 'CustomHooks/useClickOutside'
-import { TextError } from 'Components/StyleComponets/MessageError'
+import { TextError } from 'Components/StyledComponets/MessageError'
 import { useField } from 'CustomHooks/useField'
 
 import './Login.css'

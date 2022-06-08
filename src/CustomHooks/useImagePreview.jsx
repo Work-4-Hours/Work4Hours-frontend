@@ -13,8 +13,13 @@ export const useImagePreview = () => {
         reader.readAsDataURL(e.target.files[0])
     }
 
+    const setSatePreviewImage = (image) => {
+        setPreviewImages(image)
+    }   
+
     return {
         previewImage,
-        setPreviewImage
+        setPreviewImage,
+        setPreviewImages
     }
 }

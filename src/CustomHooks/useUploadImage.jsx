@@ -21,13 +21,15 @@ export const useUploadImage = () => {
             .finally(() => {
                 setLoading(false)
             })
-
     }
 
+ 
     return {
         loading,
         data,
+        setData,
         error,
-        uploadImage
+        uploadImage,
+        setLoading
     }
 }

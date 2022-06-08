@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import './StatusUsersAdmin.css';
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
 
