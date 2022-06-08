@@ -6,7 +6,7 @@ import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
 import { ServiceInfo } from 'Components/Ui/ServiceInfo/ServiceInfo';
-import { FilterServiceAdmin } from 'Components/Ui/FilterServiceAdmin/FilterServiceAdmin';
+
 import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { useAdmin } from 'CustomHooks/useAdmin';
@@ -29,7 +29,8 @@ export const Services = () => {
     postWorkSearch,
     searchWord,
     validateSearchWord,
-    setIdFilter
+    changeFilteringOptionId,
+    unSelect
   } = useAdmin();
 
   useEffect(()=>{
@@ -57,11 +58,16 @@ export const Services = () => {
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices"
-    /*
-     * idFilter={idFilter} 
-     * filter={<FilterUserAdmin 
-     * setIdFilter = {setIdFilter}
-    */
+  }
+
+  const dataFilter={
+    changeFilteringOptionId:changeFilteringOptionId,
+    unSelect:unSelect,
+    data:[
+      {nombre:"Reportes",id:1},
+      {nombre:"Nombre del servicio",id:2},
+      {nombre:"Tipo",id:3}
+    ]
   }
 
   const dashboardHeader = {
@@ -106,7 +112,7 @@ export const Services = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
       <div className='manager_control'>
-        <Search dataSearch={dataSearch} filter={<FilterServiceAdmin setIdFilter={setIdFilter}/>}/>
+        <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         {
           validateSearchWord ?

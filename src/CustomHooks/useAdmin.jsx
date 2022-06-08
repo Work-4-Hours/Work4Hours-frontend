@@ -11,7 +11,7 @@ export const useAdmin = () => {
   const [validateSearchWord,setValidateSearchWord]=useState(true);
   const [idFilter, setIdFilter] = useState(0);
 
-  //Consumo de get de usuarios, servicios y estados
+  //Consumption of get from users, services and states
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
     .then(response=>{ 
@@ -26,7 +26,7 @@ export const useAdmin = () => {
       console.log(e)})
   }
 
-  //Validacion de array si trae o no datos la consulta
+  //Array validation whether or not the query brings data
   const validateDataPostWorkSearch=(response)=>{
     if(response.data.length>0){
       setSearchWord(response.data)
@@ -37,7 +37,7 @@ export const useAdmin = () => {
     }
   }
 
-  //Busqueda de palabras con filtrado desde los servicios y usuarios
+  //Word search with filtering from services and users
   const postWorkSearch=(event,searchNumber,searchString)=>{
     if(event.target.value!==""){
       if(event.keyCode===13){
@@ -68,7 +68,7 @@ export const useAdmin = () => {
     }
   }
 
-  //Validacion de palabra si es numero o string
+  //Validation of word if it is a number or string
   const searchFilter=(id, word,searchString)=>{
     if(!isNaN(parseInt(word))){
       postSearhFilter(id,parseInt(word),searchString)
@@ -77,15 +77,25 @@ export const useAdmin = () => {
       postSearhFilter(id,word,searchString)
     }
   }
-  //peticion de filtrado de usuarios
+  //data filtering request
   const postSearhFilter=(id, word,searchString)=>{
-    console.log(id)
-    console.log(word)
-    console.log(searchString)
     axios.post(`${api}/${searchString}/filter?value=${id}&word=${word}`)
     .then(response=>{validateDataPostWorkSearch(response)})
     .catch(e=>{console.log(e)})
   }
+
+  //update the id of the filter option
+  const changeFilteringOptionId=(e)=>{
+    setIdFilter(e.target.id);
+  }
+
+  //deselects an option by setting the initial state
+  const unSelect = (e) => {
+    setIdFilter(0);
+    return e.target.checked = false
+  }
+
+
 
   //Eliminacion de objetos en la seleccion de los checkboxs
   const deletingSelectedDeslectCheckbox =(id)=>{
@@ -97,7 +107,7 @@ export const useAdmin = () => {
     })
     setselectedList([...selectedList]);
   }
-  //Actualizacion del estado asi este seleccionado
+  //Status update even if selected
   const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
     if (statusChange===true){
       selectedList.map(item=>{
@@ -124,7 +134,8 @@ export const useAdmin = () => {
     postWorkSearch,
     searchWord,
     validateSearchWord,
-    setIdFilter
+    changeFilteringOptionId,
+    unSelect
   }
 }
 

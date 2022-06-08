@@ -1,13 +1,9 @@
 import React from 'react'
 import './OptionFilterUserAdmin.css'
 
-export const OptionFilterUserAdmin = ({option,setIdFilter}) => {
+export const OptionFilterUserAdmin = ({option,unSelect}) => {
     const{nombre,id}=option;
 
-    const unSelect = (e) => {
-        setIdFilter(0);
-        return e.target.checked = false
-    }
   return (
     <div className='typ_report'>
         <label>{nombre}</label>

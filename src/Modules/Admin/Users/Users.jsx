@@ -6,7 +6,7 @@ import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHead
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
-import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
+
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
@@ -30,7 +30,8 @@ export const Users = () => {
     postWorkSearch,
     searchWord,
     validateSearchWord,
-    setIdFilter
+    changeFilteringOptionId,
+    unSelect
   } = useAdmin();
 
   useEffect(()=>{
@@ -58,6 +59,18 @@ export const Users = () => {
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
+  }
+
+
+  const dataFilter={
+    changeFilteringOptionId:changeFilteringOptionId,
+    unSelect:unSelect,
+    data:[
+      {nombre:"Tipo de Suspensión",id:1},
+      {nombre:"Reportes",id:2},
+      {nombre:"Correo",id:3},
+      {nombre:"Nombres y Apellidos",id:4}
+    ]
   }
 
   const dataUsers={
@@ -105,7 +118,7 @@ export const Users = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch} filter={<FilterUserAdmin setIdFilter={setIdFilter}/>}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={
