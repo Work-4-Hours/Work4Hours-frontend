@@ -104,12 +104,12 @@ export const useAdmin = () => {
     return e.target.checked = false
   }
 
-
+  //Consultation of a user's reports
   const getAdminReports =  (url, id) => {
     axios.get(`${api}/api/${url}?id=${id}`)
     .then(response=>{ 
       if(url==="ReportsUsers"){
-        setReport(response.data) // trae datos anteriores
+        setReport(response.data)
       }
       else {
         setReport(response.data)
@@ -119,11 +119,8 @@ export const useAdmin = () => {
       console.log(e)})
   }
 
-  // el useEffect no lo soluciona y con funciones asincronas tampoco
-  
-  // useEffect(()=>{
-  // },[dataReport])
-  
+
+  //Removal of objects in the selection of checkboxes
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){

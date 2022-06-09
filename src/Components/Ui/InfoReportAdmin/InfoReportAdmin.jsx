@@ -8,31 +8,22 @@ export const InfoReportAdmin = ({dataReports}) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const {numberReports, idReports, getAdminReports, dataReport,id,setId, typeReport}= dataReports;
+  const {numberReports, idObject, getAdminReports, dataReport, typeReport}= dataReports;
 
-  const popupClose = () => {
+
+  const onClickNumberReport = () => {
     if(numberReports === 0){
       setIsOpen(false)
     }
     else{
+      getAdminReports(typeReport, idObject)
       setIsOpen(!isOpen)
     }
-  }
-
-  useEffect(()=>{
-
-  },[dataReport])
-
-  const onClickNumberReport = () => {
-    setIsOpen(!isOpen); 
-    setId(idReports); 
-    popupClose();
-    getAdminReports(typeReport, id)
   }
   
   return (
     <div className='position_relative fieldSize8' >
-      <p className='text_center pointer_userSelect_none'  onClick={()=>{onClickNumberReport()}}>{numberReports}</p>
+      <p className='text_center pointer_userSelect_none' onClick={onClickNumberReport}>{numberReports}</p>
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_type_report'>

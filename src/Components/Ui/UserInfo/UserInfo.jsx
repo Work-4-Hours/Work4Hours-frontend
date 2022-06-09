@@ -24,8 +24,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     objectAllStatus,
     getAdminReports,
     dataReport,
-    id,
-    setId,
     typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
@@ -59,12 +57,10 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idReports: idusuario, 
+    idObject: idusuario, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
-    id: id,
-    setId: setId, 
-    typeReport:typeReport
+    typeReport:"ReportsUsers"
   }
 
   return (

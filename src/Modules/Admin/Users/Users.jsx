@@ -37,9 +37,6 @@ export const Users = () => {
   } = useAdmin();
 
 
-    
-  const [id, setId] = useState(0);
-  
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
@@ -61,7 +58,7 @@ export const Users = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
@@ -83,9 +80,6 @@ export const Users = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    id:id,
-    setId:setId,
-    typeReport:"ReportsUsers",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 

@@ -57,7 +57,7 @@ export const Services = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Servicios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices"
@@ -95,9 +95,6 @@ export const Services = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    id:id,
-    setId:setId,
-    typeReport:"ReportsServices",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 

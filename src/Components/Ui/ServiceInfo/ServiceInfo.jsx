@@ -32,12 +32,10 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idReports: idservicio, 
+    idObject: idservicio, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
-    id: id,
-    setId: setId, 
-    typeReport:typeReport
+    typeReport:"ReportsServices"
   }
 
   const dataStatusAdmin={
