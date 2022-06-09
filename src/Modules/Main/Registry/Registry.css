@@ -24,6 +24,7 @@
 .center_main_registry {
     max-width: var(--max-width-container);
     height: 100vh;
+    padding: 20px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -235,4 +236,14 @@
 
 .line_complete > .line_step {
     background: green;
+}
+
+@media screen and (max-width: 925px) {
+    .information_app {
+        display: none;
+    }
+
+    .center_main_login {
+        flex-direction: column;
+    }
 }

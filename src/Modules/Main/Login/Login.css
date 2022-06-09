@@ -65,3 +65,13 @@
 .icon_alert {
     fill: #ac2828;
 }
+
+@media screen and (max-width: 925px) {
+    .information_login_app {
+        display: none;
+    }
+
+    .center_main_login {
+        flex-direction: column;
+    }
+}
