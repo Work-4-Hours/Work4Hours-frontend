@@ -7,7 +7,8 @@ import './UserInfo.css';
 
 
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
-
+  
+  const [idStatus, setIdStatus] = useState(0);
   const { 
     fotop, 
     apellidos, 
@@ -24,7 +25,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     objectAllStatus,
     getAdminReports,
     dataReport,
-    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -43,7 +43,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     data:objectAllStatus, 
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    setChangeStatus:setChangeStatus,
+    setIdStatus:setIdStatus
   }
 
   const dataCheckBoxAdmin={
@@ -52,7 +53,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,
-    boardType:true
+    boardType:true,
+    idStatus:idStatus
   }
 
   const dataReports = {
@@ -62,6 +64,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     dataReport: dataReport,
     typeReport:"ReportsUsers"
   }
+
 
   return (
     <div className='user_info'>

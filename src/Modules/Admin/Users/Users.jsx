@@ -116,8 +116,6 @@ export const Users = () => {
     //sendNotification
   }
 
-
-
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />

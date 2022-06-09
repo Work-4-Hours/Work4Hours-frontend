@@ -16,7 +16,7 @@ import { AdminContext } from 'Context/AdminContext';
 export const Services = () => {
 
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
-  const [id,setId] = useState(0);
+
   const { data,
     setData,
     getAdmin, 

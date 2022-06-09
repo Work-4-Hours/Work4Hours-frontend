@@ -16,9 +16,6 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {objectAllStatus,
     getAdminReports,
     dataReport,
-    id,
-    setId,
-    typeReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -44,10 +41,10 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    capturarid:setIdStatus, 
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    setChangeStatus:setChangeStatus,
+    setIdStatus:setIdStatus
   }
 
   const dataCheckBoxAdmin={
@@ -56,7 +53,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,
-    boardType:false
+    boardType:false,
+    idStatus:idStatus
   }
 
 
