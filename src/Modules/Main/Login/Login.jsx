@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
 import { ReactComponent as IconAlert } from 'Assets/Icons/IconAlert.svg'
+import { ReactComponent as LoginBackground } from 'Assets/Backgrounds/LoginBackground.svg'
 import { ModalTest } from 'CustomHooks/useClickOutside'
 import { TextError } from 'Components/StyledComponets/MessageError'
 import { useField } from 'CustomHooks/useField'
@@ -43,7 +44,9 @@ export const Login = () => {
     return (
         <main className='login'>
             <div className="background_registry"></div>
-            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" />
+
+            {/* <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
+            <LoginBackground className='background_image'/>
             <div className="center_main_login">
                 <div className="information_login_app">
                     <h1 className='title_info_login_app'>Work 4 Hours</h1>
