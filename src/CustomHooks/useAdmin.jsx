@@ -60,9 +60,6 @@ export const useAdmin = () => {
     }
   }
   
-  
-
-
   const getAdminReports =  (url, id) => {
     axios.get(`${api}/api/${url}?id=${id}`)
     .then(response=>{ 

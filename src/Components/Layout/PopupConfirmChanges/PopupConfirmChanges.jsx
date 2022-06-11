@@ -15,7 +15,10 @@ const API = process.env.REACT_APP_API;
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
 
     const {
+        setData,
+        getAdmin,
         selectedList, 
+        setselectedList,
         nameTitle,
         valueButton,
         token,
@@ -23,6 +26,8 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         typePetition,
         typeAdmin
     }=dataPopupConfirmChanges;
+
+    console.log(token);
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
@@ -36,6 +41,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             setIsOpen(!isOpen);
         }
     }
+
     const sendObjects=(e)=>{
         if(passwordAdmin!==""){
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
@@ -46,20 +52,21 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             })
             .then(res=>res.json())
             .then(res=>{
-                if (!res){
-                    Alert("Error", "La contraseña ingresada en incorrecta.", "error", "Ok")
-                }
-                else{
+                if (res){
                     axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
                     .then(response => {
-                        console.log(response)
-                        setIsOpen(!isOpen)
-                        window.location.reload()
-    
+                        console.log(response);
+                        setselectedList([]);
+                        setIsOpen(!isOpen);
+                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    
+                        setData(getAdmin(typePetition));
                     })
                     .catch(e => {
                         console.log(e);
                     })
+                }
+                else{
+                    Alert("Error", "La contraseña ingresada es incorrecta no se pueden realizar cambios.", "error", "Ok");
                 }
             })
             .catch(err=>console.log(err))
@@ -74,12 +81,11 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                     <div className='popup_admin_save_changes_admin'>
                         <PopupTitleAdmin title={nameTitle} />
                         <PopupConfirmChangesContentObjects content={objectContent} />
-                        
                         <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}}/>
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={() => {setIsOpen(!isOpen)}} />
-                                <Button value={valueButton} onClick={(e)=>{sendObjects(e)}}/>
+                                <Button value={valueButton} onClick={(e)=>{sendObjects(e);}}/>
                             </div>
                         </div>
                         

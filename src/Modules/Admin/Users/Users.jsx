@@ -102,7 +102,10 @@ export const Users = () => {
   }
 
   const dataPopupConfirmChanges = {
+    getAdmin:getAdmin,
+    setData:setData,
     selectedList:selectedList, 
+    setselectedList: setselectedList,
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
@@ -111,8 +114,6 @@ export const Users = () => {
     typeAdmin: "usuario"
     //sendNotification
   }
-
-
 
   return (
     <div className='container_admin'>
