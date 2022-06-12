@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React,{useState,useEffect} from 'react'
+import { Alert } from 'Components/Ui/Alert';
+import React,{useState,useEffect} from 'react';
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
@@ -11,7 +12,9 @@ export const useAdmin = () => {
   const [changeStatus, setChangeStatus]=useState(false);
   const [searchWord,setSearchWord]=useState([]);
   const [validateSearchWord,setValidateSearchWord]=useState(true);
-  
+  const [idFilter, setIdFilter] = useState(0);
+
+  //Consumption of get from users, services and states
   const getAdmin=(url)=>{
     axios.get(`${api}/api/${url}`)
     .then(response=>{ 
@@ -25,6 +28,8 @@ export const useAdmin = () => {
     .catch(e=>{
       console.log(e)})
   }
+
+  //Array validation whether or not the query brings data
   const validateDataPostWorkSearch=(response)=>{
     if(response.data.length>0){
       setSearchWord(response.data)
@@ -35,22 +40,28 @@ export const useAdmin = () => {
     }
   }
 
+  //Word search with filtering from services and users
   const postWorkSearch=(event,searchNumber,searchString)=>{
     if(event.target.value!==""){
       if(event.keyCode===13){
-        if(!isNaN(parseInt(event.target.value))){
-          axios.post(`${api}/${searchNumber}?value=${parseInt(event.target.value)}`)
-          .then(response=>{
-            validateDataPostWorkSearch(response)
-          })
-          .catch(e=>{console.log(e)})
+        if (idFilter===0){
+          if(!isNaN(parseInt(event.target.value))){
+            axios.post(`${api}/${searchNumber}?value=${parseInt(event.target.value)}`)
+            .then(response=>{
+              validateDataPostWorkSearch(response)
+            })
+            .catch(e=>{console.log(e)})
+          }
+          else{
+            axios.post(`${api}/api/${searchString}?value=${event.target.value}`)
+            .then(response=>{
+              validateDataPostWorkSearch(response)
+            })
+            .catch(e=>{console.log(e)})
+          }
         }
         else{
-          axios.post(`${api}/api/${searchString}?value=${event.target.value}`)
-          .then(response=>{
-            validateDataPostWorkSearch(response)
-          })
-          .catch(e=>{console.log(e)})
+          searchFilter(idFilter,event.target.value,searchString)
         }
       }
     }
@@ -59,12 +70,47 @@ export const useAdmin = () => {
       setValidateSearchWord(true)
     }
   }
-  
+
+  //Validation of word if it is a number or string from reports
+  const searchFilter=(id, word,searchString)=>{
+    if((searchString==="SearchUsers" && id==="2") || (searchString==="SearchServices" && id==="1")){
+      if(!isNaN(parseInt(word))){
+        postSearhFilter(id,word,searchString)
+      }
+      else{
+        Alert("Error", "Selecciono la opción reportes y solo recibe numeros", "error", "Ok")
+      }
+    }
+    else{
+      postSearhFilter(id,word,searchString)
+    }
+
+  }
+
+  //Data filtering request
+  const postSearhFilter=(id, word,searchString)=>{
+    axios.post(`${api}/${searchString}/filter?value=${id}&word=${word}`)
+    .then(response=>{validateDataPostWorkSearch(response)})
+    .catch(e=>{console.log(e)})
+  }
+
+  //Update the id of the filter option
+  const changeFilteringOptionId=(e)=>{
+    setIdFilter(e.target.id);
+  }
+
+  //Deselects an option by setting the initial state
+  const unSelect = (e) => {
+    setIdFilter(0);
+    return e.target.checked = false
+  }
+
+  //Consultation of a user's reports
   const getAdminReports =  (url, id) => {
     axios.get(`${api}/api/${url}?id=${id}`)
     .then(response=>{ 
       if(url==="ReportsUsers"){
-        setReport(response.data) // trae datos anteriores
+        setReport(response.data)
       }
       else {
         setReport(response.data)
@@ -74,11 +120,7 @@ export const useAdmin = () => {
       console.log(e)})
   }
 
-  // el useEffect no lo soluciona y con funciones asincronas tampoco
-  
-  // useEffect(()=>{
-  // },[dataReport])
-  
+  //Removal of objects in the selection of checkboxes
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){
@@ -88,7 +130,8 @@ export const useAdmin = () => {
     })
     setselectedList([...selectedList]);
   }
-  
+
+  //Status update even if selected
   const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
     if (statusChange===true){
       selectedList.map(item=>{
@@ -116,6 +159,8 @@ export const useAdmin = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord
+    validateSearchWord,
+    changeFilteringOptionId,
+    unSelect
   }
 }

@@ -5,12 +5,10 @@ import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
-import { Button } from 'Components/Ui/Button/Button';
 import { ServiceInfo } from 'Components/Ui/ServiceInfo/ServiceInfo';
-import { FilterServiceAdmin } from 'Components/Ui/FilterServiceAdmin/FilterServiceAdmin';
+
 import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
-import { GetAdmin } from 'Functions/ReusableFunctions';
 import { useAdmin } from 'CustomHooks/useAdmin';
 import { AdminContext } from 'Context/AdminContext';
 
@@ -18,7 +16,7 @@ import { AdminContext } from 'Context/AdminContext';
 export const Services = () => {
 
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
-  const [id,setId] = useState(0);
+
   const { data,
     setData,
     getAdmin, 
@@ -33,7 +31,9 @@ export const Services = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord
+    validateSearchWord,
+    changeFilteringOptionId,
+    unSelect
   } = useAdmin();
 
   useEffect(()=>{
@@ -57,15 +57,20 @@ export const Services = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Servicios",
     postWorkSearch:postWorkSearch,
-    searchNumber:"busquedaGeneralReportesServicios",
+    searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices"
-    /** 
-     * idFilter={idFilter} 
-     * filter={<FilterUserAdmin 
-     * setIdFilter = {setIdFilter}
-    */
+  }
+
+  const dataFilter={
+    changeFilteringOptionId:changeFilteringOptionId,
+    unSelect:unSelect,
+    data:[
+      {nombre:"Reportes",id:1},
+      {nombre:"Nombre del servicio",id:2},
+      {nombre:"Tipo",id:3}
+    ]
   }
 
   const dashboardHeader = {
@@ -90,9 +95,6 @@ export const Services = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    id:id,
-    setId:setId,
-    typeReport:"ReportsServices",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -116,7 +118,7 @@ export const Services = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
       <div className='manager_control'>
-        <Search dataSearch={dataSearch}/>
+        <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         {
           validateSearchWord ?

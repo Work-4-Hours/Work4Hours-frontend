@@ -9,7 +9,8 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     deletingSelectedDeslectCheckbox,
     selectedList,
     setselectedList,
-    boardType
+    boardType,
+    idStatus
   } = dataCheckBoxAdmin;
 
 
@@ -25,7 +26,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   const validarcheckbox=(e)=>{
     if(e.target.checked && boardType===true){
       const datauser={
-        idEstado:allObject.idEstado, 
+        idEstado:idStatus, 
         email:allObject.correo, 
         id:allObject.idusuario, 
         fotoUser:allObject.fotop, 
@@ -36,7 +37,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     }
     else if(e.target.checked && boardType===false){
       const dataServices={
-        idEstado:allObject.idEstado,
+        idEstado:idStatus,
         id:allObject.idservicio,
         nombre:allObject.nombreServicio
       }

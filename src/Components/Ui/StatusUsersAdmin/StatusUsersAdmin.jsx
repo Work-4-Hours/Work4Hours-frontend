@@ -10,11 +10,11 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     idObject,
     nameStatus,
     idObjectStatus, 
-    data, 
-    capturarid, 
+    data,  
     numberReports,
     changeStatus,
-    setChangeStatus
+    setChangeStatus,
+    setIdStatus
   }=dataStatusAdmin;
 
   const [stateObject, setStateObject]=useState(nameStatus);
@@ -66,6 +66,9 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   useEffect(()=>{
     objectSelectedSetState(changeStatus, idObject, idStateObject)
   },[changeStatus])
+  useEffect(()=>{
+    setIdStatus(idStateObject)
+  },[idStateObject])
 
   const dataOptionStatusUserAdmin={
     colorStatus:changeColorStateObjects,

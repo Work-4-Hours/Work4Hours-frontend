@@ -6,9 +6,8 @@ import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHead
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
-import { FilterUserAdmin } from 'Components/Ui/FilterUserAdmin/FilterUserAdmin';
-import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus'
-import { GetAdmin } from 'Functions/ReusableFunctions';
+
+import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
 import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
@@ -32,10 +31,12 @@ export const Users = () => {
     setChangeStatus,
     postWorkSearch,
     searchWord,
-    validateSearchWord} = useAdmin();
-    
-  const [id, setId] = useState(0);
-  
+    validateSearchWord,
+    changeFilteringOptionId,
+    unSelect
+  } = useAdmin();
+
+
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
@@ -57,24 +58,28 @@ export const Users = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
-    searchNumber:"busquedaGeneralReportes",
+    searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
-    /** 
-     * idFilter={idFilter} 
-     * filter={<FilterUserAdmin 
-     * setIdFilter = {setIdFilter}
-    */
+  }
+
+
+  const dataFilter={
+    changeFilteringOptionId:changeFilteringOptionId,
+    unSelect:unSelect,
+    data:[
+      {nombre:"Tipo de Suspensión",id:1},
+      {nombre:"Reportes",id:2},
+      {nombre:"Correo",id:3},
+      {nombre:"Nombres y Apellidos",id:4}
+    ]
   }
 
   const dataUsers={
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    id:id,
-    setId:setId,
-    typeReport:"ReportsUsers",
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -119,7 +124,7 @@ export const Users = () => {
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={
