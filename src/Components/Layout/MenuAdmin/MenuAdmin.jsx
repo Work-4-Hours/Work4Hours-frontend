@@ -1,15 +1,16 @@
-import { Button } from 'Components/Ui/Button/Button';
-import { LinkOption } from 'Components/Ui/LinkOption/LinkOption';
-import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin';
 import React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-
-
+import { Link, useNavigate } from 'react-router-dom';
 import './MenuAdmin.css';
+
+import { Button } from 'Components/Ui/Button/Button';
+import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin';
+
+
 
 export const MenuAdmin = ({dataMenuAdmin}) => {
   const {logoutAdmin, nameAdmin, buttonActivated, buttonDeactivated}=dataMenuAdmin;
   const navigate = useNavigate()
+  
   const logoutApp = () => {
     logoutAdmin();
     navigate('/');

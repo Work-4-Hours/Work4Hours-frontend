@@ -1,19 +1,19 @@
-import { Button } from 'Components/Ui/Button/Button';
-import { PopUp } from 'Components/StyleComponets/PopUp';
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import './PopupConfirmChanges.css'
-import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
-import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
 import axios from 'axios';
-import { Header } from '../Header/Header';
 import { Alert } from 'Components/Ui/Alert';
 
-const apiAdmin = process.env.REACT_APP_API_ADMIN;
-const API = process.env.REACT_APP_API;
+import { Button } from 'Components/Ui/Button/Button';
+import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
+import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
+
 
 
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
-
+    const apiAdmin = process.env.REACT_APP_API_ADMIN;
+    const API = process.env.REACT_APP_API;
+    
     const {
         selectedList, 
         nameTitle,
@@ -25,7 +25,8 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
+
+
     const sendObjects=(e)=>{
         if(passwordAdmin!==""){
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
@@ -57,13 +58,12 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     return (
         <div className='btn_save_changes_admin_position'>
-            <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={event => setIsOpen(!isOpen)} />
+            <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={() => setIsOpen(!isOpen)} />
             <PopUp isOpen={isOpen}>
-                <div className="overlay_Popup_Confirm_Changes_Content_Object">
+                <div className="overlay_popup_confirm_changes_content_object">
                     <div className='popup_admin_save_changes_admin'>
                         <PopupTitleAdmin title={nameTitle} />
                         <PopupConfirmChangesContentObjects content={objectContent} />
-                        
                         <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}}/>
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>

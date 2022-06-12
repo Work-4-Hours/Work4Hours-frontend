@@ -1,10 +1,8 @@
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 import { Button } from '../Button/Button';
 import { OptionFilterUserAdmin } from '../OptionFilterUserAdmin/OptionFilterUserAdmin';
 import './FilterObjectAdmin.css'
-
-
 
 export const FilterObjectAdmin = ({dataFilter}) => {
     const{changeFilteringOptionId,unSelect,data}=dataFilter;

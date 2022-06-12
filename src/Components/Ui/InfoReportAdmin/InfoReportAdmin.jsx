@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import './InfoReportAdmin.css'
-import axios from 'axios';
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { ListReportsAdmin } from '../ListReportsAdmin/ListReportsAdmin';
 

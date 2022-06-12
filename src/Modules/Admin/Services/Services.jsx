@@ -1,5 +1,5 @@
-import React,{useEffect,useContext, useState} from 'react';
-import './Services.css';
+import React,{useEffect,useContext} from 'react';
+import '.././Admin.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
@@ -36,11 +36,13 @@ export const Services = () => {
     unSelect
   } = useAdmin();
 
+  //To bring the initial data of the services
   useEffect(()=>{
     getAdmin('Services');
     getAdmin('State');
   },[])
 
+  //Dashboard setting according to the search
   useEffect(()=>{
     if(searchWord.length>0){
       setData(searchWord)
@@ -67,9 +69,9 @@ export const Services = () => {
     changeFilteringOptionId:changeFilteringOptionId,
     unSelect:unSelect,
     data:[
-      {nombre:"Reportes",id:1},
-      {nombre:"Nombre del servicio",id:2},
-      {nombre:"Tipo",id:3}
+      {id:1, nombre:"Reportes"},
+      {id:1, nombre:"Nombre del servicio"},
+      {id:3, nombre:"Tipo"}
     ]
   }
 
@@ -126,7 +128,7 @@ export const Services = () => {
               <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
             ) }/>
           :
-          <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
+          <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
