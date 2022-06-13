@@ -106,3 +106,13 @@
     to { opacity: 1; }
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+    .container_admin{
+        display: flex;
+        flex-direction: column;
+    }
+    .manager_control{
+        width: 100%;
+    }
+    
+  }

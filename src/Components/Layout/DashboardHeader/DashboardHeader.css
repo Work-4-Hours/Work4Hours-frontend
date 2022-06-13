@@ -9,4 +9,8 @@
 }
 .reportColor{color:var(--status-red)}
 
+@media (min-width: 320px) and (max-width: 480px) {
+    
 
+    
+}
