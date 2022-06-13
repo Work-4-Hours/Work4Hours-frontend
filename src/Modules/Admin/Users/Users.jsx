@@ -110,12 +110,16 @@ export const Users = () => {
   }
 
   const dataPopupConfirmChanges = {
+    getAdmin:getAdmin,
+    setData:setData,
     selectedList:selectedList, 
+    setselectedList: setselectedList,
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
-    typePetition:"Users"
+    typePetition:"Users",
+    typeAdmin: "usuario"
     //sendNotification
   }
 
