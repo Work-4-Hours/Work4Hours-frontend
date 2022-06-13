@@ -58,9 +58,6 @@ export const useAdmin = () => {
       .catch(e=>{
         console.log(e)})
     }
-    else{
-      console.log("Invalid token");
-    }
   }
 
   //Array validation whether or not the query brings data
@@ -87,9 +84,6 @@ export const useAdmin = () => {
               })
               .catch(e=>{console.log(e)})
             }
-            else{
-              console.log("Invalid token");
-            }
           }
           else{
             if(validateToken){
@@ -98,9 +92,6 @@ export const useAdmin = () => {
                 validateDataPostWorkSearch(response)
               })
               .catch(e=>{console.log(e)})
-            }
-            else{
-              console.log("Invalid token");
             }
           }
         }
@@ -138,9 +129,6 @@ export const useAdmin = () => {
       .then(response=>{validateDataPostWorkSearch(response)})
       .catch(e=>{console.log(e)})
     }
-    else{
-      console.log("Invalid token");
-    }
   }
 
   //Update the id of the filter option
@@ -167,9 +155,6 @@ export const useAdmin = () => {
         }
         })
       .catch(e=>{console.log(e)})
-    }
-    else{
-      console.log("Invalid token");
     }
   }
 
