@@ -9,7 +9,10 @@
     flex-direction: column;
     gap: 2.5%;
 }
-
+.prueba100{
+    display: flex;
+    align-items: center;
+}
 /*size of the fileds of the dashboard*/
 
 .fieldSize3{width: 3%;}
@@ -76,7 +79,7 @@
     background-color: var(--bg-blue);
     color:var(--white-text-1);
     width: 11.4375em;
-    padding: 10%;
+    padding: 10px;
     position: absolute;
     top: 1.5em;
     z-index: 2;
@@ -114,5 +117,5 @@
     .manager_control{
         width: 100%;
     }
-    
-  }
+
+}

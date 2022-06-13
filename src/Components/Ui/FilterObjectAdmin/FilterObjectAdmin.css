@@ -16,3 +16,25 @@
 }
 
 
+.icon_filter_admin{
+    display: none;
+    position: absolute;
+    left: -23px;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .icon_filter_admin{
+        display: block;
+    }
+    .remove_button{
+        display: none;
+    }
+    .content_filter{
+        width: 0;
+        display: flex;
+        align-items: center;
+    }
+    .filter_options{
+        top: 27px;
+    }
+    
+}
