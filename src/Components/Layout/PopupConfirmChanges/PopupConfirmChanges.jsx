@@ -1,7 +1,7 @@
 import { Button } from 'Components/Ui/Button/Button';
 import { PopUp } from 'Components/StyleComponets/PopUp';
-import React, { useState, useEffect } from 'react'
-import './PopupConfirmChanges.css'
+import React, { useState, useEffect } from 'react';
+import './PopupConfirmChanges.css';
 import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
 import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
 import axios from 'axios';
@@ -26,8 +26,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         typePetition,
         typeAdmin
     }=dataPopupConfirmChanges;
-
-    console.log(token);
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
