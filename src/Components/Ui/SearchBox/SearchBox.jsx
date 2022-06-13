@@ -1,12 +1,10 @@
 import React from 'react';
 import './SearchBox.css';
 import { BsSearch } from 'react-icons/bs';
-import axios from 'axios';
 
 export const SearchBox = ({dataSearch}) => {
   const {nameSearch,postWorkSearch, searchNumber, searchString}=dataSearch;
   
-
   return (
     <div className='search_box'>
       <BsSearch/>

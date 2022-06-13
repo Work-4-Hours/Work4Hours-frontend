@@ -14,6 +14,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
   const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
   
   const {objectAllStatus,
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -25,16 +27,24 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idObject: idservicio, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    typeReport:"ReportsServices"
+  }
+
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState,
     idObject:idservicio, 
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    capturarid:setIdStatus, 
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    setChangeStatus:setChangeStatus,
+    setIdStatus:setIdStatus
   }
 
   const dataCheckBoxAdmin={
@@ -43,12 +53,13 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,
-    boardType:false
+    boardType:false,
+    idStatus:idStatus
   }
 
 
   return (
-    <div className='user_info'>
+    <div className='object_info'>
       <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
       <div className='fieldSize15 space_photo_username'>
         <PhotoAdmin photoData={photoData}/>
@@ -56,7 +67,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
       </div>
       <DescriptionServiceAdmin textDescription={descripcionServicio}/>
       <MessageUserAdmin textMessage={apelacion}/>
-      <InfoReportAdmin NumberReports={cantidadReportes}/>
+      <InfoReportAdmin dataReports={dataReports}/>
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>

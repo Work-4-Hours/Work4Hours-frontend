@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react'
 
 export const OptionStatusUserAdmin = ({objectAllStatus,dataOptionStatusUserAdmin}) => {
-   const {colorStatus, bringStatus}=dataOptionStatusUserAdmin; 
-  const {id, nombre_estado}=objectAllStatus;
+    const {colorStatus, bringStatus}=dataOptionStatusUserAdmin; 
+    const {id, nombre_estado}=objectAllStatus;
     const [color, setColor]=useState('')
     useEffect(()=>{
         setColor(colorStatus(nombre_estado))
@@ -10,7 +10,7 @@ export const OptionStatusUserAdmin = ({objectAllStatus,dataOptionStatusUserAdmin
 
   return (
     <div>
-        <p className={'op_state_user spacing '+color} id={id} onClick={(event)=>{bringStatus(event)}}>{nombre_estado}</p>
+        <p className={'op_state_object spacing '+color} id={id} onClick={(event)=>{bringStatus(event)}}>{nombre_estado}</p>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
@@ -7,7 +7,8 @@ import './UserInfo.css';
 
 
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
-
+  
+  const [idStatus, setIdStatus] = useState(0);
   const { 
     fotop, 
     apellidos, 
@@ -22,6 +23,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const {
     objectAllStatus,
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -32,9 +35,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
-
- 
-
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
     idObject:idusuario,
@@ -43,7 +43,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     data:objectAllStatus, 
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    setChangeStatus:setChangeStatus,
+    setIdStatus:setIdStatus
   }
 
   const dataCheckBoxAdmin={
@@ -52,17 +53,26 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,
-    boardType:true
+    boardType:true,
+    idStatus:idStatus
+  }
+
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idObject: idusuario, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    typeReport:"ReportsUsers"
   }
 
 
   return (
-    <div className='user_info'>
+    <div className='object_info'>
       <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
       <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-
+      <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
       <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    

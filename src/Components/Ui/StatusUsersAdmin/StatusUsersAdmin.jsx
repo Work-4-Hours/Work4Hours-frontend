@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import './StatusUsersAdmin.css';
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
@@ -10,11 +11,11 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     idObject,
     nameStatus,
     idObjectStatus, 
-    data, 
-    capturarid, 
+    data,  
     numberReports,
     changeStatus,
-    setChangeStatus
+    setChangeStatus,
+    setIdStatus
   }=dataStatusAdmin;
 
   const [stateObject, setStateObject]=useState(nameStatus);
@@ -25,11 +26,11 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
 
   const changeState = (reportsNumber) => {
-    if(reportsNumber === 25){
+    if(reportsNumber >= 25){
       setStateObject("Suspendido por 3 días")
       setIdStateObject(2)
     }
-    else if(reportsNumber === 50){
+    if(reportsNumber >= 50){
       setStateObject("Inhabilitado")
       setIdStateObject(3)
     }
@@ -66,6 +67,9 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   useEffect(()=>{
     objectSelectedSetState(changeStatus, idObject, idStateObject)
   },[changeStatus])
+  useEffect(()=>{
+    setIdStatus(idStateObject)
+  },[idStateObject])
 
   const dataOptionStatusUserAdmin={
     colorStatus:changeColorStateObjects,
@@ -74,7 +78,7 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_user '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
+      <p className={'op_state_object '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options'>

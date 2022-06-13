@@ -1,4 +1,4 @@
-input[type='radio']{
+.checkbox_admin_filter[type='radio']{
     appearance: none; 
     background-color: var(--bg-blue); 
     border:1px solid var(--white-text-1);
@@ -6,7 +6,7 @@ input[type='radio']{
     height: 16px;
 }
 
-input[type='radio']:checked{
+.checkbox_admin_filter[type='radio']:checked{
     background-color: var(--white-text-1);
     border: 1px solid var(--status-grey);
 }

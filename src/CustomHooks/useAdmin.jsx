@@ -3,8 +3,10 @@ import React,{useState,useEffect} from 'react'
 const api = process.env.REACT_APP_API_ADMIN;
 
 export const useAdmin = () => {
+  
   const [data, setData] = useState([]);
   const [dataState, setDataState] = useState([]);
+  const [dataReport, setReport] = useState([]); 
   const [selectedList, setselectedList]=useState([]);
   const [changeStatus, setChangeStatus]=useState(false);
   const [searchWord,setSearchWord]=useState([]);
@@ -18,9 +20,9 @@ export const useAdmin = () => {
       if(url==="State"){
         setDataState(response.data)
       }
-      else{
-        setData(response.data)}
-
+      else {
+        setData(response.data)
+      }
       })
     .catch(e=>{
       console.log(e)})
@@ -68,14 +70,21 @@ export const useAdmin = () => {
     }
   }
 
-  //Validation of word if it is a number or string
+  //Validation of word if it is a number or string from reports
   const searchFilter=(id, word,searchString)=>{
-    if(!isNaN(parseInt(word))){
-      postSearhFilter(id,parseInt(word),searchString)
+    if((searchString==="SearchUsers" && id==="2") || (searchString==="SearchServices" && id==="1")){
+      if(!isNaN(parseInt(word))){
+        postSearhFilter(id,word,searchString)
+      }
+      else{
+        //Alerta
+        console.log("selecciono la opcion reportes y solo recibe numeros")
+      }
     }
     else{
       postSearhFilter(id,word,searchString)
     }
+
   }
   //data filtering request
   const postSearhFilter=(id, word,searchString)=>{
@@ -95,9 +104,23 @@ export const useAdmin = () => {
     return e.target.checked = false
   }
 
+  //Consultation of a user's reports
+  const getAdminReports =  (url, id) => {
+    axios.get(`${api}/api/${url}?id=${id}`)
+    .then(response=>{ 
+      if(url==="ReportsUsers"){
+        setReport(response.data)
+      }
+      else {
+        setReport(response.data)
+      }
+      })
+    .catch(e=>{
+      console.log(e)})
+  }
 
 
-  //Eliminacion de objetos en la seleccion de los checkboxs
+  //Removal of objects in the selection of checkboxes
   const deletingSelectedDeslectCheckbox =(id)=>{
     selectedList.map(item=>{
       if(item.id===id){
@@ -125,6 +148,8 @@ export const useAdmin = () => {
     setData,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -138,4 +163,3 @@ export const useAdmin = () => {
     unSelect
   }
 }
-
