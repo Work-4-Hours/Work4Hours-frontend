@@ -104,7 +104,10 @@ export const Services = () => {
   }
 
   const dataPopupConfirmChanges = {
+    getAdmin:getAdmin,
+    setData:setData,
     selectedList:selectedList, 
+    setselectedList: setselectedList,
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
