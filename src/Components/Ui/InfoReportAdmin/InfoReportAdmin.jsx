@@ -1,42 +1,35 @@
 import React,{useState} from 'react'
 import './InfoReportAdmin.css'
-import axios from 'axios';
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { ListReportsAdmin } from '../ListReportsAdmin/ListReportsAdmin';
 
-export const InfoReportAdmin = ({NumberReports, idUsers}) => {
+export const InfoReportAdmin = ({dataReports}) => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [reports, setReports] = useState([]);
 
-  const showReport=(id)=>{
-    axios.get(`https://localhost:44342/api/ReportsUsers?idusuario=${id}`)
-    .then(response => {
-      setReports(response.data)
-    })
-    .catch(e => {
-        console.log(e);
-    })
-  }
+  const {numberReports, idObject, getAdminReports, dataReport, typeReport}= dataReports;
 
-  const popupClose = () => {
-    if(NumberReports === 0){
+
+  const onClickNumberReport = () => {
+    if(numberReports === 0){
       setIsOpen(false)
     }
     else{
+      getAdminReports(typeReport, idObject)
       setIsOpen(!isOpen)
     }
   }
   
   return (
     <div className='position_relative fieldSize8' >
-      <p className='text_center pointer_userSelect_none'  onClick={()=>{setIsOpen(!isOpen); showReport(idUsers); popupClose()}}>{NumberReports}</p>
+      <p className='text_center pointer_userSelect_none' onClick={onClickNumberReport}>{numberReports}</p>
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_type_report'>
           <h5 className='spacing'>Tipos de Reportes</h5>
           <div>
-            {reports?.map(item => (<ListReportsAdmin objectListReports={item} key={item.idreporte}/>))}
+            {dataReport?.map(item => (<ListReportsAdmin objectListReports={item} key={item.idreporte}/>))}
           </div>
         </div>
       </PopUp>

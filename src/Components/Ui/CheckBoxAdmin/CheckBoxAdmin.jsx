@@ -1,28 +1,59 @@
 import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
-export const CheckBoxAdmin = ({objectAllUsers,deleteUserSelect,designCheckBoxAdmin, id, correo, idStatus,fotop, listUserSelectSet, selectUsers }) => {
+export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
-  const [UserAllobject, setUserAllobject]=useState([]);
+  const {
+    objectAll, 
+    designCheckBoxAdmin, 
+    deletingSelectedDeslectCheckbox,
+    selectedList,
+    setselectedList,
+    boardType,
+    idStatus
+  } = dataCheckBoxAdmin;
+
+
+  const [allObject, setallObject]=useState([]);
+
   useEffect(()=>{
-    if(objectAllUsers!==undefined){
-      setUserAllobject(objectAllUsers)
+    if(objectAll!==undefined){
+      setallObject(objectAll)
     }
-
   },[''])
+
+ 
   const validarcheckbox=(e)=>{
-    if(e.target.checked){
-      const datauser={idEstado:idStatus, email:UserAllobject.correo, idUsuario:UserAllobject.idusuario, fotoUser:UserAllobject.fotop, nombres:UserAllobject.nombres, color:UserAllobject.color}
-      listUserSelectSet([...selectUsers, datauser]);
+    if(e.target.checked && boardType===true){
+      const datauser={
+        idEstado:idStatus, 
+        email:allObject.correo, 
+        id:allObject.idusuario, 
+        fotoUser:allObject.fotop, 
+        nombres:allObject.nombreUsuario, 
+        color:allObject.color
+      }
+      setselectedList([...selectedList, datauser]);
+    }
+    else if(e.target.checked && boardType===false){
+      const dataServices={
+        idEstado:idStatus,
+        id:allObject.idservicio,
+        nombre:allObject.nombreServicio
+      }
+      setselectedList([...selectedList, dataServices]);
+    }
+    else if(!e.target.checked && boardType===true){ 
+      deletingSelectedDeslectCheckbox(allObject.idusuario);
     }
     else{
-      deleteUserSelect(UserAllobject.idusuario);
+      deletingSelectedDeslectCheckbox(allObject.idservicio);
     }
  }
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={UserAllobject.id}  onClick={(e)=>validarcheckbox(e)}/>
+          <input type="checkbox" className='cb_confirm_changes' id={allObject.id}  onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

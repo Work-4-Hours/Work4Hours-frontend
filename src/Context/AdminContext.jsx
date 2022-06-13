@@ -10,7 +10,6 @@ export const AdminContext = createContext({});
 
 export const AdminProvider = ({ children }) => {
     const [admin, setAdmin, removeAdmin] = useLocalStorage(sha256('userAuth'),'')
-
     const { userConnection, sendNotification, closeConnection } = useNotification()
 
     const getToken = () => {
