@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { DivNavBar } from 'Components/StyleComponets/DivNavBar';
-import { Title } from 'Components/StyleComponets/Titlte';
+import { DivNavBar } from 'Components/StyledComponets/DivNavBar';
+import { Title } from 'Components/StyledComponets/Titlte';
 import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
 import { LinkOption } from 'Components/Ui/LinkOption/LinkOption';
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile';
 import { Link, useNavigate } from 'react-router-dom';
-import { DivPopUp } from "Components/StyleComponets/DivPopUp"
+import { DivPopUp } from "Components/StyledComponets/DivPopUp"
 import { InputTextLabel } from "Components/Ui/InputTextLabel/InputTextLabel"
 import { Button } from "Components/Ui/Button/Button"
 import { UserContext } from 'Context/UserContext';
-import { DivShadow } from 'Components/StyleComponets/DivShadow';
+import { DivShadow } from 'Components/StyledComponets/DivShadow';
 import IconAddImage from 'Assets/Icons/IconAddImageWhite.png'
 
 import './Header.css';

@@ -1,4 +1,4 @@
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Button } from 'Components/Ui/Button/Button'
 import React from 'react'
 import { Link } from 'react-router-dom'

@@ -1,9 +1,21 @@
+.main_dasboard {
+    /* background: #393E46; */
+    /* height: 100vh; */
+}
+
+.logo_app_dashboard {
+    width: 200px;
+    margin: 0 0 2em 0;
+}
+
 .center_dashboard {
     max-width: var(--max-width-container);
-    margin: 1em auto;
+    margin: auto;
     padding: 20px;
+    /* height: 100%; */
 
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 
@@ -19,6 +31,13 @@
     padding: 20px;
 }
 
+.title_dashboard_info_small {
+    font-family: var(--font-1);
+    color: var(--gray-text-1);
+    font-size: 19px;
+    /* font-weight: 700; */
+}
+
 .title_dashboard_info {
     font-family: var(--font-1);
     color: var(--gray-text-1);
@@ -26,13 +45,58 @@
     font-weight: 700;
 }
 
+.nav_show_services {
+    margin: 2em 0 1em 0;
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+}
+
+.options_show_my_services {
+    padding: 15px 20px;
+    border-radius: 20px;
+    background: #f4f8ff;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.show_only_title {
+    color: var(--gray-text-3);
+    font-family: var(--font-1);
+}
+
+.link_option_show_services {
+    padding: 5px 15px;
+    width: 130px;
+    border-radius: 30px;
+    border: 1px solid var(--gray-text-3);
+    text-align: center;
+
+    color: var(--gray-text-3);
+    font-family: var(--font-1);
+}
+
+.options_show_ {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.option_select_ {
+    border: 2px solid var(--gray-text-1);
+    color: var(--gray-text-1);
+}
+
 .operations_dashboard {
     padding: 10px 0 0 0;
 }
 
-.main_dashboard {
+.main_dashboard_ {
+    background: #FFFF;
     width: 80%;
-    padding: 30px;
+    padding: 40px;
 }
 
 .padding_button_service_add {
@@ -43,4 +107,62 @@
 
 .link_add_service {
     text-decoration: none;
+}
+
+
+.personal_info {
+    width: 20%;
+    background: #FFFF;
+}
+
+.image_profile_dashboard {
+    width: 100%;
+    /* height: 1px; */
+}
+
+.information_user_profile_dashboard {
+    padding: 2em 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 2px;
+}
+
+.name_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.email_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
+    font-size: 1em;
+}
+
+.phone_user_profile_dashboard {
+    font-family: var(--font-1);
+    color: var(--bg-blue);
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+.my_services_ {
+    padding: 1.2em 0 0 0;
+    border-top: 1px solid #ecf3ff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* loading animation card */
+
+.loading_animation_card_service {
+    width: 100%;
+    height: 97px;
+    padding: 15px;
+    background: rgba(73, 82, 95, 0.075);
+    border-radius: 7px;
 }

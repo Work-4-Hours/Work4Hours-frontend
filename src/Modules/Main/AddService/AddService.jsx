@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import { Title } from 'Components/StyleComponets/Titlte'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
+import { Title } from 'Components/StyledComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
@@ -26,10 +26,10 @@ export const AddService = () => {
     const [loadingCreate, setLoadingCreate] = useState(null);
 
     const [name, setName] = useState(null);
+    const [status, setStatus] = useState(null);
     const [type, setType] = useState(null);
     const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
-    const [status, setStatus] = useState(null);
     const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
 

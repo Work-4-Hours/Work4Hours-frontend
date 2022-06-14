@@ -1,5 +1,5 @@
 import { Header } from 'Components/Layout/Header/Header'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
@@ -11,17 +11,26 @@ import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUse
 import './Profile.css'
 import { Link, useSearchParams } from 'react-router-dom'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
+import { useFetch } from 'CustomHooks/useFetch'
 
 export const Profile = () => {
 
-    const { user,isAuth, getJwt } = useContext(UserContext)
+    const { user, isAuth, getJwt } = useContext(UserContext)
     const [services, setServices] = useState([])
     const [profileU, setProfileU] = useState([])
     const [params, setParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
     const [qualification, setQualification] = useState(null)
 
-    useEffect(()=> {
+    // const { data, isLoading : loading } = useFetch(`
+    // ${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${params.get('id')}`,{
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `JSW ${getJwt()}`
+    //     }
+    // })
+
+    useEffect(() => {
         const getInfo = async () => {
             setLoading(true)
             fetch(`${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${params.get('id')}`, {
@@ -30,24 +39,24 @@ export const Profile = () => {
                     'Authorization': `JSW ${getJwt()}`
                 }
             })
-            .then(response => response.json())
-            .then(response => {
-                setServices(response[0]);
-                setProfileU(response[1]);
-                setQualification(response[2]);
-                console.log(response);
-            })
-            .finally(() => setLoading(false))
+                .then(response => response.json())
+                .then(response => {
+                    setServices(response[0]);
+                    setProfileU(response[1]);
+                    setQualification(response[2]);
+                    console.log(response);
+                })
+                .finally(() => setLoading(false))
 
         }
 
         getInfo()
 
-    },[])
+    }, [])
 
-    const formatName = (name)=> {
+    const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()
-    }      
+    }
 
     const inputRef = useRef(null)
 
@@ -65,7 +74,7 @@ export const Profile = () => {
                         <div className="sticky_informacion_user">
                             <DivShadow>
                                 <header className='photo_user_profile'>
-                                    <PhotoUserProfile infoProfile={{name: profileU.name, color: profileU.color, userPicture: profileU.photo}} style='medium_profile' small={false}/>
+                                    <PhotoUserProfile infoProfile={{ name: profileU.name, color: profileU.color, userPicture: profileU.photo }} style='medium_profile' small={false} />
                                 </header>
                                 <section className='info_user_profile'>
                                     <p className='name_user_profile'>{profileU.name} {profileU.lastName}</p>
@@ -84,7 +93,7 @@ export const Profile = () => {
                                 <div className="padding_calification_user_profile">
                                     <p className="subtitle_user_profile">Calificacion</p>
                                     <div className="calification_user_profile">
-                                        <CalificationUser value={qualification?.qualification}/>
+                                        <CalificationUser value={qualification?.qualification} />
                                         <p className='value_calification_user'>{qualification?.qualification}%</p>
                                     </div>
                                 </div>
@@ -98,16 +107,16 @@ export const Profile = () => {
                                 <h1 className='subtilte_publications_user'>Publicaciones</h1>
                                 <div className="publications_user_profile">
 
-                                {
-                                    loading ?   
-                                    <>
-                                        <LoadingCard/>
-                                        <LoadingCard/>
-                                    </>                          
-                                    :
-                                    
-                                    services?.map((item, index) =>  <Link key={index} to={`/CO/service/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
-                                }   
+                                    {
+                                        loading ?
+                                            <>
+                                                <LoadingCard />
+                                                <LoadingCard />
+                                            </>
+                                            :
+
+                                            services?.map((item, index) => <Link key={index} to={`/CO/service/${formatName(item.name)}?sid=${item.id}`} className='link_card_service'><CardService info={item} /></Link>)
+                                    }
 
                                 </div>
                             </div>

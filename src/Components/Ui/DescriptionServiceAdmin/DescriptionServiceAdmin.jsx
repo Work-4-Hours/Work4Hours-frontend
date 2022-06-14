@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import'./DescriptionServiceAdmin.css';
 
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 
 
 export const DescriptionServiceAdmin = ({textDescription}) => {

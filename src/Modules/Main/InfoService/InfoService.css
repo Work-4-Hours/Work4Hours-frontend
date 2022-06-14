@@ -276,3 +276,17 @@
     display: flex;
     margin: 20px 0 0 0;
 }
+
+.link_profile_info_user {
+    text-decoration: none;
+}
+
+.photo_user_profile {
+    width: 250px;
+    height: 200px;
+    background: #eeeeee;
+}
+
+.user_name_loading {
+    margin: 0 0 10px 0;
+}

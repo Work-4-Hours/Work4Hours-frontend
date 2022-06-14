@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-export const useField = ({ type = 'text', validate = /^/, message_errors = 'Campo incorrecto' }) => {
+export const useField = ({ type = 'text', initial_value, validate = /^/, message_errors = 'Campo incorrecto' }) => {
 
-    const [value, setValue] = useState(null)
+    const [value, setValue] = useState(initial_value)
     const [message_error, setMessageError] = useState(null)
     const [isValidate, setIsValidate] = useState(true)
 
