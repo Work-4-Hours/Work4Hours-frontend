@@ -78,10 +78,8 @@
 .content_options{
     background-color: var(--bg-blue);
     color:var(--white-text-1);
-    width: 11.4375em;
     padding: 10px;
     position: absolute;
-    top: 1.5em;
     z-index: 2;
     animation: animationPopupOptionsActivate .2s forwards;
     border-radius: var(--border-radius-2);
