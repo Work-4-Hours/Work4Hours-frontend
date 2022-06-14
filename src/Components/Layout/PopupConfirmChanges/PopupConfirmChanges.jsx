@@ -23,12 +23,12 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         token,
         email,
         typePetition,
-        typeAdmin
+        typeAdmin, 
+        isOpen,
+        setIsOpen
     }=dataPopupConfirmChanges;
 
-    const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
 
     const validationInput= (e) => {
         if(e.keyCode===13){

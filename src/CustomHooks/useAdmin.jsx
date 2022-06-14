@@ -182,6 +182,13 @@ export const useAdmin = () => {
     }
   }
 
+  const closePopUpAndDeleteSelectedDeslectCheckBox = () => {
+    deletingSelectedDeslectCheckbox(id);
+    if(selectedList.length===0){
+      setIsOpen(!isOpen)
+    }
+  }
+
   return {
     data,
     setData,
@@ -199,6 +206,7 @@ export const useAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    
   }
 }

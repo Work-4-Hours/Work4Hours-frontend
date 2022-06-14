@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState} from 'react';
 import './Users.css';
 
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -15,7 +15,8 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 
 export const Users = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const [isOpen, setIsOpen] = useState(false);
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
     
   const { data,
     setData,
@@ -116,9 +117,18 @@ export const Users = () => {
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Users",
-    typeAdmin: "usuario"
+    typeAdmin: "usuario", 
+    isOpen: isOpen,
+    setIsOpen: setIsOpen
     //sendNotification
   }
+
+  // const dataObjectStatus = {
+  //   deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+  //   selectedList:selectedList,
+  //   isOpen:isOpen,
+  //   setIsOpen:setIsOpen
+  // }
 
   return (
     <div className='container_admin'>
@@ -138,7 +148,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+          <ObjectStatus userSelect={item} dataObjectStatus={dataObjectStatus} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
