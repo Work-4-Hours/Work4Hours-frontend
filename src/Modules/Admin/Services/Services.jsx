@@ -1,5 +1,5 @@
 import React,{useEffect,useContext} from 'react';
-import './Services.css';
+import '.././Admin.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
@@ -16,10 +16,13 @@ import { AdminContext } from 'Context/AdminContext';
 export const Services = () => {
 
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+
   const { data,
     setData,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -33,11 +36,13 @@ export const Services = () => {
     unSelect
   } = useAdmin();
 
+  //To bring the initial data of the services
   useEffect(()=>{
     getAdmin('Services');
     getAdmin('State');
   },[])
 
+  //Dashboard setting according to the search
   useEffect(()=>{
     if(searchWord.length>0){
       setData(searchWord)
@@ -54,7 +59,7 @@ export const Services = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Servicios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices"
@@ -64,9 +69,9 @@ export const Services = () => {
     changeFilteringOptionId:changeFilteringOptionId,
     unSelect:unSelect,
     data:[
-      {nombre:"Reportes",id:1},
-      {nombre:"Nombre del servicio",id:2},
-      {nombre:"Tipo",id:3}
+      {id:1, nombre:"Reportes"},
+      {id:1, nombre:"Nombre del servicio"},
+      {id:3, nombre:"Tipo"}
     ]
   }
 
@@ -90,6 +95,8 @@ export const Services = () => {
 
   const dataServices={
     objectAllStatus:dataState,
+    getAdminReports:getAdminReports,
+    dataReport:dataReport,
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -99,12 +106,16 @@ export const Services = () => {
   }
 
   const dataPopupConfirmChanges = {
+    getAdmin:getAdmin,
+    setData:setData,
     selectedList:selectedList, 
+    setselectedList: setselectedList,
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
-    typePetition:"Services"
+    typePetition:"Services",
+    typeAdmin: "servicio"
     //sendNotification
   }
 
@@ -121,7 +132,7 @@ export const Services = () => {
               <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
             ) }/>
           :
-          <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
+          <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(

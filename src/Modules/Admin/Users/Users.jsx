@@ -1,25 +1,29 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
+
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
 import { Search } from 'Components/Layout/Search/Search';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
 
+import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
-import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
-
-import './Users.css';
+import '.././Admin.css';
+import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 
 export const Users = () => {
 
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
     
-  const { data,
+  const { 
+    data,
     setData,
     getAdmin, 
     dataState, 
+    getAdminReports,
+    dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
@@ -30,14 +34,16 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
-  } = useAdmin();
+    unSelect} = useAdmin();
 
+  //To bring the initial data of the users
   useEffect(()=>{
     getAdmin('Users');
     getAdmin('State');
-  },[])
+  },[])  
 
+
+  //Dashboard setting according to the search
   useEffect(()=>{
     if(searchWord.length>0){
       setData(searchWord)
@@ -47,6 +53,7 @@ export const Users = () => {
     }
   },[searchWord]) 
 
+
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
@@ -54,7 +61,7 @@ export const Users = () => {
     logoutAdmin: logoutAdmin
   }
   const dataSearch={
-    nameSearch: "Buscar Usuarios",
+    nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
@@ -65,15 +72,17 @@ export const Users = () => {
     changeFilteringOptionId:changeFilteringOptionId,
     unSelect:unSelect,
     data:[
-      {nombre:"Tipo de Suspensión",id:1},
-      {nombre:"Reportes",id:2},
-      {nombre:"Correo",id:3},
-      {nombre:"Nombres y Apellidos",id:4}
+      {id:1, nombre:"Tipo de Suspensión"},
+      {id:2, nombre:"Reportes"},
+      {id:3, nombre:"Correo"},
+      {id:4, nombre:"Nombres y Apellidos"}
     ]
   }
 
   const dataUsers={
     objectAllStatus:dataState,
+    getAdminReports:getAdminReports,
+    dataReport:dataReport,
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -81,7 +90,6 @@ export const Users = () => {
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus
   }
-
   
   const dashboardHeader = {
     columWidth1 : 'fieldSize3',
@@ -102,15 +110,18 @@ export const Users = () => {
   }
 
   const dataPopupConfirmChanges = {
+    getAdmin:getAdmin,
+    setData:setData,
     selectedList:selectedList, 
+    setselectedList: setselectedList,
     nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
-    typePetition:"Users"
+    typePetition:"Users",
+    typeAdmin: "usuario"
     //sendNotification
   }
-
 
 
   return (
@@ -121,12 +132,12 @@ export const Users = () => {
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={
-          data?.map(item=>(
-            <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>
-          ))}
+          data?.map(item=>
+            <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>  
+          )}
         />
         :
-        <Dashboard style="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
+        <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
       
     }
       <PopupConfirmChanges objectContent={

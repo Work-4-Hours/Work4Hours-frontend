@@ -3,6 +3,7 @@ import './DashboardHeader.css';
 
 export const DashboardHeader = ({dataDashboardHeader}) => {
 
+
   return (
     <div className='dashboard_header'>
       <p className={dataDashboardHeader.columWidth1}>{dataDashboardHeader.columText1}</p>
