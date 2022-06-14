@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Link } from 'react-router-dom'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
-import { Title } from 'Components/StyleComponets/Titlte'
+import { Title } from 'Components/StyledComponets/Titlte'
 import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
 import { useFetch } from 'CustomHooks/useFetch'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
+import { ReactComponent as RegistryBackground } from 'Assets/Backgrounds/RegistryBackground.svg'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
+import { regex_email, regex_names, regex_password, regex_phone } from 'Validations/RejexForms'
 
 import './Registry.css'
-
-const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-const regex_names = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
-const regex_phone = /3[0-9]{9}/
 
 export const Registry = () => {
 
@@ -124,7 +121,10 @@ export const Registry = () => {
     return (
         <main className='registry'>
             <div className="background_registry"></div>
-            <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" />
+            <div className="background_image">
+                <RegistryBackground className='background_image_login_svg' />
+            </div>
+            {/* <img  src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
 
             <div className="center_main_registry">
 
@@ -137,23 +137,7 @@ export const Registry = () => {
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link>
                         </header>
 
-                        <section className="steps_registry">
-                            {
-                                steps.map(item => (
-                                    <>
-                                        <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
-                                            <div className='step_number'>
-                                                {item.step}
-                                            </div>
-                                            <p className='step_info'>{item.info}</p>
-                                        </div>
-                                        <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
-                                            <div className={`line_step`}></div>
-                                        </div>
-                                    </>
-                                ))
-                            }
-                        </section>
+                        
 
                         <div className='form_registry'>
 
@@ -214,10 +198,10 @@ export const Registry = () => {
                                             surname.validator(surname.value)
                                             phone.validator(phone.value)
                                             birthday.validator(phone.value)
-                                            if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value) )
+                                            if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
                                                 changeStep(currentStep + 1)
-                                            }
-                                            } />
+                                        }
+                                        } />
                                     </>
                                 )
                             }
@@ -237,7 +221,7 @@ export const Registry = () => {
 
                                                     <label htmlFor="file_image_user">
                                                         <div className="image_profile_registry">
-                                                            { previewImage ?
+                                                            {previewImage ?
 
                                                                 <img className='image_preview_profile' src={previewImage} alt="" />
 
@@ -266,8 +250,24 @@ export const Registry = () => {
                 </DivShadow>
 
                 <div className="information_app">
-                    <h1 className='title_info_app'>Work 4 Hours</h1>
-                    <p className='text_info_registry'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, omnis optio. Impedit amet molestias repellat possimus sint blanditiis ipsam sapiente.</p>
+                    <h1 className='title_steps'>Pasos</h1>
+                    <section className="steps_registry">
+                            {
+                                steps.map(item => (
+                                    <>
+                                        <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
+                                            <div className='step_number'>
+                                                {item.step}
+                                            </div>
+                                            <p className='step_info'>{item.info}</p>
+                                        </div>
+                                        <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
+                                            <div className={`line_step`}></div>
+                                        </div>
+                                    </>
+                                ))
+                            }
+                        </section>
                 </div>
             </div>
 

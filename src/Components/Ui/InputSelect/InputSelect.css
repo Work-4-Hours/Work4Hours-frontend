@@ -14,3 +14,10 @@
     opacity: 0.2;
     user-select: none;
 }
+
+/* Theme input dark */
+
+.input_dark   {
+    background: #2b323b;
+    color: #FFFF;
+} 

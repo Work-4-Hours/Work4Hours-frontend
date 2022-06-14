@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { DivShadow } from 'Components/StyleComponets/DivShadow'
-import { Title } from 'Components/StyleComponets/Titlte'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
+import { Title } from 'Components/StyledComponets/Titlte'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputText } from 'Components/Ui/InputText/InputText'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'

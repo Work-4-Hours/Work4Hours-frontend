@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 
 export const MessageUserAdmin = ({textMessage}) => {
     const [isOpen, setIsOpen] = useState(false);

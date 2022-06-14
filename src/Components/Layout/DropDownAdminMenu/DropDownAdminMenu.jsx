@@ -1,4 +1,4 @@
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin';
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
@@ -8,7 +8,6 @@ import { BsX } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import { BiLogOut } from 'react-icons/bi';
 import { MdMiscellaneousServices } from 'react-icons/md';
-
 
 
 export const DropDownAdminMenu = ({dataMenuAdmin,logoutApp}) => {

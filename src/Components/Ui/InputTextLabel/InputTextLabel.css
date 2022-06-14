@@ -4,3 +4,8 @@
     font-size: 18px;
     margin: 0 0 5px 0;
 }
+
+.white_text {
+    color: #e7e7e7;
+    /* background: transparent; */
+}

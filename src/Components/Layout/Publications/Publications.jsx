@@ -1,56 +1,32 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { Title } from 'Components/StyleComponets/Titlte'
-import { UserContext } from 'Context/UserContext'
+import React, { useEffect } from 'react'
 import { CardServiceAdmin } from 'Components/Ui/CardServiceAdmin/CardServiceAdmin'
-import jwt_decode from "jwt-decode";
+import { useManageServices } from 'CustomHooks/useManageServices';
 
 export const Publications = () => {
-    const { user, getJwt } = useContext(UserContext)
-    const [service, setServicesUser] = useState([]);
+
+    const { data: service, loading, getServices } = useManageServices()
 
     useEffect(() => {
-        const getInfo = async () => {
-
-            fetch(`${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${jwt_decode(getJwt()).userId}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `JSW ${getJwt()}`
-                }
-            })
-                .then(response => response.json())
-                .then(response => {
-                    setServicesUser(response[0]);
-                })
-                .finally()
-
-                console.log(jwt_decode(getJwt()));
-        }
-
-        getInfo()
+        getServices()
     }, [])
 
     return (
-        <main>
-            <Title>Mis servicios - Borradores</Title>
 
-            <section className='table_services'>
-                <div className="header_table_services">
-                    <div className="row_table_services_header">
-                        <div></div>
-                        <div>Informacion</div>
-                        <div>Reportes</div>
-                        <div>Operaciones</div>
-                    </div>
-                </div>
-                <div className="body_table_services">
-                    {
-                        service?.map((item,index) => (
-                            <CardServiceAdmin service={item} key={index}/>
-                        ))
-                    }
-                </div>
-            </section>
+        <>
+            {
+                loading ?
+                    <>
+                        <div className="loading_animation_card_service"></div>
+                        <div className="loading_animation_card_service"></div>
+                        <div className="loading_animation_card_service"></div>
+                    </>
+                    :
+                    service?.map((item, index) => (
+                        <CardServiceAdmin service={item} key={index} />
+                    ))
+            }
 
-        </main>
+        </>
+
     )
 }

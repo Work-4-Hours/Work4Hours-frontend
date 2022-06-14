@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Header } from "Components/Layout/Header/Header";
-import { DivShadow } from "Components/StyleComponets/DivShadow";
-import { Title } from "Components/StyleComponets/Titlte";
+import { DivShadow } from "Components/StyledComponets/DivShadow";
+import { Title } from "Components/StyledComponets/Titlte";
 import { CardUser } from "Components/Ui/Cards/CardUser/CardUser";
 import { PhotoUserProfile } from "Components/Ui/PhotoUserProfile/PhotoUserProfile";
 import { CardMessage } from "Components/Ui/Cards/CardMessage/CardMessage";
@@ -13,7 +13,7 @@ import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 
 import './Chat.css';
-    
+
 export const Chat = () => {
 
     const chatRef = useRef()
@@ -66,8 +66,8 @@ export const Chat = () => {
                             {
                                 isLoading ?
                                     <>
-                                    <LoadingCardUser/>
-                                    <LoadingCardUser/>
+                                        <LoadingCardUser />
+                                        <LoadingCardUser />
                                     </>
                                     :
                                     chats?.map((item, index) => (

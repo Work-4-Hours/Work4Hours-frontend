@@ -10,7 +10,7 @@ export const CardService = ({info}) => {
             <header className='header_card_service'>
                 <div className='price_header_card'>
                     <div className="information_price_service">
-                        <p>$ {price} por hora</p>                           
+                        <p>CO${price}/hora</p>                           
                     </div>
                 </div>
                 <img className='image_header_card' src={photo} alt="" />

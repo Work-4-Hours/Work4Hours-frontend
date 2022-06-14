@@ -1,10 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './PopupConfirmChanges.css';
 
 import { Alert } from 'Components/Ui/Alert';
 import { Button } from 'Components/Ui/Button/Button';
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
+import './PopupConfirmChanges.css'
 import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
 import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
 

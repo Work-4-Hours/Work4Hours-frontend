@@ -1,4 +1,4 @@
-import { PopUp } from 'Components/StyleComponets/PopUp';
+import { PopUp } from 'Components/StyledComponets/PopUp';
 import React,{useState} from 'react';
 import './SelectTypeServiceAdmin.css';
 import { IoMdArrowDropdown } from 'react-icons/io';

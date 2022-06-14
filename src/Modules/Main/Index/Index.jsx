@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { Header } from "Components/Layout/Header/Header"
 import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { Banner } from "Components/Layout/Banner/Banner"
-import { DivShadow } from "Components/StyleComponets/DivShadow"
+import { DivShadow } from "Components/StyledComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
 import { Link } from "react-router-dom"
 import { UserContext } from "Context/UserContext"

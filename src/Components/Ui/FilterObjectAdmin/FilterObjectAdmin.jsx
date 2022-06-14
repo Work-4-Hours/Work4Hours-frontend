@@ -1,5 +1,5 @@
-import { PopUp } from 'Components/StyleComponets/PopUp';
-import React, {useState} from 'react'
+import { PopUp } from 'Components/StyledComponets/PopUp';
+import React,{useState} from 'react'
 import { Button } from '../Button/Button';
 import { OptionFilterUserAdmin } from '../OptionFilterUserAdmin/OptionFilterUserAdmin';
 import './FilterObjectAdmin.css'
