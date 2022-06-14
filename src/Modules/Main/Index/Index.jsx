@@ -61,13 +61,13 @@ export const Index = () => {
 
                     <p className="title_index">Temas que pueden interesarte</p>
                     <section className='information_services'>
-                        <Banner informaction={{ title: "Jardineria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, facere.  " }} image={"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg"} >
+                        {/* <Banner informaction={{ title: "Jardineria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, facere.  " }} image={"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg"} >
                             <Button value='Ver mas' />
                         </Banner>
 
                         <Banner informaction={{ title: "Fontaneria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit." }} image={"https://lmingecon.com/wp-content/uploads/2017/08/fontaneria-reformas-albacete.jpg"} >
                             <Button value='Ver mas' />
-                        </Banner>
+                        </Banner> */}
                     </section>
                 </div>
             </main>

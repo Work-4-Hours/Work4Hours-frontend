@@ -12,12 +12,7 @@ export const LoadingCardSearch = () => {
 
                 </header>
                 <body className='body_card_service body_load_search'>
-                    <div className="location_card_service text_load">
-                        
-                    </div>
-                    <div className="location_card_service name_load">
-                        
-                    </div>
+                   
                 </body>
             </div>
         </div>

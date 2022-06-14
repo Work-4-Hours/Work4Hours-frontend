@@ -8,7 +8,7 @@ export const Banner = ({ banners }) => {
 
     return (
         <div className='banner'>
-            <Slideshow controles={true} >
+            <Slideshow controles={true} autoplay={true}>
                 {
                     banners?.map((item, index) => (
                         <Slide key={index}>
