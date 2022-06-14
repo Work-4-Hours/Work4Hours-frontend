@@ -27,7 +27,7 @@ export const InfoReportAdmin = ({dataReports}) => {
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_type_report'>
-          <h5 className='spacing'>Tipos de Reportes</h5>
+          <h5 className='spacing text_center' >Tipos de Reportes</h5>
           <div>
             {dataReport?.map(item => (<ListReportsAdmin objectListReports={item} key={item.idreporte}/>))}
           </div>

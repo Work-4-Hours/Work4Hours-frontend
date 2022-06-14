@@ -81,7 +81,7 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
       <p className={'op_state_object '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
-        <div className='content_options'>
+        <div className='content_options content_status_users'>
           <h5 className='spacing'>Estados del usuario</h5>
           {
             data?.filter(item=>item.id!==4).map(item=>(<OptionStatusUserAdmin objectAllStatus={item} dataOptionStatusUserAdmin={dataOptionStatusUserAdmin} key={item.id}/>))
