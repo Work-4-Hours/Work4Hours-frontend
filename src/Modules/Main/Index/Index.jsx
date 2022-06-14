@@ -11,10 +11,13 @@ import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
 import './Index.css'
 import { useFetch } from "CustomHooks/useFetch"
 import { Button } from "Components/Ui/Button/Button"
+import { Slide, Slideshow, TextoSlide } from "Components/Layout/SlidesShow/Slideshow"
+import { BannerSlideShow } from "Components/Layout/BannerSlideShow/BannerSlideShow"
 
 export const Index = () => {
 
     const { isLoading, data } = useFetch(`${process.env.REACT_APP_API_PRODUCTION}`)
+    const [banners, setBanners] = useState([{image:"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", info_banner: 'Informacion'},{image:"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg", info_banner: 'Informacion'}]);
 
     const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()
@@ -27,7 +30,10 @@ export const Index = () => {
             <main>
                 <div className="center_main_index">
                     <section className="banner_index">
-                        <Banner informaction={{ title: "Services", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit." }} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} />
+                        {/* <Banner informaction={{ title: "Services", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit." }} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} /> */}
+                        <Banner banners={banners} />
+                        {/* <BannerSlideShow banners={banners} /> */}
+
                     </section>
                     <p className="title_index">Mejor calificados</p>
 
@@ -52,15 +58,15 @@ export const Index = () => {
                             }
                         </DivShadow>
                     </section>
-                          
+
                     <p className="title_index">Temas que pueden interesarte</p>
                     <section className='information_services'>
-                        <Banner informaction={{ title: "Jardineria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, facere.  " }} image={"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg"} >                         
-                            <Button value='Ver mas'/>
+                        <Banner informaction={{ title: "Jardineria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, facere.  " }} image={"https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg"} >
+                            <Button value='Ver mas' />
                         </Banner>
 
                         <Banner informaction={{ title: "Fontaneria", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit." }} image={"https://lmingecon.com/wp-content/uploads/2017/08/fontaneria-reformas-albacete.jpg"} >
-                            <Button value='Ver mas'/>
+                            <Button value='Ver mas' />
                         </Banner>
                     </section>
                 </div>

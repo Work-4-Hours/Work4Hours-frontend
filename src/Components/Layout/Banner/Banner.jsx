@@ -1,17 +1,27 @@
 import { Button } from 'Components/Ui/Button/Button'
 import React from 'react'
+import { Slide, Slideshow, TextoSlide } from '../SlidesShow/Slideshow'
 import './Banner.css'
 
-export const Banner = ({informaction, image, children}) => {
+// export const Banner = ({informaction, image, children}) => {
+export const Banner = ({ banners }) => {
+
     return (
-        <div className='banner'>          
-            <div className="informacion_banner">           
-                <p className="title_informacion_banner">{informaction.title}</p>
-                <p className="informacion_banner_text">{informaction.info}</p>    
-                { children }
-            </div>
-            <div className="shadow_banner"></div>
-            <img src={image} alt="" className="image_banner" />
-        </div>      
+        <div className='banner'>
+            <Slideshow controles={true} >
+                {
+                    banners?.map((item, index) => (
+                        <Slide key={index}>
+                            <a href="">
+                                <img src={item.image} alt="" />
+                            </a>
+                            <TextoSlide>
+                                <p>{item.info_banner}</p>
+                            </TextoSlide>
+                        </Slide>
+                    ))
+                }
+            </Slideshow>
+        </div>
     )
 }
