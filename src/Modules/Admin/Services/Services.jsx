@@ -1,5 +1,4 @@
 import React,{useEffect,useContext} from 'react';
-import '.././Admin.css';
 
 import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
 import { Search } from 'Components/Layout/Search/Search.jsx';
@@ -12,6 +11,7 @@ import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
 import { useAdmin } from 'CustomHooks/useAdmin';
 import { AdminContext } from 'Context/AdminContext';
 
+import '.././Admin.css';
 
 export const Services = () => {
 
@@ -70,7 +70,7 @@ export const Services = () => {
     unSelect:unSelect,
     data:[
       {id:1, nombre:"Reportes"},
-      {id:1, nombre:"Nombre del servicio"},
+      {id:2, nombre:"Nombre del servicio"},
       {id:3, nombre:"Tipo"}
     ]
   }
@@ -118,7 +118,7 @@ export const Services = () => {
     typeAdmin: "servicio"
     //sendNotification
   }
-
+  
   return (
     <div className='container_admin'>
       <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
