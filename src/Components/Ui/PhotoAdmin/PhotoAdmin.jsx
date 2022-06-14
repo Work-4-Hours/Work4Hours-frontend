@@ -12,7 +12,7 @@ export const PhotoAdmin = ({photoData}) => {
 
   return (
     
-    <div className='fieldSize3 center_img'> 
+    <div className='center_img'> 
         {userPicture ? 
                 <img className='admin_user_photo' src={userPicture} alt={userPicture} />
             :
