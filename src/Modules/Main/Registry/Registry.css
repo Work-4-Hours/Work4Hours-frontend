@@ -11,6 +11,15 @@
     /* backdrop-filter: blur(50px); */
 }
 
+.background_image_login_svg {
+    width: 130%;
+    height: 100%;
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    object-fit: fill;
+}
+
 .background_image {
     position: absolute;
     top: 0;
@@ -95,8 +104,6 @@
     animation: var(--animation-show-slow) 200ms;
 }
 
-
-
 .subtitle_form_registry {
     padding: 2px 0;
     margin: 20px 0 10px 0;
@@ -108,6 +115,11 @@
 
 .information_app {
     text-align: center;
+}
+
+.title_steps {
+    color: #FFFF;
+    font-family: var(--font-1);
 }
 
 .title_info_app {
@@ -174,8 +186,8 @@
 
 /* Steps */
 .steps_registry {
-    border-top: 1px solid rgba(0, 0, 0, 0.034);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.034);
+    /* border-top: 1px solid rgba(0, 0, 0, 0.034);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.034); */
     padding: 20px 0;
     width: 100%;
     display: flex;
@@ -198,33 +210,46 @@
 }
 
 .step_number {
-    border: 2px solid gray;
+    border: 2px solid #1583ac;
     padding: 10px 18px;
     border-radius: 50%;
     font-family: var(--font-1);
+    color: #1583ac; 
+}
+
+.step_info {
+    font-family: var(--font-1);
+    color: #1583ac; 
 }
 
 
 
 .current_step > .step_number {
-    color: var(--bg-blue);
+    /* color: var(--bg-blue); */
+    color: #FFFF;
     font-weight: 700;
-    border: 2px solid  var(--bg-blue);
+    /* border: 2px solid  var(--bg-blue); */
+    border: 2px solid  #FFFF;
 }
 
 .current_step > .step_info {
-    color: var(--bg-blue);
+    /* color: var(--bg-blue); */
+    color: #FFFF;
+
     /* font-size: 18px; */
 }
 
 .complete_step > .step_number {
-    color: green;
+    /* color: green; */
+    color: #FFFF;
     font-weight: 700;
-    border: 2px solid green;
+    /* border: 2px solid green; */
+    border: 2px solid #FFF;
 }
 
 .complete_step > .step_info {
-    color: green;
+    color: #FFFF;
+    /* color: green; */
 }
 
 .steps_registry > .c_line_step:last-child {
@@ -238,16 +263,21 @@
 .line_step {
     width: 100px;
     height: 2px;
-    background: gray;
+    background: #1583ac;
+    /* background: #FFFF; */
     border-radius: 5px;
 }
 
 .line_current > .line_step {
-    background: var(--bg-blue);
+    /* background: var(--bg-blue); */
+    background: #FFFF;
+
 }
 
 .line_complete > .line_step {
-    background: green;
+    /* background: green; */
+    background: #FFFF;
+
 }
 
 @media screen and (max-width: 925px) {

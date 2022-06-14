@@ -82,11 +82,6 @@ export const UpdateService = () => {
                     <InputTextLabel titleLabel='Descripcion del servicio' {...description} placeholder='Detalle su peticion o prestacion de su servicio' />
 
                     <Button value={`${status == 1 ? 'Actualizar informacion' : 'Guardar borrador'}`}  isLoading={loading_registry} />
-
-                    <Alert isAlert={update_resutl}>
-                        <p className='alert_update_service'>Alerta</p> 
-                        <p>Servicio actualzado correctamente</p> 
-                    </Alert>
                 </form>
 
 
