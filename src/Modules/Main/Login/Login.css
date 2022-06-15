@@ -66,6 +66,13 @@
     fill: #ac2828;
 }
 
+.login_background_image_svg {
+    position: absolute;
+    width: 90vw;
+    height: 100vh;
+    z-index: -1;
+}
+
 @media screen and (max-width: 925px) {
     .information_login_app {
         display: none;

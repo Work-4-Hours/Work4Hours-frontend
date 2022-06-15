@@ -1,6 +1,6 @@
 .center_main_index {
     max-width: var(--max-width-container);
-    margin: 1em auto;
+    margin: 3em auto;
     padding: 0 20px;
 }
 
@@ -86,6 +86,28 @@
     text-decoration: none;
 }
 
+
+
+.information_services {
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Information section */
+
+.information_services {
+    background: #e7edf5;
+}
+
+.center_section_information_services {
+    width: 100%;
+    max-width: var(--max-width-container);
+    margin: auto;
+    padding: 0 20px;
+}
+
 .title_index {
     font-family: var(--font-1);
     font-size: 1.5em;
@@ -93,8 +115,11 @@
     margin: 1.5em 0 0 0;
 }
 
-.information_services {
-    margin: 20px 0;
+.section_interest_card {
+    margin: 2em 0;
+
     display: flex;
     gap: 20px;
 }
+
+

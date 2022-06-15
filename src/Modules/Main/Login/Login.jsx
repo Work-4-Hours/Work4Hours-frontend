@@ -46,7 +46,7 @@ export const Login = () => {
             <div className="background_registry"></div>
 
             {/* <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
-            <BackgroundRegistry className='background_image_svg'/>
+            <BackgroundRegistry className='login_background_image_svg'/>
             <div className="center_main_login">
                 <div className="information_login_app">
                     <h1 className='title_info_login_app'>Work 4 Hours</h1>
