@@ -15,7 +15,7 @@ import { AdminContext } from 'Context/AdminContext';
 
 export const Services = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  //const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
 
   const { data,
@@ -24,7 +24,7 @@ export const Services = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
+    closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -144,7 +144,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} dataObjectDelete={dataObjectDelete} key={item.id}/>
+          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} dataObjectDelete={dataObjectDelete} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

@@ -15,7 +15,7 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 
 export const Users = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
     
   const { data,
@@ -24,7 +24,7 @@ export const Users = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
+    closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -81,7 +81,6 @@ export const Users = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
     setselectedList:setselectedList, 
@@ -148,7 +147,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} dataObjectStatus={dataObjectStatus} key={item.id}/>
+          <ObjectStatus userSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

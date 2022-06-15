@@ -1,9 +1,8 @@
 import React from 'react';
 import { BsX } from 'react-icons/bs';
 
-export const ObjectDelete = ({servicesSelect, dataObjectDelete}) => {
+export const ObjectDelete = ({servicesSelect, closePopUpAndDeleteSelectedDeslectCheckBox}) => {
   const {id,nombre}=servicesSelect;
-  const {deletingSelectedDeslectCheckbox, selectedList, isOpen, setIsOpen} = dataObjectDelete;
 
   // const closePopUpAndDeleteSelectedDeslectCheckBox = () => {
   //   deletingSelectedDeslectCheckbox(id);
@@ -14,7 +13,7 @@ export const ObjectDelete = ({servicesSelect, dataObjectDelete}) => {
   return (
     <div className='object_status'>
       <p>{nombre}</p>
-      <BsX className='delete_user_status' onClick={()=>{closePopUpAndDeleteSelectedDeslectCheckBox()}}/>
+      <BsX className='delete_user_status' onClick={()=>{closePopUpAndDeleteSelectedDeslectCheckBox(id)}}/>
     </div>
   )
 }
