@@ -32,7 +32,7 @@ export const ForgottenPassword = () => {
 
     
     const sendEmail = () => {
-        axios.get(`${process.env.REACT_APP_API_PRODUCTION}/recoverPassword/cristian071del9@gmail.com`)
+        axios.get(`${process.env.REACT_APP_API_PRODUCTION}/recoverPassword/${email.value}`)
         .then(response => {
             console.log(response.data)
         })

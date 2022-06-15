@@ -9,9 +9,9 @@ export const CardInterest = ({information}) => {
         <DivShadow className='interest_card'>
             <div className="information_interest_card">
                 <p className='subtitle_interest_card'>{information.subtitle}</p>
-                <h1 className="title_information_interest_card">
+                <p className="title_information_interest_card">
                     {information.title}
-                </h1>
+                </p>
                 <Button value='Ver más'/>
             </div>
             <div className="image_interest_card">

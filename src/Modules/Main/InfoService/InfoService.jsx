@@ -206,12 +206,12 @@ export const InfoService = () => {
                             }
                         </DivShadow>
 
-                        <DivShadow>
+                        {/* <DivShadow>
                             <div className="padding_info_service">
                                 <p className='name_user_info_service'>Comentarios</p>
                                 <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
                             </div>
-                        </DivShadow>
+                        </DivShadow> */}
                     </section>
 
                     <section className='section_info_user'>
