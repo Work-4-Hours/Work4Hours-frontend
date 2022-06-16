@@ -117,9 +117,13 @@
 
 .section_interest_card {
     margin: 2em 0;
-
     display: flex;
     gap: 20px;
 }
 
 
+@media screen and (max-width: 1000px) {
+    .section_interest_card {
+        flex-direction: column;
+    }
+}

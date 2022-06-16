@@ -166,3 +166,17 @@
     background: rgba(73, 82, 95, 0.075);
     border-radius: 7px;
 }
+
+@media screen and (max-width: 900px) {
+    .center_dashboard {
+        flex-direction: column;
+    }
+
+    .personal_info {
+        width: 100%;    
+    }
+
+    .main_dashboard_ {
+        width: 100%;
+    }
+}
