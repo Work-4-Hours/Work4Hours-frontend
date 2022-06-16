@@ -1,8 +1,4 @@
 
-.menu_admin_drop_down{
-    display: flex;
-    padding: 5%;
-}
 .icon_menu_admin{
     font-size: 30px;
     color:var(--gray-text-3);

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
+
 import { Search } from 'Components/Layout/Search/Search';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -10,6 +10,9 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
+import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
+
 import '.././Admin.css';
 
 
@@ -126,9 +129,15 @@ export const Users = () => {
 
   return (
     <div className='container_admin'>
-      <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
+      <div className='visibility_menu_admin_vertical'>
+        <div className='container_menu_and_search_admin'>
+          <DropDownAdminMenu dataMenuAdmin={dataMenuAdmin}/>
+          <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+        </div>
+      </div>
+      <VerticalAdminMenu dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" visibility_search_admin"}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={
