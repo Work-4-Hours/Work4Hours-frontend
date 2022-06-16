@@ -197,6 +197,7 @@ export const useAdmin = () => {
     dataState, 
     getAdminReports,
     dataReport,
+    deletingSelectedDeslectCheckbox,
     closePopUpAndDeleteSelectedDeslectCheckBox,
     objectSelectedSetState, 
     selectedList, 
@@ -207,6 +208,8 @@ export const useAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    isOpen,
+    setIsOpen
   }
 }

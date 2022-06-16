@@ -24,8 +24,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   const {
     objectAllStatus,
     getAdminReports,
+    deletingSelectedDeslectCheckbox,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 

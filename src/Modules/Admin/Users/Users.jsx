@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState} from 'react';
+import React, { useEffect, useContext} from 'react';
 import './Users.css';
 
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -24,6 +24,7 @@ export const Users = () => {
     dataState, 
     getAdminReports,
     dataReport,
+    deletingSelectedDeslectCheckbox,
     closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
@@ -34,7 +35,9 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    isOpen,
+    setIsOpen
   } = useAdmin();
 
 
@@ -80,6 +83,7 @@ export const Users = () => {
   const dataUsers={
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
+    deletingSelectedDeslectCheckbox,
     dataReport:dataReport,
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
@@ -123,8 +127,6 @@ export const Users = () => {
   }
 
   // const dataObjectStatus = {
-  //   deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-  //   selectedList:selectedList,
   //   isOpen:isOpen,
   //   setIsOpen:setIsOpen
   // }

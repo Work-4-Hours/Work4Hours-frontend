@@ -34,7 +34,9 @@ export const Services = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    isOpen,
+    setIsOpen
   } = useAdmin();
 
   useEffect(()=>{
@@ -96,7 +98,6 @@ export const Services = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
     setselectedList:setselectedList, 
@@ -120,12 +121,12 @@ export const Services = () => {
     //sendNotification
   }
 
-  const dataObjectDelete = {
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList,
-    isOpen:isOpen,
-    setIsOpen:setIsOpen
-  }
+  // const dataObjectDelete = {
+  //   deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+  //   selectedList:selectedList,
+  //   isOpen:isOpen,
+  //   setIsOpen:setIsOpen
+  // }
 
   return (
     <div className='container_admin'>
@@ -144,7 +145,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} dataObjectDelete={dataObjectDelete} key={item.id}/>
+          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
