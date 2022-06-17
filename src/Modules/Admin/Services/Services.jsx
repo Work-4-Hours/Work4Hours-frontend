@@ -15,7 +15,7 @@ import { AdminContext } from 'Context/AdminContext';
 
 export const Services = () => {
 
-  //const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
 
   const { data,
@@ -24,7 +24,8 @@ export const Services = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    closePopUpAndDeleteSelectedDeslectCheckBox, 
+    deletingSelectedDeslectCheckbox,
+    // closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -34,9 +35,9 @@ export const Services = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect,
-    isOpen,
-    setIsOpen
+    unSelect
+    // isOpen,
+    // setIsOpen
   } = useAdmin();
 
   useEffect(()=>{
@@ -121,12 +122,12 @@ export const Services = () => {
     //sendNotification
   }
 
-  // const dataObjectDelete = {
-  //   deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-  //   selectedList:selectedList,
-  //   isOpen:isOpen,
-  //   setIsOpen:setIsOpen
-  // }
+  const dataObjectDelete = {
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList,
+    isOpen:isOpen,
+    setIsOpen:setIsOpen
+  }
 
   return (
     <div className='container_admin'>
@@ -145,7 +146,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} key={item.id}/>
+          <ObjectDelete servicesSelect={item} dataObjectDelete={dataObjectDelete} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

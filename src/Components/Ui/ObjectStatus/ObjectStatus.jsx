@@ -3,15 +3,27 @@ import './ObjectStatus.css'
 import { BsX } from 'react-icons/bs';
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
-export const ObjectStatus = ({userSelect, closePopUpAndDeleteSelectedDeslectCheckBox}) => {
+export const ObjectStatus = ({userSelect, dataObjectStatus}) => {
   const {email, id, fotoUser, nombres, color}=userSelect;
   const photoData={name:nombres, color:color, userPicture:fotoUser};
+  const {deletingSelectedDeslectCheckbox,selectedList, isOpen, setIsOpen, setIdCheckboxDelete, checkboxIsCheck, setcheckboxIsCheck}=dataObjectStatus;
   
+  const closePopUpAndDeleteSelectedDeslectCheckBox = () => {
+    setIdCheckboxDelete(id);
+    deletingSelectedDeslectCheckbox(id);
+    setcheckboxIsCheck(false)
+    if(selectedList.length===0){
+      setIsOpen(!isOpen)
+    } 
+  }
+
+
+
   return (
     <div className='object_status'>
       <PhotoAdmin photoData={photoData}/>
       <p>{email}</p>
-      <BsX className='delete_user_status' onClick={()=>{console.log(id);}}/>
+      <BsX className='delete_user_status' onClick={()=>{closePopUpAndDeleteSelectedDeslectCheckBox()}}/>
     </div>
   )
 }

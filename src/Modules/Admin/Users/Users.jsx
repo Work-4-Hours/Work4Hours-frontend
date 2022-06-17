@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './Users.css';
 
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -15,7 +15,7 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 
 export const Users = () => {
 
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
     
   const { data,
@@ -25,7 +25,7 @@ export const Users = () => {
     getAdminReports,
     dataReport,
     deletingSelectedDeslectCheckbox,
-    closePopUpAndDeleteSelectedDeslectCheckBox, 
+    // closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -35,10 +35,14 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect,
-    isOpen,
-    setIsOpen
-  } = useAdmin();
+    unSelect, 
+    idCheckboxDelete, 
+    setIdCheckboxDelete,
+    checkboxIsCheck, 
+    setcheckboxIsCheck
+    // isOpen,
+    // setIsOpen
+} = useAdmin();
 
 
   useEffect(()=>{
@@ -83,13 +87,16 @@ export const Users = () => {
   const dataUsers={
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
-    deletingSelectedDeslectCheckbox,
+    deletingSelectedDeslectCheckbox: deletingSelectedDeslectCheckbox,
     dataReport:dataReport,
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
     setselectedList:setselectedList, 
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    setChangeStatus:setChangeStatus,
+    idCheckboxDelete:idCheckboxDelete, 
+    checkboxIsCheck:checkboxIsCheck, 
+    setcheckboxIsCheck: setcheckboxIsCheck
   }
   
   const dashboardHeader = {
@@ -126,10 +133,15 @@ export const Users = () => {
     //sendNotification
   }
 
-  // const dataObjectStatus = {
-  //   isOpen:isOpen,
-  //   setIsOpen:setIsOpen
-  // }
+  const dataObjectStatus = {
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList: selectedList,
+    isOpen:isOpen,
+    setIsOpen:setIsOpen,
+    setIdCheckboxDelete: setIdCheckboxDelete,
+    checkboxIsCheck: checkboxIsCheck, 
+    setcheckboxIsCheck: setcheckboxIsCheck
+  }
 
   return (
     <div className='container_admin'>
@@ -149,7 +161,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox()} key={item.id}/>
+          <ObjectStatus userSelect={item} dataObjectStatus={dataObjectStatus} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
