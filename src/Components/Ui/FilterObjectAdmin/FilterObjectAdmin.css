@@ -21,7 +21,7 @@
     position: absolute;
     left: -23px;
 }
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 0) and (max-width: 480px) {
     .icon_filter_admin{
         display: block;
     }

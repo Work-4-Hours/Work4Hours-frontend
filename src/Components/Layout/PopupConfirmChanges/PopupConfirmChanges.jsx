@@ -18,7 +18,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         getAdmin,
         selectedList, 
         setselectedList,
-        nameTitle,
         valueButton,
         token,
         email,

@@ -5,6 +5,7 @@
     right: 0;
     left: 0;
     bottom: 0;
+    min-width: 320px;
 }
 .manager_control{
     width: 80%;
@@ -130,7 +131,7 @@
 }
 
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 0) and (max-width: 480px) {
     .container_admin{
         display: flex;
         flex-direction: column;
@@ -152,7 +153,7 @@
     .fieldSize17{width: 30%;}
     .fieldSize8{width: 20%;}
     .fieldSize13{width: 25%;}
-    .dashborard{height: 50%;}
+    .dashborard{height: 48%;}
     .popup_admin_save_changes_admin{
         width: 80%;
         padding: 3%;

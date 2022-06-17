@@ -16,6 +16,7 @@
     border-radius: 10px;
     width: 50%;
     animation:animationOpacityActivate .2s forwards;
+    min-width: 320px;
 }
 
 .password_admin_save_changes_admin{
@@ -43,7 +44,7 @@
     gap:4%;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 0) and (max-width: 480px) {
     .password_admin_save_changes_admin{
         font-size: 0.7813rem;
     }
