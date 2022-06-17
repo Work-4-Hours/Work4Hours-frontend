@@ -8,3 +8,9 @@
     color: var(--status-yellow);
     font-size: 3.125em;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .title_popup_confirm_changes{
+        font-size: 16px;
+    }
+}

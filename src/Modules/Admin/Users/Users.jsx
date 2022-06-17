@@ -95,9 +95,9 @@ export const Users = () => {
   }
   
   const dashboardHeader = {
-    columWidth1 : 'fieldSize3',
-    columWidth2 : 'fieldSize20',
-    columWidth3 : 'fieldSize20',
+    columWidth1 : 'fieldSize3 hide',
+    columWidth2 : 'fieldSize20 hide',
+    columWidth3 : 'fieldSize20 hide',
     columWidth4 : 'fieldSize17',
     columWidth5 : 'fieldSize8',
     columWidth6 : 'fieldSize13',
@@ -117,7 +117,6 @@ export const Users = () => {
     setData:setData,
     selectedList:selectedList, 
     setselectedList: setselectedList,
-    nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
@@ -137,7 +136,7 @@ export const Users = () => {
       </div>
       <VerticalAdminMenu dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" visibility_search_admin"}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" hide"}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={

@@ -70,8 +70,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   return (
     <div className='object_info'>
       <PhotoAdmin photoData={photoData}/>
-      <p className='ellipsis fieldSize20'>{apellidos}</p>
-      <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
+      <p className='ellipsis fieldSize20 hide'>{apellidos}</p>
+      <p className='ellipsis fieldSize20 hide'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />

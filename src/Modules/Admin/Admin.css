@@ -50,9 +50,7 @@
     justify-content: flex-end;
 }
 
-.btn_save_changes_admin{
-    width: 25%;
-}
+
 .btn_with_admin{
     width: 100%;
 }
@@ -139,7 +137,6 @@
     }
     .manager_control{
         width: 100%;
-        position: relative;
         gap: 1.5%;
     }
     .visibility_menu_admin{
@@ -148,9 +145,19 @@
     .visibility_menu_admin_vertical{
         display: block;
     }
-    .visibility_search_admin{
+    .hide{
         display:none;
     }
+
+    .fieldSize17{width: 30%;}
+    .fieldSize8{width: 20%;}
+    .fieldSize13{width: 25%;}
+    .dashborard{height: 50%;}
+    .popup_admin_save_changes_admin{
+        width: 80%;
+        padding: 3%;
+    }
+    
 
 }
 

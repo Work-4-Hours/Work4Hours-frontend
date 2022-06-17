@@ -42,3 +42,12 @@
     justify-content: space-between;
     gap:4%;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .password_admin_save_changes_admin{
+        font-size: 0.7813rem;
+    }
+    .btns_save_changes_admin{
+        justify-content: center;
+    }
+}

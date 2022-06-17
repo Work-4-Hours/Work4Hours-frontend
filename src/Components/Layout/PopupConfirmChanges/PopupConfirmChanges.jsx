@@ -85,7 +85,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             <PopUp isOpen={isOpen}>
                 <div className="overlay_popup_confirm_changes_content_object">
                     <div className='popup_admin_save_changes_admin'>
-                        <PopupTitleAdmin title={nameTitle} />
+                        <PopupTitleAdmin />
                         <PopupConfirmChangesContentObjects content={objectContent} />
                         <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
                         <div className='btns_save_changes_admin'>
