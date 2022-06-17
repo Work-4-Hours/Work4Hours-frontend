@@ -106,9 +106,6 @@ export const Users = () => {
     columText2 : 'Apellidos',
     columText3 : 'Nombres',
     columText4 : 'Correo',
-    columText5 : 'Reportes',
-    columText6 : 'Estado Usuario',
-    columText7 : 'Conf. cambios',
     colorTituleReport: ' '
   }
 

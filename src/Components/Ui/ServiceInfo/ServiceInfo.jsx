@@ -60,8 +60,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   return (
     <div className='object_info'>
-      <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
-      <div className='fieldSize15 space_photo_username'>
+      <p className='ellipsis fieldSize15 '>{nombreServicio}</p>
+      <div className='fieldSize15 space_photo_username hide'>
         <PhotoAdmin photoData={photoData}/>
         <p className='ellipsis'>{nombreUsuario} </p>
       </div>
