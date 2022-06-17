@@ -32,6 +32,17 @@
     background-color: var(--status-red);
 }
 
+.status_object_dashboard{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+@media (min-width: 0) and (max-width: 480px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 
 
 

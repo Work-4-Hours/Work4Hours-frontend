@@ -78,7 +78,10 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_object '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
+      <div className='status_object_dashboard' id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>
+        <p className={'op_state_object '+ stateColor}></p>
+        <p>{stateObject}</p>
+      </div>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options content_status_users'>
