@@ -1,11 +1,7 @@
 .container_admin{
     display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
     min-width: 320px;
+    height: 100vh;
 }
 .manager_control{
     width: 80%;
@@ -131,7 +127,7 @@
 }
 
 
-@media (min-width: 0) and (max-width: 480px) {
+@media (min-width: 0) and (max-width: 800px) {
     .container_admin{
         display: flex;
         flex-direction: column;
@@ -153,7 +149,7 @@
     .fieldSize17{width: 30%;}
     .fieldSize8{width: 20%;}
     .fieldSize13{width: 30%;}
-    .dashborard{height: 48%;}
+    .dashborard{margin: 10px 0;}
     .popup_admin_save_changes_admin{
         width: 80%;
         padding: 3%;
@@ -161,7 +157,9 @@
     .fieldSize15{
         width: 30%;
     }
-    
+}
+
+@media (min-width: 801px) and (max-width: 1070px){
 
 }
 
