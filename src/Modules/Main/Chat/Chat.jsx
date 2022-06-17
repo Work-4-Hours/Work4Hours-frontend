@@ -50,7 +50,7 @@ export const Chat = () => {
 
     const DateNow = () => {
         const current = new Date();
-        return current.toDateString();
+        return current;
     }
 
     return (
@@ -70,13 +70,17 @@ export const Chat = () => {
                                         <LoadingCardUser />
                                     </>
                                     :
-                                    chats?.map((item, index) => (
-                                        <CardUser key={index} infoUser={item} onClick={() => {
-                                            closeConnection()
-                                            connectionRoom(item.idsala)
-                                            setCurrentChat(item)
-                                        }} />
-                                    ))
+                                    chats ? 
+                                        chats.map((item, index) => (
+                                            <CardUser key={index} infoUser={item} onClick={() => {
+                                                closeConnection()
+                                                connectionRoom(item.idsala)
+                                                setCurrentChat(item)
+                                            }} />
+                                        ))
+                                    :
+
+                                    <h1>No tienes chats</h1>
                             }
 
                         </div>
@@ -94,13 +98,19 @@ export const Chat = () => {
                                     <div ref={chatRef} className="messages_chat">
 
                                         {
-                                            messages?.map((item, index) => (
-                                                <CardMessage key={index} info={item} user={user.info[0].name} />
-                                            ))
+                                            messages.length > 0 ?
+                                                messages.map((item, index) => (
+                                                    <CardMessage key={index} info={item} user={user.info[0].name} />
+                                                ))
+                                            :
+                                            <div className="conversation_message">
+                                                <p className="test_conversation_message">Inicia una converzación con {currentChat.nombres}</p>
+                                            </div>
                                         }
 
                                     </div>
-                                    <div className="">
+                                    
+                                    <div className="container_input_message_chat">
                                         <form onSubmit={e => {
                                             e.preventDefault()
                                             setMessage('')

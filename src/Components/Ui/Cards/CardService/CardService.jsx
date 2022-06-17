@@ -5,12 +5,21 @@ import './CardService.css'
 
 export const CardService = ({info}) => {
     const { price, photo, city_name, department_name, name } = info 
+
+    function agregarSeparadorMiles(numero) {
+        let partesNumero = numero.toString().split(',');
+    
+        partesNumero[0] = partesNumero[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    
+        return partesNumero.join(',');
+    }
+    
     return (
         <div className='card_service'>
             <header className='header_card_service'>
                 <div className='price_header_card'>
                     <div className="information_price_service">
-                        <p>CO${price}/hora</p>                           
+                        <p>COP ${ agregarSeparadorMiles(price)}/hora</p>                           
                     </div>
                 </div>
                 <img className='image_header_card' src={photo} alt="" />

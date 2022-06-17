@@ -7,7 +7,7 @@ const Slideshow = ({
 		children,
 		controles = false,
 		autoplay = false,
-		velocidad="500",
+		velocidad="700",
 		intervalo="5000"
 	}) => {
 	const 	slideshow = useRef(null);
@@ -94,15 +94,20 @@ const Slideshow = ({
 
 const ContenedorPrincipal = styled.div`
 	position: relative;
+	width: 100%;
+	height: 100%;
 `;
 
 const ContenedorSlideshow = styled.div`
 	display: flex;
 	flex-wrap: nowrap;
+	width: 100%;
+	height: 100%;
 `;
 
 const Slide = styled.div`
 	min-width: 100%;
+	height: 100%;
 	overflow: hidden;
 	transition: .3s ease all;
 	z-index: 10;
@@ -111,20 +116,22 @@ const Slide = styled.div`
 
 	img {
 		width: 100%;
-		/* height: 200px; */
+		height: 100%;
 		object-fit: cover;
 		object-position: center;
 	}
 `;
 
 const TextoSlide = styled.div`
-	background: ${props => props.colorFondo ? props.colorFondo : 'rgba(0,0,0,.3)'};
+	background: ${props => props.colorFondo ? props.colorFondo : '#000000a4'};
 	color: ${props => props.colorTexto ? props.colorTexto : '#fff'};
-	width: 100%;
-	padding: 10px 60px;
-	text-align: center;
+	width: 40%;
+	height: 100%;
+	padding: 20px;
 	position: absolute;
+	padding: 40px;
 	bottom: 0;
+	font-family: var(--font-1);
 
 	@media screen and (max-width: 700px) {
 		position: relative;

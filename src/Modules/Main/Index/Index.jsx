@@ -18,7 +18,10 @@ import { CardInterest } from "Components/Ui/Cards/CardInterest/CardInterest"
 export const Index = () => {
 
     const { isLoading, data } = useFetch(`${process.env.REACT_APP_API_PRODUCTION}`)
-    const [banners, setBanners] = useState([{ image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", info_banner: 'Informacion' }, { image: "https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg", info_banner: 'Informacion' }]);
+    const [banners, setBanners] = useState([
+        { title: 'Work 4 Hours', image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", information: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, vero' }, 
+        { title: 'Work 4 Hours', image: "https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg", information: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, earum in? Natus deserunt doloribus qui.' 
+    }]);
 
     const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()
@@ -26,6 +29,7 @@ export const Index = () => {
 
     return (
         <>
+        {/* https://workforhours-api.somee.com */}
             <Header />
             <SerchEngine />
             <main>
@@ -34,9 +38,8 @@ export const Index = () => {
                         {/* <Banner informaction={{ title: "Services", info: "Lorem ipsum dolor sit amet consectetur adipisicing elit." }} image={"https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png"} /> */}
                         <Banner banners={banners} />
                         {/* <BannerSlideShow banners={banners} /> */}
-
                     </section>
-                    <p className="title_index">Mejor calificados</p>
+                    <p className="title_index">Más relevantes</p>
 
                     <section className='services_index'>
                         <DivShadow className='container_pricipal_servieces'>

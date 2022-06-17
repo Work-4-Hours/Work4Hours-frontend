@@ -1,6 +1,6 @@
 .banner {
     width: 100%;
-    height: 200px;
+    height: 250px;
     border-radius: var(--border-radius-1);
     overflow: hidden;
     box-shadow: 0 0 20px var(--gray-shadow-1);
@@ -51,4 +51,16 @@
     height:100%;
     object-fit: cover;
     object-position: center;
+}
+
+
+/* new banner desing */
+
+.title_info_banner {
+    font-size: 2.5em;
+    margin: 0 0 10px 0;
+}
+
+.paragraph_info_banner {
+    font-size: 20px;
 }

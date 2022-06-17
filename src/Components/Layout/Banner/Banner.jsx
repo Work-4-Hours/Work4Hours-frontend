@@ -16,7 +16,8 @@ export const Banner = ({ banners }) => {
                                 <img src={item.image} alt="" />
                             </a>
                             <TextoSlide>
-                                <p>{item.info_banner}</p>
+                                <h1 className='title_info_banner'>{item.title}</h1>
+                                <p className='paragraph_info_banner'>{item.information}</p>
                             </TextoSlide>
                         </Slide>
                     ))

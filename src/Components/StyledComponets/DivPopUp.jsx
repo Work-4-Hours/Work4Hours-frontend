@@ -6,7 +6,7 @@ export const DivPopUp = styled.div`
     height: 100vh;
     background:  var(--color-gradient-2);
     display: ${props => props.isOpen ? 'block' : 'none'};
-    z-index: 1;
+    z-index: 2;
 /* 
     display: flex;
     justify-content: center;
