@@ -136,31 +136,27 @@
         width: 100%;
         gap: 1.5%;
     }
-    .visibility_menu_admin{
-        display: none;
-    } 
-    .visibility_menu_admin_vertical{
-        display: block;
-    }
-    .hide{
-        display:none;
-    }
-
+    .visibility_menu_admin{display: none;} 
+    .visibility_menu_admin_vertical{display: block;}
+    .hide{display:none;}
     .fieldSize17{width: 30%;}
     .fieldSize8{width: 20%;}
     .fieldSize13{width: 30%;}
+    .fieldSize15{ width: 30%;}
     .dashborard{margin: 10px 0;}
+    
     .popup_admin_save_changes_admin{
         width: 80%;
         padding: 3%;
     }
-    .fieldSize15{
-        width: 30%;
-    }
 }
 
 @media (min-width: 801px) and (max-width: 1070px){
-
+    .hide2{display:none;}
+    .fieldSize3 {width: 5%;}
+    .fieldSize17 {width: 28%;}
+    .fieldSize8 {width: 10%;}
+    .fieldSize13 {width: 14%;}
 }
 
 

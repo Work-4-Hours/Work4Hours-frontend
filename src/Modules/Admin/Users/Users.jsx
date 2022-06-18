@@ -96,7 +96,7 @@ export const Users = () => {
   
   const dashboardHeader = {
     columWidth1 : 'fieldSize3 hide',
-    columWidth2 : 'fieldSize20 hide',
+    columWidth2 : 'fieldSize20 hide hide2',
     columWidth3 : 'fieldSize20 hide',
     columWidth4 : 'fieldSize17',
     columWidth5 : 'fieldSize8',

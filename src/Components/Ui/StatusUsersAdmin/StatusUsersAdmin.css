@@ -44,5 +44,9 @@
     }
 }
 
-
+@media (min-width: 801px) and (max-width: 1070px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 

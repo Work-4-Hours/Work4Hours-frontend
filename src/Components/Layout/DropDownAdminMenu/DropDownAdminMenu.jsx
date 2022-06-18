@@ -21,7 +21,7 @@ export const DropDownAdminMenu = ({dataMenuAdmin}) => {
   }
   const [isOpen, setIsOpen] = useState(false);
   return (
-    
+
       <>
         <HiMenu className='icon_menu_admin' onClick={() => setIsOpen(!isOpen)}/>
         <PopUp isOpen={isOpen}>
@@ -29,7 +29,7 @@ export const DropDownAdminMenu = ({dataMenuAdmin}) => {
           <div className='drop_down_menu_admin'>
             <div className='title_menu_admin'>
               <TitleAdmin typeAdmin={nameAdmin} />
-              <BsX className='close_menu_admin' onClick={() => setIsOpen(!isOpen)}/>
+              <BsX className='close_menu_admin' onClick={()=>{setIsOpen(!isOpen)}}/>
             </div>
             <div className='options_menu_admin_vertical'>
               <Link to="/AdminUsers" className='option_menu_admin_vertical text_decoration_none'>
