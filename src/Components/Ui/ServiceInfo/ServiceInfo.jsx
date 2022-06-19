@@ -24,6 +24,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     setChangeStatus}=dataServices;
 
   const [idStatus, setIdStatus] = useState(0);
+  const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");
+
 
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
@@ -44,7 +46,8 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
-    setIdStatus:setIdStatus
+    setIdStatus:setIdStatus,
+    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension
   }
 
   const dataCheckBoxAdmin={
@@ -59,7 +62,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
 
   return (
-    <div className='object_info'>
+    <div className={'object_info ' + notificationAutomaticSuspension}>
       <p className='ellipsis fieldSize15 '>{nombreServicio}</p>
       <div className='fieldSize15 space_photo_username hide'>
         <PhotoAdmin photoData={photoData}/>
