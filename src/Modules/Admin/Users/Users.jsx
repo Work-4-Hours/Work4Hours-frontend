@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
+
 import { Search } from 'Components/Layout/Search/Search';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
@@ -10,6 +10,9 @@ import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChange
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
 import { AdminContext } from 'Context/AdminContext';
 import { useAdmin } from 'CustomHooks/useAdmin';
+import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
+import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
+
 import '.././Admin.css';
 
 
@@ -92,9 +95,9 @@ export const Users = () => {
   }
   
   const dashboardHeader = {
-    columWidth1 : 'fieldSize3',
-    columWidth2 : 'fieldSize20',
-    columWidth3 : 'fieldSize20',
+    columWidth1 : 'fieldSize3 hide',
+    columWidth2 : 'fieldSize20 hide hide2',
+    columWidth3 : 'fieldSize20 hide',
     columWidth4 : 'fieldSize17',
     columWidth5 : 'fieldSize8',
     columWidth6 : 'fieldSize13',
@@ -103,9 +106,6 @@ export const Users = () => {
     columText2 : 'Apellidos',
     columText3 : 'Nombres',
     columText4 : 'Correo',
-    columText5 : 'Reportes',
-    columText6 : 'Estado Usuario',
-    columText7 : 'Conf. cambios',
     colorTituleReport: ' '
   }
 
@@ -114,7 +114,6 @@ export const Users = () => {
     setData:setData,
     selectedList:selectedList, 
     setselectedList: setselectedList,
-    nameTitle:"Esta seguro de querer actualizar el estado de: ",
     valueButton:"Actualizar",
     token:getToken(),
     email:admin.info[0].email,
@@ -126,9 +125,15 @@ export const Users = () => {
 
   return (
     <div className='container_admin'>
-      <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
+      <div className='visibility_menu_admin_vertical'>
+        <div className='container_menu_and_search_admin'>
+          <DropDownAdminMenu dataMenuAdmin={dataMenuAdmin}/>
+          <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+        </div>
+      </div>
+      <VerticalAdminMenu dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" hide"}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
       {validateSearchWord ?
         <Dashboard componetContent={
