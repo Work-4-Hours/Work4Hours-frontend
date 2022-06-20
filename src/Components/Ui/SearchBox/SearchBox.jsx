@@ -4,14 +4,14 @@ import { BsSearch } from 'react-icons/bs';
 import { BsX } from 'react-icons/bs';
 
 export const SearchBox = ({dataSearch}) => {
-  const {nameSearch,postWorkSearch, searchNumber, searchString, nameFilter}=dataSearch;
+  const {nameSearch,postWorkSearch, searchNumber, searchString, nameFilter, setNameFilter}=dataSearch;
 
   const viewFilterSelected = () => {
     if(nameFilter!==""){
       return(
         <div className='object_filter_selected'>
           <p>{nameFilter}</p>
-          <BsX/>
+          <BsX className='delete_user_status' onClick={() => {setNameFilter('')}}/>
         </div>
       )
     }

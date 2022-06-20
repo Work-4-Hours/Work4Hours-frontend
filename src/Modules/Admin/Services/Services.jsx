@@ -67,7 +67,8 @@ export const Services = () => {
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices",
-    nameFilter:nameFilter
+    nameFilter:nameFilter,
+    setNameFilter:setNameFilter
   }
 
   const dataFilter={

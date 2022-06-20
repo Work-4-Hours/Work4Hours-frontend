@@ -21,7 +21,7 @@
     color:var(--gray-text-2);
     align-items: center;
     gap: 0.5em;
-    padding: 1%;
+    padding: 0.5%;
     width: 28%;
     justify-content: space-between;
 }

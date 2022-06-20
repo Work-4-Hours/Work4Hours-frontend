@@ -7,12 +7,12 @@ import './FilterObjectAdmin.css'
 
 
 export const FilterObjectAdmin = ({dataFilter}) => {
-    const{changeFilteringOptionId,unSelect,data, setNameFilter}=dataFilter;
+    const{changeFilteringOptionId,unSelect,data, nameFilter, setNameFilter}=dataFilter;
     const [isOpen, setIsOpen] = useState(false);
 
     const dataOptionFilter={
       unSelect:unSelect,
-      setNameFilter
+      setNameFilter:setNameFilter
     }
 
   return (

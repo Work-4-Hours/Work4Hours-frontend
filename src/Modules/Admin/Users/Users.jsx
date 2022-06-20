@@ -70,6 +70,7 @@ export const Users = () => {
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers",
     nameFilter:nameFilter,
+    setNameFilter:setNameFilter
   }
 
   const dataFilter={
