@@ -18,7 +18,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         getAdmin,
         selectedList, 
         setselectedList,
-        valueButton,
         token,
         email,
         typePetition,
@@ -90,7 +89,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={() => {setIsOpen(!isOpen)}} />
-                                <Button value={valueButton} onClick={(e)=>{sendObjects(e);}}/>
+                                <Button value="Actualizar" onClick={(e)=>{sendObjects(e);}}/>
                             </div>
                         </div>
                         

@@ -24,6 +24,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
  
   const validarcheckbox=(e)=>{
+
     if(e.target.checked && boardType===true){
       const datauser={
         idEstado:idStatus, 
@@ -34,6 +35,8 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         color:allObject.color
       }
       setselectedList([...selectedList, datauser]);
+      // setLocalStorage(datauser);
+      
     }
     else if(e.target.checked && boardType===false){
       const dataServices={
@@ -53,7 +56,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id}  onClick={(e)=>validarcheckbox(e)}/>
+          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>
