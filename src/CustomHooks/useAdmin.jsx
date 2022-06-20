@@ -17,6 +17,8 @@ export const useAdmin = () => {
   const [validateSearchWord,setValidateSearchWord]=useState(true);
   const [idFilter, setIdFilter] = useState(0);
   const [validateToken,setValidateToken] = useState(true);
+  const [nameFilter, setNameFilter] = useState('');
+  // const [isOpen, setIsOpen] = useState(false);
   const { getToken} = useContext(AdminContext);
 
   
@@ -159,7 +161,7 @@ export const useAdmin = () => {
   }
 
   //Removal of objects in the selection of checkboxes
-  const deletingSelectedDeslectCheckbox =(id)=>{
+  const deletingSelectedDeslectCheckbox = (id) => {
     selectedList.map(item=>{
       if(item.id===id){
         const index=selectedList.indexOf(item);
@@ -182,6 +184,13 @@ export const useAdmin = () => {
     }
   }
 
+  // const closePopUpAndDeleteSelectedDeslectCheckBox = (id) => {
+  //   deletingSelectedDeslectCheckbox(id);
+  //   if(selectedList.length===0){
+  //     setIsOpen(!isOpen)
+  //   }
+  // }
+
   return {
     data,
     setData,
@@ -189,7 +198,8 @@ export const useAdmin = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
+    deletingSelectedDeslectCheckbox,
+    // closePopUpAndDeleteSelectedDeslectCheckBox,
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -199,6 +209,10 @@ export const useAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect, 
+    nameFilter,
+    setNameFilter
+    // isOpen,
+    // setIsOpen
   }
 }

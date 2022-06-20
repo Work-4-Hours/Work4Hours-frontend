@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from 'react';
-
+import React, { useState, useEffect, useContext} from 'react';
+import './Users.css';
 
 import { Search } from 'Components/Layout/Search/Search';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
@@ -18,7 +18,8 @@ import '.././Admin.css';
 
 export const Users = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const [isOpen, setIsOpen] = useState(false);
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
     
   const { 
     data,
@@ -27,7 +28,8 @@ export const Users = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
+    deletingSelectedDeslectCheckbox,
+    // closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -37,7 +39,13 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect} = useAdmin();
+    unSelect,
+    nameFilter, 
+    setNameFilter
+    // isOpen,
+    // setIsOpen
+} = useAdmin();
+
 
   //To bring the initial data of the users
   useEffect(()=>{
@@ -63,30 +71,33 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray",
     logoutAdmin: logoutAdmin
   }
+  
   const dataSearch={
     nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
-    searchString:"SearchUsers"
+    searchString:"SearchUsers",
+    nameFilter:nameFilter,
+    setNameFilter:setNameFilter
   }
-
 
   const dataFilter={
     changeFilteringOptionId:changeFilteringOptionId,
     unSelect:unSelect,
     data:[
-      {id:1, nombre:"Tipo de Suspensión"},
-      {id:2, nombre:"Reportes"},
-      {id:3, nombre:"Correo"},
-      {id:4, nombre:"Nombres y Apellidos"}
-    ]
+      {nombre:"Tipo de Suspensión",id:1},
+      {nombre:"Reportes",id:2},
+      {nombre:"Correo",id:3},
+      {nombre:"Nombres y Apellidos",id:4}
+    ],
+    setNameFilter: setNameFilter
   }
 
   const dataUsers={
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
+    deletingSelectedDeslectCheckbox: deletingSelectedDeslectCheckbox,
     dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
     setselectedList:setselectedList, 
@@ -118,10 +129,18 @@ export const Users = () => {
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Users",
-    typeAdmin: "usuario"
+    typeAdmin: "usuario", 
+    isOpen: isOpen,
+    setIsOpen: setIsOpen
     //sendNotification
   }
 
+  const dataObjectStatus = {
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList: selectedList,
+    isOpen:isOpen,
+    setIsOpen:setIsOpen
+  }
 
   return (
     <div className='container_admin'>
@@ -147,7 +166,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+          <ObjectStatus userSelect={item} dataObjectStatus={dataObjectStatus} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

@@ -26,13 +26,13 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
   const {
     objectAllStatus,
     getAdminReports,
+    deletingSelectedDeslectCheckbox,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
     changeStatus,
-    setChangeStatus
+    setChangeStatus,
   }=dataUsers;
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
@@ -57,8 +57,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     selectedList:selectedList, 
     setselectedList:setselectedList,
     boardType:true,
-    idStatus:idStatus
-  }
+    idStatus:idStatus,
+ }
 
   const dataReports = {
     numberReports: cantidadReportes,

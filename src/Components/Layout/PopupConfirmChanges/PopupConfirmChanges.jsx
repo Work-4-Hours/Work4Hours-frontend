@@ -22,12 +22,12 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         token,
         email,
         typePetition,
-        typeAdmin
+        typeAdmin, 
+        isOpen,
+        setIsOpen
     }=dataPopupConfirmChanges;
 
-    const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
 
     const validationInput= (e) => {
         if(e.keyCode===13){
@@ -76,6 +76,10 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             })
             .catch(err=>console.log(err))
         }
+        else{
+            setPasswordAdmin('');
+            Alert("Campo vacío", "Ingrese la contraseña por favor.", "info", "Ok");
+        }
     }
 
     return (
@@ -86,14 +90,13 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                     <div className='popup_admin_save_changes_admin'>
                         <PopupTitleAdmin />
                         <PopupConfirmChangesContentObjects content={objectContent} />
-                        <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
+                        <input type="password" className='password_admin_save_changes_admin' value={passwordAdmin} placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={() => {setIsOpen(!isOpen)}} />
                                 <Button value={valueButton} onClick={(e)=>{sendObjects(e);}}/>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </PopUp>

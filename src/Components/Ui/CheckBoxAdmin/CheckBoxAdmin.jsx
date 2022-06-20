@@ -11,8 +11,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     setselectedList,
     boardType,
     idStatus
-  } = dataCheckBoxAdmin;
-
+  } = dataCheckBoxAdmin
 
   const [allObject, setallObject]=useState([]);
 
@@ -49,11 +48,13 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     else{
       deletingSelectedDeslectCheckbox(allObject.idservicio);
     }
+
  }
+
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id}  onClick={(e)=>validarcheckbox(e)}/>
+          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useState, useEffect,useContext} from 'react';
 
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
@@ -16,7 +16,8 @@ import '.././Admin.css';
 
 export const Services = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const [isOpen, setIsOpen] = useState(false);
+  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
 
   const { data,
     setData,
@@ -24,7 +25,8 @@ export const Services = () => {
     dataState, 
     getAdminReports,
     dataReport,
-    deletingSelectedDeslectCheckbox, 
+    deletingSelectedDeslectCheckbox,
+    // closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -34,7 +36,11 @@ export const Services = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    nameFilter,
+    setNameFilter
+    // isOpen,
+    // setIsOpen
   } = useAdmin();
 
   //To bring the initial data of the services
@@ -63,17 +69,20 @@ export const Services = () => {
     nameSearch: "Búsqueda de Servicios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
-    searchString:"SearchServices"
+    searchString:"SearchServices",
+    nameFilter:nameFilter,
+    setNameFilter:setNameFilter
   }
 
   const dataFilter={
     changeFilteringOptionId:changeFilteringOptionId,
     unSelect:unSelect,
     data:[
-      {id:1, nombre:"Reportes"},
-      {id:2, nombre:"Nombre del servicio"},
-      {id:3, nombre:"Tipo"}
-    ]
+      {nombre:"Reportes",id:1},
+      {nombre:"Nombre del servicio",id:2},
+      {nombre:"Tipo",id:3}
+    ],
+    setNameFilter:setNameFilter
   }
 
   const dashboardHeader = {
@@ -95,7 +104,6 @@ export const Services = () => {
     objectAllStatus:dataState,
     getAdminReports:getAdminReports,
     dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:objectSelectedSetState, 
     selectedList:selectedList, 
     setselectedList:setselectedList, 
@@ -112,10 +120,19 @@ export const Services = () => {
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Services",
-    typeAdmin: "servicio"
+    typeAdmin: "servicio", 
+    isOpen: isOpen,
+    setIsOpen: setIsOpen
     //sendNotification
   }
-  
+
+  const dataObjectDelete = {
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList,
+    isOpen:isOpen,
+    setIsOpen:setIsOpen
+  }
+
   return (
     <div className='container_admin'>
       <div className='visibility_menu_admin_vertical'>
@@ -139,7 +156,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+          <ObjectDelete servicesSelect={item} dataObjectDelete={dataObjectDelete} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

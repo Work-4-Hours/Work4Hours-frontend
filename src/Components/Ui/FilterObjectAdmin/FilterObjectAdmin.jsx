@@ -6,8 +6,14 @@ import './FilterObjectAdmin.css'
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const FilterObjectAdmin = ({dataFilter}) => {
-    const{changeFilteringOptionId,unSelect,data}=dataFilter;
+    const{changeFilteringOptionId,unSelect,data, nameFilter, setNameFilter}=dataFilter;
     const [isOpen, setIsOpen] = useState(false);
+
+    const dataOptionFilter={
+      unSelect:unSelect,
+      setNameFilter:setNameFilter
+    }
+
   return (
     <div className='content_filter'>
         <BsThreeDotsVertical className='icon_filter_admin' onClick={()=>{setIsOpen(!isOpen)}}/>
@@ -15,7 +21,7 @@ export const FilterObjectAdmin = ({dataFilter}) => {
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
         <div className='content_options filter_options' onChange={changeFilteringOptionId}>
-            {data.map(item=><OptionFilterUserAdmin option={item} unSelect={unSelect} key={item.id}/>)}
+            {data.map(item=><OptionFilterUserAdmin option={item} dataOptionFilter={dataOptionFilter} key={item.id}/>)}
         </div>
       </PopUp>
     </div>
