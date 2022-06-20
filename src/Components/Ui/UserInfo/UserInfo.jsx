@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
@@ -7,6 +7,7 @@ import './UserInfo.css';
 
 
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
+
   
   const [idStatus, setIdStatus] = useState(0);
   const { 
@@ -67,10 +68,10 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
 
   return (
-    <div className='user_info'>
+    <div className='object_info'>
       <PhotoAdmin photoData={photoData}/>
-      <p className='ellipsis fieldSize20'>{apellidos}</p>
-      <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
+      <p className='ellipsis fieldSize20 hide hide2'>{apellidos}</p>
+      <p className='ellipsis fieldSize20 hide'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />

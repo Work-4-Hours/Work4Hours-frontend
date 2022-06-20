@@ -8,7 +8,7 @@ export const OptionFilterUserAdmin = ({option, dataOptionFilter}) => {
   return (
     <div className='typ_report'>
         <label>{nombre}</label>
-        <input type="radio" id={id} name ="filters" onDoubleClick={(e)=>{unSelect(e); setNameFilter('')}} onClick={()=>{setNameFilter(nombre)}} />
+        <input type="radio" id={id} name ="filters" className='checkbox_admin_filter' onDoubleClick={(e)=>{unSelect(e); setNameFilter('')}} onClick={()=>{setNameFilter(nombre)}} />
     </div>
   )
 }

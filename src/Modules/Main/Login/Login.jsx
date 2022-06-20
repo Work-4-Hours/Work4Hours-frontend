@@ -6,18 +6,24 @@ import { Button } from 'Components/Ui/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
+import { ReactComponent as IconAlert } from 'Assets/Icons/IconAlert.svg'
+import { ModalTest } from 'CustomHooks/useClickOutside'
+import { TextError } from 'Components/StyleComponets/MessageError'
+import { useField } from 'CustomHooks/useField'
 
 import './Login.css'
 
 export const Login = () => {
+
     const navigate = useNavigate()
-    const { login, isAuth, isLoading, user } = useContext(UserContext)
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
+    const { login, error, isAuth, isLoading, user } = useContext(UserContext)
+
+    const email = useField({ type: 'email', message_errors: '' })
+    const password = useField({ type: 'password',  message_errors: '' })
 
     const handleLogin = (e) => {
         e.preventDefault()
-        login({ email: email, password: password })
+        email.validator(email.value) && password.validator(password.value) && login({ email: email.value, password: password.value })
     }
 
     useEffect(() => {
@@ -29,10 +35,8 @@ export const Login = () => {
 
             else if (jwt_decode(user.token).rol == process.env.REACT_APP_ADMIN_ROL) {
                 navigate('/AdminUsers')
-
                 window.location.reload()
             }
-
         }
     }, [isLoading])
 
@@ -49,9 +53,14 @@ export const Login = () => {
                     <div className="padding_container_form_login">
                         <Title>Iniciar sesión</Title>
                         <form className='form_login' onSubmit={handleLogin}>
-                            <InputTextLabel titleLabel='Correo' placeholder='Correo' onChange={e => setEmail(e.target.value)} />
-                            <InputTextLabel titleLabel='Contraseña' placeholder='Contraseña' type='password' onChange={e => setPassword(e.target.value)} />
-                            <Link className='link_recover_password' to='/'>Recuperar contraseña</Link>
+
+                            <InputTextLabel titleLabel='Correo' {...email} placeholder='Correo' />
+
+                            <div>
+                                <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
+                            </div>
+                                <TextError isError={!error}>{<IconAlert className='icon_alert' />} Credenciales incorrectas</TextError>
+                            <Link className='link_recover_password' to='/password/forgotten'>Recuperar contraseña</Link>
                             <Button value='Ingresar' isLoading={isLoading} />
                         </form>
 
@@ -62,6 +71,7 @@ export const Login = () => {
                     </div>
                 </DivShadow>
             </div>
+
         </main>
     )
 }

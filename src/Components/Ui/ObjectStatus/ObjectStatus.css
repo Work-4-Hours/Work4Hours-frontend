@@ -8,13 +8,6 @@
     padding: 1%;
 }
 
-.img_layout_status{
-    width: 2.5em;
-    height: 2.5em;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 .delete_user_status{
     font-size: 1.375em;
     margin-top: 1%;

@@ -43,7 +43,7 @@ export const useNotification = () => {
         try {
             await connectionNotf.stop();
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     }
 

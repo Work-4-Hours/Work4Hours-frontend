@@ -16,6 +16,8 @@ import { Saved } from 'Components/Layout/Saved/Saved'
 import { UserProvider } from 'Context/UserContext'
 import { SearchService } from 'Modules/Main/SearchService/SearchService'
 import { IsAuth } from 'Context/IsAuth'
+import { ForgottenPassword } from 'Modules/Main/ForgottenPassword/ForgottenPassword'
+import { NotFound } from 'Components/Layout/NotFound/NotFound'
 
 export const AllRoutes = () => {
 
@@ -27,18 +29,20 @@ export const AllRoutes = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/registry' element={<Registry />} />
           <Route path='/service/:query' element={<SearchService />} />
+          <Route path='/password/:query' element={<ForgottenPassword />} />
 
-          <Route path='/profile' element={ <IsAuth> <Profile /> </IsAuth>} />
-          <Route path='/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
+          <Route path='/profile/:query' element={ <IsAuth> <Profile /> </IsAuth>} />
+          <Route path='/CO/service/:servicename' element={<IsAuth> <InfoService /> </IsAuth>} />
           <Route path='/service/add' element={ <IsAuth> <AddService /> </IsAuth>} />
           <Route path='/service/edit' element={ <IsAuth> <EditService /> </IsAuth>} />
           <Route path='/dashboard/*' element={ <IsAuth> <Dashboard /> </IsAuth>} >
-          <Route path='publications' element={ <Publications />} />
-          <Route path='saved' element={<Saved />} />
+            <Route path='publications' element={ <Publications />} />
+            <Route path='saved' element={<Saved />} />
           </Route>
           <Route path='/claim' element={ <IsAuth> <Claim /> </IsAuth>} />
           <Route path='/chat' element={<IsAuth> <Chat /> </IsAuth>} />
-          <Route path='*' element={<h1>Not found</h1>} />
+
+          <Route path='*' element={<NotFound/>} /> 
         </Routes>
       </BrowserRouter>
     </UserProvider>

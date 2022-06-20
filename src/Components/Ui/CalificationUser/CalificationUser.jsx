@@ -10,7 +10,7 @@ export const CalificationUser = ({ value }) => {
 
     useEffect(() => {
         const calcCalification = (val) => {
-            return Math.round(val / 5 / 4)
+            return Math.round(val / 1.5 / 1.4)
         }
         setValueCal(calcCalification(value) + 1)
     },[value])

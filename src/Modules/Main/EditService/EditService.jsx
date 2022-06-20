@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { Title } from 'Components/StyleComponets/Titlte'
@@ -8,51 +8,62 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
+import { UserContext } from 'Context/UserContext'
+import { useLocalStorage } from 'CustomHooks/useLocalStorage'
+import { sha256 } from 'js-sha256'
 
 import './EditService.css'
 
 export const EditService = () => {
 
-    const optionsl = [
-        {
-            id: 1,
-            name: "Quindio"
-        },
-        {
-            id: 2,
-            name: "Choco"
-        }
-    ]
+    const { getJwt } = useContext(UserContext)
+    const [infoservice] = useLocalStorage(sha256('idservice'),null)
+    const [loading, setLoading] = useState(null);
+    const {id, service} = infoservice
 
-    const ciudadl = [
-        {
-            id: 1,
-            name: "Armenia"
-        },
-        {
-            id: 2,
-            name: "Montenegro"
-        }
-    ]
+    const [name, setName] = useState(service.name);
+    const [type, setType] = useState(null);
+    const [photo, setPhoto] = useState(null);
+    const [price, setPrice] = useState(service.price);
+    const [category, setCategory] = useState(null);
+    const [description, setDescription] = useState(service.description);
 
-    const tipos = [
-        {
-            id: 1,
-            name: "Oferta"
-        },
-        {
-            id: 2,
-            name: "Demanda"
-        }
-    ]
 
+    const updateService = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        fetch(`${process.env.REACT_APP_API}/updateService`, {
+            
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':`JWS ${getJwt()}`
+            },
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                type: type,
+                photo: service.photo,
+                price: parseInt(price),
+                category: 'C01',
+                description: description,
+                status: "1"
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+           console.log(response);
+        })
+        .finally(setLoading(false))
+    }
 
     return (
         <>
             <Header/>
             <main className='main_add_service'>
                 <div className="center_main_add_service">
-                    <DivShadow className='image_add'>
+                    <DivShadow className='_image_add'>
+                    {/* <img src={service.photo} alt="" /> */}
                         <input type="file" name="" id="input_file_image" />
                         <label htmlFor="input_file_image">
                             <div className="drag_drop_image">
@@ -64,39 +75,26 @@ export const EditService = () => {
                     <DivShadow className='form_add_service'>
                         <div className="padding_form_add_service">              
                             <Title className='title_add_service'>Editar servicio</Title>
-                            <form action="" className='form_register_service'>
-                                <InputTextLabel titleLabel='Titulo' placeholder='Servicio' />
+                        <form className='form_register_service'>
+                            
+                                <InputTextLabel titleLabel='Nombre' value={name} type='text' onChange={e => setName(e.target.value)}/>
 
-                                <InputTextLabel titleLabel='Precio por hora' placeholder='' />
+                                <InputTextLabel titleLabel='Precio por hora' value={price} type='number' onChange={e => setPrice(e.target.value)}/>
 
-                                <InputTextLabel titleLabel='Descriptcion' placeholder='Lorem' />
-
-                                <SelectTextLabel 
-                                    titleLabel='Seleccione el departamento donde se ofrese el servicio' 
-                                    nameSelect='Departamento' 
-                                    options={optionsl}                          
-                                    onChange={(e)=> console.log(e.target.value)}
-                                />
-
-                                <SelectTextLabel 
-                                    titleLabel='Seleccione la ciudad donde se ofrece el servicio' 
-                                    nameSelect='Ciudad' 
-                                    options={ciudadl}                          
-                                    onChange={(e)=> console.log(e.target.value)}                              
-                                />
-
+                                <InputTextLabel titleLabel='Descripcion' value={description} type='text' onChange={e => setDescription(e.target.value)} />
                                 <SelectTextLabel 
                                     titleLabel='Tipo de servicio' 
                                     nameSelect='Tipo' 
-                                    options={tipos}                          
-                                    onChange={(e)=> console.log(e.target.value)}                              
+                                    options={[{id: 'O', name: "Oferta" }, {id: 'D', name: "Demanda" }]}                          
+                                    onChange={e => {setType(e.target.value)}}                              
                                 />
-                                <InputCheckbox name='Habilitar servicio'/>
+                                <InputCheckbox name='Habilitar servicio' onClick={e => console.log(e.target.value, '')}/>
                             </form>
                         </div>
                         <div className="flex_button_register_service">
-                            <Button style='button_big' value='Guardar cambios' />
+                            <Button style='button_big' value='Guardar cambios' isLoading={loading} onClick={e => updateService(e) } />
                         </div>
+
                     </DivShadow>
                     
                 </div>

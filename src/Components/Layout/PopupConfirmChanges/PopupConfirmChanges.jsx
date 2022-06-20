@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
 import './PopupConfirmChanges.css';
 
@@ -8,17 +8,16 @@ import { PopUp } from 'Components/StyleComponets/PopUp';
 import { PopupTitleAdmin } from 'Components/Ui/PopupTitleAdmin/PopupTitleAdmin';
 import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContentObjects/PopupConfirmChangesContentObjects';
 
-const apiAdmin = process.env.REACT_APP_API_ADMIN;
-const API = process.env.REACT_APP_API;
 
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
-
+    const apiAdmin = process.env.REACT_APP_API_ADMIN;
+    const API = process.env.REACT_APP_API;
+    
     const {
         setData,
         getAdmin,
         selectedList, 
         setselectedList,
-        nameTitle,
         valueButton,
         token,
         email,
@@ -87,9 +86,9 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         <div className='btn_save_changes_admin_position'>
             <Button className="button btn_save_changes_admin" value="Guardar Cambios" onClick={() => popUpOpen()} />
             <PopUp isOpen={isOpen}>
-                <div className="overlay_Popup_Confirm_Changes_Content_Object">
+                <div className="overlay_popup_confirm_changes_content_object">
                     <div className='popup_admin_save_changes_admin'>
-                        <PopupTitleAdmin title={nameTitle} />
+                        <PopupTitleAdmin />
                         <PopupConfirmChangesContentObjects content={objectContent} />
                         <input type="password" className='password_admin_save_changes_admin' value={passwordAdmin} placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
                         <div className='btns_save_changes_admin'>

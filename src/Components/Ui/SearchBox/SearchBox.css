@@ -1,5 +1,5 @@
 .search_box{
-    background-color: #ebebeb;
+    background-color: var(--bg-dashboard-grey);
     padding: 1.5%;
     width: 88%;
     display: flex;
@@ -9,7 +9,7 @@
 .box_search{
     border: 0;
     outline: none;
-    background-color: #ebebeb;
+    background-color: var(--bg-dashboard-grey);
     padding-left:2%;
     font-size: 1em;
     width: 100%;
@@ -24,4 +24,11 @@
     padding: 0.5%;
     width: 28%;
     justify-content: space-between;
+}
+
+@media (min-width: 0) and (max-width: 800px) {
+    .search_box{
+        width: 100%;
+    }
+
 }

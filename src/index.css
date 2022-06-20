@@ -27,8 +27,11 @@
 
   --bg-popup-description:#e0e0e0;
 
+  --btn-background-color:#bfbfbf;
+
   /* Borders */
   --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
+  
 
   /* Shadows */
   --gray-shadow-1: #9f9f9f33;
@@ -64,7 +67,11 @@
   --bg-dashboard-grey:#ebebeb;
   --font-1: 'Sora', sans-serif;
   --font-2: 'Alata';
+
+  /* Animations */
+  --animation-show-slow: show_slow;
 } 
+
 
 * {
   margin: 0;
@@ -110,78 +117,6 @@ code {
   text-align: center;
 }
 
-/*Admin*/
-.container_admin{
-  height: 100vh;
-  display: flex;
-}
-.manager_control{
-  width: 80%;
-  padding: 3% 2% 1.3%;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5%;
-}
-
-.btn_save_changes_admin_position{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.btn_save_changes_admin{
-  width: 20%;
-}
-
-/*Animation Popup Options*/
-
-@keyframes animationPopupOptionsActivate {
-  from{
-    transform: translateY(-50px) scale(0);
-  }
-  to{
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes animationOpacityActivate {
-  from { opacity: 0; }
-	to { opacity: 1; }
-}
-
-/*Media Queries*/
-
-@media (max-width: 600px) {
-  .menu_admin{
-    font-size: 14px;
-  }
-  .dashboard_header, .dashborard{
-    font-size: 13px;
-  }
-  .fieldSize3 {
-    width: 6%;
-  }
-  .fieldSize20 {
-    width: 18%;
-  }
-  .fieldSize8 {
-    width: 12%;
-  }
-  .search_box{
-    font-size: 13px;
-    width: 80%;
-  }
-  .content_filter{
-    font-size: 13px;
-    width: 15%;
-  }
-
-  .btn_save_changes_admin{
-    font-size: 13px;
-    width: 33%;
-  }
-  
 
 
-}
 

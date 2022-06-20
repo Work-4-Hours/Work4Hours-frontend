@@ -8,7 +8,7 @@ export const DescriptionServiceAdmin = ({textDescription}) => {
   const [isOpen, setIsOpen] = useState(false);
     
   return (
-    <div className='fieldSize15 position_relative'>
+    <div className='fieldSize15 position_relative hide'>
       <p className="ellipsis pointer_userSelect_none" onClick={()=>{setIsOpen(!isOpen)}}>{textDescription}</p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>

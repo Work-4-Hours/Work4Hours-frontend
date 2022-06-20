@@ -22,6 +22,7 @@ export const UserProvider = ({ children }) => {
     const { 
         login, 
         logout, 
+        error,
         isLoading, 
         isAuth
     } = useLogin( user, setUser, removeUser, userConnection)
@@ -33,11 +34,11 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         if (isAuth()) {
             closeConnection()
-            userConnection(jwt_decode(user.token).id);
+            userConnection(jwt_decode(user.token).userId);
         }
     }, [])
 
-    const data = { user, login, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications }
+    const data = { user, login, error, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications }
 
     return (
         <UserContext.Provider value={data}>

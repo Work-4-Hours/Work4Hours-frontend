@@ -6,51 +6,76 @@ import { Button } from 'Components/Ui/Button/Button'
 import { Title } from 'Components/StyleComponets/Titlte'
 import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
+import { useField } from 'CustomHooks/useField'
+import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
+import { useFetch } from 'CustomHooks/useFetch'
+import { useUploadImage } from 'CustomHooks/useUploadImage'
+import { useImagePreview } from 'CustomHooks/useImagePreview'
 
 import './Registry.css'
+
+const regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+const regex_names = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
+const regex_phone = /3[0-9]{9}/
+
 export const Registry = () => {
 
     const [cities, setCities] = useState([])
     const [departments, setDepartments] = useState([])
     const [loading, setLoading] = useState(false)
+    const [currentStep, setCurrentStep] = useState(1);
+    const [disable, setDisable] = useState(true);
+    const [imageFile, setImageFile] = useState(null)
 
-    const [nameIsValidate, setNameIsValidate] = useState(true)
-    const [messageError, setMessageError] = useState('Correo invalido')
+    const [profileColors] = useState(['#8a1c1c', '#217511', '#239cb1', '#091b80', '#6b0d6e', '#aa5c2f'])
 
 
-    const [name, setName] = useState(null)
-    const [surname, setSurname] = useState(null)
-    const [phone, setPhone] = useState(null)
-    const [address, setAddress] = useState(null)
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
-    const [birthdate, setBirthdate] = useState(null)
+    // Form fields registry
+    const email = useField({ type: 'email', validate: regex_email, message_errors: 'Correo incorrecto' })
+    const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta, debe contener almenos un numero' })
+    const name = useField({ type: 'text', validate: regex_names, message_errors: 'Nombres incorrectos' })
+    const surname = useField({ type: 'text', validate: regex_names, message_errors: 'Apellidos incorrectos' })
+    const phone = useField({ type: 'text', validate: regex_phone, message_errors: 'Numero telefonico incorrecto' })
+    const birthday = useField({ type: 'date', })
     const [city, setCity] = useState(null)
 
-    const [disable, setDisable] = useState(true);
+    const { data: imageProfile, loading: loadingImage, uploadImage } = useUploadImage()
 
-    const registry = async (e) => {
-        e.preventDefault()
+    const { previewImage, setPreviewImage } = useImagePreview()
+
+    const [steps, setSteps] = useState([
+        { step: 1, current: true, complete: false, info: 'Cuenta' },
+        { step: 2, current: false, complete: false, info: 'Datos basicos' },
+        { step: 3, current: false, complete: false, info: 'Perfil (Opcional)' }
+    ])
+
+    const changeStep = (value) => {
+        setCurrentStep(currentStep + 1)
+        steps[value - 1].current = true
+        steps[value - 2].complete = true
+    }
+
+    const registry = async () => {
         setLoading(true)
-        fetch(`${process.env.REACT_APP_API}/registry`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/registry`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
-                name: name,
-                lastName: surname,
-                phoneNumber: phone,
-                address: 'null',
-                email: email,
-                password: password,
-                birthDate: birthdate,
-                picture: 'null',
+                name: name.value,
+                lastName: surname.value,
+                phoneNumber: phone.value,
+                address: '',
+                email: email.value,
+                password: password.value,
+                birthDate: birthday.value,
+                picture: imageProfile,
                 city: parseInt(city),
-                color: '#831a1a'
+                color: profileColors[Math.floor(Math.random() * profileColors.length)]
             })
-
         })
             .then(response => response.json())
             .then(user => {
@@ -60,7 +85,7 @@ export const Registry = () => {
     }
 
     const getCities = (iddepartament) => {
-        fetch(`${process.env.REACT_APP_API}/cities/${iddepartament}`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/cities/${iddepartament}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -77,7 +102,7 @@ export const Registry = () => {
 
     useEffect(() => {
         const fetchTest = async () => {
-            fetch(`${process.env.REACT_APP_API}/departments`, {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/departments`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -96,60 +121,147 @@ export const Registry = () => {
         fetchTest()
     }, [])
 
-    useEffect(() => {
-        setNameIsValidate(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(name));
-    },[name])
-
     return (
         <main className='registry'>
             <div className="background_registry"></div>
             <img className='background_image' src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" />
 
             <div className="center_main_registry">
+
                 <DivShadow className='container_form_registry'>
                     <div className="padding_form_register">
+
+
                         <header className='header_registry'>
                             <Title>Registro</Title>
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link>
                         </header>
-                        <form className='form_registry' onSubmit={e => registry(e)}>
-                            <div className="subtitle_form_registry">
-                                <p>Datos basicos</p>
-                            </div>
-                            <section className="basic_data">
-                                <InputTextLabel titleLabel='Nombres' isValidate={nameIsValidate}
-                                error_message={!nameIsValidate && messageError} placeholder='Camilo' onChange={e => setName(e.target.value)} />
-                                <InputTextLabel titleLabel='Apellidos' placeholder='Lopez' onChange={e => setSurname(e.target.value)} />
-                                <InputTextLabel titleLabel='Celular' placeholder='Celular' type='number' onChange={e => setPhone(e.target.value)} />
-                                <InputTextLabel titleLabel='Fecha de nacimiento' type='date' onChange={e => setBirthdate(e.target.value)} />
-                                <SelectTextLabel
-                                    titleLabel='Departamento'
-                                    nameSelect='Departamento'
-                                    options={departments}
-                                    disable={false}
-                                    onChange={e => {
-                                        getCities(e.target.value)
-                                    }} />
 
-                                <SelectTextLabel
-                                    titleLabel='Ciudad'
-                                    nameSelect='Ciudad'
-                                    options={cities}
-                                    disable={disable}
-                                    onChange={e => setCity(e.target.value)}
-                                />
+                        <section className="steps_registry">
+                            {
+                                steps.map(item => (
+                                    <>
+                                        <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
+                                            <div className='step_number'>
+                                                {item.step}
+                                            </div>
+                                            <p className='step_info'>{item.info}</p>
+                                        </div>
+                                        <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
+                                            <div className={`line_step`}></div>
+                                        </div>
+                                    </>
+                                ))
+                            }
+                        </section>
 
-                            </section>
+                        <div className='form_registry'>
 
-                            <div className="subtitle_form_registry">
-                                <p>Cuenta</p>
-                            </div>
-                            <section className="acount_data">
-                                <InputTextLabel titleLabel='Email' placeholder='correo' type='email' onChange={e => setEmail(e.target.value)} />
-                                <InputTextLabel titleLabel='Contraseña' placeholder='contraseña' type='password' onChange={e => setPassword(e.target.value)} />
-                            </section>
-                            <Button value='Registrar cuenta' isLoading={loading} />
-                        </form>
+                            {
+                                currentStep == 1 && (
+                                    <>
+                                        <section className="acount_data">
+
+                                            <InputTextLabel titleLabel='Email' {...email} placeholder='Correo' />
+
+                                            <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
+
+                                        </section>
+                                        <Button value='Siguiente' onClick={() => {
+                                            email.validator(email.value)
+                                            password.validator(password.value)
+                                            if (email.validator(email.value) && password.validator(password.value))
+                                                changeStep(currentStep + 1)
+                                        }} />
+                                    </>
+                                )
+
+                            }
+                            {
+                                currentStep == 2 && (
+                                    <>
+                                        <section className="basic_data">
+
+                                            <InputTextLabel titleLabel='Nombres' {...name} placeholder='Camilo' />
+
+                                            <InputTextLabel titleLabel='Apellidos' {...surname} placeholder='Lopez' />
+
+                                            <InputTextLabel titleLabel='Celular' {...phone} placeholder='Celular' />
+
+                                            <InputTextLabel titleLabel='Fecha de nacimiento' {...birthday} />
+
+                                            <SelectTextLabel
+                                                titleLabel='Departamento'
+                                                nameSelect='Departamento'
+                                                options={departments}
+                                                disable={false}
+                                                onChange={e => {
+                                                    getCities(e.target.value)
+                                                }} />
+
+                                            <SelectTextLabel
+                                                titleLabel='Ciudad'
+                                                nameSelect='Ciudad'
+                                                options={cities}
+                                                disable={disable}
+                                                onChange={e => setCity(e.target.value)}
+                                            />
+
+                                        </section>
+
+                                        <Button value='Siguiente' onClick={() => {
+                                            name.validator(name.value)
+                                            surname.validator(surname.value)
+                                            phone.validator(phone.value)
+                                            birthday.validator(phone.value)
+                                            if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value) )
+                                                changeStep(currentStep + 1)
+                                            }
+                                            } />
+                                    </>
+                                )
+                            }
+
+                            {
+                                currentStep == 3 && (
+                                    <>
+                                        <section className="profile_user">
+                                            <header className="">
+                                                <h1 className='title_preview_image_profile'>Añade una imagen</h1>
+
+                                                <input className='input_file_image_profile' type="file" name="" id="file_image_user" onChange={e => {
+                                                    setPreviewImage(e)
+                                                    setImageFile(e.target.files[0])
+                                                }} accept="image/*" />
+                                                <section className='preview_image_profile'>
+
+                                                    <label htmlFor="file_image_user">
+                                                        <div className="image_profile_registry">
+                                                            { previewImage ?
+
+                                                                <img className='image_preview_profile' src={previewImage} alt="" />
+
+                                                                :
+                                                                <IconPlus className='icon_plus_image' />
+                                                            }
+                                                        </div>
+                                                    </label>
+                                                    {
+                                                        previewImage && (
+                                                            <div className="button_upload_image_profile">
+                                                                <Button value='Subir' isLoading={loadingImage} onClick={() => uploadImage(imageFile)} />
+                                                            </div>
+                                                        )
+                                                    }
+                                                </section>
+                                            </header>
+                                        </section>
+                                        <Button value='Registrate' onClick={() => registry()} />
+                                    </>
+                                )
+                            }
+
+                        </div>
                     </div>
                 </DivShadow>
 

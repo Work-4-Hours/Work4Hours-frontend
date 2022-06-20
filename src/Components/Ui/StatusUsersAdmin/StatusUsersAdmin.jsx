@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import './StatusUsersAdmin.css';
+
 import { PopUp } from 'Components/StyleComponets/PopUp';
 import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUserAdmin';
 
@@ -25,11 +26,11 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
 
   const changeState = (reportsNumber) => {
-    if(reportsNumber === 25){
+    if(reportsNumber >= 25){
       setStateObject("Suspendido por 3 días")
       setIdStateObject(2)
     }
-    else if(reportsNumber === 50){
+    if(reportsNumber >= 50){
       setStateObject("Inhabilitado")
       setIdStateObject(3)
     }
@@ -77,10 +78,13 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
   return (
     <div className='position_relative fieldSize13'>
-      <p className={'op_state_user '+ stateColor} id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>{stateObject}</p>
+      <div className='status_object_dashboard' id={idStateObject} onClick={()=>{setIsOpen(!isOpen)}}>
+        <p className={'op_state_object '+ stateColor}></p>
+        <p>{stateObject}</p>
+      </div>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
-        <div className='content_options'>
+        <div className='content_options content_status_users'>
           <h5 className='spacing'>Estados del usuario</h5>
           {
             data?.filter(item=>item.id!==4).map(item=>(<OptionStatusUserAdmin objectAllStatus={item} dataOptionStatusUserAdmin={dataOptionStatusUserAdmin} key={item.id}/>))

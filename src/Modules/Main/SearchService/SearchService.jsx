@@ -4,7 +4,7 @@ import { DivShadow } from 'Components/StyleComponets/DivShadow'
 import { useParams } from 'react-router'
 import { Title } from 'Components/StyleComponets/Titlte'
 import { Header } from 'Components/Layout/Header/Header'
-import { CardServiceSearch } from 'Components/Ui/CardServiceSearch/CardServiceSearch'
+import { CardServiceSearch } from 'Components/Ui/Cards/CardServiceSearch/CardServiceSearch'
 
 import './SearchService.css'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
@@ -22,7 +22,7 @@ export const SearchService = () => {
     useEffect(()=> {
         const get = async () => {
             setLoading(true)
-            fetch(`${process.env.REACT_APP_API}/searchServices`, {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/searchServices`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const SearchService = () => {
                                     <LoadingCardSearch/>
                                 </>                          
                                 :
-                                results.map((item, index) =>  <Link key={index} to={`/${formatName(item.name)}?sid=${item.id}`}  className='link_card_service'><CardServiceSearch info_service={item}/></Link>)
+                                results.map((item, index) =>  <Link key={index} to={`/CO/service/${formatName(item.name)}?sid=${item.id}`}  className='link_card_service'><CardServiceSearch info_service={item}/></Link>)
                             }                      
                     </DivShadow>
                 </div>

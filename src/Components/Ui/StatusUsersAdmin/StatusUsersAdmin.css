@@ -1,13 +1,7 @@
-.position_relative{
-    position: relative;
+.content_status_users{
+    width: 11.4375em;
 }
-
-
-.spacing{
-    margin-bottom: 4%;
-}
-
-.op_state_user{
+.op_state_object{
     cursor: pointer;
     position: relative;
     user-select: none;
@@ -17,7 +11,7 @@
 }
 
 
-.op_state_user::before{
+.op_state_object::before{
     content: "";
     display: flex;
     height: 0.625em;
@@ -38,6 +32,21 @@
     background-color: var(--status-red);
 }
 
+.status_object_dashboard{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
 
+@media (min-width: 0) and (max-width: 480px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 
+@media (min-width: 801px) and (max-width: 1070px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 

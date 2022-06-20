@@ -1,0 +1,63 @@
+
+.icon_menu_admin{
+    font-size: 30px;
+    color:var(--gray-text-3);
+}
+.drop_down_menu_admin{
+    display:flex;
+    flex-direction:column;
+    z-index: 2;
+    gap: 15%;
+    padding: 5%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 60%;
+    background-color:var(--bg-dashboard-grey);
+    border-radius: 5px;
+    animation: animationDropDownMenuAdmin .2s forwards;
+
+}
+
+ @keyframes animationDropDownMenuAdmin {
+    from {
+        opacity: 0;
+        transform: translateX(-5%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+ } 
+      
+
+
+
+
+.title_menu_admin{
+    display: flex;
+    justify-content: space-between;
+}
+.close_menu_admin{
+    font-size: 30px;
+    color:var(--gray-text-3);
+    cursor: pointer;
+}
+
+
+.options_menu_admin_vertical{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    height: 100%;
+}
+.option_menu_admin_vertical{
+    display:flex;
+    gap:10%;
+    align-items: center;
+    color: var(--bd-checkbox-grey);
+}
+
+

@@ -29,7 +29,7 @@
 }
 
 .padding_container_form_login {
-    width: 350px;
+    width: 370px;
     padding: 40px;
 
     display: flex;
@@ -60,4 +60,8 @@
 .link_registry {
     text-decoration: none;
     color: var(--bg-blue);
+}
+
+.icon_alert {
+    fill: #ac2828;
 }
