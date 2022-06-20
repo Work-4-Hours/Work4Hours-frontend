@@ -95,6 +95,7 @@ export const Users = () => {
 
   const dataPopupConfirmChanges = {
     getAdmin:adminGet.getAdmin,
+    data:adminGet.data,
     setData:adminGet.setData,
     selectedList:statusAdmin.selectedList, 
     setselectedList: statusAdmin.setselectedList,

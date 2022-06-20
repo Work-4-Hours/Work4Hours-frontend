@@ -12,10 +12,12 @@ import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContent
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
+    const [detectChangeStatus, setDetectChangeStatus] = useState(false);
     
     const {
         setData,
         getAdmin,
+        data,
         selectedList, 
         setselectedList,
         token,
@@ -26,7 +28,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
 
     const validationInput= (e) => {
         if(e.keyCode===13){
@@ -40,11 +41,26 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     }
 
     const popUpOpen = () => {
+        let detectChangeStatus = false;
         if(selectedList.length===0){
             Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
         }
         else{
-            setIsOpen(!isOpen);
+            //cambiar por idusuario a id
+            selectedList.map(item=>{
+                const result = data.filter(object => object.idusuario === item.id && object.idEstado!==item.idEstado);
+                if(result.length>0){
+                    detectChangeStatus = true;
+                }
+            })
+            if(detectChangeStatus){
+                setIsOpen(!isOpen);
+            }
+            else{
+                Alert("No se registran cambios de estados", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
+            }
+            
+            
         }
     }
 

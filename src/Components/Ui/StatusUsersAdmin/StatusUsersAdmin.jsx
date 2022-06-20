@@ -16,15 +16,13 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     changeStatus,
     setChangeStatus,
     setIdStatus,
-    setNotificationAutomaticSuspension
+    setNotificationAutomaticSuspension,
   }=dataStatusAdmin;
 
   const [stateObject, setStateObject]=useState(nameStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
   const [idStateObject, setIdStateObject]=useState(idObjectStatus);
-
-
 
   const changeState = (reportsNumber) => {
     if(reportsNumber >= 25){

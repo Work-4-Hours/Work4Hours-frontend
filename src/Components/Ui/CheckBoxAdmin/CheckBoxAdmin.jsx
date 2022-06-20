@@ -3,6 +3,7 @@ import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
+
   const {
     objectAll, 
     designCheckBoxAdmin, 
@@ -10,7 +11,8 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     selectedList,
     setselectedList,
     boardType,
-    idStatus
+    idStatus,
+
   } = dataCheckBoxAdmin;
 
 
