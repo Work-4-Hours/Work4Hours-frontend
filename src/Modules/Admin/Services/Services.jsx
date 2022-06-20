@@ -1,4 +1,4 @@
-import React,{useState, useEffect,useContext} from 'react';
+import React,{useEffect,useContext} from 'react';
 
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
@@ -15,8 +15,6 @@ import { AdminContext } from 'Context/AdminContext';
 import '.././Admin.css';
 
 export const Services = () => {
-
-  const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
 
   const { data,
@@ -26,7 +24,7 @@ export const Services = () => {
     getAdminReports,
     dataReport,
     deletingSelectedDeslectCheckbox,
-    // closePopUpAndDeleteSelectedDeslectCheckBox, 
+    closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -38,9 +36,9 @@ export const Services = () => {
     changeFilteringOptionId,
     unSelect,
     nameFilter,
-    setNameFilter
-    // isOpen,
-    // setIsOpen
+    setNameFilter,
+    isOpen,
+    setIsOpen
   } = useAdmin();
 
   //To bring the initial data of the services
@@ -126,13 +124,6 @@ export const Services = () => {
     //sendNotification
   }
 
-  const dataObjectDelete = {
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList,
-    isOpen:isOpen,
-    setIsOpen:setIsOpen
-  }
-
   return (
     <div className='container_admin'>
       <div className='visibility_menu_admin_vertical'>
@@ -156,7 +147,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} dataObjectDelete={dataObjectDelete} key={item.id}/>
+          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

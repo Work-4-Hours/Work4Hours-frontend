@@ -18,7 +18,7 @@ export const useAdmin = () => {
   const [idFilter, setIdFilter] = useState(0);
   const [validateToken,setValidateToken] = useState(true);
   const [nameFilter, setNameFilter] = useState('');
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { getToken} = useContext(AdminContext);
 
   
@@ -184,12 +184,13 @@ export const useAdmin = () => {
     }
   }
 
-  // const closePopUpAndDeleteSelectedDeslectCheckBox = (id) => {
-  //   deletingSelectedDeslectCheckbox(id);
-  //   if(selectedList.length===0){
-  //     setIsOpen(!isOpen)
-  //   }
-  // }
+  // Validation to close popup when selectList is empty
+  const closePopUpAndDeleteSelectedDeslectCheckBox = (id) => {
+    deletingSelectedDeslectCheckbox(id);
+    if(selectedList.length===0){
+      setIsOpen(!isOpen)
+    }
+  }
 
   return {
     data,
@@ -199,7 +200,7 @@ export const useAdmin = () => {
     getAdminReports,
     dataReport,
     deletingSelectedDeslectCheckbox,
-    // closePopUpAndDeleteSelectedDeslectCheckBox,
+    closePopUpAndDeleteSelectedDeslectCheckBox,
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -211,8 +212,8 @@ export const useAdmin = () => {
     changeFilteringOptionId,
     unSelect, 
     nameFilter,
-    setNameFilter
-    // isOpen,
-    // setIsOpen
+    setNameFilter,
+    isOpen,
+    setIsOpen
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import './Users.css';
 
 import { Search } from 'Components/Layout/Search/Search';
@@ -17,8 +17,6 @@ import '.././Admin.css';
 
 
 export const Users = () => {
-
-  const [isOpen, setIsOpen] = useState(false);
   const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
     
   const { 
@@ -29,7 +27,7 @@ export const Users = () => {
     getAdminReports,
     dataReport,
     deletingSelectedDeslectCheckbox,
-    // closePopUpAndDeleteSelectedDeslectCheckBox, 
+    closePopUpAndDeleteSelectedDeslectCheckBox, 
     objectSelectedSetState, 
     selectedList, 
     setselectedList, 
@@ -41,9 +39,9 @@ export const Users = () => {
     changeFilteringOptionId,
     unSelect,
     nameFilter, 
-    setNameFilter
-    // isOpen,
-    // setIsOpen
+    setNameFilter,
+    isOpen,
+    setIsOpen
 } = useAdmin();
 
 
@@ -135,13 +133,6 @@ export const Users = () => {
     //sendNotification
   }
 
-  const dataObjectStatus = {
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList: selectedList,
-    isOpen:isOpen,
-    setIsOpen:setIsOpen
-  }
-
   return (
     <div className='container_admin'>
       <div className='visibility_menu_admin_vertical'>
@@ -166,7 +157,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} dataObjectStatus={dataObjectStatus} key={item.id}/>
+          <ObjectStatus userSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
