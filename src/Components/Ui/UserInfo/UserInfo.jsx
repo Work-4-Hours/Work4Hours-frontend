@@ -31,7 +31,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     setselectedList, 
     changeStatus,
     setChangeStatus,
-    idCheckboxDelete
   }=dataUsers;
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
@@ -56,8 +55,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     setselectedList:setselectedList,
     boardType:true,
     idStatus:idStatus,
-    idCheckboxDelete:idCheckboxDelete
-  }
+ }
 
   const dataReports = {
     numberReports: cantidadReportes,

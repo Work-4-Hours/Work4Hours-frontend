@@ -6,18 +6,14 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 export const ObjectStatus = ({userSelect, dataObjectStatus}) => {
   const {email, id, fotoUser, nombres, color}=userSelect;
   const photoData={name:nombres, color:color, userPicture:fotoUser};
-  const {deletingSelectedDeslectCheckbox,selectedList, isOpen, setIsOpen, setIdCheckboxDelete, checkboxIsCheck, setcheckboxIsCheck}=dataObjectStatus;
+  const {deletingSelectedDeslectCheckbox,selectedList, isOpen, setIsOpen}=dataObjectStatus;
   
   const closePopUpAndDeleteSelectedDeslectCheckBox = () => {
-    setIdCheckboxDelete(id);
     deletingSelectedDeslectCheckbox(id);
-    setcheckboxIsCheck(false)
     if(selectedList.length===0){
       setIsOpen(!isOpen)
     } 
   }
-
-
 
   return (
     <div className='object_status'>

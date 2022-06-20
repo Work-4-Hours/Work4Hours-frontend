@@ -10,12 +10,8 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     selectedList,
     setselectedList,
     boardType,
-    idStatus,
-    idCheckboxDelete,
-    checkboxIsCheck, 
-    setcheckboxIsCheck
-  } = dataCheckBoxAdmin;
-
+    idStatus
+  } = dataCheckBoxAdmin
 
   const [allObject, setallObject]=useState([]);
 
@@ -55,12 +51,10 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
  }
 
- console.log(idCheckboxDelete);
-
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} checked={checkboxIsCheck}  onClick={(e)=>validarcheckbox(e)}/>
+          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

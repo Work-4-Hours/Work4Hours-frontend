@@ -17,8 +17,6 @@ export const useAdmin = () => {
   const [validateSearchWord,setValidateSearchWord]=useState(true);
   const [idFilter, setIdFilter] = useState(0);
   const [validateToken,setValidateToken] = useState(true);
-  const [idCheckboxDelete, setIdCheckboxDelete] = useState(0);
-  const [checkboxIsCheck, setcheckboxIsCheck] = useState();
   // const [isOpen, setIsOpen] = useState(false);
   const { getToken} = useContext(AdminContext);
 
@@ -210,11 +208,7 @@ export const useAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect, 
-    idCheckboxDelete, 
-    setIdCheckboxDelete,
-    checkboxIsCheck, 
-    setcheckboxIsCheck
+    unSelect
     // isOpen,
     // setIsOpen
   }

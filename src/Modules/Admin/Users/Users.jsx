@@ -35,11 +35,7 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect, 
-    idCheckboxDelete, 
-    setIdCheckboxDelete,
-    checkboxIsCheck, 
-    setcheckboxIsCheck
+    unSelect
     // isOpen,
     // setIsOpen
 } = useAdmin();
@@ -65,13 +61,13 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray",
     logoutAdmin: logoutAdmin
   }
+  
   const dataSearch={
     nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers"
   }
-
 
   const dataFilter={
     changeFilteringOptionId:changeFilteringOptionId,
@@ -93,10 +89,7 @@ export const Users = () => {
     selectedList:selectedList, 
     setselectedList:setselectedList, 
     changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus,
-    idCheckboxDelete:idCheckboxDelete, 
-    checkboxIsCheck:checkboxIsCheck, 
-    setcheckboxIsCheck: setcheckboxIsCheck
+    setChangeStatus:setChangeStatus
   }
   
   const dashboardHeader = {
@@ -137,10 +130,7 @@ export const Users = () => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList: selectedList,
     isOpen:isOpen,
-    setIsOpen:setIsOpen,
-    setIdCheckboxDelete: setIdCheckboxDelete,
-    checkboxIsCheck: checkboxIsCheck, 
-    setcheckboxIsCheck: setcheckboxIsCheck
+    setIsOpen:setIsOpen
   }
 
   return (
