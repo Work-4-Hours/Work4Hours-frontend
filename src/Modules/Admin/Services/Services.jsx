@@ -35,7 +35,9 @@ export const Services = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    nameFilter,
+    setNameFilter
     // isOpen,
     // setIsOpen
   } = useAdmin();
@@ -64,7 +66,8 @@ export const Services = () => {
     nameSearch: "Búsqueda de Servicios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReportsServices",
-    searchString:"SearchServices"
+    searchString:"SearchServices",
+    nameFilter:nameFilter
   }
 
   const dataFilter={
@@ -74,7 +77,8 @@ export const Services = () => {
       {nombre:"Reportes",id:1},
       {nombre:"Nombre del servicio",id:2},
       {nombre:"Tipo",id:3}
-    ]
+    ],
+    setNameFilter:setNameFilter
   }
 
   const dashboardHeader = {

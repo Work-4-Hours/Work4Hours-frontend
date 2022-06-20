@@ -17,6 +17,7 @@ export const useAdmin = () => {
   const [validateSearchWord,setValidateSearchWord]=useState(true);
   const [idFilter, setIdFilter] = useState(0);
   const [validateToken,setValidateToken] = useState(true);
+  const [nameFilter, setNameFilter] = useState('');
   // const [isOpen, setIsOpen] = useState(false);
   const { getToken} = useContext(AdminContext);
 
@@ -208,7 +209,9 @@ export const useAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect, 
+    nameFilter,
+    setNameFilter
     // isOpen,
     // setIsOpen
   }

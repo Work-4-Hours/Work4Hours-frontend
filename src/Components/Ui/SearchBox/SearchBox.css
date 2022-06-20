@@ -14,4 +14,14 @@
     font-size: 1em;
     width: 100%;
 }
-
+.object_filter_selected{
+    background-color: var(--bg-popup-description);
+    border-radius: 10px;
+    display: flex;
+    color:var(--gray-text-2);
+    align-items: center;
+    gap: 0.5em;
+    padding: 1%;
+    width: 28%;
+    justify-content: space-between;
+}

@@ -35,7 +35,9 @@ export const Users = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect,
+    nameFilter, 
+    setNameFilter
     // isOpen,
     // setIsOpen
 } = useAdmin();
@@ -66,7 +68,8 @@ export const Users = () => {
     nameSearch: "Búsqueda de Usuarios",
     postWorkSearch:postWorkSearch,
     searchNumber:"generalSearchReports",
-    searchString:"SearchUsers"
+    searchString:"SearchUsers",
+    nameFilter:nameFilter,
   }
 
   const dataFilter={
@@ -77,7 +80,8 @@ export const Users = () => {
       {nombre:"Reportes",id:2},
       {nombre:"Correo",id:3},
       {nombre:"Nombres y Apellidos",id:4}
-    ]
+    ],
+    setNameFilter: setNameFilter
   }
 
   const dataUsers={
