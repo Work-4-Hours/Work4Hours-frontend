@@ -10,10 +10,7 @@
     flex-direction: column;
     gap: 2.5%;
 }
-.prueba100{
-    display: flex;
-    align-items: center;
-}
+
 /*size of the fileds of the dashboard*/
 
 .fieldSize3{width: 3%;}
@@ -33,10 +30,18 @@
     display: flex;
     gap: 2%;
     align-items: center;
-    background-color: var(--bg-checkbox-grey);
+
     border-radius: 1em;
     padding: 1%;
     margin-bottom: 1%;
+}
+
+.background_object_info{
+    background-color: var(--bg-checkbox-grey);
+}
+
+.background_object_info_automatic_suspension{
+    background-color: var(--bg-automatic-suspension);
 }
 
 /*popupConfirmChanges*/

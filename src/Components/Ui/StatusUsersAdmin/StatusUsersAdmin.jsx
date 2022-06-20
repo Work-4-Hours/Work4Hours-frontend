@@ -15,7 +15,8 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     numberReports,
     changeStatus,
     setChangeStatus,
-    setIdStatus
+    setIdStatus,
+    setNotificationAutomaticSuspension
   }=dataStatusAdmin;
 
   const [stateObject, setStateObject]=useState(nameStatus);
@@ -27,10 +28,12 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
   const changeState = (reportsNumber) => {
     if(reportsNumber >= 25){
+      setNotificationAutomaticSuspension("background_object_info_automatic_suspension")
       setStateObject("Suspendido por 3 días")
       setIdStateObject(2)
     }
     if(reportsNumber >= 50){
+      setNotificationAutomaticSuspension("background_object_info_automatic_suspension")
       setStateObject("Inhabilitado")
       setIdStateObject(3)
     }

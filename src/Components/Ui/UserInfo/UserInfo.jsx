@@ -8,6 +8,7 @@ import './UserInfo.css';
 
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
+  const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");
   
   const [idStatus, setIdStatus] = useState(0);
   const { 
@@ -45,7 +46,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
-    setIdStatus:setIdStatus
+    setIdStatus:setIdStatus,
+    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension
   }
 
   const dataCheckBoxAdmin={
@@ -68,7 +70,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
 
   return (
-    <div className='object_info'>
+    <div className={'object_info ' + notificationAutomaticSuspension}>
       <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20 hide hide2'>{apellidos}</p>
       <p className='ellipsis fieldSize20 hide'> {nombreUsuario}</p>
