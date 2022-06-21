@@ -2,7 +2,8 @@ import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
-
+  const [radioState, setRadioState] = useState(false);
+ 
   const {
     objectAll, 
     designCheckBoxAdmin, 
@@ -10,8 +11,9 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     selectedList,
     setselectedList,
     boardType,
-    idStatus
-  } = dataCheckBoxAdmin
+    idStatus,
+  } = dataCheckBoxAdmin;
+
 
   const [allObject, setallObject]=useState([]);
 
@@ -27,34 +29,61 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
       const datauser={
         idEstado:idStatus, 
         email:allObject.correo, 
-        id:allObject.idusuario, 
+        id:allObject.id, 
         fotoUser:allObject.fotop, 
         nombres:allObject.nombreUsuario, 
         color:allObject.color
       }
       setselectedList([...selectedList, datauser]);
+      // setLocalStorage(datauser);
+      
     }
     else if(e.target.checked && boardType===false){
       const dataServices={
         idEstado:idStatus,
-        id:allObject.idservicio,
+        id:allObject.id,
         nombre:allObject.nombreServicio
       }
       setselectedList([...selectedList, dataServices]);
     }
     else if(!e.target.checked && boardType===true){ 
-      deletingSelectedDeslectCheckbox(allObject.idusuario);
+      deletingSelectedDeslectCheckbox(allObject.id);
+      
     }
     else{
-      deletingSelectedDeslectCheckbox(allObject.idservicio);
+      deletingSelectedDeslectCheckbox(allObject.id);
     }
 
  }
 
+ //unselect checkbox 
+ const uncheck =(e)=>{
+   return e.target.checked=false;
+  }
+  //select check box 
+  const check =(e)=>{
+  return e.target.checked=true;
+ }
+ //With each click the check box is activated or deactivated
+ const changeCheckboxStatus=(e)=>{
+  if(radioState===false){
+    check(e);
+    setRadioState(true);
+  }
+  else{
+    uncheck(e);
+    setRadioState(false);
+  }
+  validarcheckbox(e)
+ }
+
+
+
+ //cambiar el id por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} onClick={(e)=>validarcheckbox(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.id} name={allObject.id} onClick={(e)=>changeCheckboxStatus(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

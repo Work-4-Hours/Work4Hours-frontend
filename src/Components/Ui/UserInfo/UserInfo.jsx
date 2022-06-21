@@ -9,7 +9,6 @@ import './UserInfo.css';
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");
-  
   const [idStatus, setIdStatus] = useState(0);
   const { 
     fotop, 
@@ -19,7 +18,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     cantidadReportes, 
     idEstado,
     nombre_estado, 
-    idusuario, 
+    id, 
     color
   } = objectAllUsers;
 
@@ -39,7 +38,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
-    idObject:idusuario,
+    idObject:id,
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
@@ -47,7 +46,8 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
     setIdStatus:setIdStatus,
-    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension
+    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension,
+
   }
 
   const dataCheckBoxAdmin={
@@ -58,11 +58,12 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     setselectedList:setselectedList,
     boardType:true,
     idStatus:idStatus,
- }
+
+  }
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idObject: idusuario, 
+    idObject: id, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
     typeReport:"ReportsUsers"
@@ -77,7 +78,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
-      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
+      <CheckBoxAdmin  dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    
   )
 }

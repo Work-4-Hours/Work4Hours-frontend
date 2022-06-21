@@ -12,13 +12,14 @@ import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContent
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
+    const [detectChangeStatus, setDetectChangeStatus] = useState(false);
     
     const {
         setData,
         getAdmin,
+        data,
         selectedList, 
         setselectedList,
-        valueButton,
         token,
         email,
         typePetition,
@@ -41,11 +42,25 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     }
 
     const popUpOpen = () => {
+        let detectChangeStatus = false;
         if(selectedList.length===0){
             Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
         }
         else{
-            setIsOpen(!isOpen);
+            selectedList.map(item=>{
+                const result = data.filter(object => object.id === item.id && object.idEstado!==item.idEstado);
+                if(result.length>0){
+                    detectChangeStatus = true;
+                }
+            })
+            if(detectChangeStatus){
+                setIsOpen(!isOpen);
+            }
+            else{
+                Alert("No se registran cambios de estados", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
+            }
+            
+            
         }
     }
 
@@ -94,7 +109,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={() => {setIsOpen(!isOpen)}} />
-                                <Button value={valueButton} onClick={(e)=>{sendObjects(e);}}/>
+                                <Button value="Actualizar" onClick={(e)=>{sendObjects(e);}}/>
                             </div>
                         </div>
                     </div>
