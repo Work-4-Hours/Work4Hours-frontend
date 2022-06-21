@@ -6,7 +6,10 @@ export const ObjectDelete = ({servicesSelect, deletingSelectedDeslectCheckbox}) 
   return (
     <div className='object_status'>
       <p>{nombre}</p>
-      <BsX className='delete_user_status' onClick={()=>{deletingSelectedDeslectCheckbox(id)}}/>
+      <label>
+        <input type="radio" className='cb_confirm_changes' name={id} onClick={()=>{deletingSelectedDeslectCheckbox(id)}}/>
+        <span className='delete_user_status' >X</span>
+      </label>
     </div>
   )
 }

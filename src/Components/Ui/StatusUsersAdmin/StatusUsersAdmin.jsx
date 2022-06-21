@@ -88,7 +88,7 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
         <div className='content_options content_status_users'>
           <h5 className='spacing'>Estados del usuario</h5>
           {
-            data?.filter(item=>item.id!==4).map(item=>(<OptionStatusUserAdmin objectAllStatus={item} dataOptionStatusUserAdmin={dataOptionStatusUserAdmin} key={item.id}/>))
+            data?.filter(item=>item.id<=3).map(item=>(<OptionStatusUserAdmin objectAllStatus={item} dataOptionStatusUserAdmin={dataOptionStatusUserAdmin} key={item.id}/>))
           }
         </div>
       </PopUp>

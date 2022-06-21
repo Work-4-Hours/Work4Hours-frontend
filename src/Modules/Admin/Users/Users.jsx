@@ -121,7 +121,7 @@ export const Users = () => {
       {searchAdmin.validateSearchWord ?
         <Dashboard componetContent={
           adminGet.data?.map(item=>
-            <UserInfo  objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>  
+            <UserInfo  objectAllUsers={item} dataUsers={dataUsers} key={item.id}/>  
           )}
         />
         :

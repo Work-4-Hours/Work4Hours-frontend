@@ -11,7 +11,7 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 
 export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
-  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
+  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, id, idusuario,idEstado,color}=objectServiceInfo;
   
   const {objectAllStatus,
     getAdminReports,
@@ -31,7 +31,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idObject: idservicio, 
+    idObject: id, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
     typeReport:"ReportsServices"
@@ -39,7 +39,7 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState,
-    idObject:idservicio, 
+    idObject:id, 
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 

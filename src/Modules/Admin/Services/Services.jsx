@@ -91,6 +91,7 @@ export const Services = () => {
 
   const dataPopupConfirmChanges = {
     getAdmin:adminGet.getAdmin,
+    data:adminGet.data,
     setData:adminGet.setData,
     selectedList:statusAdmin.selectedList, 
     setselectedList: statusAdmin.setselectedList,
@@ -117,7 +118,7 @@ export const Services = () => {
           searchAdmin.validateSearchWord ?
           <Dashboard componetContent={
             adminGet.data?.map(item=>(
-              <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
+              <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.id}/>)
             ) }/>
           :
           <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>

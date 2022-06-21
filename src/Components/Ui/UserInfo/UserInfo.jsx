@@ -18,7 +18,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     cantidadReportes, 
     idEstado,
     nombre_estado, 
-    idusuario, 
+    id, 
     color
   } = objectAllUsers;
 
@@ -38,7 +38,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState, 
-    idObject:idusuario,
+    idObject:id,
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
@@ -63,7 +63,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idObject: idusuario, 
+    idObject: id, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
     typeReport:"ReportsUsers"

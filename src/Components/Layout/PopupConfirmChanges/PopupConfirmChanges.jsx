@@ -46,9 +46,8 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
         }
         else{
-            //cambiar por idusuario a id
             selectedList.map(item=>{
-                const result = data.filter(object => object.idusuario === item.id && object.idEstado!==item.idEstado);
+                const result = data.filter(object => object.id === item.id && object.idEstado!==item.idEstado);
                 if(result.length>0){
                     detectChangeStatus = true;
                 }

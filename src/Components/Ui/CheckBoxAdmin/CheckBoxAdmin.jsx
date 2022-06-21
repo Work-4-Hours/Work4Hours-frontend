@@ -30,7 +30,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
       const datauser={
         idEstado:idStatus, 
         email:allObject.correo, 
-        id:allObject.idusuario, 
+        id:allObject.id, 
         fotoUser:allObject.fotop, 
         nombres:allObject.nombreUsuario, 
         color:allObject.color
@@ -42,17 +42,17 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     else if(e.target.checked && boardType===false){
       const dataServices={
         idEstado:idStatus,
-        id:allObject.idservicio,
+        id:allObject.id,
         nombre:allObject.nombreServicio
       }
       setselectedList([...selectedList, dataServices]);
     }
     else if(!e.target.checked && boardType===true){ 
-      deletingSelectedDeslectCheckbox(allObject.idusuario);
+      deletingSelectedDeslectCheckbox(allObject.id);
       
     }
     else{
-      deletingSelectedDeslectCheckbox(allObject.idservicio);
+      deletingSelectedDeslectCheckbox(allObject.id);
     }
  }
 
@@ -79,11 +79,11 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
 
 
- //cambiar el idusuario por id
+ //cambiar el id por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="radio" className='cb_confirm_changes' id={allObject.idusuario} name={allObject.idusuario} onClick={(e)=>changeCheckboxStatus(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.id} name={allObject.id} onClick={(e)=>changeCheckboxStatus(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

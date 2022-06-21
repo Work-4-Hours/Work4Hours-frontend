@@ -2,9 +2,10 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useAdminValidateToken } from './useAdminValidateToken';
-const apiAdmin = process.env.REACT_APP_API_ADMIN;
+const apiAdmin = process.env.REACT_APP_API_ADMIN2;
 
 export const useGetAdmin = () => {
+
     const { validateToken } = useAdminValidateToken();
     const [data, setData] = useState([]);
     const [dataState, setDataState] = useState([]);
