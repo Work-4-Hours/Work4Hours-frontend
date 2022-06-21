@@ -65,12 +65,14 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                         console.log(response);
                         setselectedList([]);
                         setIsOpen(!isOpen);
+                        setPasswordAdmin('');
                         Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    
                         setData(getAdmin(typePetition));
                     })
                     .catch(e => {console.log(e);})
                 }
                 else{
+                    setPasswordAdmin('');
                     Alert("Error", "La contraseña ingresada es incorrecta no se pueden realizar cambios.", "error", "Ok");
                 }
             })
