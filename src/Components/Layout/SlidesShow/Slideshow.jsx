@@ -10,12 +10,11 @@ const Slideshow = ({
 		velocidad="700",
 		intervalo="5000"
 	}) => {
-	const 	slideshow = useRef(null);
+	const slideshow = useRef(null);
 	const intervaloSlideshow = useRef(null);
 
 	const siguiente = useCallback(() => {
-		if(slideshow.current.children.length > 0){
-			console.log('Siguiente')
+		if(slideshow.current.children?.length > 0){
 
 			const primerElemento = slideshow.current.children[0];
 
