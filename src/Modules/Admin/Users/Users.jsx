@@ -53,8 +53,8 @@ export const Users = () => {
     postWorkSearch:searchAdmin.postWorkSearch,
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers",
-    nameFilter:nameFilter,
-    setNameFilter:setNameFilter
+    nameFilter:searchAdmin.nameFilter,
+    setNameFilter:searchAdmin.setNameFilter
   }
 
   const dataFilter={
@@ -66,7 +66,7 @@ export const Users = () => {
       {nombre:"Correo",id:3},
       {nombre:"Nombres y Apellidos",id:4}
     ],
-    setNameFilter: setNameFilter
+    setNameFilter: searchAdmin.setNameFilter
   }
 
   const dataUsers={
@@ -105,9 +105,9 @@ export const Users = () => {
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Users",
-    typeAdmin: "usuario", 
-    isOpen: isOpen,
-    setIsOpen: setIsOpen
+    typeAdmin: "usuario",
+    isOpen:statusAdmin.isOpen,
+    setIsOpen:statusAdmin.setIsOpen,
     //sendNotification
   }
 
@@ -135,7 +135,7 @@ export const Users = () => {
     }
       <PopupConfirmChanges objectContent={
         statusAdmin.selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={statusAdmin.deletingSelectedDeslectCheckbox} key={item.id}/>
+          <ObjectStatus userSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

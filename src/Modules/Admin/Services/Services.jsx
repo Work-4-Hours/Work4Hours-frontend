@@ -1,4 +1,4 @@
-import React,{useState, useEffect,useContext} from 'react';
+import React,{useEffect,useContext} from 'react';
 
 import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
 import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
@@ -50,8 +50,8 @@ export const Services = () => {
     postWorkSearch:searchAdmin.postWorkSearch,
     searchNumber:"generalSearchReportsServices",
     searchString:"SearchServices",
-    nameFilter:nameFilter,
-    setNameFilter:setNameFilter
+    nameFilter:searchAdmin.nameFilter,
+    setNameFilter:searchAdmin.setNameFilter
   }
 
   const dataFilter={
@@ -62,7 +62,7 @@ export const Services = () => {
       {nombre:"Nombre del servicio",id:2},
       {nombre:"Tipo",id:3}
     ],
-    setNameFilter:setNameFilter
+    setNameFilter:searchAdmin.setNameFilter
   }
 
   const dataServices={
@@ -101,17 +101,8 @@ export const Services = () => {
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Services",
-    typeAdmin: "servicio", 
-    isOpen: isOpen,
-    setIsOpen: setIsOpen
+    typeAdmin: "servicio"
     //sendNotification
-  }
-
-  const dataObjectDelete = {
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList,
-    isOpen:isOpen,
-    setIsOpen:setIsOpen
   }
 
   return (
@@ -137,7 +128,7 @@ export const Services = () => {
         }
         <PopupConfirmChanges objectContent={
         statusAdmin.selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={statusAdmin.deletingSelectedDeslectCheckbox} key={item.id}/>
+          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

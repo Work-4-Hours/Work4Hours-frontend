@@ -6,7 +6,7 @@ import './FilterObjectAdmin.css'
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const FilterObjectAdmin = ({dataFilter}) => {
-    const{changeFilteringOptionId,unSelect,data, nameFilter, setNameFilter}=dataFilter;
+    const{changeFilteringOptionId,unSelect,data,setNameFilter}=dataFilter;
     const [isOpen, setIsOpen] = useState(false);
 
     const dataOptionFilter={

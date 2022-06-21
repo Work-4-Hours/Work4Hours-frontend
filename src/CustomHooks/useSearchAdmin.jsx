@@ -9,6 +9,7 @@ export const useSearchAdmin = () => {
     const [searchWord,setSearchWord]=useState([]);
     const [validateSearchWord,setValidateSearchWord]=useState(true);
     const [idFilter, setIdFilter] = useState(0);
+    const [nameFilter, setNameFilter] = useState('');
 
     //Array validation whether or not the query brings data
     const validateDataPostWorkSearch=(response)=>{
@@ -97,6 +98,8 @@ export const useSearchAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect
+    unSelect, 
+    nameFilter, 
+    setNameFilter
   }
 }

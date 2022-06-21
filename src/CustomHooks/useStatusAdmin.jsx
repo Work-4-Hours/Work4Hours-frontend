@@ -3,6 +3,7 @@ import { useState } from "react";
 export const useStatusAdmin = () => {
     const [selectedList, setselectedList]=useState([]);
     const [changeStatus, setChangeStatus]=useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     //Removal of objects in the selection of checkboxes
     const deletingSelectedDeslectCheckbox =(id)=>{
@@ -28,12 +29,23 @@ export const useStatusAdmin = () => {
     }
     }
 
+    // Validation to close popup when selectList is empty
+    const closePopUpAndDeleteSelectedDeslectCheckBox = (id) => {
+        deletingSelectedDeslectCheckbox(id);
+        if(selectedList.length===0){
+        setIsOpen(!isOpen)
+        }
+    }
+
     return {
         deletingSelectedDeslectCheckbox, 
         objectSelectedSetState, 
         selectedList, 
         setselectedList, 
         changeStatus,
-        setChangeStatus
+        setChangeStatus,
+        closePopUpAndDeleteSelectedDeslectCheckBox,
+        isOpen,
+        setIsOpen
     }
 }
