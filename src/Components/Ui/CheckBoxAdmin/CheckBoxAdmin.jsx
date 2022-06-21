@@ -2,8 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
-
-
+ 
   const {
     objectAll, 
     designCheckBoxAdmin, 
@@ -50,15 +49,18 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     }
     else if(!e.target.checked && boardType===true){ 
       deletingSelectedDeslectCheckbox(allObject.idusuario);
+      
     }
     else{
       deletingSelectedDeslectCheckbox(allObject.idservicio);
     }
  }
+
+ //cambiar el idusuario por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id} onClick={(e)=>validarcheckbox(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.idusuario} name={allObject.idusuario} onClick={(e)=>validarcheckbox(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

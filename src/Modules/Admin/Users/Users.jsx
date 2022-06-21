@@ -106,6 +106,10 @@ export const Users = () => {
     //sendNotification
   }
 
+  const pruebasifunciona = () => {
+    
+  }
+
 
   return (
     <div className='container_admin'>
@@ -122,7 +126,7 @@ export const Users = () => {
       {searchAdmin.validateSearchWord ?
         <Dashboard componetContent={
           adminGet.data?.map(item=>
-            <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>  
+            <UserInfo  objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>  
           )}
         />
         :

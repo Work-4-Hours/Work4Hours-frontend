@@ -78,7 +78,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
       <p className='ellipsis fieldSize17'>{correo}</p>
       <InfoReportAdmin dataReports={dataReports} />
       <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
-      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
+      <CheckBoxAdmin  dataCheckBoxAdmin={dataCheckBoxAdmin}/>
     </div>    
   )
 }
