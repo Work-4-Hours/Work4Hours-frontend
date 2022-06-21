@@ -3,7 +3,8 @@ import IconChecked from 'Assets/Icons/IconChecked.png'
 import IconDanger from 'Assets/Icons/IconDanger.png'
 import { ReactComponent as IconEdit } from 'Assets/Icons/IconEdit.svg'
 import { ReactComponent as IconDelete } from 'Assets/Icons/IconDelete.svg'
-import { useNavigate } from 'react-router-dom'
+import { ReactComponent as IconVisibility } from 'Assets/Icons/IconVisibility.svg'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
 import { sha256 } from 'js-sha256'
 import { useManageServices } from 'CustomHooks/useManageServices'
@@ -15,12 +16,18 @@ export const CardServiceAdmin = ({ service = {} }) => {
     const navigate = useNavigate()
 
     const [value, setValue] = useLocalStorage(sha256('idservice'), null)
+    const [serviceInfo, setServiceInfo] = useLocalStorage(sha256('serviceinfo'), null)
 
     const { data, loading, deleteService } = useManageServices()
 
     const updateService = () => {
         setValue({ id: service.id, service })
         navigate('/dashboard/update-service')
+    }
+
+    const appeal = () => {
+        setServiceInfo(service)
+        navigate('/claim')
     }
 
     return (
@@ -48,6 +55,34 @@ export const CardServiceAdmin = ({ service = {} }) => {
                                 <p className='value_not_report'>No hay reportes</p>
                             </div>
                     }
+                </div>
+
+
+                <div className="visibility_card_service_dashboard">
+                    {
+                        service.status == 4 &&
+                        <div className="info_visibility_card_service_dashboard">
+                            <IconVisibility className='icon_visibility'/>
+                            <p className='text_visibility_card_service'>Visible</p>
+                        </div>
+                    }   
+                    {
+                        service.status == 5 &&
+                         <div className="info_visibility_card_service_dashboard">
+                            <IconVisibility className='icon_visibility'/>
+                            <p className='text_visibility_card_service'>Borrador</p>
+                        </div>
+                    }
+                    
+                    {
+                        service.status == 1 &&
+                         <div className="info_visibility_card_service_dashboard">
+                            <IconVisibility className='icon_visibility'/>
+                            <p className='text_visibility_card_service'>Reportado</p>
+                            <p onClick={appeal}>Apelar</p>
+                        </div>
+                    }
+
                 </div>
             </div>
 

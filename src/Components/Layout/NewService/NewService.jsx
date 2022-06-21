@@ -60,7 +60,7 @@ export const NewService = () => {
                         <SelectTextLabel
                             titleLabel='Visualizacion'
                             nameSelect='Tipo de de visualizacion'
-                            options={[{ id: 1, name: "Visible" }, { id: 3, name: "Borrador" }]}
+                            options={[{ id: 4, name: "Visible" }, { id: 5, name: "Borrador" }]}
 
                             onChange={(e) => setStatus(e.target.value)}
                         />

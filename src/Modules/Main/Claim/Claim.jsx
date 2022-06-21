@@ -6,18 +6,43 @@ import { InputTextarea } from 'Components/Ui/InputTextarea/InputTextarea'
 import { Button } from 'Components/Ui/Button/Button'
 import IconDanger from 'Assets/Icons/IconDanger.png'
 import './Claim.css'
+import { useLocalStorage } from 'CustomHooks/useLocalStorage'
+import { sha256 } from 'js-sha256'
+import { UserContext } from 'Context/UserContext'
+import { useContext } from 'react'
 
 
 export const Claim = () => {
-    const service = {
-        price: "200.000",
-        image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-        city: "Armenia",
-        departament: "Quindio",
-        title: "Pinto casas a domicilio",
-        denuncia: "Contenido ofensivo",
-        description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus"
+    const [service, setValue] = useLocalStorage(sha256('serviceinfo'), null)
+    const { getJwt } = useContext(UserContext)
+    // const service = {
+    //     price: "200.000",
+    //     image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
+    //     city: "Armenia",
+    //     departament: "Quindio",
+    //     title: "Pinto casas a domicilio",
+    //     denuncia: "Contenido ofensivo",
+    //     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus"
+    // }
+
+    const appeal = async () => {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/appeal`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            },
+            body: JSON.stringify({
+                
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch()
+            .finally()
     }
+
     return (
         <>
         <Header/>
@@ -29,11 +54,11 @@ export const Claim = () => {
                             <img className='icon_danger' src={IconDanger} alt="" />
                             <p className='reason_claim'>Servicio suspendido por {service.denuncia}</p>
                         </div>
-                        <p className="name_service_claim">{service.title}</p>
+                        <p className="name_service_claim">{service.name}</p>
                         <p className="description_service_claim">{service.description}</p>
                     </div>
                     <div className="image_info_service_claim">
-                        <img className='image_service_claim' src={service.image} alt="" />
+                        <img className='image_service_claim' src={service.photo} alt="" />
                     </div>
                 </DivShadow>
                 <DivShadow className='service_claim'>

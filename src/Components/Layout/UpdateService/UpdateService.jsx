@@ -73,7 +73,7 @@ export const UpdateService = () => {
                         <SelectTextLabel
                             titleLabel='Visualizacion'
                             nameSelect='Tipo de de visualizacion'
-                            options={[{ id: 1, name: "Visible" }, { id: 4, name: "Borrador" }]}
+                            options={[{ id: 4, name: "Visible" }, { id: 5, name: "Borrador" }]}
 
                             onChange={(e) => setStatus(e.target.value)}
                         />

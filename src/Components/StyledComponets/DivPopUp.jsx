@@ -7,6 +7,7 @@ export const DivPopUp = styled.div`
     background:  var(--color-gradient-2);
     display: ${props => props.isOpen ? 'block' : 'none'};
     z-index: 2;
+    animation: var(--animation-show-slow) 200ms;
 /* 
     display: flex;
     justify-content: center;
