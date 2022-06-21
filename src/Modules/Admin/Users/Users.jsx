@@ -106,11 +106,6 @@ export const Users = () => {
     //sendNotification
   }
 
-  const pruebasifunciona = () => {
-    
-  }
-
-
   return (
     <div className='container_admin'>
       <div className='visibility_menu_admin_vertical'>

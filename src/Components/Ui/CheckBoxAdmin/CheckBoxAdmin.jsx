@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
+  const [radioState, setRadioState] = useState(false);
  
   const {
     objectAll, 
@@ -25,7 +26,6 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
 
  
   const validarcheckbox=(e)=>{
-
     if(e.target.checked && boardType===true){
       const datauser={
         idEstado:idStatus, 
@@ -56,11 +56,34 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     }
  }
 
+ //unselect checkbox 
+ const uncheck =(e)=>{
+   return e.target.checked=false;
+  }
+  //select check box 
+  const check =(e)=>{
+  return e.target.checked=true;
+ }
+ //With each click the check box is activated or deactivated
+ const changeCheckboxStatus=(e)=>{
+  if(radioState===false){
+    check(e);
+    setRadioState(true);
+  }
+  else{
+    uncheck(e);
+    setRadioState(false);
+  }
+  validarcheckbox(e)
+ }
+
+
+
  //cambiar el idusuario por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="radio" className='cb_confirm_changes' id={allObject.idusuario} name={allObject.idusuario} onClick={(e)=>validarcheckbox(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.idusuario} name={allObject.idusuario} onClick={(e)=>changeCheckboxStatus(e)}/>
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>
