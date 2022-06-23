@@ -37,13 +37,13 @@ export const useSearchAdmin = () => {
             }
             }
             else{
-            if(validateToken){
-                axios.post(`${apiAdmin}/api/${searchString}?value=${event.target.value}`)
-                .then(response=>{
-                validateDataPostWorkSearch(response)
-                })
-                .catch(e=>{console.log(e)})
-            }
+                if(validateToken){
+                    axios.post(`${apiAdmin}/api/${searchString}?value=${event.target.value}`)
+                    .then(response=>{
+                    validateDataPostWorkSearch(response)
+                    })
+                    .catch(e=>{console.log(e)})
+                }
             }
         }
         else{
@@ -84,13 +84,13 @@ export const useSearchAdmin = () => {
 
     //Update the id of the filter option
     const changeFilteringOptionId=(e)=>{
-    setIdFilter(e.target.id);
+        setIdFilter(e.target.id);
     }
 
     //Deselects an option by setting the initial state
     const unSelect = (e) => {
-    setIdFilter(0);
-    return e.target.checked = false
+        setIdFilter(0);
+        return e.target.checked = false
     }
 
   return {
