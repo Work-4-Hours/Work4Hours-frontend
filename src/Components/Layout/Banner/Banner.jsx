@@ -8,7 +8,7 @@ export const Banner = ({ banners }) => {
 
     return (
         <div className='banner'>
-            <Slideshow controles={true} autoplay={true}>
+            <Slideshow controles={false} autoplay={true}>
                 {
                     banners?.map((item, index) => (
                         <Slide key={index}>
@@ -16,8 +16,10 @@ export const Banner = ({ banners }) => {
                                 <img src={item.image} alt="" />
                             </a>
                             <TextoSlide>
-                                <h1 className='title_info_banner'>{item.title}</h1>
-                                <p className='paragraph_info_banner'>{item.information}</p>
+                                <div className="limit_info_banner">
+                                    <h1 className='title_info_banner'>{item.title}</h1>
+                                    <p className='paragraph_info_banner'>{item.information}</p>
+                                </div>
                             </TextoSlide>
                         </Slide>
                     ))

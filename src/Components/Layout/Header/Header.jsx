@@ -25,7 +25,7 @@ export const Header = () => {
         logout()
         navigate('/')
     }
-    
+
     const ocult = () => {
         setIsOcult(!isOcult)
     }
@@ -35,8 +35,7 @@ export const Header = () => {
 
             {
                 isAuth() && (
-                    <DivPopUp isOpen={isOcultProfile} >
-                        <div className="ocult_popup" onClick={() => setIsOcultProfile(false)}></div>
+                    <DivPopUp className='profile_popup' isOpen={isOcultProfile} >
                         <div className="center_popup_profile">
                             <DivShadow className='popup_profile'>
                                 <div className="padding_info_user">
@@ -66,6 +65,7 @@ export const Header = () => {
                                 </div>
                             </DivShadow>
                         </div>
+                        <div className="ocult_popup" onClick={() => setIsOcultProfile(false)}></div>
                     </DivPopUp>
                 )
             }

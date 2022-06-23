@@ -109,7 +109,7 @@ const Slide = styled.div`
 	height: 100%;
 	overflow: hidden;
 	transition: .3s ease all;
-	z-index: 10;
+	z-index: 1;
 	/* max-height: 500px; */
 	position: relative;
 
@@ -122,9 +122,9 @@ const Slide = styled.div`
 `;
 
 const TextoSlide = styled.div`
-	background: ${props => props.colorFondo ? props.colorFondo : '#000000a4'};
+	background: ${props => props.colorFondo ? props.colorFondo : ' linear-gradient(90deg,#292929 4%,rgba(41,41,41,.79) 24%,rgba(41,41,41,.479) 42%,rgba(41,41,41,0) 57%)'};
 	color: ${props => props.colorTexto ? props.colorTexto : '#fff'};
-	width: 40%;
+	width: 100%;
 	height: 100%;
 	padding: 20px;
 	position: absolute;
