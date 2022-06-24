@@ -9,7 +9,7 @@ export const OptionFilterUserAdmin = ({option, dataOptionFilter}) => {
     <div className='typ_report'>
         <p>{nombre}</p>
         <label>
-          <input type="radio" id={id} name="filters" className='checkbox_admin_filter' onDoubleClick={(e)=>{unSelect(e); setNameFilter('')}} onClick={(e)=>{setNameFilter(nombre); console.log(e);}} />
+          <input type="radio" id={id} name="filter"  className='checkbox_admin_filter' onDoubleClick={(e)=>{unSelect(e); setNameFilter('')}} onClick={(e)=>{setNameFilter(nombre); console.log(e);}} />
         </label>
     </div>
   )

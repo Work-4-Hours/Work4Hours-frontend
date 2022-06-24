@@ -8,7 +8,7 @@ export const Search = ({dataSearch, dataFilter, visible}) => {
   
   return (
     <div className={"search_filter_admin_users " + visible}>
-      <SearchBox dataSearch={dataSearch} dataFilter={dataFilter}/>
+      <SearchBox dataSearch={dataSearch}/>
       <FilterObjectAdmin dataFilter={dataFilter}/>
     </div>
   )
