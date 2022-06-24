@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Alert } from 'Components/Ui/Alert';
 import { useState } from 'react';
 import { useAdminValidateToken } from './useAdminValidateToken';
-const apiAdmin = process.env.REACT_APP_API_ADMIN2;
+const apiAdmin = process.env.REACT_APP_API_ADMIN;
 
 export const useSearchAdmin = () => {
     const { validateToken } = useAdminValidateToken();

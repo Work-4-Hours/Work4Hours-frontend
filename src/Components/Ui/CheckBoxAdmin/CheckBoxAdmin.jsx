@@ -3,13 +3,16 @@ import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   const [radioState, setRadioState] = useState(false);
- 
+
   const {
     objectAll, 
     designCheckBoxAdmin, 
     deletingSelectedDeslectCheckbox,
     selectedList,
     setselectedList,
+    localSelectedList, 
+    setLocalselectedList, 
+    removeLocalSelectList,
     boardType,
     idStatus,
   } = dataCheckBoxAdmin;
@@ -35,7 +38,8 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         color:allObject.color
       }
       setselectedList([...selectedList, datauser]);
-      // setLocalStorage(datauser);
+      setLocalselectedList(selectedList)
+      console.log(localSelectedList)
       
     }
     else if(e.target.checked && boardType===false){
@@ -77,9 +81,6 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   validarcheckbox(e)
  }
 
-
-
- //cambiar el id por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>

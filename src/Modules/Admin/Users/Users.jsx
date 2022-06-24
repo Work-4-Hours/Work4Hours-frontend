@@ -76,7 +76,10 @@ export const Users = () => {
     deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:statusAdmin.objectSelectedSetState, 
     selectedList:statusAdmin.selectedList, 
-    setselectedList:statusAdmin.setselectedList, 
+    setselectedList:statusAdmin.setselectedList,
+    localSelectedList:statusAdmin.localSelectedList, 
+    setLocalselectedList:statusAdmin.setLocalselectedList, 
+    removeLocalSelectList:statusAdmin.removeLocalSelectList, 
     changeStatus:statusAdmin.changeStatus,
     setChangeStatus:statusAdmin.setChangeStatus
   }
