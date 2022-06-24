@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+
 
 
 export const useStatusAdmin = () => {
     const [selectedList, setselectedList]=useState([]);
-    const [localSelectedList, setLocalselectedList, removeLocalSelectList]=useLocalStorage("selectList",selectedList);
     const [changeStatus, setChangeStatus]=useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -44,10 +43,7 @@ export const useStatusAdmin = () => {
         deletingSelectedDeslectCheckbox, 
         objectSelectedSetState, 
         selectedList, 
-        setselectedList,
-        localSelectedList, 
-        setLocalselectedList, 
-        removeLocalSelectList, 
+        setselectedList, 
         changeStatus,
         setChangeStatus,
         closePopUpAndDeleteSelectedDeslectCheckBox,

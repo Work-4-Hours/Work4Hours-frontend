@@ -30,9 +30,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     objectSelectedSetState, 
     selectedList, 
     setselectedList,
-    localSelectedList, 
-    setLocalselectedList, 
-    removeLocalSelectList, 
     changeStatus,
     setChangeStatus,
   }=dataUsers;
@@ -59,9 +56,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
     selectedList:selectedList, 
     setselectedList:setselectedList,
-    localSelectedList:localSelectedList, 
-    setLocalselectedList:setLocalselectedList, 
-    removeLocalSelectList:removeLocalSelectList,
     boardType:true,
     idStatus:idStatus,
 

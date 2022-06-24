@@ -10,9 +10,6 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     deletingSelectedDeslectCheckbox,
     selectedList,
     setselectedList,
-    localSelectedList, 
-    setLocalselectedList, 
-    removeLocalSelectList,
     boardType,
     idStatus,
   } = dataCheckBoxAdmin;
@@ -37,10 +34,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         nombres:allObject.nombreUsuario, 
         color:allObject.color
       }
-      setselectedList([...selectedList, datauser]);
-      setLocalselectedList(selectedList)
-      console.log(localSelectedList)
-      
+      setselectedList([...selectedList, datauser]);   
     }
     else if(e.target.checked && boardType===false){
       const dataServices={

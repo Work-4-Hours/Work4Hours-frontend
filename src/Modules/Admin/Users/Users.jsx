@@ -40,7 +40,7 @@ export const Users = () => {
     }
   },[searchAdmin.searchWord]) 
 
-
+  console.log(statusAdmin.selectedList)
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
@@ -77,9 +77,6 @@ export const Users = () => {
     objectSelectedSetState:statusAdmin.objectSelectedSetState, 
     selectedList:statusAdmin.selectedList, 
     setselectedList:statusAdmin.setselectedList,
-    localSelectedList:statusAdmin.localSelectedList, 
-    setLocalselectedList:statusAdmin.setLocalselectedList, 
-    removeLocalSelectList:statusAdmin.removeLocalSelectList, 
     changeStatus:statusAdmin.changeStatus,
     setChangeStatus:statusAdmin.setChangeStatus
   }
