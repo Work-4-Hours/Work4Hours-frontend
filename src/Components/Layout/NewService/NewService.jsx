@@ -56,7 +56,6 @@ export const NewService = () => {
                     <InputTextLabel titleLabel='Nombre del servicio'  {...name} placeholder='Profesor' />
 
                     <InputTextLabel titleLabel='Precio del servicio'  {...price} placeholder='000000' />
-                    <input type="text" />
                     <section className="state_new_service">
 
                         <SelectTextLabel

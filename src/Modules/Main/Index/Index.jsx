@@ -14,6 +14,7 @@ import { Button } from "Components/Ui/Button/Button"
 import { Slide, Slideshow, TextoSlide } from "Components/Layout/SlidesShow/Slideshow"
 import { BannerSlideShow } from "Components/Layout/BannerSlideShow/BannerSlideShow"
 import { CardInterest } from "Components/Ui/Cards/CardInterest/CardInterest"
+import { Footer } from "Components/Layout/Footer/Footer"
 
 export const Index = () => {
 
@@ -80,6 +81,7 @@ export const Index = () => {
                     </div>
                 </section>
             </main>
+            <Footer/>
         </>
     )
 }
