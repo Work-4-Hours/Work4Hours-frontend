@@ -5,7 +5,6 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
-
 export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
   const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");

@@ -1,8 +1,10 @@
+import { useDescheckByClic } from 'CustomHooks/useDescheckByClic';
 import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   const [radioState, setRadioState] = useState(false);
+  const descheck = useDescheckByClic();
  
   const {
     objectAll, 
@@ -53,31 +55,20 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     else{
       deletingSelectedDeslectCheckbox(allObject.id);
     }
-
  }
 
- //unselect checkbox 
- const uncheck =(e)=>{
-   return e.target.checked=false;
-  }
-  //select check box 
-  const check =(e)=>{
-  return e.target.checked=true;
- }
  //With each click the check box is activated or deactivated
  const changeCheckboxStatus=(e)=>{
   if(radioState===false){
-    check(e);
+    descheck.check(e);
     setRadioState(true);
   }
   else{
-    uncheck(e);
+    descheck. uncheck(e);
     setRadioState(false);
   }
   validarcheckbox(e)
  }
-
-
 
  //cambiar el id por id
   return (
