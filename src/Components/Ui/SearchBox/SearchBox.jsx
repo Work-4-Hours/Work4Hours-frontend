@@ -3,7 +3,7 @@ import './SearchBox.css';
 import { BsSearch } from 'react-icons/bs';
 
 export const SearchBox = ({dataSearch}) => {
-  const {nameSearch,postWorkSearch, searchNumber, searchString, nameFilter, setNameFilter}=dataSearch;
+  const {nameSearch,postWorkSearch, searchNumber, searchString, nameFilter, changeFilterStatusInitial}=dataSearch;
   
   const viewFilterSelected = () => {
     if(nameFilter!==""){
@@ -11,7 +11,7 @@ export const SearchBox = ({dataSearch}) => {
         <div className='object_filter_selected'>
           <p>{nameFilter}</p>
           <label>
-            <input type="radio" name="filter" className="delete_appearance" onClick={() => {setNameFilter('')}} />
+            <input type="radio" name="filter" className="delete_appearance" onClick={() => {changeFilterStatusInitial()}} />
             <span className='delete_user_status'>X</span>
           </label>
         </div>

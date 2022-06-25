@@ -88,9 +88,9 @@ export const useSearchAdmin = () => {
     }
 
     //Deselects an option by setting the initial state
-    const unSelect = (e) => {
+    const changeFilterStatusInitial = () => {
         setIdFilter(0);
-        return e.target.checked = false
+        setNameFilter('')
     }
 
   return {
@@ -98,7 +98,7 @@ export const useSearchAdmin = () => {
     searchWord,
     validateSearchWord,
     changeFilteringOptionId,
-    unSelect, 
+    changeFilterStatusInitial, 
     nameFilter, 
     setNameFilter
   }
