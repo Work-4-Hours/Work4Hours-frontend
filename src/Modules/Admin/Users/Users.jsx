@@ -54,12 +54,12 @@ export const Users = () => {
     searchNumber:"generalSearchReports",
     searchString:"SearchUsers",
     nameFilter:searchAdmin.nameFilter,
-    setNameFilter:searchAdmin.setNameFilter
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
   }
 
   const dataFilter={
     changeFilteringOptionId:searchAdmin.changeFilteringOptionId,
-    unSelect:searchAdmin.unSelect,
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
     data:[
       {nombre:"Tipo de Suspensión",id:1},
       {nombre:"Reportes",id:2},

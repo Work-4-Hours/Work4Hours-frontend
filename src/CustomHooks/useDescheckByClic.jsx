@@ -1,8 +1,6 @@
-import React from 'react';
-
 export const useDescheckByClic = () => {
 
-  //unselect checkbox 
+  //changeFilterStatusInitial checkbox 
   const uncheck =(e)=>{
     return e.target.checked=false;
   }

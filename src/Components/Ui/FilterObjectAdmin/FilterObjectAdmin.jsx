@@ -6,11 +6,11 @@ import './FilterObjectAdmin.css'
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const FilterObjectAdmin = ({dataFilter}) => {
-    const{changeFilteringOptionId,unSelect,data,setNameFilter}=dataFilter;
+    const{changeFilteringOptionId,changeFilterStatusInitial,data,setNameFilter}=dataFilter;
     const [isOpen, setIsOpen] = useState(false);
 
     const dataOptionFilter={
-      unSelect:unSelect,
+      changeFilterStatusInitial:changeFilterStatusInitial,
       setNameFilter:setNameFilter
     }
 
@@ -20,7 +20,7 @@ export const FilterObjectAdmin = ({dataFilter}) => {
         <Button className="button btn_search_filter_admin_users remove_button" value={"Filtro"} onClick={()=>{setIsOpen(!isOpen)}}/>
       <PopUp isOpen={isOpen}> 
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>
-        <div className='content_options filter_options' onChange={changeFilteringOptionId}>
+        <div className='content_options filter_options' onChange={(e)=>changeFilteringOptionId(e)}>
             {data.map(item=><OptionFilterUserAdmin option={item} dataOptionFilter={dataOptionFilter} key={item.id}/>)}
         </div>
       </PopUp>

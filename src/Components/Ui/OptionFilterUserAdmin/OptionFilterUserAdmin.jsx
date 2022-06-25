@@ -5,7 +5,7 @@ import { useDescheckByClic } from 'CustomHooks/useDescheckByClic';
 
 export const OptionFilterUserAdmin = ({option, dataOptionFilter}) => {
   const [radioState, setRadioState] = useState(false);
-  const {unSelect, setNameFilter}=dataOptionFilter;
+  const {changeFilterStatusInitial, setNameFilter}=dataOptionFilter;
   const descheck = useDescheckByClic();
   const {nombre,id}=option;
 
@@ -18,8 +18,7 @@ export const OptionFilterUserAdmin = ({option, dataOptionFilter}) => {
       else{
         descheck. uncheck(e);
         setRadioState(false);
-        unSelect(e);
-        setNameFilter('');
+        changeFilterStatusInitial();
       }
     }
     

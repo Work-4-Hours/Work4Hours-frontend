@@ -56,7 +56,7 @@ export const Services = () => {
 
   const dataFilter={
     changeFilteringOptionId:searchAdmin.changeFilteringOptionId,
-    unSelect:searchAdmin.unSelect,
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
     data:[
       {nombre:"Reportes",id:1},
       {nombre:"Nombre del servicio",id:2},
