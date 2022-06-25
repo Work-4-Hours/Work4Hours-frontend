@@ -26,9 +26,10 @@
     justify-content: space-between;
 }
 
+.delete_appearance{appearance: none;}
+
 @media (min-width: 0) and (max-width: 800px) {
     .search_box{
         width: 100%;
     }
-
 }

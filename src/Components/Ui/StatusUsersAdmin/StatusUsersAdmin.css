@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     gap: 5%;
+    cursor:pointer
 }
 
 @media (min-width: 0) and (max-width: 480px) {
