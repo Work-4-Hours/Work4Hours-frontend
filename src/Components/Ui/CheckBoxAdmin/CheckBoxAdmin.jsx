@@ -1,6 +1,6 @@
-import { useDescheckByClic } from 'CustomHooks/useDescheckByClic';
 import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
+import { useDescheckByClic } from 'CustomHooks/useDescheckByClic';
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   const [radioState, setRadioState] = useState(false);
