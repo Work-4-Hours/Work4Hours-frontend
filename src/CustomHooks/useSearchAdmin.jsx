@@ -13,42 +13,42 @@ export const useSearchAdmin = () => {
 
     //Array validation whether or not the query brings data
     const validateDataPostWorkSearch=(response)=>{
-    if(response.data.length>0){
-        setSearchWord(response.data)
-        setValidateSearchWord(true)
-    }
-    else{
-        setValidateSearchWord(false)
-    }
+        if(response.data.length>0){
+            setSearchWord(response.data)
+            setValidateSearchWord(true)
+        }
+        else{
+            setValidateSearchWord(false)
+        }
     }
 
     //Word search with filtering from services and users
     const postWorkSearch=(event,searchNumber,searchString)=>{
     if(event.target.value!==""){
         if(event.keyCode===13){
-        if (idFilter===0){
-            if(!isNaN(parseInt(event.target.value))){
-            if(validateToken){
-                axios.post(`${apiAdmin}/${searchNumber}?value=${parseInt(event.target.value)}`)
-                .then(response=>{
-                validateDataPostWorkSearch(response)
-                })
-                .catch(e=>{console.log(e)})
-            }
-            }
-            else{
-                if(validateToken){
-                    axios.post(`${apiAdmin}/api/${searchString}?value=${event.target.value}`)
-                    .then(response=>{
-                    validateDataPostWorkSearch(response)
-                    })
-                    .catch(e=>{console.log(e)})
+            if (idFilter===0){
+                if(!isNaN(parseInt(event.target.value))){
+                    if(validateToken){
+                        axios.post(`${apiAdmin}/${searchNumber}?value=${parseInt(event.target.value)}`)
+                        .then(response=>{
+                        validateDataPostWorkSearch(response)
+                        })
+                        .catch(e=>{console.log(e)})
+                    }
+                }
+                else{
+                    if(validateToken){
+                        axios.post(`${apiAdmin}/api/${searchString}?value=${event.target.value}`)
+                        .then(response=>{
+                        validateDataPostWorkSearch(response)
+                        })
+                        .catch(e=>{console.log(e)})
+                    }
                 }
             }
-        }
-        else{
-            searchFilter(idFilter,event.target.value,searchString)
-        }
+            else{
+                searchFilter(idFilter,event.target.value,searchString)
+            }
         }
     }
     else{
@@ -64,7 +64,7 @@ export const useSearchAdmin = () => {
         postSearhFilter(id,word,searchString)
         }
         else{
-        Alert("Error", "Selecciono la opción reportes y solo recibe numeros", "error", "Ok")
+        Alert("Error", "Selecciono la opción reportes y solo recibe números", "error", "Ok")
         }
     }
     else{
