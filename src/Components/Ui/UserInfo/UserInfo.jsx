@@ -28,7 +28,7 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     dataReport,
     objectSelectedSetState, 
     selectedList, 
-    setselectedList, 
+    setselectedList,
     changeStatus,
     setChangeStatus,
   }=dataUsers;

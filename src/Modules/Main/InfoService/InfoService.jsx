@@ -40,7 +40,7 @@ export const InfoService = () => {
             })
             .catch(error => console.log(error))
 
-        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solucitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
+        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
 

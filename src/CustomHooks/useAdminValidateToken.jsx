@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AdminContext } from "Context/AdminContext";
 import { useState,useEffect,useContext } from "react";
-const API = process.env.REACT_APP_API;
+const API = process.env.REACT_APP_API_PRODUCTION;
 
 export const useAdminValidateToken = () => {
     const [validateToken,setValidateToken] = useState(true);

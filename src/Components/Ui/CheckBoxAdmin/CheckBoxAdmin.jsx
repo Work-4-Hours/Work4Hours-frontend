@@ -36,9 +36,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         nombres:allObject.nombreUsuario, 
         color:allObject.color
       }
-      setselectedList([...selectedList, datauser]);
-      // setLocalStorage(datauser);
-      
+      setselectedList([...selectedList, datauser]);   
     }
     else if(e.target.checked && boardType===false){
       const dataServices={
@@ -70,7 +68,6 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   validarcheckbox(e)
  }
 
- //cambiar el id por id
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>

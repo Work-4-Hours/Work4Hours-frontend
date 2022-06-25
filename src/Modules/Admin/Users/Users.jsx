@@ -40,7 +40,7 @@ export const Users = () => {
     }
   },[searchAdmin.searchWord]) 
 
-
+  console.log(statusAdmin.selectedList)
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
@@ -76,7 +76,7 @@ export const Users = () => {
     deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:statusAdmin.objectSelectedSetState, 
     selectedList:statusAdmin.selectedList, 
-    setselectedList:statusAdmin.setselectedList, 
+    setselectedList:statusAdmin.setselectedList,
     changeStatus:statusAdmin.changeStatus,
     setChangeStatus:statusAdmin.setChangeStatus
   }
