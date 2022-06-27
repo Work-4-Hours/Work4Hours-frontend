@@ -41,12 +41,12 @@ export const Claim = () => {
                 description: appeal.value
             })
         })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response);
-            })
-            .catch()
-            .finally()
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+        })
+        .catch()
+        .finally()
     }
 
     return (

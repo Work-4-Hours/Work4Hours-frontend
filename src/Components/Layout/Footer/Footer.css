@@ -1,0 +1,14 @@
+.footer_app {
+    height: 200px;
+    background: #f9fbff;
+}
+
+.center_footer_app {
+    max-width: var(--max-width-container);
+    margin: auto;
+    padding: 30px 20px;
+} 
+
+.footer_logo {
+    width: 150px;
+}

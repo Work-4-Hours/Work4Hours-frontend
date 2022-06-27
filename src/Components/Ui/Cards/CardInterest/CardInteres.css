@@ -12,8 +12,9 @@
 .subtitle_interest_card {
     font-family: var(--font-1);
     color: var(--gray-text-3);
-    font-size: 19px;
-    margin: 0 0 8px 0;
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2.5px;
 }
 
 .title_information_interest_card {
