@@ -10,12 +10,7 @@ export const LoadingCard = () => {
 
             </header>
             <div className='body_card_service body_load'>
-                <div className="location_card_service text_load">
-                    
-                </div>
-                <div className="location_card_service name_load">
-                    
-                </div>
+               
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from 'Context/UserContext'
 import jwt_decode from "jwt-decode";
+import { useNavigate } from 'react-router';
 
 export const useManageServices = () => {
 
@@ -8,10 +9,11 @@ export const useManageServices = () => {
     const [loading, setLoading] = useState(null)
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const getServices = async () => {
         setLoading(true)
-        fetch(`${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${jwt_decode(getJwt()).userId}`, {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/getOwnServices/${jwt_decode(getJwt()).userId}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JSW ${getJwt()}`
@@ -20,7 +22,7 @@ export const useManageServices = () => {
             .then(response => response.json())
             .then(response => {
                 setData(response[0]);
-                // console.log(response);
+                console.log(response);
             })
             .catch(error => setError(error))
             .finally(() => setLoading(false))
@@ -67,7 +69,10 @@ export const useManageServices = () => {
                 setData(response)
             })
             .catch(error => setError(error))
-            .finally(() => setLoading(false))
+            .finally(() => { 
+                setLoading(false) 
+                navigate('/dashboard/publicated')
+            })
     }
 
     const deleteService = async (id_service) => {
@@ -78,9 +83,11 @@ export const useManageServices = () => {
                 'Authorization': `JSW ${getJwt()}`
             }
         })
-            .then(response => response.json())
-            .then(response => {
+        .then(response => response.json())
+        .then(response => {
+                console.log('Delete service');
                 setData(response);
+                console.log(response);
             })
             .catch(error => setError(error))
             .finally(() => setLoading(false))

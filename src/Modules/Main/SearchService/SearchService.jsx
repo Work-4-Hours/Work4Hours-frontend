@@ -36,6 +36,7 @@ export const SearchService = () => {
             .then(response => response.json())
             .then(user => {
                 setResults(user)
+                console.log(user);
             })
             .finally(() => setLoading(false))
         }

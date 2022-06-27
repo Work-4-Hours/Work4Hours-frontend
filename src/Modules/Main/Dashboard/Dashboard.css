@@ -143,7 +143,7 @@
 
 .phone_user_profile_dashboard {
     font-family: var(--font-1);
-    color: var(--bg-blue);
+    color: var(--gray-text-2);
     font-size: 1.2em;
     margin: 1em 0;
 }
@@ -165,4 +165,18 @@
     padding: 15px;
     background: rgba(73, 82, 95, 0.075);
     border-radius: 7px;
+}
+
+@media screen and (max-width: 900px) {
+    .center_dashboard {
+        flex-direction: column;
+    }
+
+    .personal_info {
+        width: 100%;    
+    }
+
+    .main_dashboard_ {
+        width: 100%;
+    }
 }

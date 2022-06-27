@@ -45,6 +45,7 @@
 }
 
 .state_card_service_dashboard {
+    width: 150px;
     display: flex;
     /* align-items: center; */
     justify-content: center;
@@ -107,4 +108,25 @@
 .icon_edit_card_service:hover,
 .icon_delete_card_service:hover {
     cursor: pointer;
+}
+
+.visibility_card_service_dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info_visibility_card_service_dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+.icon_visibility {
+    fill: var(--gray-text-2);
+}
+
+.text_visibility_card_service {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
 }

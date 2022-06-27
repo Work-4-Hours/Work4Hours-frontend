@@ -35,7 +35,7 @@ export const Dashboard = () => {
                                 <p className='email_user_profile_dashboard'>{info_user.email}</p>
 
                                 <p className='phone_user_profile_dashboard'>{info_user.phoneNumber}</p>
-                                <Link className='link_profile_info_user' to={`/profile/user?id=${ jwt_decode(user.token).userId }`}>
+                                <Link className='link_profile_info_user' to={`/profile/user?id=${jwt_decode(user.token).userId}`}>
                                 <Button value='Mi perfil'/>
                                 </Link>
                             </div>

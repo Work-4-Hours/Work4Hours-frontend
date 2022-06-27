@@ -32,6 +32,9 @@
 .header_messages_chat {
     padding: 25px;
     border-bottom: var(--gray-border-1);
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .information_user_header_chat {
@@ -83,6 +86,10 @@
     display: flex;
 }
 
+.container_input_message_chat {
+    width: 100%;
+}
+
 .message_chat {
     width: 100%;
     height: 100%;
@@ -92,6 +99,20 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+}
+
+.conversation_message {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.test_conversation_message {
+    font-family: var(--font-1);
+    color: var(--gray-text-2);
+    font-size: 17px;
+    margin: 0 0 20px 0;
 }
 
 .icon_message_chat {
@@ -111,4 +132,53 @@
     border-top: 2px solid #f0f0f0;
     padding: 10px 0;
     color: #b8b8b8;
+}
+
+/* Popup add cualification */
+
+.ceneter_popup_add_cualification {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_service_cualification {
+    max-width: 500px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.title_service_cualification {
+    font-family: var(--font-1);
+    color: var(--gray-text-1);
+    font-size: 27px;
+    margin: 0 0 5px 0;
+}
+
+.information_service_cualification {
+    font-family: var(--font-1);
+    color: var(--gray-text-3);
+    font-size: 18px;
+}
+
+.select_cualification {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+}
+
+
+.actions_add_service_cualification {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@media screen and (max-width: 850px) {
+    
 }

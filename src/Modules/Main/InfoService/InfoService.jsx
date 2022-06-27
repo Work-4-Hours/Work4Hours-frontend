@@ -53,6 +53,24 @@ export const InfoService = () => {
         sendNotification(jwt_decode(serviceuser).userId, `Tu servicio ${service?.name} ha sido solucitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
+    const reportService = (idreport) => {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/report/${service.id}/${service.user }/${idreport}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);                
+            })
+            .catch(error => console.log(error))
+            .finally(() => {
+                console.log('XED');
+            })
+    }
+
 
     useEffect(() => {
         const get = async () => {
@@ -68,7 +86,7 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
-                    // console.log(response[0]);
+                    // console.log(response);
                     // console.log(jwt_decode(response[0].serviceInfo.user).userId);
                     setUserId(jwt_decode(response[0].serviceInfo.user).userId)
 
@@ -170,9 +188,9 @@ export const InfoService = () => {
                                                         <div className="padding_popup_report">
                                                             <p className='subtitle_popup_report'>Seleccione un motivo</p>
                                                             <div className="options_report">
-                                                                <Link to=''>Abuso</Link>
-                                                                <Link to=''>Contenido indebido</Link>
-                                                                <Link to=''>Contenido ofensivo</Link>
+                                                                <p onClick={e => reportService(1)}>Contenido ofensivo</p>
+                                                                <p onClick={e => reportService(2)}>Abuso</p>
+                                                                <p onClick={e => reportService(3)}>Contenido indebido</p>
                                                             </div>
                                                         </div>
                                                     </PopUp>
@@ -206,12 +224,12 @@ export const InfoService = () => {
                             }
                         </DivShadow>
 
-                        <DivShadow>
+                        {/* <DivShadow>
                             <div className="padding_info_service">
                                 <p className='name_user_info_service'>Comentarios</p>
                                 <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
                             </div>
-                        </DivShadow>
+                        </DivShadow> */}
                     </section>
 
                     <section className='section_info_user'>
