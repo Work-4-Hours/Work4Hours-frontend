@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { CardServiceAdmin } from 'Components/Ui/CardServiceAdmin/CardServiceAdmin'
 import { useManageServices } from 'CustomHooks/useManageServices'
 
-export const Saved = () => {
+export const AllServices = () => {
 
-    const { data: service, loading, getOcultedServices } = useManageServices()
+    const { data: service, loading, getAllServices } = useManageServices()
 
     useEffect(() => {
-        getOcultedServices()
+        getAllServices()
     }, [])
 
     return (

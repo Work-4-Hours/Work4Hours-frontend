@@ -102,7 +102,7 @@ export const Header = () => {
                                                             setIsOcultProfile(true)
                                                         }
                                                         } />
-                                                        <LinkOption link='/dashboard/publications' text='Administrar servicios' />
+                                                        <LinkOption link='/dashboard/all' text='Administrar servicios' />
                                                         <LinkOption link='/chat' text='Chat' />
                                                     </div>
 

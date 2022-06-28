@@ -3,6 +3,7 @@
     padding: 15px;
     background: #ecf3ff;
     border-radius: 7px;
+    overflow-y: auto;
 
     display: flex;
     gap: 20px;
@@ -129,4 +130,10 @@
 .text_visibility_card_service {
     font-family: var(--font-1);
     color: var(--gray-text-3);
+}
+
+@media screen and (max-width: 1280px) {
+    .section_info_card_service_dashboard {
+        overflow-x: auto;
+    }
 }
