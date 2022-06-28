@@ -7,13 +7,10 @@
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    /* background: rgba(202, 199, 199, 0.418); */
-    /* backdrop-filter: blur(50px); */
 }
 
-
 .background_image {
-    position: absolute;
+    position:absolute;
     top: 0;
     left: 0;
     width: 100vw;
@@ -22,22 +19,14 @@
     overflow: hidden;
 }   
 
-
 .background_image_login_svg {
-    width: 100%;
+    width: 124%;
     height: 100%; 
-    object-fit: cover;
 }
 
 .background_image_svg {
-    /* width: 100vw;
-    height: 100vh; */
     position: absolute;
-    /* left: 0;
-    top: 0; */
     z-index: -1;
-
-    /* object-fit: fill; */
 }
 
 .center_main_registry {
@@ -48,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5em;
+    gap: 9em;
 } 
 
 .container_form_registry {
@@ -80,7 +69,6 @@
     flex-direction: column;
 }
 
-
 .basic_data {
     display: flex;
     flex-wrap: wrap;
@@ -88,7 +76,6 @@
     animation: var(--animation-show-slow) 200ms;
     margin: 0 0 20px 0;
 }
-
 
 .acount_data {
     margin: 0 0 20px 0;
@@ -156,11 +143,9 @@
 .image_profile_registry {
     width: 300px;
     height: 300px;
-
     border: 3px dashed var(--gray-text-3);
     border-radius: 100%;
     overflow: hidden;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,8 +169,6 @@
 
 /* Steps */
 .steps_registry {
-    /* border-top: 1px solid rgba(0, 0, 0, 0.034);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.034); */
     padding: 20px 0;
     width: 100%;
     display: flex;
@@ -220,34 +203,24 @@
     color: #1583ac; 
 }
 
-
-
 .current_step > .step_number {
-    /* color: var(--bg-blue); */
     color: #FFFF;
     font-weight: 700;
-    /* border: 2px solid  var(--bg-blue); */
     border: 2px solid  #FFFF;
 }
 
 .current_step > .step_info {
-    /* color: var(--bg-blue); */
     color: #FFFF;
-
-    /* font-size: 18px; */
 }
 
 .complete_step > .step_number {
-    /* color: green; */
     color: #FFFF;
     font-weight: 700;
-    /* border: 2px solid green; */
     border: 2px solid #FFF;
 }
 
 .complete_step > .step_info {
     color: #FFFF;
-    /* color: green; */
 }
 
 .steps_registry > .c_line_step:last-child {
@@ -262,28 +235,37 @@
     width: 100px;
     height: 2px;
     background: #1583ac;
-    /* background: #FFFF; */
     border-radius: 5px;
 }
 
 .line_current > .line_step {
-    /* background: var(--bg-blue); */
     background: #FFFF;
-
 }
 
 .line_complete > .line_step {
-    /* background: green; */
     background: #FFFF;
-
 }
 
 @media screen and (max-width: 925px) {
-    .information_app {
-        display: none;
-    }
+    .information_app {display: none;}
+    .center_main_login {flex-direction: column;}
+}
 
-    .center_main_login {
-        flex-direction: column;
-    }
+@media (min-width: 0) and (max-width: 480px) {
+    .background_image_login_svg{width: 148%;}
+    .header_registry{flex-wrap:wrap}
+}
+
+@media screen and (min-width: 1105px) {
+    .background_image_login_svg{width: 140%;}
+    .center_main_registry{gap:5em}
+    .step_number{ color:#fff; border: 2px solid #fff}
+    .step_info {color:#fff}
+    .current_step > .step_number{color:#1583ac;border:2px solid #1583ac}
+    .current_step > .step_info{color: #1583ac;}
+    .complete_step > .step_number{color:#1583ac; border:2px solid #1583ac}
+    .complete_step > .step_info{color: #1583ac;}
+    .line_step{background:#fff}
+    .line_current > .line_step{background: #1583ac;}
+    .line_complete > .line_step{background: #1583ac;}
 }
