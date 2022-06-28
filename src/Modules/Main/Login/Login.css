@@ -1,3 +1,9 @@
+.login_main {
+    background-image: url('Assets/Backgrounds/LoginBackground.svg');
+    background-size: 100% 100% contain;
+    background-repeat: no-repeat;
+}
+
 .center_main_login {
     max-width: 1100px;
     margin: auto;

@@ -1,3 +1,10 @@
+.registry_main {
+    background-image: url('Assets/Backgrounds/RegistryBackground.svg');
+    background-size: 100% 130%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
 .registry {
     position: relative;
 }
