@@ -4,7 +4,7 @@ import Axios from 'axios'
 export const useUploadImage = () => {
 
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState({});
+    const [data, setData] = useState('');
     const [error, setError] = useState(null);
 
     const uploadImage = async (file) => {

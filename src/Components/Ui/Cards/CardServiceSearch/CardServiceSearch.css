@@ -29,15 +29,15 @@
 
 .name_service_search {
     font-family: var(--font-1   );
-    font-size: 1.5em;
+    font-size: 1.4em;
     color: var(--gray-text-2);
     margin: 0 10px 0 0;
 }
 
 .location_service_search {
     font-family: var(--font-1);
-    font-size: 1.2em;
-    color: var(--gray-text-3); 
+    font-size: 1.1em;
+    color: var(--gray-text-6); 
 }
 
 .body_service_search {
@@ -48,5 +48,8 @@
 .price_service_search {
     font-family: var(--font-1);
     font-size: 1.5em;
-    color: var(--gray-text-3); 
+    margin: 10px 0 0 0;
+    color: #525252; 
+
+    /* color: #1468d6; */
 }

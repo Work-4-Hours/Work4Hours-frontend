@@ -4,10 +4,10 @@ import { useManageServices } from 'CustomHooks/useManageServices';
 
 export const Publications = () => {
 
-    const { data: service, loading, getServices } = useManageServices()
+    const { data: service, loading, getPublicatedServices } = useManageServices()
 
     useEffect(() => {
-        getServices()
+        getPublicatedServices()
     }, [])
 
     return (

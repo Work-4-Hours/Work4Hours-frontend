@@ -8,15 +8,47 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
 // import { ReactComponent as IconAddImage } from 'Assets/Icons/IconAddImage.png'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
-
-import './NewService.css'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
 
-export const NewService = () => {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-    const { createService } = useManageServices()
+import './NewService.css'
+
+export const NewService = () => {
+    const service_added_successfully = () => toast.success('Servicio agregado exitosamente', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
+    const error_to_create_service = () => toast.error('Error en la creacion del servicio', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
+
+    const { createService, loading } = useManageServices()
     const { previewImage, setPreviewImage } = useImagePreview()
     const { data: image_service, uploadImage } = useUploadImage()
+    const [test, setTest] = useState()
+
+    function agregarSeparadorMiles(numero) {
+        let partesNumero = numero.toString().split(',');
+
+        partesNumero[0] = partesNumero[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        return partesNumero.join(',');
+    }
 
     const [imageFile, setImageFile] = useState(null);
     const name = useField({ type: 'text' })
@@ -27,27 +59,43 @@ export const NewService = () => {
 
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
             <h1 className='title_new_service'>Nuevo servicio</h1>
             <section className='section_form_new_service'>
 
-                <form className='form_new_service' onSubmit={async e => {
+                <form className='form_new_service' onSubmit={e => {
                     e.preventDefault()
-                    createService({
-                        categories: 'C01',
-                        name: name.value,
-                        statuses: status,
-                        type: type,
-                        price: parseInt(price.value),
-                        description: description.value,
-                        photo: image_service,
-                    })
-                   
+                    
+                    try {
+                        createService({
+                            categories: 'C01',
+                            name: name.value,
+                            statuses: status,
+                            type: type,
+                            price: parseInt(price.value),
+                            description: description.value,
+                            photo: image_service,
+                        })
+                        service_added_successfully()
+                        
+                    } catch (error) {
+                        error_to_create_service()
+                    }
                 }}>
                     <InputTextLabel titleLabel='Nombre del servicio'  {...name} placeholder='Profesor' />
 
                     <InputTextLabel titleLabel='Precio del servicio'  {...price} placeholder='000000' />
-
                     <section className="state_new_service">
 
                         <SelectTextLabel
@@ -60,7 +108,7 @@ export const NewService = () => {
                         <SelectTextLabel
                             titleLabel='Visualizacion'
                             nameSelect='Tipo de de visualizacion'
-                            options={[{ id: 1, name: "Visible" }, { id: 3, name: "Borrador" }]}
+                            options={[{ id: 4, name: "Visible" }, { id: 5, name: "Borrador" }]}
 
                             onChange={(e) => setStatus(e.target.value)}
                         />
@@ -68,7 +116,7 @@ export const NewService = () => {
 
                     <InputTextLabel titleLabel='Descripcion del servicio' {...description} placeholder='Detalle su peticion o prestacion de su servicio' />
 
-                    <Button value={`${status == 1 ? 'Publicar servicio' : 'Guardar borrador'}`} />
+                    <Button value={`${status == 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
                 </form>
 
 
@@ -94,11 +142,11 @@ export const NewService = () => {
                                     </div>
                             }
                         </div>
-                            {
-                                previewImage && (
-                                    <Button value='Guardar imagen' onClick={() => uploadImage(imageFile)} />
-                                )
-                            }
+                        {
+                            previewImage && (
+                                <Button value='Guardar imagen' onClick={() => uploadImage(imageFile)} />
+                            )
+                        }
                     </label>
                 </div>
             </section>

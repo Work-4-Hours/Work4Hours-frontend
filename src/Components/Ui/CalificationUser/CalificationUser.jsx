@@ -31,6 +31,11 @@ const CalicationUserProfile = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 3px;
+
+    svg {
+        width: 17px;
+    }
+    
     svg:nth-of-type(n+${props => props.value}){
         fill: #9b9b9b;
     }

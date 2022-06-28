@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Title } from 'Components/StyledComponets/Titlte'
@@ -17,6 +17,8 @@ import { regex_email, regex_names, regex_password, regex_phone } from 'Validatio
 import './Registry.css'
 
 export const Registry = () => {
+
+    const navigate = useNavigate()
 
     const [cities, setCities] = useState([])
     const [departments, setDepartments] = useState([])
@@ -75,8 +77,9 @@ export const Registry = () => {
             })
         })
             .then(response => response.json())
-            .then(user => {
-                console.log(user);
+            .then(response => {
+                console.log(response);
+                navigate('/login')
             })
             .finally(() => setLoading(false))
     }
@@ -119,11 +122,11 @@ export const Registry = () => {
     }, [])
 
     return (
-        <main className='registry'>
-            <div className="background_registry"></div>
+        <main className='registry_main'>
+            {/* <div className="background_registry"></div>
             <div className="background_image">
                 <RegistryBackground className='background_image_login_svg' />
-            </div>
+            </div> */}
             {/* <img  src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
 
             <div className="center_main_registry">
@@ -131,13 +134,10 @@ export const Registry = () => {
                 <DivShadow className='container_form_registry'>
                     <div className="padding_form_register">
 
-
                         <header className='header_registry'>
                             <Title>Registro</Title>
                             <Link className='link_login_form_register' to='/login'>¿Ya tienes una cuenta?</Link>
                         </header>
-
-                        
 
                         <div className='form_registry'>
 
@@ -252,22 +252,22 @@ export const Registry = () => {
                 <div className="information_app">
                     <h1 className='title_steps'>Pasos</h1>
                     <section className="steps_registry">
-                            {
-                                steps.map(item => (
-                                    <>
-                                        <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
-                                            <div className='step_number'>
-                                                {item.step}
-                                            </div>
-                                            <p className='step_info'>{item.info}</p>
+                        {
+                            steps.map(item => (
+                                <>
+                                    <div className={`step ${item.current && 'current_step'} ${item.complete && 'complete_step'}`} >
+                                        <div className='step_number'>
+                                            {item.step}
                                         </div>
-                                        <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
-                                            <div className={`line_step`}></div>
-                                        </div>
-                                    </>
-                                ))
-                            }
-                        </section>
+                                        <p className='step_info'>{item.info}</p>
+                                    </div>
+                                    <div className={`c_line_step ${item.current && 'line_current'} ${item.complete && 'line_complete'}`}>
+                                        <div className={`line_step`}></div>
+                                    </div>
+                                </>
+                            ))
+                        }
+                    </section>
                 </div>
             </div>
 

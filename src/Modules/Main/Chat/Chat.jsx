@@ -11,6 +11,13 @@ import { useChat } from "CustomHooks/useChat";
 import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
+import { DivChat } from "Components/StyledComponets/DivChat";
+import { AddCualification } from "Components/Layout/AddCualification/AddCualification";
+import { DivPopUp } from "Components/StyledComponets/DivPopUp";
+import ReactStars from "react-rating-stars-component";
+import { Button } from "Components/Ui/Button/Button";
+
+import { ReactComponent as IconArrow } from 'Assets/Icons/IconArrow.svg'
 
 import './Chat.css';
 
@@ -19,6 +26,7 @@ export const Chat = () => {
     const chatRef = useRef()
     const [message, setMessage] = useState()
     const [chats, setChats] = useState()
+    const [popupAddQualification, setPopupAddQualification] = useState(false)
     const [currentChat, setCurrentChat] = useState(null);
     const { connectionRoom, sendMessage, closeConnection, messages } = useChat()
     const { getJwt, user, sendNotification } = useContext(UserContext)
@@ -50,15 +58,59 @@ export const Chat = () => {
 
     const DateNow = () => {
         const current = new Date();
-        return current.toDateString();
+        return current;
+    }
+
+    const sendQualification = (qualification) => {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/addQualification`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            },
+            body: JSON.stringify({
+                qualification: qualification,
+                serviceId: currentChat.idservicio
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch()
+            .finally()
     }
 
     return (
         <>
+            <DivPopUp isOpen={popupAddQualification}>
+                <div className="ceneter_popup_add_cualification">
+                    <DivShadow className="add_service_cualification">
+                        <h1 className="title_service_cualification">Calificación del servicio</h1>
+                        <p className="information_service_cualification">Nivel de satisfacción con el servicio adquirido o ofrecido</p>
+                        <div className="select_cualification">
+
+                            <ReactStars
+                                count={5}
+                                onChange={(value) => sendQualification(value)}
+                                size={40}
+                                activeColor="#14A2D6"
+                            />
+                        </div>
+                        <div className="actions_add_service_cualification">
+                            <Button value="Cancelar" onClick={() => setPopupAddQualification(false)} />
+                            <Button value="Enviar calificación" />
+                        </div>
+                    </DivShadow>
+                </div>
+            </DivPopUp>
+
             <Header />
             <main className="main_chat">
                 <div className="center_chat">
-                    <DivShadow className='aside_chat'>
+                    <DivChat isActive={
+                        currentChat ? false : true
+                    } className='aside_chat'>
                         <div className="header_aside_chat">
                             <Title>Chat</Title>
                         </div>
@@ -70,37 +122,51 @@ export const Chat = () => {
                                         <LoadingCardUser />
                                     </>
                                     :
-                                    chats?.map((item, index) => (
-                                        <CardUser key={index} infoUser={item} onClick={() => {
-                                            closeConnection()
-                                            connectionRoom(item.idsala)
-                                            setCurrentChat(item)
-                                        }} />
-                                    ))
+                                    chats ?
+                                        chats.map((item, index) => (
+                                            <CardUser key={index} infoUser={item} onClick={() => {
+                                                closeConnection()
+                                                connectionRoom(item.idsala)
+                                                setCurrentChat(item)
+                                            }} />
+                                        ))
+                                        :
+
+                                        <h1>No tienes chats</h1>
                             }
 
                         </div>
-                    </DivShadow>
+                    </DivChat>
                     {
                         currentChat ?
-                            <DivShadow className='main_messages'>
+                            <DivChat isActive={currentChat ? true : false} className='main_messages'>
                                 <div className="header_messages_chat">
                                     <div className="information_user_header_chat">
+                                        <IconArrow className='btn_exit_chat' onClick={() => setCurrentChat()} />
                                         <PhotoUserProfile infoProfile={{ name: currentChat.nombres, color: currentChat.color, userPicture: currentChat.fotop }} small={false} style='small_profile' />
                                         <p className="name_user_header_chat">{currentChat.nombres}</p>
+                                    </div>
+                                    <div className="close_chat">
+                                        <Button value='Finalizar conversación' onClick={() => setPopupAddQualification(true)} />
                                     </div>
                                 </div>
                                 <div className="main_messages_chat">
                                     <div ref={chatRef} className="messages_chat">
 
                                         {
-                                            messages?.map((item, index) => (
-                                                <CardMessage key={index} info={item} user={user.info[0].name} />
-                                            ))
+                                            messages.length > 0 ?
+                                                messages.map((item, index) => (
+                                                    <CardMessage key={index} info={item} user={user.info[0].name} />
+                                                ))
+                                                :
+                                                <div className="conversation_message">
+                                                    <p className="test_conversation_message">Inicia una converzación con {currentChat.nombres}</p>
+                                                </div>
                                         }
 
                                     </div>
-                                    <div className="">
+
+                                    <div className="container_input_message_chat">
                                         <form onSubmit={e => {
                                             e.preventDefault()
                                             setMessage('')
@@ -120,9 +186,9 @@ export const Chat = () => {
                                         </form>
                                     </div>
                                 </div>
-                            </DivShadow>
+                            </DivChat>
                             :
-                            <DivShadow className='main_messages'>
+                            <DivShadow className='section_info_chat'>
                                 <div className="message_chat">
                                     <img className='icon_message_chat' src={IconMessageChat} alt="" />
                                     <p className="title_app_info_chat">Work 4 hours</p>
