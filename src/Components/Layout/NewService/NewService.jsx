@@ -78,15 +78,15 @@ export const NewService = () => {
                     e.preventDefault()
                     
                     try {
-                        createService({
-                            categories: 'C01',
-                            name: name.value,
-                            statuses: status,
-                            type: type,
-                            price: parseInt(price.value),
-                            description: description.value,
-                            photo: image_service,
-                        })
+                        // createService({
+                        //     categories: 'C01',
+                        //     name: name.value,
+                        //     statuses: status,
+                        //     type: type,
+                        //     price: parseInt(price.value),
+                        //     description: description.value,
+                        //     photo: image_service,
+                        // })
                         service_added_successfully()
                         
                     } catch (error) {
