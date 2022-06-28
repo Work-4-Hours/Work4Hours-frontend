@@ -18,14 +18,14 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         setData,
         getAdmin,
         data,
-        selectedList, 
-        setselectedList,
+        selectedList,
         token,
         email,
         typePetition,
         typeAdmin,
         isOpen,
-        setIsOpen
+        setIsOpen,
+        removeSelectedList
     }=dataPopupConfirmChanges;
 
     const [passwordAdmin, setPasswordAdmin]=useState('');
@@ -78,7 +78,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                     axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
                     .then(response => {
                         console.log(response);
-                        setselectedList([]);
+                        removeSelectedList();
                         setIsOpen(!isOpen);
                         setPasswordAdmin('');
                         Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    

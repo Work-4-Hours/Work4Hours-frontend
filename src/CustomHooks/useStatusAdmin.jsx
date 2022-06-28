@@ -3,38 +3,40 @@ import { useState } from "react";
 
 
 export const useStatusAdmin = () => {
-    const [selectedList, setselectedList]=useState([]);
+    const [selectedList, setSelectedList]=useState([]);//desaparece
+    const [statusChecked, setStatusChecked]=useState(false);
+    
     const [changeStatus, setChangeStatus]=useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     //Removal of objects in the selection of checkboxes
-    const deletingSelectedDeslectCheckbox =(id)=>{
-    selectedList.map(item=>{
+    const deletingSelectedDeslectCheckbox =(id,list,setlist)=>{
+    list.map(item=>{
         if(item.id===id){
-        const index=selectedList.indexOf(item);
-        selectedList.splice(index,1)
+        const index=list.indexOf(item);
+        list.splice(index,1)
         }
     })
-    setselectedList([...selectedList]);
+    setlist([...list]);
     }
 
     //Status update even if selected
-    const objectSelectedSetState =(statusChange, idObject, idStatus)=>{
+    const objectSelectedSetState =(statusChange, idObject, idStatus,list,setlist)=>{
     if (statusChange===true){
-        selectedList.map(item=>{
+        list.map(item=>{
         if(item.id===idObject){
             item.idEstado=idStatus
         }
         })
-        setselectedList([...selectedList]);
+        setlist([...list]);
         setChangeStatus(!changeStatus);
     }
     }
 
     // Validation to close popup when selectList is empty
-    const closePopUpAndDeleteSelectedDeslectCheckBox = (id) => {
-        deletingSelectedDeslectCheckbox(id);
-        if(selectedList.length===0){
+    const closePopUpAndDeleteSelectedDeslectCheckBox = (id,list, setlist) => {
+        deletingSelectedDeslectCheckbox(id,list, setlist);
+        if(list.length===0){
         setIsOpen(!isOpen)
         }
     }
@@ -43,11 +45,13 @@ export const useStatusAdmin = () => {
         deletingSelectedDeslectCheckbox, 
         objectSelectedSetState, 
         selectedList, 
-        setselectedList, 
+        setSelectedList, 
         changeStatus,
         setChangeStatus,
         closePopUpAndDeleteSelectedDeslectCheckBox,
         isOpen,
-        setIsOpen
+        setIsOpen,
+        statusChecked,
+        setStatusChecked
     }
 }

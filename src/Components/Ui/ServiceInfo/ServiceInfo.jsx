@@ -18,10 +18,13 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
-    selectedList, 
-    setselectedList, 
     changeStatus,
-    setChangeStatus}=dataServices;
+    setChangeStatus,
+    selectedList, 
+    setSelectedList,
+    removeCheckbox,
+    setRemoveCheckbox
+  }=dataServices;
 
   const [idStatus, setIdStatus] = useState(0);
   const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");
@@ -47,17 +50,21 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
     setIdStatus:setIdStatus,
-    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension
+    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension,
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
   }
 
   const dataCheckBoxAdmin={
     objectAll:objectServiceInfo, 
     designCheckBoxAdmin:"span_confirm_changes", 
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList, 
-    setselectedList:setselectedList,
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
     boardType:false,
-    idStatus:idStatus
+    idStatus:idStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox
   }
 
 

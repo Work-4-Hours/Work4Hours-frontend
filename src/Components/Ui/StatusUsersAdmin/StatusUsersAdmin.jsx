@@ -17,12 +17,15 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     setChangeStatus,
     setIdStatus,
     setNotificationAutomaticSuspension,
+    selectedList,
+    setSelectedList,
   }=dataStatusAdmin;
 
   const [stateObject, setStateObject]=useState(nameStatus);
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
   const [idStateObject, setIdStateObject]=useState(idObjectStatus);
+
 
   const changeState = (reportsNumber) => {
     if(reportsNumber >= 25){
@@ -57,6 +60,7 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     setChangeStatus(!changeStatus)
   }
 
+  
   useEffect(() => {
     setStateColor (changeColorStateObjects(stateObject))
   },[stateColor])
@@ -66,8 +70,9 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   },[''])
 
   useEffect(()=>{
-    objectSelectedSetState(changeStatus, idObject, idStateObject)
+    objectSelectedSetState(changeStatus, idObject, idStateObject, selectedList, setSelectedList)
   },[changeStatus])
+  
   useEffect(()=>{
     setIdStatus(idStateObject)
   },[idStateObject])

@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useEffect,useContext, useState} from 'react';
 
 import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
 import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
@@ -18,10 +18,11 @@ import '.././Admin.css';
 
 export const Services = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext);
+  const { admin, logoutAdmin, getToken, sendNotification, selectedListServices, setSelectedListServices, removeSelectedListServices } = useContext(AdminContext);
   const adminGet= useGetAdmin();
   const searchAdmin=useSearchAdmin();
   const statusAdmin=useStatusAdmin();
+  const [removeCheckbox, setRemoveCheckbox] = useState({id:0,status:true});
 
   //To bring the initial data of the services
   useEffect(()=>{
@@ -71,10 +72,12 @@ export const Services = () => {
     dataReport:adminGet.dataReport,
     deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:statusAdmin.objectSelectedSetState, 
-    selectedList:statusAdmin.selectedList, 
-    setselectedList:statusAdmin.setselectedList, 
+    selectedList:selectedListServices, 
+    setSelectedList:setSelectedListServices,
     changeStatus:statusAdmin.changeStatus,
-    setChangeStatus:statusAdmin.setChangeStatus
+    setChangeStatus:statusAdmin.setChangeStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox,
   }
   const dashboardHeader = {
     columWidth1 : 'fieldSize15',
@@ -96,13 +99,22 @@ export const Services = () => {
     getAdmin:adminGet.getAdmin,
     data:adminGet.data,
     setData:adminGet.setData,
-    selectedList:statusAdmin.selectedList, 
-    setselectedList: statusAdmin.setselectedList,
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Services",
-    typeAdmin: "servicio"
+    typeAdmin: "servicio",
+    isOpen:statusAdmin.isOpen,
+    setIsOpen:statusAdmin.setIsOpen,
     //sendNotification
+    selectedList:selectedListServices, 
+    removeSelectedList:removeSelectedListServices
+  }
+
+  const dataDelete={
+    closePopUpAndDeleteSelectedDeslectCheckBox:statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox,
+    selectedList:selectedListServices, 
+    setSelectedList:setSelectedListServices,
+    setRemoveCheckbox:setRemoveCheckbox,
   }
 
   return (
@@ -127,8 +139,8 @@ export const Services = () => {
           <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
         }
         <PopupConfirmChanges objectContent={
-        statusAdmin.selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
+        selectedListServices?.map(item=>(
+          <ObjectDelete servicesSelect={item} dataDelete={dataDelete} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

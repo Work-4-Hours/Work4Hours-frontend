@@ -1,33 +1,49 @@
 import React,{useEffect, useState} from 'react'
 import './CheckBoxAdmin.css'
-import { useDescheckByClic } from 'CustomHooks/useDescheckByClic';
 
 export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
-  const [radioState, setRadioState] = useState(false);
-  const descheck = useDescheckByClic();
- 
+
   const {
     objectAll, 
     designCheckBoxAdmin, 
     deletingSelectedDeslectCheckbox,
     selectedList,
-    setselectedList,
+    setSelectedList,
     boardType,
     idStatus,
+    removeCheckbox, setRemoveCheckbox
   } = dataCheckBoxAdmin;
 
+  const [radioState, setRadioState] = useState(false);
+  const [statusChecked, setStatusChecked]=useState(false);
+
+  useEffect(()=>{
+    if(removeCheckbox.status===false && objectAll.id===removeCheckbox.id){
+      setRadioState(false);
+      setStatusChecked(false);
+    }
+    setRemoveCheckbox({id:0,status:true})
+
+  },[removeCheckbox.status])
 
   const [allObject, setallObject]=useState([]);
-
+  
   useEffect(()=>{
     if(objectAll!==undefined){
       setallObject(objectAll)
+      if(selectedList.length>0){
+        selectedList.map(item=>{
+          if(item.id===objectAll.id){
+            setRadioState(true);
+            setStatusChecked(true);
+          }
+        })
+      }
     }
   },[''])
-
  
   const validarcheckbox=(e)=>{
-    if(e.target.checked && boardType===true){
+    if(e && boardType===true){
       const datauser={
         idEstado:idStatus, 
         email:allObject.correo, 
@@ -36,42 +52,42 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
         nombres:allObject.nombreUsuario, 
         color:allObject.color
       }
-      setselectedList([...selectedList, datauser]);   
+      setSelectedList([...selectedList, datauser]);
     }
-    else if(e.target.checked && boardType===false){
+    else if(e && boardType===false){
+      
       const dataServices={
         idEstado:idStatus,
         id:allObject.id,
         nombre:allObject.nombreServicio
       }
-      setselectedList([...selectedList, dataServices]);
-    }
-    else if(!e.target.checked && boardType===true){ 
-      deletingSelectedDeslectCheckbox(allObject.id);
-      
+      setSelectedList([...selectedList, dataServices]);
+
     }
     else{
-      deletingSelectedDeslectCheckbox(allObject.id);
+      deletingSelectedDeslectCheckbox(allObject.id, selectedList, setSelectedList);
     }
  }
-
+ 
  //With each click the check box is activated or deactivated
- const changeCheckboxStatus=(e)=>{
+ const changeCheckboxStatus=()=>{
   if(radioState===false){
-    descheck.check(e);
+    setStatusChecked(true);
     setRadioState(true);
+    validarcheckbox(true)
   }
   else{
-    descheck. uncheck(e);
+    setStatusChecked(false);
     setRadioState(false);
+    validarcheckbox(false)
   }
-  validarcheckbox(e)
+  
  }
 
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="radio" className='cb_confirm_changes' id={allObject.id} name={allObject.id} onClick={(e)=>changeCheckboxStatus(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.id} checked={statusChecked} name={allObject.id} onClick={changeCheckboxStatus} readOnly />
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>
