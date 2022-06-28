@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext,useState } from 'react';
 
 import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
 import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
@@ -18,16 +18,19 @@ import '.././Admin.css';
 
 export const Users = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const { admin, logoutAdmin, getToken, sendNotification, selectedListUsers, setSelectedListUsers, removeSelectedListUsers } = useContext(AdminContext)
   const adminGet=useGetAdmin();
   const searchAdmin=useSearchAdmin();
   const statusAdmin=useStatusAdmin();
+  const [removeCheckbox, setRemoveCheckbox] = useState({id:0,status:true});
     
   //To bring the initial data of the users
   useEffect(()=>{
     adminGet.getAdmin('Users');
     adminGet.getAdmin('State');
   },[])  
+
+  
 
 
   //Dashboard setting according to the search
@@ -40,7 +43,6 @@ export const Users = () => {
     }
   },[searchAdmin.searchWord]) 
 
-  console.log(statusAdmin.selectedList)
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
     buttonActivated: " ",
@@ -75,10 +77,12 @@ export const Users = () => {
     dataReport:adminGet.dataReport,
     deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
     objectSelectedSetState:statusAdmin.objectSelectedSetState, 
-    selectedList:statusAdmin.selectedList, 
-    setselectedList:statusAdmin.setselectedList,
+    selectedList:selectedListUsers, 
+    setSelectedList:setSelectedListUsers,
     changeStatus:statusAdmin.changeStatus,
-    setChangeStatus:statusAdmin.setChangeStatus
+    setChangeStatus:statusAdmin.setChangeStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox,
   }
   
   const dashboardHeader = {
@@ -100,8 +104,6 @@ export const Users = () => {
     getAdmin:adminGet.getAdmin,
     data:adminGet.data,
     setData:adminGet.setData,
-    selectedList:statusAdmin.selectedList, 
-    setselectedList: statusAdmin.setselectedList,
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Users",
@@ -109,7 +111,18 @@ export const Users = () => {
     isOpen:statusAdmin.isOpen,
     setIsOpen:statusAdmin.setIsOpen,
     //sendNotification
+    selectedList:selectedListUsers, 
+    removeSelectedList:removeSelectedListUsers,
   }
+
+  const dataObject={
+    closePopUpAndDeleteSelectedDeslectCheckBox:statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox,
+    selectedList:selectedListUsers, 
+    setSelectedList:setSelectedListUsers,
+    setRemoveCheckbox:setRemoveCheckbox,
+  }
+
+  
 
   return (
     <div className='container_admin'>
@@ -131,11 +144,10 @@ export const Users = () => {
         />
         :
         <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
-      
     }
       <PopupConfirmChanges objectContent={
-        statusAdmin.selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} closePopUpAndDeleteSelectedDeslectCheckBox={statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox} key={item.id}/>
+        selectedListUsers?.map(item=>(
+          <ObjectStatus userSelect={item} dataObject={dataObject} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

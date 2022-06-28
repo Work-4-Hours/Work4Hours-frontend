@@ -9,6 +9,8 @@ export const AdminContext = createContext({});
 
 export const AdminProvider = ({ children }) => {
     const [admin, setAdmin, removeAdmin] = useLocalStorage(sha256('userAuth'),'')
+    const [selectedListUsers, setSelectedListUsers, removeSelectedListUsers] = useLocalStorage(sha256('selectedListUsers'),[])
+    const [selectedListServices, setSelectedListServices, removeSelectedListServices] = useLocalStorage(sha256('selectedListServices'),[])
     const { userConnection, sendNotification, closeConnection } = useNotification();
 
     const getToken = () => {
@@ -19,7 +21,7 @@ export const AdminProvider = ({ children }) => {
         window.location.reload()
     }
 
-    const data={ admin, logoutAdmin, getToken, sendNotification }
+    const data={ admin, logoutAdmin, getToken, sendNotification, selectedListUsers, setSelectedListUsers, removeSelectedListUsers, selectedListServices, setSelectedListServices, removeSelectedListServices}
 
     useEffect(() => {     
         closeConnection()

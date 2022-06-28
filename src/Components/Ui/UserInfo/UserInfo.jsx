@@ -28,10 +28,14 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     dataReport,
     objectSelectedSetState, 
     selectedList, 
-    setselectedList,
+    setSelectedList,
     changeStatus,
     setChangeStatus,
+    removeCheckbox,
+    setRemoveCheckbox
   }=dataUsers;
+  
+
   
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
@@ -46,18 +50,20 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     setChangeStatus:setChangeStatus,
     setIdStatus:setIdStatus,
     setNotificationAutomaticSuspension:setNotificationAutomaticSuspension,
-
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
   }
 
   const dataCheckBoxAdmin={
     objectAll:objectAllUsers, 
     designCheckBoxAdmin:"span_confirm_changes", 
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList, 
-    setselectedList:setselectedList,
     boardType:true,
     idStatus:idStatus,
-
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox
   }
 
   const dataReports = {
