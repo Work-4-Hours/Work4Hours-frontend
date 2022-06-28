@@ -1,6 +1,6 @@
 .center_main_index {
     max-width: var(--max-width-container);
-    margin: 1em auto;
+    margin: 3em auto;
     padding: 0 20px;
 }
 
@@ -16,34 +16,11 @@
 
 /* Popups */
 
-.center_popup_profile {
-    max-width: 900px;
-    height: 100%;
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.padding_info_user {
-    width: 50%;
-    /* padding: 20px; */
-}
 
 .title_form_my_profile {
     padding: 25px 0 0 25px;
 }
 
-.image_profile {
-    width: 50%;
-    position: relative;
-} 
-
-.popup_profile {
-    width: 100%;
-    display: flex;
-}
 
 .padding_form_my_profile {
     padding: 25px;
@@ -86,6 +63,28 @@
     text-decoration: none;
 }
 
+
+
+.information_services {
+    margin: 20px 0 0 0;
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Information section */
+
+.information_services {
+    background: #e7edf5;
+}
+
+.center_section_information_services {
+    width: 100%;
+    max-width: var(--max-width-container);
+    margin: auto;
+    padding: 0 20px;
+}
+
 .title_index {
     font-family: var(--font-1);
     font-size: 1.5em;
@@ -93,8 +92,15 @@
     margin: 1.5em 0 0 0;
 }
 
-.information_services {
-    margin: 20px 0;
+.section_interest_card {
+    margin: 2em 0;
     display: flex;
     gap: 20px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .section_interest_card {
+        flex-direction: column;
+    }
 }
