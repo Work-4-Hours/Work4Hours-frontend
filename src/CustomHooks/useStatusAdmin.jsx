@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 export const useStatusAdmin = () => {
-    const [selectedList, setSelectedList]=useState([]);//desaparece
     const [statusChecked, setStatusChecked]=useState(false);
     
     const [changeStatus, setChangeStatus]=useState(false);
@@ -44,8 +43,6 @@ export const useStatusAdmin = () => {
     return {
         deletingSelectedDeslectCheckbox, 
         objectSelectedSetState, 
-        selectedList, 
-        setSelectedList, 
         changeStatus,
         setChangeStatus,
         closePopUpAndDeleteSelectedDeslectCheckBox,
