@@ -146,7 +146,7 @@ export const Registry = () => {
                                     <>
                                         <section className="acount_data">
 
-                                            <InputTextLabel titleLabel='Email' {...email} placeholder='Correo' />
+                                            <InputTextLabel titleLabel='Correo' {...email} placeholder='Correo' />
 
                                             <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
 
