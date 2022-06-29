@@ -26,6 +26,7 @@ export const Header = () => {
         navigate('/')
     }
 
+
     const ocult = () => {
         setIsOcult(!isOcult)
     }
@@ -46,7 +47,7 @@ export const Header = () => {
                                             <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />
                                             <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phoneNumber} />
                                             <InputTextLabel titleLabel='Correo' type='email' value={user.info[0]?.email} />
-                                            <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />
+                                            {/* <InputTextLabel titleLabel='Fecha de nacimiento' type='date' value="2022-06-01" /> */}
                                         </div>
                                         <div className="input_save_profile">
                                             <Button style='button_big' value='Guardar' />
