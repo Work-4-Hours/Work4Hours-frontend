@@ -63,6 +63,7 @@
     display: flex;
     justify-content: space-between;
     margin: 0 0 5px 0;
+    align-items: center;
 }
 
 .link_login_form_register {
@@ -254,11 +255,11 @@
 }
 
 @media screen and (max-width: 925px) {
-    .information_app {
-        display: none;
-    }
+    .information_app {display: none;}
+    .center_main_login {flex-direction: column;}
+    .header_registry{flex-wrap: wrap;}
+}
 
-    .center_main_login {
-        flex-direction: column;
-    }
+@media (min-width: 0) and (max-width: 1000px) {
+    .header_registry{flex-wrap:wrap}
 }
