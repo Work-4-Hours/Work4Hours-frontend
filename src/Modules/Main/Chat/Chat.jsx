@@ -11,12 +11,15 @@ import { useChat } from "CustomHooks/useChat";
 import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
-
-import './Chat.css';
+import { DivChat } from "Components/StyledComponets/DivChat";
 import { AddCualification } from "Components/Layout/AddCualification/AddCualification";
 import { DivPopUp } from "Components/StyledComponets/DivPopUp";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "Components/Ui/Button/Button";
+
+import { ReactComponent as IconArrow } from 'Assets/Icons/IconArrow.svg'
+
+import './Chat.css';
 
 export const Chat = () => {
 
@@ -105,7 +108,9 @@ export const Chat = () => {
             <Header />
             <main className="main_chat">
                 <div className="center_chat">
-                    <DivShadow className='aside_chat'>
+                    <DivChat isActive={
+                        currentChat ? false : true
+                    } className='aside_chat'>
                         <div className="header_aside_chat">
                             <Title>Chat</Title>
                         </div>
@@ -131,16 +136,19 @@ export const Chat = () => {
                             }
 
                         </div>
-                    </DivShadow>
+                    </DivChat>
                     {
                         currentChat ?
-                            <DivShadow className='main_messages'>
+                            <DivChat isActive={currentChat ? true : false} className='main_messages'>
                                 <div className="header_messages_chat">
                                     <div className="information_user_header_chat">
+                                        <IconArrow className='btn_exit_chat' onClick={() => setCurrentChat()} />
                                         <PhotoUserProfile infoProfile={{ name: currentChat.nombres, color: currentChat.color, userPicture: currentChat.fotop }} small={false} style='small_profile' />
                                         <p className="name_user_header_chat">{currentChat.nombres}</p>
                                     </div>
-                                    <Button value='Finalizar conversación' onClick={() => setPopupAddQualification(true)} />
+                                    <div className="close_chat">
+                                        <Button value='Finalizar conversación' onClick={() => setPopupAddQualification(true)} />
+                                    </div>
                                 </div>
                                 <div className="main_messages_chat">
                                     <div ref={chatRef} className="messages_chat">
@@ -178,9 +186,9 @@ export const Chat = () => {
                                         </form>
                                     </div>
                                 </div>
-                            </DivShadow>
+                            </DivChat>
                             :
-                            <DivShadow className='main_messages'>
+                            <DivShadow className='section_info_chat'>
                                 <div className="message_chat">
                                     <img className='icon_message_chat' src={IconMessageChat} alt="" />
                                     <p className="title_app_info_chat">Work 4 hours</p>

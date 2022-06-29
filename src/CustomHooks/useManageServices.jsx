@@ -11,7 +11,7 @@ export const useManageServices = () => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
-    const getServices = async () => {
+    const getAllServices = async () => {
         setLoading(true)
         fetch(`${process.env.REACT_APP_API_PRODUCTION}/getOwnServices/${jwt_decode(getJwt()).userId}`, {
             headers: {
@@ -28,6 +28,44 @@ export const useManageServices = () => {
             .finally(() => setLoading(false))
     }
 
+    const getPublicatedServices = async () => {
+        setLoading(true)
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/getOwnServices/${jwt_decode(getJwt()).userId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                const oublicated_services = response[0].filter(item => {
+                    return item.status == 1                 
+                })
+                setData(oublicated_services);
+                
+            })
+            .catch(error => setError(error))
+            .finally(() => setLoading(false))
+    }
+
+    const getOcultedServices = async () => {
+        setLoading(true)
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/getOwnServices/${jwt_decode(getJwt()).userId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                const oculted_services = response[0].filter(item => {
+                    return item.status == 3                 
+                })
+                setData(oculted_services);
+            })
+            .catch(error => setError(error))
+            .finally(() => setLoading(false))
+    }
 
     const createService = async (data) => {
         setLoading(true)
@@ -97,7 +135,10 @@ export const useManageServices = () => {
         data,
         loading,
         error,
-        getServices,
+        getAllServices,
+        getPublicatedServices,
+        getOcultedServices,
+        
         createService,
         updateService,
         deleteService,

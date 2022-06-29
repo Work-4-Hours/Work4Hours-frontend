@@ -60,7 +60,7 @@ export const CardServiceAdmin = ({ service = {} }) => {
 
                 <div className="visibility_card_service_dashboard">
                     {
-                        service.status == 4 &&
+                        service.status == 1 &&
                         <div className="info_visibility_card_service_dashboard">
                             <IconVisibility className='icon_visibility'/>
                             <p className='text_visibility_card_service'>Visible</p>
@@ -75,10 +75,10 @@ export const CardServiceAdmin = ({ service = {} }) => {
                     }
                     
                     {
-                        service.status == 1 &&
+                        service.status == 3 &&
                          <div className="info_visibility_card_service_dashboard">
                             <IconVisibility className='icon_visibility'/>
-                            <p className='text_visibility_card_service'>Reportado</p>
+                            <p className='text_visibility_card_service'>Inhabilitado</p>
                             <p onClick={appeal}>Apelar</p>
                         </div>
                     }

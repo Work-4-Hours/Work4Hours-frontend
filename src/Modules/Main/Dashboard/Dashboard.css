@@ -52,7 +52,24 @@
     align-items: center;
 }
 
+.options_show_ a {
+    padding: 5px 15px;
+    width: 130px;
+    border-radius: 30px;
+    border: 1px solid var(--gray-text-3);
+    text-align: center;
+
+    color: var(--gray-text-3);
+    font-family: var(--font-1);
+}
+
+.options_show_ a.active {
+    border: 2px solid var(--gray-text-1);
+    color: var(--gray-text-1);
+}
+
 .options_show_my_services {
+    width: 100%;
     padding: 15px 20px;
     border-radius: 20px;
     background: #f4f8ff;
@@ -68,14 +85,7 @@
 }
 
 .link_option_show_services {
-    padding: 5px 15px;
-    width: 130px;
-    border-radius: 30px;
-    border: 1px solid var(--gray-text-3);
-    text-align: center;
-
-    color: var(--gray-text-3);
-    font-family: var(--font-1);
+    
 }
 
 .options_show_ {
@@ -85,8 +95,7 @@
 }
 
 .option_select_ {
-    border: 2px solid var(--gray-text-1);
-    color: var(--gray-text-1);
+   
 }
 
 .operations_dashboard {
@@ -178,5 +187,21 @@
 
     .main_dashboard_ {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 818px) {
+    .show_only_title {
+        display: none;
+    }
+
+    .nav_show_services {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .options_show_my_services {
+      overflow-x: scroll;
     }
 }

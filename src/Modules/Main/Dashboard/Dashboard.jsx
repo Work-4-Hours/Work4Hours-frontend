@@ -3,7 +3,7 @@ import { DivShadowDark } from 'Components/StyledComponets/DivShadowDark'
 import { Title } from 'Components/StyledComponets/Titlte'
 import { Button } from 'Components/Ui/Button/Button'
 import { LinkOption } from 'Components/Ui/LinkOption/LinkOption'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
@@ -36,7 +36,7 @@ export const Dashboard = () => {
 
                                 <p className='phone_user_profile_dashboard'>{info_user.phoneNumber}</p>
                                 <Link className='link_profile_info_user' to={`/profile/user?id=${jwt_decode(user.token).userId}`}>
-                                <Button value='Mi perfil'/>
+                                    <Button value='Mi perfil' />
                                 </Link>
                             </div>
 
@@ -50,26 +50,26 @@ export const Dashboard = () => {
                         <p className='title_dashboard_info'>Administrar servicios</p>
 
                         <section className='nav_show_services'>
-
                             <div className="options_show_my_services">
                                 <p className='show_only_title'>Mostrar solo:</p>
                                 <div className="options_show_">
-                                    <div className="link_option_show_services option_select_">
-                                        <p>Todos</p>
-                                    </div>
-
-                                    <Link className='link_add_service' to='publications'>
+                                    <NavLink className='link_add_service' to='all'>
+                                        <div className="link_option_show_services option_select_">
+                                            <p>Todos</p>
+                                        </div>
+                                    </NavLink>
+                                    <NavLink className='link_add_service' to='publications'>
                                         <div className="link_option_show_services">
                                             <p>Publicados</p>
                                         </div>
-                                    </Link>
+                                    </NavLink>
 
 
-                                    <Link className='link_add_service' to='saved'>
+                                    <NavLink className='link_add_service' to='saved'>
                                         <div className="link_option_show_services">
                                             <p>Borradores</p>
                                         </div>
-                                    </Link>
+                                    </NavLink>
                                 </div>
 
                             </div>

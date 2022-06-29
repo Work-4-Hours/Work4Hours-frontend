@@ -122,10 +122,12 @@ export const Registry = () => {
     }, [])
 
     return (
-        <main className='registry'>
+        <main className='registry_main'>
+            {/* <div className="background_registry"></div>
             <div className="background_image">
                 <RegistryBackground className='background_image_login_svg' />
-            </div>
+            </div> */}
+            {/* <img  src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
 
             <div className="center_main_registry">
 

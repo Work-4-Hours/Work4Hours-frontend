@@ -1,3 +1,10 @@
+.registry_main {
+    background-image: url('Assets/Backgrounds/RegistryBackground.svg');
+    background-size: 100% 130%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
 .registry {
     position: relative;
 }
@@ -247,25 +254,11 @@
 }
 
 @media screen and (max-width: 925px) {
-    .information_app {display: none;}
-    .center_main_login {flex-direction: column;}
-}
+    .information_app {
+        display: none;
+    }
 
-@media (min-width: 0) and (max-width: 480px) {
-    .background_image_login_svg{width: 148%;}
-    .header_registry{flex-wrap:wrap}
-}
-
-@media screen and (min-width: 1105px) {
-    .background_image_login_svg{width: 140%;}
-    .center_main_registry{gap:5em}
-    .step_number{ color:#fff; border: 2px solid #fff}
-    .step_info {color:#fff}
-    .current_step > .step_number{color:#1583ac;border:2px solid #1583ac}
-    .current_step > .step_info{color: #1583ac;}
-    .complete_step > .step_number{color:#1583ac; border:2px solid #1583ac}
-    .complete_step > .step_info{color: #1583ac;}
-    .line_step{background:#fff}
-    .line_current > .line_step{background: #1583ac;}
-    .line_complete > .line_step{background: #1583ac;}
+    .center_main_login {
+        flex-direction: column;
+    }
 }

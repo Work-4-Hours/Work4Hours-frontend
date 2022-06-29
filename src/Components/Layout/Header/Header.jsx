@@ -72,7 +72,7 @@ export const Header = () => {
             <header className="header">
                 <div className="center_nav_bar">
                     <div>
-                        <Link to="/"><img className="logo" src="https://res.cloudinary.com/sena-quindio/image/upload/v1646884944/qqdviu6wbgeum4hpp5m6.png" alt="" /></Link>
+                        <Link to="/"><img className="logo" src="https://res.cloudinary.com/sena-quindio/image/upload/v1656131213/work4hours/ipz0z1xedpgv9vcedtvs.png" alt="" /></Link>
                     </div>
                     <nav>
                         <div className="nav_login">
@@ -102,7 +102,7 @@ export const Header = () => {
                                                             setIsOcultProfile(true)
                                                         }
                                                         } />
-                                                        <LinkOption link='/dashboard/publications' text='Administrar servicios' />
+                                                        <LinkOption link='/dashboard/all' text='Administrar servicios' />
                                                         <LinkOption link='/chat' text='Chat' />
                                                     </div>
 
