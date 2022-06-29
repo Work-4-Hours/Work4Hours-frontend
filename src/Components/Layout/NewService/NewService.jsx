@@ -74,7 +74,7 @@ export const NewService = () => {
                         />
                     </section>
 
-                    <InputTextLabel titleLabel='Descripcion del servicio' {...description} placeholder='Detalle su peticion o prestacion de su servicio' />
+                    <InputTextLabel titleLabel='Descripción del servicio' {...description} placeholder='Detalle su petición o prestación de su servicio' />
 
                     <Button value={`${status == 1 ? 'Publicar servicio' : 'Guardar borrador'}`} />
                 </form>

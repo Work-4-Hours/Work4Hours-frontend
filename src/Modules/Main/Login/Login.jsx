@@ -50,7 +50,7 @@ export const Login = () => {
             <div className="center_main_login">
                 <div className="information_login_app">
                     <h1 className='title_info_login_app'>Work 4 Hours</h1>
-                    <p className='info_login'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis nihil accusantium at voluptate. Dolore cumque provident veritatis blanditiis quibusdam, sequi enim</p>
+                    <p className='info_login'>Accede ya mismo a Work 4 Hours, y aprovecha la oportunidad de encontrar y ofertar los servicios que desees.</p>
                 </div>
                 <DivShadow className="container_form_login">
                     <div className="padding_container_form_login">

@@ -45,7 +45,7 @@ export const Registry = () => {
 
     const [steps, setSteps] = useState([
         { step: 1, current: true, complete: false, info: 'Cuenta' },
-        { step: 2, current: false, complete: false, info: 'Datos basicos' },
+        { step: 2, current: false, complete: false, info: 'Datos básicos' },
         { step: 3, current: false, complete: false, info: 'Perfil (Opcional)' }
     ])
 
@@ -241,7 +241,7 @@ export const Registry = () => {
                                                 </section>
                                             </header>
                                         </section>
-                                        <Button value='Registrate' onClick={() => registry()} />
+                                        <Button value='Registrate' onClick={() => registry()  } />
                                     </>
                                 )
                             }

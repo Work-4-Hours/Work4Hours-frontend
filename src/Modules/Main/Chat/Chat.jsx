@@ -152,7 +152,7 @@ export const Chat = () => {
                                                 ))
                                                 :
                                                 <div className="conversation_message">
-                                                    <p className="test_conversation_message">Inicia una converzación con {currentChat.nombres}</p>
+                                                    <p className="test_conversation_message">Iniciar una conversación con {currentChat.nombres}</p>
                                                 </div>
                                         }
 
@@ -185,7 +185,7 @@ export const Chat = () => {
                                     <img className='icon_message_chat' src={IconMessageChat} alt="" />
                                     <p className="title_app_info_chat">Work 4 hours</p>
                                     <div className="info_chat">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, sunt!
+                                        Inicia una conversación con otros usuarios para concretar los términos del servicio
                                     </div>
                                 </div>
                             </DivShadow>
