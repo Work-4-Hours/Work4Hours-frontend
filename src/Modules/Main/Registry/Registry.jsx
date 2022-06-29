@@ -49,8 +49,9 @@ export const Registry = () => {
         { step: 3, current: false, complete: false, info: 'Perfil (Opcional)' }
     ])
 
+
     const changeStep = (value) => {
-        setCurrentStep(currentStep + 1)
+        setCurrentStep(value)
         steps[value - 1].current = true
         steps[value - 2].complete = true
     }
@@ -190,16 +191,17 @@ export const Registry = () => {
                                                 disable={disable}
                                                 onChange={e => setCity(e.target.value)} 
                                             />
-                                            
-
-                                            <Button value='Siguiente' onClick={() => {
-                                                name.validator(name.value)
-                                                surname.validator(surname.value)
-                                                phone.validator(phone.value)
-                                                birthday.validator(phone.value)
-                                                if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
-                                                    changeStep(currentStep + 1)
-                                            }} />
+                                            <div className='container_buttons_registry'>
+                                                <Button value='Anterior' onClick={() => {changeStep(currentStep - 1)}} />
+                                                <Button value='Siguiente' onClick={() => {
+                                                    name.validator(name.value)
+                                                    surname.validator(surname.value)
+                                                    phone.validator(phone.value)
+                                                    birthday.validator(phone.value)
+                                                    if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
+                                                        changeStep(currentStep + 1)
+                                                }} />
+                                            </div>
                                         </form>
 
                                     </>
@@ -240,7 +242,10 @@ export const Registry = () => {
                                                 </section>
                                             </header>
                                         </section>
-                                        <Button value='Registrate' onClick={() => registry()} /> 
+                                        <div className='container_buttons_registry'>
+                                            <Button value='Anterior' onClick={() => {changeStep(currentStep - 1)}} />
+                                            <Button value='Registrate' onClick={() => registry()} /> 
+                                        </div>
                                     </>
                                 )
                             }

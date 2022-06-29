@@ -253,13 +253,20 @@
 .line_complete > .line_step {
     background: #FFFF;
 }
+                              
+.container_buttons_registry{display: flex; gap: 2em;}
 
 @media screen and (max-width: 925px) {
     .information_app {display: none;}
     .center_main_login {flex-direction: column;}
     .header_registry{flex-wrap: wrap;}
+    .basic_data{flex-wrap: nowrap; display: flex;flex-direction: column;}
 }
 
 @media (min-width: 0) and (max-width: 1000px) {
     .header_registry{flex-wrap:wrap}
 }
+
+/* 
+@media (min-width:365px) and (max-width:625px){
+} */
