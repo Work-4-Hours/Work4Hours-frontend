@@ -144,26 +144,27 @@ export const Registry = () => {
                             {
                                 currentStep == 1 && (
                                     <>
-                                        <section className="acount_data">
+                                        <form className="acount_data" onSubmit={e=>{e.preventDefault()}}>
 
                                             <InputTextLabel titleLabel='Email' {...email} placeholder='Correo' />
 
-                                            <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
+                                            <InputTextLabel titleLabel='Contraseña' {...password}  placeholder='Contraseña' />
 
-                                        </section>
-                                        <Button value='Siguiente' onClick={() => {
+                                            <Button value='Siguiente' onClick={() => {
                                             email.validator(email.value)
                                             password.validator(password.value)
                                             if (email.validator(email.value) && password.validator(password.value))
                                                 changeStep(currentStep + 1)
-                                        }} />
+                                            }} />
+                                        </form>
+                                        
                                     </>
                                 )
                             }
                             {
                                 currentStep == 2 && (
                                     <>
-                                        <section className="basic_data">
+                                        <form className="basic_data" onSubmit={e=>{e.preventDefault()}}>
 
                                             <InputTextLabel titleLabel='Nombres' {...name} placeholder='Camilo' />
 
@@ -187,20 +188,20 @@ export const Registry = () => {
                                                 nameSelect='Ciudad'
                                                 options={cities}
                                                 disable={disable}
-                                                onChange={e => setCity(e.target.value)}
+                                                onChange={e => setCity(e.target.value)} 
                                             />
+                                            
 
-                                        </section>
+                                            <Button value='Siguiente' onClick={() => {
+                                                name.validator(name.value)
+                                                surname.validator(surname.value)
+                                                phone.validator(phone.value)
+                                                birthday.validator(phone.value)
+                                                if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
+                                                    changeStep(currentStep + 1)
+                                            }} />
+                                        </form>
 
-                                        <Button value='Siguiente' onClick={() => {
-                                            name.validator(name.value)
-                                            surname.validator(surname.value)
-                                            phone.validator(phone.value)
-                                            birthday.validator(phone.value)
-                                            if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
-                                                changeStep(currentStep + 1)
-                                        }
-                                        } />
                                     </>
                                 )
                             }
@@ -239,7 +240,7 @@ export const Registry = () => {
                                                 </section>
                                             </header>
                                         </section>
-                                        <Button value='Registrate' onClick={() => registry()} />
+                                        <Button value='Registrate' onClick={() => registry()} /> 
                                     </>
                                 )
                             }
