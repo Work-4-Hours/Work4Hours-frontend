@@ -69,7 +69,7 @@ export const Login = () => {
 
                         <div className="info_register">
                             <p>¿No tienes cuenta?</p>
-                            <Link className='link_registry' to='/registry'>Registrate</Link>
+                            <Link className='link_registry' to='/registry'>Regístrate</Link>
                         </div>
                     </div>
                 </DivShadow>
