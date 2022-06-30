@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import './PopupConfirmChanges.css';
 
@@ -29,7 +29,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
 
     const validationInput= (e) => {
         if(e.keyCode===13){

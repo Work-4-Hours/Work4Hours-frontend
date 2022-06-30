@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
 import './FilterUserAdmin.css';
 
-<<<<<<< HEAD
 import { PopUp } from 'Components/StyledComponets/PopUp';
-=======
-import { PopUp } from 'Components/StyleComponets/PopUp';
->>>>>>> 9463a3695de7c65ca2f059317402eeed0aa23acf
 import { Button } from '../Button/Button';
 
 export const FilterUserAdmin = ({setIdFilter}) => {

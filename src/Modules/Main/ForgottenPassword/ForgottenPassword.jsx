@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
-import { Title } from 'Components/StyledComponets/Titlte'
 import { Button } from 'Components/Ui/Button/Button'
-import { InputText } from 'Components/Ui/InputText/InputText'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconUnlock } from 'Assets/Icons/IconUnlock.svg'
@@ -10,7 +8,7 @@ import { ReactComponent as IconCheck } from 'Assets/Icons/IconCheck.svg'
 
 import './ForgottenPassword.css'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 
 const regex_email = /^(([^<>()[\]\ \.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -34,11 +32,8 @@ export const ForgottenPassword = () => {
     const sendEmail = () => {
         axios.get(`${process.env.REACT_APP_API_PRODUCTION}/recoverPassword/${email.value}`)
         .then(response => {
-            console.log(response.data)
         })
         .catch(error => console.log(error))          
-
-        console.log('XD');
     }
 
     useEffect(() => {

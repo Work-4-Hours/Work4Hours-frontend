@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext,  useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Title } from 'Components/StyledComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
-import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import  IconAddImage  from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
@@ -52,7 +51,6 @@ export const EditService = () => {
         })
         .then(response => response.json())
         .then(response => {
-           console.log(response);
         })
         .finally(setLoading(false))
     }
@@ -63,7 +61,6 @@ export const EditService = () => {
             <main className='main_add_service'>
                 <div className="center_main_add_service">
                     <DivShadow className='_image_add'>
-                    {/* <img src={service.photo} alt="" /> */}
                         <input type="file" name="" id="input_file_image" />
                         <label htmlFor="input_file_image">
                             <div className="drag_drop_image">

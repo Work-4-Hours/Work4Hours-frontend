@@ -8,7 +8,6 @@ import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
-import { Alert } from 'Components/StyledComponets/Alert'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
 import { sha256 } from 'js-sha256'
 

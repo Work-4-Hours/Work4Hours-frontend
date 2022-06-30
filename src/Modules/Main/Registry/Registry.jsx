@@ -4,13 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Title } from 'Components/StyledComponets/Titlte'
-import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
-import { useFetch } from 'CustomHooks/useFetch'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
-import { ReactComponent as RegistryBackground } from 'Assets/Backgrounds/RegistryBackground.svg'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
 import { regex_email, regex_names, regex_password, regex_phone } from 'Validations/RejexForms'
 
@@ -130,12 +127,6 @@ export const Registry = () => {
 
     return (
         <main className='registry_main'>
-            {/* <div className="background_registry"></div>
-            <div className="background_image">
-                <RegistryBackground className='background_image_login_svg' />
-            </div> */}
-            {/* <img  src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
-
             <div className="center_main_registry">
 
                 <DivShadow className='container_form_registry'>

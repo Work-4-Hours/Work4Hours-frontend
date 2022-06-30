@@ -12,7 +12,6 @@ import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 import { DivChat } from "Components/StyledComponets/DivChat";
-import { AddCualification } from "Components/Layout/AddCualification/AddCualification";
 import { DivPopUp } from "Components/StyledComponets/DivPopUp";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "Components/Ui/Button/Button";
@@ -45,7 +44,6 @@ export const Chat = () => {
             .then(response => response.json())
             .then(response => {
                 setChats(response)
-                // console.log(response);
             }).finally(() => setIsLoading(false))
     }, [])
 

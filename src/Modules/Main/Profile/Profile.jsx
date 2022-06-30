@@ -11,24 +11,15 @@ import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUse
 import './Profile.css'
 import { Link, useSearchParams } from 'react-router-dom'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
-import { useFetch } from 'CustomHooks/useFetch'
 
 export const Profile = () => {
 
-    const { user, isAuth, getJwt } = useContext(UserContext)
+    const {getJwt } = useContext(UserContext)
     const [services, setServices] = useState([])
     const [profileU, setProfileU] = useState([])
     const [params, setParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
     const [qualification, setQualification] = useState(null)
-
-    // const { data, isLoading : loading } = useFetch(`
-    // ${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${params.get('id')}`,{
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `JSW ${getJwt()}`
-    //     }
-    // })
 
     useEffect(() => {
         const getInfo = async () => {
