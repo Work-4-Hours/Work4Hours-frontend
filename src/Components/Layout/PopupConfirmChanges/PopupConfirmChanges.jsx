@@ -13,7 +13,6 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
 
-    
     const {
         setData,
         getAdmin,
@@ -47,7 +46,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
         }
         else{
-            selectedList.map(item=>{
+            selectedList.map((item)=>{
                 const result = data.filter(object => object.id === item.id && object.idEstado!==item.idEstado);
                 if(result.length>0){
                     detectChangeStatus = true;

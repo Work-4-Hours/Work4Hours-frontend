@@ -21,7 +21,9 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     setSelectedList,
   }=dataStatusAdmin;
 
-  const [stateObject, setStateObject]=useState(nameStatus);
+  const [stateObject, setStateObject]=useState(
+    
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [stateColor, setStateColor]=useState('');
   const [idStateObject, setIdStateObject]=useState(idObjectStatus);
@@ -41,13 +43,13 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   }
 
   const changeColorStateObjects= (UserState) =>{  
-    if(UserState == "Habilitado"){
+    if(UserState === "Habilitado"){
       return 'green';
     }
-    else if (UserState == "Suspendido por 3 días"){
+    else if (UserState === "Suspendido por 3 días"){
       return 'yellow';
     }
-    else if (UserState == "Inhabilitado"){
+    else if (UserState === "Inhabilitado"){
       return 'red';
     }
   }
