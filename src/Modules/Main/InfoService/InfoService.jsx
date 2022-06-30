@@ -224,16 +224,6 @@ export const InfoService = () => {
                             }
                         </DivShadow>
 
-                        {/* <DivShadow>
-                            <div className="padding_info_service">
-                                <p className='name_user_info_service'>Comentarios</p>
-                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
-                            </div>
-                        </DivShadow> */}
-                    </section>
-
-                    <section className='section_info_user'>
-
                         <DivShadow className='information_user'>
                             {
                                 loading ?
@@ -266,6 +256,12 @@ export const InfoService = () => {
                                     </>
                             }
                         </DivShadow>
+                        {/* <DivShadow>
+                            <div className="padding_info_service">
+                                <p className='name_user_info_service'>Comentarios</p>
+                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
+                            </div>
+                        </DivShadow> */}
                     </section>
 
                 </div>

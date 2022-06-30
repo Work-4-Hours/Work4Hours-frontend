@@ -60,14 +60,14 @@ export const CardServiceAdmin = ({ service = {} }) => {
 
                 <div className="visibility_card_service_dashboard">
                     {
-                        service.status == 1 &&
+                        service.visibility == 1 &&
                         <div className="info_visibility_card_service_dashboard">
                             <IconVisibility className='icon_visibility'/>
                             <p className='text_visibility_card_service'>Visible</p>
                         </div>
                     }   
                     {
-                        service.status == 5 &&
+                        service.visibility == 2 &&
                          <div className="info_visibility_card_service_dashboard">
                             <IconVisibility className='icon_visibility'/>
                             <p className='text_visibility_card_service'>Borrador</p>
@@ -75,7 +75,7 @@ export const CardServiceAdmin = ({ service = {} }) => {
                     }
                     
                     {
-                        service.status == 3 &&
+                        service.visibility == 3 &&
                          <div className="info_visibility_card_service_dashboard">
                             <IconVisibility className='icon_visibility'/>
                             <p className='text_visibility_card_service'>Inhabilitado</p>

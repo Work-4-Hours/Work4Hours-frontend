@@ -1,5 +1,4 @@
 .footer_app {
-    height: 200px;
     background: #f9fbff;
 }
 
@@ -7,8 +6,67 @@
     max-width: var(--max-width-container);
     margin: auto;
     padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 } 
 
+.principal_info_footer {
+    display: flex;
+    gap: 4em;
+}
+
 .footer_logo {
-    width: 150px;
+    width: 200px;
+}
+
+.section_information_aplicaction {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 40px;
+}
+
+.info_aplication {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.information_copy {
+    font-family: var(--font-1);
+    color: var(--gray-text-3); 
+    font-size: 14px;
+}
+
+.link_terminos_condiciones {
+    font-family: var(--font-1);
+    color: var(--bg-blue); 
+}
+
+.social_networks {
+    display: flex;
+    align-items: center;
+    gap: 20px;    
+}
+
+.about_footer {
+    width: 400px;
+}
+
+.icon_footer {
+    fill: var(--bg-blue);
+}
+
+.subtitle_footer {
+    font-family: var(--font-1);
+    color: var(--gray-text-2); 
+    font-size: 18px;
+}
+
+.paragraph_footer {
+    font-family: var(--font-1);
+    color: var(--gray-text-3); 
+    font-size: 15px;
 }

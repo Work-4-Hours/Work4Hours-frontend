@@ -109,7 +109,7 @@ export const useManageServices = () => {
             .catch(error => setError(error))
             .finally(() => { 
                 setLoading(false) 
-                navigate('/dashboard/publicated')
+                navigate('/dashboard/all')
             })
     }
 
