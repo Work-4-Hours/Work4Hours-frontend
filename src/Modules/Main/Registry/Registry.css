@@ -261,7 +261,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 1333px) {
-    .header_registry{flex-direction: column;}
+    .header_registry{flex-direction: column;align-items: center;}
     .basic_data{justify-content: space-around;}
     .container_buttons_registry{justify-content: center;}
 }
