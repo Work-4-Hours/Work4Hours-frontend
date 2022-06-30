@@ -25,6 +25,7 @@ export const Registry = () => {
     const [loading, setLoading] = useState(false)
     const [currentStep, setCurrentStep] = useState(1);
     const [disable, setDisable] = useState(true);
+    const [imageFile, setImageFile] = useState(null)
 
     const [profileColors] = useState(['#8a1c1c', '#217511', '#239cb1', '#091b80', '#6b0d6e', '#aa5c2f'])
 
