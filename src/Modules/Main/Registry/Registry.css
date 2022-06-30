@@ -258,8 +258,6 @@
 @media screen and (max-width: 925px) {
     .information_app {display: none;}
     .center_main_login {flex-direction: column;}
-    /* .header_registry{flex-wrap: wrap;} */
-    /* .basic_data{flex-wrap: nowrap; display: flex;flex-direction: column;} */
 }
 
 @media (min-width: 320px) and (max-width: 1333px) {
