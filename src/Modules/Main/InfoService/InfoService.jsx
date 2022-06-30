@@ -211,7 +211,7 @@ export const InfoService = () => {
 
                                             <div>
                                                 <div className="description_info_service">
-                                                    <p className='subtitle_info_service'>Descripcion del servicio</p>
+                                                    <p className='subtitle_info_service'>Descripción del servicio</p>
                                                     <p className='description_info_service'>{service?.description}</p>
                                                 </div>
                                             </div>

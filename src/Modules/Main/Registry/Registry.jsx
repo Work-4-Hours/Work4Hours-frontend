@@ -25,7 +25,7 @@ export const Registry = () => {
     const [loading, setLoading] = useState(false)
     const [currentStep, setCurrentStep] = useState(1);
     const [disable, setDisable] = useState(true);
-    const [imageFile, setImageFile] = useState(null)
+    // const [imageFile, setImageFile] = useState(null)/MAJO
 
     const [profileColors] = useState(['#8a1c1c', '#217511', '#239cb1', '#091b80', '#6b0d6e', '#aa5c2f'])
 
@@ -45,7 +45,7 @@ export const Registry = () => {
 
     const [steps, setSteps] = useState([
         { step: 1, current: true, complete: false, info: 'Cuenta' },
-        { step: 2, current: false, complete: false, info: 'Datos basicos' },
+        { step: 2, current: false, complete: false, info: 'Datos básicos' },
         { step: 3, current: false, complete: false, info: 'Perfil (Opcional)' }
     ])
 
@@ -153,7 +153,7 @@ export const Registry = () => {
                                     <>
                                         <form className="acount_data" onSubmit={e=>{e.preventDefault()}}>
 
-                                            <InputTextLabel titleLabel='Email' {...email} placeholder='Correo' />
+                                            <InputTextLabel titleLabel='Correo' {...email} placeholder='Correo' />
 
                                             <InputTextLabel titleLabel='Contraseña' {...password}  placeholder='Contraseña' />
 
@@ -223,7 +223,8 @@ export const Registry = () => {
 
                                                 <input className='input_file_image_profile' type="file" name="" id="file_image_user" onChange={e => {
                                                     setPreviewImage(e)
-                                                    setImageFile(e.target.files[0])
+                                                    // setImageFile(e.target.files[0])/MAJO
+                                                    uploadImage(e.target.files[0])
                                                 }} accept="image/*" />
                                                 <section className='preview_image_profile'>
 
@@ -238,13 +239,13 @@ export const Registry = () => {
                                                             }
                                                         </div>
                                                     </label>
-                                                    {
+                                                    {/* {
                                                         previewImage && (
                                                             <div className="button_upload_image_profile">
                                                                 <Button value='Subir' isLoading={loadingImage} onClick={() => uploadImage(imageFile)} />
                                                             </div>
-                                                        )
-                                                    }
+                                                        )/MAJO
+                                                    } */}
                                                 </section>
                                             </header>
                                         </section>

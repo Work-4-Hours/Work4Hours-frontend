@@ -141,7 +141,7 @@ export const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login' className='link_header_login'>Iniciar sesion</Link>
+                                        <Link to='/login' className='link_header_login'>Iniciar sesión</Link>
                                         <p className='or_nav_login'>o</p>
                                         <Link to='/registry' className='link_header_login'><Button value='Registro' /></Link>
                                     </>

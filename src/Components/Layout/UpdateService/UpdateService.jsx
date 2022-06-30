@@ -40,7 +40,7 @@ export const UpdateService = () => {
     return (
         <>
 
-            <h1 className='title_new_service'>Actualizar informacionde : {service.name}</h1>
+            <h1 className='title_new_service'>Actualizar informacion de: {service.name}</h1>
             <section className='section_form_new_service'>
 
                 <form className='form_new_service' onSubmit={async e => {
