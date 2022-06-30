@@ -63,7 +63,6 @@
     display: flex;
     justify-content: space-between;
     margin: 0 0 5px 0;
-    align-items: center;
 }
 
 .link_login_form_register {
@@ -259,14 +258,12 @@
 @media screen and (max-width: 925px) {
     .information_app {display: none;}
     .center_main_login {flex-direction: column;}
-    .header_registry{flex-wrap: wrap;}
-    .basic_data{flex-wrap: nowrap; display: flex;flex-direction: column;}
+    /* .header_registry{flex-wrap: wrap;} */
+    /* .basic_data{flex-wrap: nowrap; display: flex;flex-direction: column;} */
 }
 
-@media (min-width: 0) and (max-width: 1000px) {
-    .header_registry{flex-wrap:wrap}
+@media (min-width: 320px) and (max-width: 1333px) {
+    .header_registry{flex-direction: column;}
+    .basic_data{justify-content: space-around;}
+    .container_buttons_registry{justify-content: center;}
 }
-
-/* 
-@media (min-width:365px) and (max-width:625px){
-} */
