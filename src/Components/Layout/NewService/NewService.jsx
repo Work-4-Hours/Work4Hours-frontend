@@ -6,7 +6,6 @@ import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
-// import { ReactComponent as IconAddImage } from 'Assets/Icons/IconAddImage.png'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
 
@@ -158,7 +157,7 @@ export const NewService = () => {
 
                     <InputTextLabel titleLabel='Descripción del servicio' {...description} placeholder='Detalle su petición o prestación de su servicio' />
 
-                    <Button value={`${status == 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
+                    <Button value={`${status === 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
                 </form>
 
 

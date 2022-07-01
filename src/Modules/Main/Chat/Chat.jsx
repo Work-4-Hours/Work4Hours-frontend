@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Header } from "Components/Layout/Header/Header";
 import { DivShadow } from "Components/StyledComponets/DivShadow";
 import { Title } from "Components/StyledComponets/Titlte";
@@ -12,7 +12,6 @@ import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 import { DivChat } from "Components/StyledComponets/DivChat";
-import { AddCualification } from "Components/Layout/AddCualification/AddCualification";
 import { DivPopUp } from "Components/StyledComponets/DivPopUp";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "Components/Ui/Button/Button";

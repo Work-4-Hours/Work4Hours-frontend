@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine";
-import { DivShadow } from "Components/StyledComponets/DivShadow";
-import { useParams } from "react-router";
-import { Title } from "Components/StyledComponets/Titlte";
-import { Header } from "Components/Layout/Header/Header";
-import { CardServiceSearch } from "Components/Ui/Cards/CardServiceSearch/CardServiceSearch";
+import React, { useEffect, useState } from 'react'
+import { SerchEngine } from 'Components/Layout/SearchEngine/SearchEngine'
+import { DivShadow } from 'Components/StyledComponets/DivShadow'
+import { Title } from 'Components/StyledComponets/Titlte'
+import { Header } from 'Components/Layout/Header/Header'
+import { CardServiceSearch } from 'Components/Ui/Cards/CardServiceSearch/CardServiceSearch'
 
-import "./SearchService.css";
-import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard";
-import { Link, useSearchParams } from "react-router-dom";
-import { LoadingCardSearch } from "Components/Ui/LoadingCardSearch/LoadingCardSearch";
-import { SelectTextLabel } from "Components/Ui/SelectTextLabel/SelectTextLabel";
-import { Button } from "Components/Ui/Button/Button";
-import { CardService } from "Components/Ui/Cards/CardService/CardService";
+import './SearchService.css'
+import { Link, useSearchParams } from 'react-router-dom'
+import { LoadingCardSearch } from 'Components/Ui/LoadingCardSearch/LoadingCardSearch'
+import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
+import { Button } from 'Components/Ui/Button/Button'
+import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 
 export const SearchService = () => {
   const [params, setParams] = useSearchParams();

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
-import { Title } from 'Components/StyledComponets/Titlte'
 import { Button } from 'Components/Ui/Button/Button'
-import { InputText } from 'Components/Ui/InputText/InputText'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconUnlock } from 'Assets/Icons/IconUnlock.svg'
@@ -10,7 +8,7 @@ import { ReactComponent as IconCheck } from 'Assets/Icons/IconCheck.svg'
 
 import './ForgottenPassword.css'
 import { useLocalStorage } from 'CustomHooks/useLocalStorage'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 
 const regex_email = /^(([^<>()[\]\ \.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -34,11 +32,8 @@ export const ForgottenPassword = () => {
     const sendEmail = () => {
         axios.get(`${process.env.REACT_APP_API_PRODUCTION}/recoverPassword/${email.value}`)
         .then(response => {
-            console.log(response.data)
         })
         .catch(error => console.log(error))          
-
-        console.log('XD');
     }
 
     useEffect(() => {
@@ -67,17 +62,17 @@ export const ForgottenPassword = () => {
                 <DivShadow className='form_forgotten_password'>
                     <div className="padding_forgotten_password">
                         {
-                            value == 1 && (
+                            value === 1 && (
                                 <>
                                     <header className='header_forgotten_password'>
                                         <IconUnlock className='incon_unlock' />
                                         <div>
                                             <h1 className='title_header_forgotten_password'>Recuperar contraseña</h1>
-                                            <p className='info_header_forgotten_password'>Se enviara un codigo de cuatro digitos para actualizar su contraseña. Por favor, ingrese el correo electrónico con el que se registro en nuestra app.</p>
+                                            <p className='info_header_forgotten_password'>Se enviara un código de cuatro dígitos para actualizar su contraseña. Por favor, ingrese el correo electrónico con el que se registro en nuestra app.</p>
                                         </div>
                                     </header>
 
-                                    <form onSubmit={(e) => e.preventDefault()} className='form_forgotten_password'>
+                                    <form className='form_forgotten_password' onSubmit={e => e.preventDefault()}>
                                         <InputTextLabel titleLabel='Correo' {...email} placeholder='Dirección de correo electrónico' />
                                         <Button value='Enviar correo electrónico' onClick={() => {
                                             setValue(1)
@@ -90,7 +85,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 2 && (
+                            value === 2 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <div>
@@ -108,7 +103,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 3 && (
+                            value === 3 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <IconCheck className='incon_unlock' />

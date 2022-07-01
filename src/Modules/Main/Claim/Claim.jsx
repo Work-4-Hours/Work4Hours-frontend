@@ -17,16 +17,7 @@ export const Claim = () => {
     const [service, setValue] = useLocalStorage(sha256('serviceinfo'), null)
     const { getJwt, user } = useContext(UserContext)
     const appeal = useField({type: 'text'})
-    // const service = {
-    //     price: "200.000",
-    //     image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png",
-    //     city: "Armenia",
-    //     departament: "Quindio",
-    //     title: "Pinto casas a domicilio",
-    //     denuncia: "Contenido ofensivo",
-    //     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio fugit, corporis earum rerum velit delectus"
-    // }
-
+    
     const sendAppeal = async (e) => {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_API_PRODUCTION}/appeal`, {
@@ -71,7 +62,7 @@ export const Claim = () => {
                     <Title className='title_form_claim'>Reclamar suspencion</Title>
                     <p className='info_reason'>Informenos el por que cree injusta o sin razon la denuncia de {service.denuncia} de su servicio</p>
 
-                    <form onSubmit={e => sendAppeal(e)} className='form_claim' >
+                    <form onSubmit={e => {sendAppeal(e); e.preventDefault()}} className='form_claim' >
                         <InputTextarea {...appeal} placeholder='Apelacion'/>
                         <Button value='Enviar'/>
                     </form>

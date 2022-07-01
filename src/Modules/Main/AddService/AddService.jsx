@@ -1,17 +1,14 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Header } from 'Components/Layout/Header/Header'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Title } from 'Components/StyledComponets/Titlte'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
-import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import IconAddImage from 'Assets/Icons/IconAddImage.png'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputCheckbox } from 'Components/Ui/InputCheckbox/InputCheckbox'
 import jwt_decode from 'jwt-decode'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
-import { useEffect } from 'react'
-import { LoadingAnimation } from 'Components/Ui/LoadingAnimation/LoadingAnimation'
 import { UserContext } from 'Context/UserContext'
 
 import './AddService.css'
@@ -28,9 +25,8 @@ export const AddService = () => {
     const [name, setName] = useState(null);
     const [status, setStatus] = useState(null);
     const [type, setType] = useState(null);
-    // const [fileImage, setFileImage] = useState(null);
+    const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
-    const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
 
     const { previewImage, setPreviewImage } = useImagePreview()
@@ -71,8 +67,7 @@ export const AddService = () => {
                     <DivShadow className='image_add'>
                         <input type="file" className='input_add_image_service' id='input_add_image_service' onChange={e => { 
                             setPreviewImage(e) 
-                            // setFileImage(e.target.files[0])
-                            uploadImage(e.target.files[0])
+                            setFileImage(e.target.files[0])
                         }} />
 
                         <label htmlFor="input_add_image_service">
@@ -80,9 +75,9 @@ export const AddService = () => {
                                 previewImage ?
                                     <>
                                         <img className='image_service_preview' src={previewImage} alt="" />
-                                        {/* <div className="button_upload_image_service">
+                                        <div className="button_upload_image_service">
                                             <Button value='Subir imagen' onClick={ () => uploadImage(fileImage)} isLoading={loading} />
-                                        </div> */}
+                                        </div>
                                     </>
 
                                     :
@@ -97,7 +92,7 @@ export const AddService = () => {
                     <DivShadow className='form_add_service'>
                         <div className="padding_form_add_service">
                             <Title className='title_add_service'>Nuevo servicio</Title>
-                            <form action="" className='form_register_service'>
+                            <form action="" onSubmit={e => e.preventDefault()} className='form_register_service'>
                                 <InputTextLabel titleLabel='Nombre del servicio' placeholder='Servicio' onChange={e => setName(e.target.value)} />
 
                                 <InputTextLabel titleLabel='Precio por hora' type='number' placeholder='Precio' onChange={e => setPrice(e.target.value)} />

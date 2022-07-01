@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { DivNavBar } from 'Components/StyledComponets/DivNavBar';
 import { Title } from 'Components/StyledComponets/Titlte';
 import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
