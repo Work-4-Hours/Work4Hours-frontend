@@ -16,10 +16,33 @@ import './UpdateService.css'
 import 'Components/Layout/NewService/NewService.css'
 
 export const UpdateService = () => {
+    const [categories, setCategories] = useState()
+
+    useEffect(() => {
+        const fetchTest = async () => {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/categories`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    setCategories(response.map(item => {
+                        return { id: item.categId, name: item.categoryName }
+                    }))
+
+                })
+                .catch(error => console.log(error))
+        }
+
+        fetchTest()
+    }, [])
 
     const { updateService, loading: loading_registry, data: update_resutl } = useManageServices()
     const { previewImage, setPreviewImage, setPreviewImages } = useImagePreview()
-    const { data: image_service, setData,uploadImage, loading } = useUploadImage()
+    const { data: image_service, setData, uploadImage, loading } = useUploadImage()
     const [infoservice] = useLocalStorage(sha256('idservice'), null)
     const { id, service } = infoservice
 
@@ -29,6 +52,7 @@ export const UpdateService = () => {
     const description = useField({ type: 'text', initial_value: service.description })
     const [type, setType] = useState(service.type);
     const [status, setStatus] = useState(service.status);
+    const [category, setCategory] = useState(null);
 
     useEffect(() => {
         setPreviewImages(service.photo)
@@ -51,9 +75,9 @@ export const UpdateService = () => {
                         type: type,
                         photo: image_service,
                         price: parseInt(price.value),
-                        category: 'C01',
+                        category: category,
                         description: description.value,
-                        status: status
+                        status: status,
                     })
 
                 }}>
@@ -70,10 +94,19 @@ export const UpdateService = () => {
 
                             onChange={(e) => setType(e.target.value)}
                         />
+
+                        <SelectTextLabel
+                            titleLabel='Seleccione una categoria'
+                            nameSelect='Categoria'
+                            options={categories}
+
+                            onChange={(e) => setCategory(e.target.value)}
+                        />
+
                         <SelectTextLabel
                             titleLabel='Visualizacion'
                             nameSelect='Tipo de de visualizacion'
-                            options={[{ id: 4, name: "Visible" }, { id: 5, name: "Borrador" }]}
+                            options={[{ id: 1, name: "Visible" }, { id: 2, name: "Borrador" }]}
 
                             onChange={(e) => setStatus(e.target.value)}
                         />
@@ -81,7 +114,7 @@ export const UpdateService = () => {
 
                     <InputTextLabel titleLabel='Descripcion del servicio' {...description} placeholder='Detalle su peticion o prestacion de su servicio' />
 
-                    <Button value={`${status == 1 ? 'Actualizar informacion' : 'Guardar borrador'}`}  isLoading={loading_registry} />
+                    <Button value={`${status == 1 ? 'Actualizar informacion' : 'Guardar borrador'}`} isLoading={loading_registry} />
                 </form>
 
 

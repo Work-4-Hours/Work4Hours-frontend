@@ -48,7 +48,7 @@
 .nav_show_services {
     margin: 2em 0 1em 0;
     display: flex;
-    justify-content:  space-between;
+    justify-content:  space-between ;
     align-items: center;
 }
 
@@ -69,7 +69,6 @@
 }
 
 .options_show_my_services {
-    width: 100%;
     padding: 15px 20px;
     border-radius: 20px;
     background: #f4f8ff;

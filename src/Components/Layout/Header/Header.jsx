@@ -13,9 +13,10 @@ import { DivShadow } from 'Components/StyledComponets/DivShadow';
 import IconAddImage from 'Assets/Icons/IconAddImageWhite.png'
 
 import './Header.css';
+import { useField } from 'CustomHooks/useField';
 
 export const Header = () => {
-    const { user, isAuth, logout, notifications, isAlert } = useContext(UserContext)
+    const { user, isAuth, logout, notifications, isAlert, updateUser } = useContext(UserContext)
     const [isOcult, setIsOcult] = useState(true)
     const [isOcultProfile, setIsOcultProfile] = useState(false)
     const navigate = useNavigate()
@@ -26,9 +27,15 @@ export const Header = () => {
         navigate('/')
     }
 
+
     const ocult = () => {
         setIsOcult(!isOcult)
     }
+
+
+    const names = useField({ type: 'text', message_errors: '', initial_value: user?.info[0]?.name })
+    const surnames = useField({ type: 'text',  message_errors: '', initial_value: user?.info[0]?.lastName })
+    const phone = useField({ type: 'number',  message_errors: '', initial_value: user?.info[0]?.phoneNumber })
 
     return (
         <>
@@ -40,13 +47,22 @@ export const Header = () => {
                             <DivShadow className='popup_profile'>
                                 <div className="padding_info_user">
                                     <Title className='title_form_my_profile'>Perfil</Title>
-                                    <form className='form_my_profile'>
+                                    <form className='form_my_profile' onSubmit={e => {
+                                        e.preventDefault()
+                                        const data = {
+                                            name: names.value,
+                                            lastName: surnames.value,
+                                            address: "null",
+                                            phoneNumber: phone.value
+                                        }
+                                        updateUser(data)
+                                    }}>
                                         <div className="padding_form_my_profile">
-                                            <InputTextLabel titleLabel='Nombres' type='text' value={user?.info[0]?.name} />
-                                            <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />
-                                            <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phoneNumber} />
+                                            <InputTextLabel titleLabel='Nombres' {...names}  />
+                                            <InputTextLabel titleLabel='Apellidos' {...surnames} />
+                                            <InputTextLabel titleLabel='Celular' {...phone} />
                                             <InputTextLabel titleLabel='Correo' type='email' value={user.info[0]?.email} />
-                                            <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />
+                                            {/* <InputTextLabel titleLabel='Fecha de nacimiento' type='date' value="2022-06-01" /> */}
                                         </div>
                                         <div className="input_save_profile">
                                             <Button style='button_big' value='Guardar' />

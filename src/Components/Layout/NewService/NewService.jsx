@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useField } from 'CustomHooks/useField'
 import { useManageServices } from 'CustomHooks/useManageServices'
 import { regex_number, } from 'Validations/RejexForms'
@@ -14,8 +14,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './NewService.css'
+import { useNavigate } from 'react-router'
+import { useFetch } from 'CustomHooks/useFetch'
 
 export const NewService = () => {
+
+    const [categories, setCategories] = useState()
+    
     const service_added_successfully = () => toast.success('Servicio agregado exitosamente', {
         position: "top-right",
         autoClose: 5000,
@@ -36,10 +41,34 @@ export const NewService = () => {
         progress: undefined,
     });
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const fetchTest = async () => {
+            fetch(`${process.env.REACT_APP_API_PRODUCTION}/categories`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then(response => response.json())
+                .then(response => {
+                    setCategories(response.map(item => {
+                        return { id: item.categId, name: item.categoryName }
+                    }))
+
+                })
+                .catch(error => console.log(error))
+        }
+
+        fetchTest()
+    }, [])
 
     const { createService, loading } = useManageServices()
     const { previewImage, setPreviewImage } = useImagePreview()
-    const { data: image_service, uploadImage } = useUploadImage()
+    const { data: image_service, uploadImage, loading: loading_image } = useUploadImage()
+    
     const [test, setTest] = useState()
 
     function agregarSeparadorMiles(numero) {
@@ -56,6 +85,7 @@ export const NewService = () => {
     const description = useField({ type: 'text' })
     const [type, setType] = useState(null);
     const [status, setStatus] = useState(null);
+    const [category, setCategory] = useState(null);
 
     return (
         <>
@@ -76,10 +106,10 @@ export const NewService = () => {
 
                 <form className='form_new_service' onSubmit={e => {
                     e.preventDefault()
-                    
+
                     try {
                         createService({
-                            categories: 'C01',
+                            categories: category,
                             name: name.value,
                             statuses: status,
                             type: type,
@@ -87,8 +117,11 @@ export const NewService = () => {
                             description: description.value,
                             photo: image_service,
                         })
+
                         service_added_successfully()
-                        
+
+                        navigate('/dashboard/all')
+
                     } catch (error) {
                         error_to_create_service()
                     }
@@ -105,10 +138,19 @@ export const NewService = () => {
 
                             onChange={(e) => setType(e.target.value)}
                         />
+
+                        <SelectTextLabel
+                            titleLabel='Seleccione una categoria'
+                            nameSelect='Categoria'
+                            options={categories}
+
+                            onChange={(e) => setCategory(e.target.value)}
+                        />
+
                         <SelectTextLabel
                             titleLabel='Visualizacion'
                             nameSelect='Tipo de de visualizacion'
-                            options={[{ id: 4, name: "Visible" }, { id: 5, name: "Borrador" }]}
+                            options={[{ id: 1, name: "Visible" }, { id: 2, name: "Borrador" }]}
 
                             onChange={(e) => setStatus(e.target.value)}
                         />
@@ -144,7 +186,7 @@ export const NewService = () => {
                         </div>
                         {
                             previewImage && (
-                                <Button value='Guardar imagen' onClick={() => uploadImage(imageFile)} />
+                                <Button value='Guardar imagen' onClick={() => uploadImage(imageFile)} isLoading={loading_image} />
                             )
                         }
                     </label>

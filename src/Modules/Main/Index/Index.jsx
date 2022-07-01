@@ -4,21 +4,27 @@ import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { Banner } from "Components/Layout/Banner/Banner"
 import { DivShadow } from "Components/StyledComponets/DivShadow"
 import { SerchEngine } from "Components/Layout/SearchEngine/SearchEngine"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useNavigationType } from "react-router-dom"
 import { UserContext } from "Context/UserContext"
 import { LoadingCard } from "Components/Ui/LoadingCard/LoadingCard"
+import jwt_decode from "jwt-decode";
 
-import './Index.css'
 import { useFetch } from "CustomHooks/useFetch"
 import { Button } from "Components/Ui/Button/Button"
 import { Slide, Slideshow, TextoSlide } from "Components/Layout/SlidesShow/Slideshow"
 import { BannerSlideShow } from "Components/Layout/BannerSlideShow/BannerSlideShow"
 import { CardInterest } from "Components/Ui/Cards/CardInterest/CardInterest"
 import { Footer } from "Components/Layout/Footer/Footer"
+import './Index.css'
 
 export const Index = () => {
 
     const { isLoading, data } = useFetch(`${process.env.REACT_APP_API_PRODUCTION}`)
+
+    const { user, isAuth } = useContext(UserContext)
+
+    const navigate = useNavigate();
+
     const [banners, setBanners] = useState([
         { title: 'Work 4 Hours', image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", information: 'En work 4 hours podrás encontrar personas que ofertan sus habilidades para satisfacer tus necesidades.' },
         {

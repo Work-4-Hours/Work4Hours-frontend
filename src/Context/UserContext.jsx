@@ -31,6 +31,26 @@ export const UserProvider = ({ children }) => {
         return user.token
     }
 
+    const updateUser = (data) => {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/updateUser`, {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${getJwt()}`
+            },
+            body: JSON.stringify({
+               ...data
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+                // setData(response);
+                console.log(response);
+            })
+            .catch(error =>{})
+            .finally(() =>{})
+    }
+
     useEffect(() => {
         if (isAuth()) {
             closeConnection()
@@ -38,7 +58,7 @@ export const UserProvider = ({ children }) => {
         }
     }, [])
 
-    const data = { user, login, error, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications }
+    const data = { user, login, error, logout, isLoading, isAuth, getJwt, sendNotification, isAlert, notifications, updateUser }
 
     return (
         <UserContext.Provider value={data}>
