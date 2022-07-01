@@ -70,7 +70,7 @@ export const EditService = () => {
                     <DivShadow className='form_add_service'>
                         <div className="padding_form_add_service">              
                             <Title className='title_add_service'>Editar servicio</Title>
-                        <form className='form_register_service'>
+                        <form className='form_register_service' onSubmit={e=>e.preventDefault()}>
                             
                                 <InputTextLabel titleLabel='Nombre' value={name} type='text' onChange={e => setName(e.target.value)}/>
 

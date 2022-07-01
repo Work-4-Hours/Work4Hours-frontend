@@ -40,7 +40,7 @@ export const Header = () => {
                             <DivShadow className='popup_profile'>
                                 <div className="padding_info_user">
                                     <Title className='title_form_my_profile'>Perfil</Title>
-                                    <form className='form_my_profile'>
+                                    <form className='form_my_profile' onSubmit={e=>e.preventDefault()}>
                                         <div className="padding_form_my_profile">
                                             <InputTextLabel titleLabel='Nombres' type='text' value={user?.info[0]?.name} />
                                             <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />

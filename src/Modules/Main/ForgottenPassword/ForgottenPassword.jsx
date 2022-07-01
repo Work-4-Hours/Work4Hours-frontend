@@ -68,11 +68,11 @@ export const ForgottenPassword = () => {
                                         <IconUnlock className='incon_unlock' />
                                         <div>
                                             <h1 className='title_header_forgotten_password'>Recuperar contraseña</h1>
-                                            <p className='info_header_forgotten_password'>Se enviara un codigo de cuatro digitos para actualizar su contraseña. Por favor, ingrese el correo electrónico con el que se registro en nuestra app.</p>
+                                            <p className='info_header_forgotten_password'>Se enviara un código de cuatro dígitos para actualizar su contraseña. Por favor, ingrese el correo electrónico con el que se registro en nuestra app.</p>
                                         </div>
                                     </header>
 
-                                    <form onSubmit={(e) => e.preventDefault()} className='form_forgotten_password'>
+                                    <form className='form_forgotten_password' onSubmit={e => e.preventDefault()}>
                                         <InputTextLabel titleLabel='Correo' {...email} placeholder='Dirección de correo electrónico' />
                                         <Button value='Enviar correo electrónico' onClick={() => {
                                             setValue(1)

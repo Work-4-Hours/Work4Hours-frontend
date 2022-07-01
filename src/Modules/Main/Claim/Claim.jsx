@@ -62,7 +62,7 @@ export const Claim = () => {
                     <Title className='title_form_claim'>Reclamar suspencion</Title>
                     <p className='info_reason'>Informenos el por que cree injusta o sin razon la denuncia de {service.denuncia} de su servicio</p>
 
-                    <form onSubmit={e => sendAppeal(e)} className='form_claim' >
+                    <form onSubmit={e => {sendAppeal(e); e.preventDefault()}} className='form_claim' >
                         <InputTextarea {...appeal} placeholder='Apelacion'/>
                         <Button value='Enviar'/>
                     </form>
