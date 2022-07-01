@@ -9,11 +9,10 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
 import jwt_decode from 'jwt-decode'
 import { UserContext } from 'Context/UserContext'
-import { useNotification } from 'CustomHooks/useNotification'
-import { useLogin } from 'CustomHooks/useLogin'
 
 import './InfoService.css'
 import { Alert } from 'Components/StyledComponets/Alert'
+import { toast, ToastContainer } from 'react-toastify'
 
 export const InfoService = () => {
 
@@ -43,7 +42,6 @@ export const InfoService = () => {
             .then(response => response.json())
             .then(response => {
                 setIsCreateRoom(response)
-                // console.log(response);
             })
             .catch(error => console.log(error))
             .finally(() => {
@@ -52,6 +50,16 @@ export const InfoService = () => {
             })
         sendNotification(jwt_decode(serviceuser).userId, `Tu servicio ${service?.name} ha sido solucitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
+
+    const service_reported = () => toast.warning('Servicio reportado', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
 
     const reportService = (idreport) => {
         fetch(`${process.env.REACT_APP_API_PRODUCTION}/report/${service.id}/${service.user }/${idreport}`, {
@@ -67,8 +75,9 @@ export const InfoService = () => {
             })
             .catch(error => console.log(error))
             .finally(() => {
-                console.log('XED');
+                service_reported()
             })
+        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
 
@@ -86,8 +95,6 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
-                    // console.log(response);
-                    // console.log(jwt_decode(response[0].serviceInfo.user).userId);
                     setUserId(jwt_decode(response[0].serviceInfo.user).userId)
 
                 })
@@ -97,8 +104,23 @@ export const InfoService = () => {
 
     }, [])
 
+
+
+
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
             <Header />
             <main className='main_info_service'>
                 <div className="center_info_service">
@@ -211,7 +233,7 @@ export const InfoService = () => {
 
                                             <div>
                                                 <div className="description_info_service">
-                                                    <p className='subtitle_info_service'>Descripcion del servicio</p>
+                                                    <p className='subtitle_info_service'>Descripción del servicio</p>
                                                     <p className='description_info_service'>{service?.description}</p>
                                                 </div>
                                             </div>
@@ -223,16 +245,6 @@ export const InfoService = () => {
                                     </>
                             }
                         </DivShadow>
-
-                        {/* <DivShadow>
-                            <div className="padding_info_service">
-                                <p className='name_user_info_service'>Comentarios</p>
-                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
-                            </div>
-                        </DivShadow> */}
-                    </section>
-
-                    <section className='section_info_user'>
 
                         <DivShadow className='information_user'>
                             {
@@ -266,6 +278,12 @@ export const InfoService = () => {
                                     </>
                             }
                         </DivShadow>
+                        {/* <DivShadow>
+                            <div className="padding_info_service">
+                                <p className='name_user_info_service'>Comentarios</p>
+                                <p className='description_info_service'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat esse officia, quisquam obcaecati at voluptates corrupti soluta impedit enim id.</p>
+                            </div>
+                        </DivShadow> */}
                     </section>
 
                 </div>

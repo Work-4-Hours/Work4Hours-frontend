@@ -1,9 +1,7 @@
-import { Button } from 'Components/Ui/Button/Button'
 import React from 'react'
 import { Slide, Slideshow, TextoSlide } from '../SlidesShow/Slideshow'
 import './Banner.css'
 
-// export const Banner = ({informaction, image, children}) => {
 export const Banner = ({ banners }) => {
 
     return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Header } from "Components/Layout/Header/Header";
 import { DivShadow } from "Components/StyledComponets/DivShadow";
 import { Title } from "Components/StyledComponets/Titlte";
@@ -12,7 +12,6 @@ import IconMessageChat from 'Assets/Icons/IconMessageChat.png'
 import { UserContext } from "Context/UserContext";
 import { LoadingCardUser } from "Components/Ui/LoadingCardUser/LoadingCardUser";
 import { DivChat } from "Components/StyledComponets/DivChat";
-import { AddCualification } from "Components/Layout/AddCualification/AddCualification";
 import { DivPopUp } from "Components/StyledComponets/DivPopUp";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "Components/Ui/Button/Button";
@@ -20,11 +19,14 @@ import { Button } from "Components/Ui/Button/Button";
 import { ReactComponent as IconArrow } from 'Assets/Icons/IconArrow.svg'
 
 import './Chat.css';
+import { useNavigate } from "react-router-dom";
 
 export const Chat = () => {
 
     const chatRef = useRef()
+    const navigate = useNavigate()
     const [message, setMessage] = useState()
+    const [qualification, setQualification] = useState()
     const [chats, setChats] = useState()
     const [popupAddQualification, setPopupAddQualification] = useState(false)
     const [currentChat, setCurrentChat] = useState(null);
@@ -45,7 +47,7 @@ export const Chat = () => {
             .then(response => response.json())
             .then(response => {
                 setChats(response)
-                // console.log(response);
+                console.log(response);
             }).finally(() => setIsLoading(false))
     }, [])
 
@@ -61,7 +63,7 @@ export const Chat = () => {
         return current;
     }
 
-    const sendQualification = (qualification) => {
+    const sendQualification = () => {
         fetch(`${process.env.REACT_APP_API_PRODUCTION}/addQualification`, {
             method: 'POST',
             headers: {
@@ -76,11 +78,15 @@ export const Chat = () => {
             .then(response => response.json())
             .then(response => {
                 console.log(response);
+            }).then(() => {
+                fetch(`${process.env.REACT_APP_API_CS}/Room/room/delete/${currentChat.idsala}`)
+                window.location.reload()
             })
             .catch()
-            .finally()
+            .finally(() => {
+            })
     }
-
+   
     return (
         <>
             <DivPopUp isOpen={popupAddQualification}>
@@ -92,14 +98,15 @@ export const Chat = () => {
 
                             <ReactStars
                                 count={5}
-                                onChange={(value) => sendQualification(value)}
+                                onChange={(value) => setQualification(value)}
                                 size={40}
                                 activeColor="#14A2D6"
+                                color="#e9e9e9"
                             />
                         </div>
                         <div className="actions_add_service_cualification">
                             <Button value="Cancelar" onClick={() => setPopupAddQualification(false)} />
-                            <Button value="Enviar calificación" />
+                            <Button value="Enviar calificación" onClick={() => sendQualification()} />
                         </div>
                     </DivShadow>
                 </div>
@@ -160,7 +167,7 @@ export const Chat = () => {
                                                 ))
                                                 :
                                                 <div className="conversation_message">
-                                                    <p className="test_conversation_message">Inicia una converzación con {currentChat.nombres}</p>
+                                                    <p className="test_conversation_message">Iniciar una conversación con {currentChat.nombres}</p>
                                                 </div>
                                         }
 
@@ -193,7 +200,7 @@ export const Chat = () => {
                                     <img className='icon_message_chat' src={IconMessageChat} alt="" />
                                     <p className="title_app_info_chat">Work 4 hours</p>
                                     <div className="info_chat">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, sunt!
+                                        Inicia una conversación con otros usuarios para concretar los términos del servicio
                                     </div>
                                 </div>
                             </DivShadow>

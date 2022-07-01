@@ -1,5 +1,6 @@
 .select_input {
-    width: 245px;
+    /* width: 245px; */
+    width: 100%;
     padding: 13px;
     border: none;
     border-radius: 5px;

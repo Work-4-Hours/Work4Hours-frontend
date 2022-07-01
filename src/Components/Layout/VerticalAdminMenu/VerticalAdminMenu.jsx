@@ -1,11 +1,18 @@
 import { Button } from 'Components/Ui/Button/Button'
 import { TitleAdmin } from 'Components/Ui/TitleAdmin/TitleAdmin'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './VerticalAdminMenu.css'
 
-export const VerticalAdminMenu = ({dataMenuAdmin,logoutApp}) => {
-  const {nameAdmin, buttonActivated, buttonDeactivated}=dataMenuAdmin;
+export const VerticalAdminMenu = ({dataMenuAdmin}) => {
+  const {nameAdmin, buttonActivated, buttonDeactivated, logoutAdmin}=dataMenuAdmin;
+
+  const navigate = useNavigate()
+  
+  const logoutApp = () => {
+    logoutAdmin();
+    navigate('/');
+  }
   return (
     <div className='visibility_menu_admin'>
       <div className='menu_admin'>

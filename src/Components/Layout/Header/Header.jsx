@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { DivNavBar } from 'Components/StyledComponets/DivNavBar';
 import { Title } from 'Components/StyledComponets/Titlte';
 import { InfoNotification } from 'Components/Ui/InfoNotification/InfoNotification';
@@ -13,9 +13,10 @@ import { DivShadow } from 'Components/StyledComponets/DivShadow';
 import IconAddImage from 'Assets/Icons/IconAddImageWhite.png'
 
 import './Header.css';
+import { useField } from 'CustomHooks/useField';
 
 export const Header = () => {
-    const { user, isAuth, logout, notifications, isAlert } = useContext(UserContext)
+    const { user, isAuth, logout, notifications, isAlert, updateUser } = useContext(UserContext)
     const [isOcult, setIsOcult] = useState(true)
     const [isOcultProfile, setIsOcultProfile] = useState(false)
     const navigate = useNavigate()
@@ -30,6 +31,10 @@ export const Header = () => {
         setIsOcult(!isOcult)
     }
 
+    // const names = useField({ type: 'text', message_errors: '', initial_value: user?.info[0]?.name })
+    // const surnames = useField({ type: 'text',  message_errors: '', initial_value: user?.info[0]?.lastName })
+    // const phone = useField({ type: 'number',  message_errors: '', initial_value: user?.info[0]?.phoneNumber })
+
     return (
         <>
 
@@ -40,13 +45,22 @@ export const Header = () => {
                             <DivShadow className='popup_profile'>
                                 <div className="padding_info_user">
                                     <Title className='title_form_my_profile'>Perfil</Title>
-                                    <form className='form_my_profile'>
+                                    <form className='form_my_profile' onSubmit={e => {
+                                        e.preventDefault()
+                                        const data = {
+                                            // name: names,
+                                            // lastName: surnames,
+                                            // address: "null",
+                                            // phoneNumber: phone
+                                        }
+                                        updateUser(data)
+                                    }}>
                                         <div className="padding_form_my_profile">
-                                            <InputTextLabel titleLabel='Nombres' type='text' value={user?.info[0]?.name} />
-                                            <InputTextLabel titleLabel='Apellidos' type='text' value={user?.info[0]?.lastName} />
-                                            <InputTextLabel titleLabel='Celular' type='number' value={user?.info[0]?.phoneNumber} />
+                                            <InputTextLabel titleLabel='Nombres' value={user?.info[0]?.name} />
+                                            <InputTextLabel titleLabel='Apellidos' value={user?.info[0]?.lastName} />
+                                            <InputTextLabel titleLabel='Celular' value={user?.info[0]?.phoneNumber} /> 
                                             <InputTextLabel titleLabel='Correo' type='email' value={user.info[0]?.email} />
-                                            <InputTextLabel titleLabel='Fecha de nacimiento' type='date' />
+                                            {/* <InputTextLabel titleLabel='Fecha de nacimiento' type='date' value="2022-06-01" /> */}
                                         </div>
                                         <div className="input_save_profile">
                                             <Button style='button_big' value='Guardar' />
@@ -141,7 +155,7 @@ export const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login' className='link_header_login'>Iniciar sesion</Link>
+                                        <Link to='/login' className='link_header_login'>Iniciar sesión</Link>
                                         <p className='or_nav_login'>o</p>
                                         <Link to='/registry' className='link_header_login'><Button value='Registro' /></Link>
                                     </>

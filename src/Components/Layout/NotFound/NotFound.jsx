@@ -2,15 +2,11 @@ import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Button } from 'Components/Ui/Button/Button'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Header } from '../Header/Header'
-import { SerchEngine } from '../SearchEngine/SearchEngine'
 import './NotFound.css'
 
 export const NotFound = () => {
     return (
         <>
-            {/* <Header />
-            <SerchEngine /> */}
             <main>
                 <div className="center_main_notfound">
                     <DivShadow className='not_found'>
