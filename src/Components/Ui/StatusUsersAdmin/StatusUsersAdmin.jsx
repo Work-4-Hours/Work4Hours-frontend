@@ -24,13 +24,13 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
 
 
   const changeColorStateObjects= (UserState) =>{  
-    if(UserState == "Habilitado"){
+    if(UserState === "Habilitado"){
       return 'green';
     }
-    else if (UserState == "Suspendido por 3 días"){
+    else if (UserState === "Suspendido por 3 días"){
       return 'yellow';
     }
-    else if (UserState == "Inhabilitado"){
+    else if (UserState === "Inhabilitado"){
       return 'red';
     }
   }

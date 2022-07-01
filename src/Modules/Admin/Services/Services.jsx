@@ -18,7 +18,7 @@ import '.././Admin.css';
 
 export const Services = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification, selectedListServices, setSelectedListServices, removeSelectedListServices } = useContext(AdminContext);
+  const { admin, logoutAdmin, getToken, selectedListServices, setSelectedListServices, removeSelectedListServices } = useContext(AdminContext);
   const adminGet= useGetAdmin();
   const searchAdmin=useSearchAdmin();
   const statusAdmin=useStatusAdmin();
