@@ -34,9 +34,10 @@ export const useChat = () => {
 
     const sendMessage = async (message, name, token, date) => {
         await connectionChat.invoke("SendMessage", currentRoom, message, name, date)
+        const now = new Date()
         await saveMessage({
             mensaje: message,
-            fecha: '2022-04-18',
+            fecha: now,
             idsala: currentRoom,
             token: token
         })
