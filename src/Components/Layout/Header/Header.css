@@ -202,3 +202,20 @@
         height: 50%;
     } 
 }
+
+.logo_mobile {
+    display: none;
+    color: var(--bg-blue);
+    font-family: var(--font-1);
+}
+
+
+@media screen and (max-width: 495px) {
+    .logo {
+        display: none;
+    }
+    .logo_mobile {
+        display: block;
+    }
+}
+

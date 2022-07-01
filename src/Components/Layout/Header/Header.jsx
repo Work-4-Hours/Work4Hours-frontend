@@ -87,6 +87,7 @@ export const Header = () => {
                 <div className="center_nav_bar">
                     <div>
                         <Link to="/"><img className="logo" src="https://res.cloudinary.com/sena-quindio/image/upload/v1656131213/work4hours/ipz0z1xedpgv9vcedtvs.png" alt="" /></Link>
+                        <h1 className='logo_mobile'>W4H</h1>
                     </div>
                     <nav>
                         <div className="nav_login">
@@ -156,7 +157,7 @@ export const Header = () => {
                                     :
                                     <>
                                         <Link to='/login' className='link_header_login'>Iniciar sesión</Link>
-                                        <p className='or_nav_login'>o</p>
+                                        <p className='or_nav_login'></p>
                                         <Link to='/registry' className='link_header_login'><Button value='Registro' /></Link>
                                     </>
                             }
