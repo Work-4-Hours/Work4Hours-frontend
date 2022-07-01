@@ -31,8 +31,6 @@ export const Users = () => {
   },[])  
 
   
-
-
   //Dashboard setting according to the search
   useEffect(()=>{
     if(searchAdmin.searchWord.length>0){
@@ -110,7 +108,7 @@ export const Users = () => {
     typeAdmin: "usuario",
     isOpen:statusAdmin.isOpen,
     setIsOpen:statusAdmin.setIsOpen,
-    //sendNotification
+    sendNotification:sendNotification,
     selectedList:selectedListUsers, 
     removeSelectedList:removeSelectedListUsers,
   }

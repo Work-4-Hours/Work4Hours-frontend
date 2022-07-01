@@ -24,7 +24,7 @@ export const useStatusAdmin = () => {
     if (statusChange===true){
         list.map(item=>{
         if(item.id===idObject){
-            item.idEstado=idStatus
+            item.idStatus=idStatus
         }
         })
         setlist([...list]);

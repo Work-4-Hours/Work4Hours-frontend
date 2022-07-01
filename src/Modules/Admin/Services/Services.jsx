@@ -105,7 +105,7 @@ export const Services = () => {
     typeAdmin: "servicio",
     isOpen:statusAdmin.isOpen,
     setIsOpen:statusAdmin.setIsOpen,
-    //sendNotification
+    sendNotification:sendNotification,
     selectedList:selectedListServices, 
     removeSelectedList:removeSelectedListServices
   }

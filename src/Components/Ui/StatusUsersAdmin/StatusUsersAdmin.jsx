@@ -7,38 +7,21 @@ import { OptionStatusUserAdmin } from '../OptionStatusUserAdmin/OptionStatusUser
 
 export const StatusUsersAdmin = ({dataStatusAdmin}) => {
   const {
-    objectSelectedSetState,
-    idObject,
-    nameStatus,
-    idObjectStatus, 
+    objectSelectedSetState, setIdStatus,
+    idObject, nameStatus, idObjectStatus, 
     data,  
     numberReports,
-    changeStatus,
-    setChangeStatus,
-    setIdStatus,
+    changeStatus, setChangeStatus,
     setNotificationAutomaticSuspension,
-    selectedList,
-    setSelectedList,
+    selectedList, setSelectedList,
   }=dataStatusAdmin;
 
-  const [stateObject, setStateObject]=useState(nameStatus);
-  const [isOpen, setIsOpen] = useState(false);
-  const [stateColor, setStateColor]=useState('');
   const [idStateObject, setIdStateObject]=useState(idObjectStatus);
+  const [stateObject, setStateObject]=useState(nameStatus);
+  const [stateColor, setStateColor]=useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
 
-  const changeState = (reportsNumber) => {
-    if(reportsNumber >= 25){
-      setNotificationAutomaticSuspension("background_object_info_automatic_suspension")
-      setStateObject("Suspendido por 3 días")
-      setIdStateObject(2)
-    }
-    if(reportsNumber >= 50){
-      setNotificationAutomaticSuspension("background_object_info_automatic_suspension")
-      setStateObject("Inhabilitado")
-      setIdStateObject(3)
-    }
-  }
 
   const changeColorStateObjects= (UserState) =>{  
     if(UserState == "Habilitado"){
@@ -59,15 +42,34 @@ export const StatusUsersAdmin = ({dataStatusAdmin}) => {
     setIdStateObject(parseInt(event.target.id))
     setChangeStatus(!changeStatus)
   }
+  const stateObjectLocalStorage=()=>{
+    if(selectedList.length>0){
+      selectedList.map(item=>{
+        if(item.id===idObject){
+          if(item.idStatus===1){
+            setStateObject("Habilitado")
+          }
+          else if(item.idStatus===2){
+            setStateObject("Suspendido por 3 días")
+          }
+          else if(item.idStatus===3){
+            setStateObject("Inhabilitado")
+          }
+        }
+      }
+      )
+    }
+  }
+  useEffect(()=>{
+    stateObjectLocalStorage()
+  },[])
 
   
   useEffect(() => {
     setStateColor (changeColorStateObjects(stateObject))
   },[stateColor])
 
-  useEffect(() =>{
-    changeState(numberReports)
-  },[''])
+
 
   useEffect(()=>{
     objectSelectedSetState(changeStatus, idObject, idStateObject, selectedList, setSelectedList)
