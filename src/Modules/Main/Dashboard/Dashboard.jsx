@@ -11,6 +11,7 @@ import { UserContext } from 'Context/UserContext'
 import jwt_decode from 'jwt-decode'
 
 import './Dashboard.css'
+import { ToastContainer } from 'react-toastify'
 
 export const Dashboard = () => {
 
@@ -19,6 +20,17 @@ export const Dashboard = () => {
 
     return (
         <>
+         <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Header />
             <main className='main_dasboard'>
                 <div className="center_dashboard">
