@@ -14,7 +14,6 @@ export const CardServiceSearch = ({ info_service }) => {
                 <header className="header_service_search">
                     <p className="name_service_search">{name}</p>
                     <div className="location_service_search">{city_name} • {department_name}</div>
-                    {/* <p className="info_service_description">{description}</p> */}
                 </header>
                 <body className="body_service_search">
                     <p className="price_service_search">CO{price}/hora</p>

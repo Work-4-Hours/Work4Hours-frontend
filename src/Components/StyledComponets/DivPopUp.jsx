@@ -8,9 +8,6 @@ export const DivPopUp = styled.div`
     display: ${props => !props.isOpen ? 'none':''};
     z-index: 10;
     animation: var(--animation-show-slow) 200ms;
-/* 
-    display: flex;
-    justify-content: center;
-    align-items: center;  */
+
 `;
 
