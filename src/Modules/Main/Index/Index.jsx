@@ -20,9 +20,9 @@ export const Index = () => {
 
     const { isLoading, data } = useFetch(`${process.env.REACT_APP_API_PRODUCTION}`)
     const [banners, setBanners] = useState([
-        { title: 'Work 4 Hours', image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", information: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, vero' },
+        { title: 'Work 4 Hours', image: "https://res.cloudinary.com/sena-quindio/image/upload/v1646856008/yq79ac21cznrplvdmcqk.png", information: 'En work 4 hours podrás encontrar personas que ofertan sus habilidades para satisfacer tus necesidades.' },
         {
-            title: 'Work 4 Hours', image: "https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg", information: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, earum in? Natus deserunt doloribus qui.'
+            title: 'Work 4 Hours', image: "https://thumbs.dreamstime.com/b/man-dog-gardening-work-working-garden-55783074.jpg", information: 'En work 4 hours podrás encontrar personas que ofertan sus habilidades para satisfacer tus necesidades.'
         }]);
 
     const formatName = (name) => {
