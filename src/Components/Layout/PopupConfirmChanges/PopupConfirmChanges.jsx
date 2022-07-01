@@ -13,10 +13,8 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
 
-    
-
     const {
-        getAdmin, data, setData,
+        data, 
         token, email,
         selectedList, removeSelectedList,
         typePetition,
@@ -102,6 +100,7 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
 
     const sendObjects=()=>{
         if(passwordAdmin!==""){
+            setIsOpen(!isOpen);
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
                 method:"POST",
                 headers:{
@@ -117,10 +116,13 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
                         console.log(response);
                         sendNotificationAdmin();
                         removeSelectedList();
-                        setIsOpen(!isOpen);
+                        
                         setPasswordAdmin('');
-                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    
-                        setData(getAdmin(typePetition));
+                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success"); 
+                        setInterval(() => {
+                            window.location.reload();
+                        }, 500);   
+
                     })
                     .catch(e => {console.log(e);})
                 }

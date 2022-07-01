@@ -84,6 +84,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   
  }
 
+
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
