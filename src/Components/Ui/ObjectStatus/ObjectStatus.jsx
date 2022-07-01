@@ -3,8 +3,8 @@ import './ObjectStatus.css'
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 export const ObjectStatus = ({userSelect, dataObject}) => {
-  const {email, id, fotoUser, nombres, color}=userSelect;
-  const photoData={name:nombres, color:color, userPicture:fotoUser};
+  const {email, id, photo, name, color}=userSelect;
+  const photoData={name:name, color:color, userPicture:photo};
   const {closePopUpAndDeleteSelectedDeslectCheckBox, selectedList, setSelectedList, setRemoveCheckbox}=dataObject
 
   return (

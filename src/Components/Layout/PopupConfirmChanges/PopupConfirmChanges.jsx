@@ -13,19 +13,14 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
 
-    
     const {
-        setData,
-        getAdmin,
-        data,
-        selectedList,
-        token,
-        email,
+        data, 
+        token, email,
+        selectedList, removeSelectedList,
         typePetition,
         typeAdmin,
-        isOpen,
-        setIsOpen,
-        removeSelectedList
+        isOpen, setIsOpen,
+        sendNotification
     }=dataPopupConfirmChanges;
 
     const [passwordAdmin, setPasswordAdmin]=useState('');
@@ -48,24 +43,64 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
         }
         else{
             selectedList.map(item=>{
-                const result = data.filter(object => object.id === item.id && object.idEstado!==item.idEstado);
-                if(result.length>0){
-                    detectChangeStatus = true;
-                }
+                data.map(object => {
+                    if(item.id===object.id){
+                        if(item.idStatus===object.idEstado){
+                            detectChangeStatus=true;
+                        }
+                    }
+                });
             })
             if(detectChangeStatus){
-                setIsOpen(!isOpen);
+                Alert("No se registran cambios de estados", `Verifique que toda la lista seleccionada tenga cambios.`, "info", "Ok");
             }
             else{
-                Alert("No se registran cambios de estados", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
+                setIsOpen(!isOpen);
             }
-            
-            
         }
     }
 
-    const sendObjects=(e)=>{
+    const messageDescriptionNotification = (status, name) => {
+        let message="";
+        let messageUsers="Usted ha sido"
+        let messageServices=`Su servicio ${name} ha sido`
+        if(typeAdmin==="usuario"){
+            if(status===1){
+                message=`${messageUsers} habilitado de nuevo.`;
+            }
+            else if (status===2){
+                message=`${messageUsers} suspendido por 3 días.`;
+            }
+            else if(status===3){
+                message=`${messageUsers} inhabilitado.`;
+            }
+
+        }
+        else{
+            if(status===1){
+                message=`${messageServices} habilitado de nuevo.`;
+            }
+            else if (status===2){
+                message=`${messageServices} suspendido por 3 días.`;
+            }
+            else if(status===3){
+                message=`${messageServices} inhabilitado.`;
+            }
+        }
+        return message;
+    }
+    
+    const sendNotificationAdmin=()=>{
+        selectedList.map(item=>{
+            const message=messageDescriptionNotification(item.idStatus, item.name);
+            sendNotification(item.id, message,"Work 4 Hours", "#14A2D6", "")
+            console.log(message);
+        })
+    }
+
+    const sendObjects=()=>{
         if(passwordAdmin!==""){
+            setIsOpen(!isOpen);
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
                 method:"POST",
                 headers:{
@@ -74,15 +109,20 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             })
             .then(res=>res.json())
             .then(res=>{
-                if (res){
+                console.log(res)
+                if (res.response){
                     axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
                     .then(response => {
                         console.log(response);
+                        sendNotificationAdmin();
                         removeSelectedList();
-                        setIsOpen(!isOpen);
+                        
                         setPasswordAdmin('');
-                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    
-                        setData(getAdmin(typePetition));
+                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success"); 
+                        setInterval(() => {
+                            window.location.reload();
+                        }, 500);   
+
                     })
                     .catch(e => {console.log(e);})
                 }

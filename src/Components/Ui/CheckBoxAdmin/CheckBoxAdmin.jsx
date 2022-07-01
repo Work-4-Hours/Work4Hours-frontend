@@ -45,11 +45,11 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   const validarcheckbox=(e)=>{
     if(e && boardType===true){
       const datauser={
-        idEstado:idStatus, 
+        idStatus:idStatus, 
         email:allObject.correo, 
         id:allObject.id, 
-        fotoUser:allObject.fotop, 
-        nombres:allObject.nombreUsuario, 
+        photo:allObject.fotop, 
+        name:allObject.nombreUsuario, 
         color:allObject.color
       }
       setSelectedList([...selectedList, datauser]);
@@ -57,9 +57,9 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     else if(e && boardType===false){
       
       const dataServices={
-        idEstado:idStatus,
+        idStatus:idStatus,
         id:allObject.id,
-        nombre:allObject.nombreServicio
+        name:allObject.nombreServicio
       }
       setSelectedList([...selectedList, dataServices]);
 
@@ -83,6 +83,7 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
   }
   
  }
+
 
   return (
     <div className='text_center fieldSize8' >

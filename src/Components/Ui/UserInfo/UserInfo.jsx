@@ -45,7 +45,6 @@ export const UserInfo = ({objectAllUsers,dataUsers}) => {
     nameStatus:nombre_estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
     setIdStatus:setIdStatus,

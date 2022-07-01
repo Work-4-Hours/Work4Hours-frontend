@@ -46,7 +46,6 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
     setIdStatus:setIdStatus,

@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 export const useStatusAdmin = () => {
-    const [selectedList, setSelectedList]=useState([]);//desaparece
     const [statusChecked, setStatusChecked]=useState(false);
     
     const [changeStatus, setChangeStatus]=useState(false);
@@ -25,7 +24,7 @@ export const useStatusAdmin = () => {
     if (statusChange===true){
         list.map(item=>{
         if(item.id===idObject){
-            item.idEstado=idStatus
+            item.idStatus=idStatus
         }
         })
         setlist([...list]);
@@ -44,8 +43,6 @@ export const useStatusAdmin = () => {
     return {
         deletingSelectedDeslectCheckbox, 
         objectSelectedSetState, 
-        selectedList, 
-        setSelectedList, 
         changeStatus,
         setChangeStatus,
         closePopUpAndDeleteSelectedDeslectCheckBox,
