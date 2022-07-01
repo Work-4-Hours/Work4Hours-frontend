@@ -5,7 +5,7 @@ export const MessageUserAdmin = ({textMessage}) => {
     const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='fieldSize15 position_relative'>
+    <div className='fieldSize15 position_relative hide'>
       <p className="ellipsis pointer_userSelect_none" onClick={()=>{setIsOpen(!isOpen)}}>{textMessage} </p>
       <PopUp isOpen={isOpen}>
         <div className='overlay overlay_options' onClick={()=>{setIsOpen(!isOpen)}}></div>

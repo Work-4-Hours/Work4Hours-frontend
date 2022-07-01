@@ -1,8 +1,4 @@
 
-.menu_admin_drop_down{
-    display: flex;
-    padding: 5%;
-}
 .icon_menu_admin{
     font-size: 30px;
     color:var(--gray-text-3);
@@ -13,14 +9,33 @@
     z-index: 2;
     gap: 15%;
     padding: 5%;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
+    bottom: 0;
     width: 60%;
     background-color:var(--bg-dashboard-grey);
     border-radius: 5px;
-    height: 100vh;
+    animation: animationDropDownMenuAdmin .2s forwards;
+
 }
+
+ @keyframes animationDropDownMenuAdmin {
+    from {
+        opacity: 0;
+        transform: translateX(-5%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+ } 
+      
+
+
+
+
 .title_menu_admin{
     display: flex;
     justify-content: space-between;
@@ -30,6 +45,7 @@
     color:var(--gray-text-3);
     cursor: pointer;
 }
+
 
 .options_menu_admin_vertical{
     display: flex;

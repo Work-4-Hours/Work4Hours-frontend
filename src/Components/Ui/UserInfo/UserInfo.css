@@ -1,17 +1,4 @@
 
-/* 
-ESTO ES DE SUSPENCION AUTOMATICA CAMBIO DE COLOR MIRAR
-.user_info2{
-  display: flex;
-  gap: 2%;
-  align-items: center;
-  background-color: #d9d9d9;
-  border-radius: 1em;
-  padding: 1%;
-  margin-bottom: 1%;
-
-} */
-
 .ellipsis{
   text-overflow:ellipsis;
   overflow:hidden;

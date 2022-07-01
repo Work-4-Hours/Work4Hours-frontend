@@ -5,12 +5,13 @@ import jwt_decode from "jwt-decode";
 
 import React, { createContext, useEffect, useState, useContext } from 'react'
 
-
 export const AdminContext = createContext({});
 
 export const AdminProvider = ({ children }) => {
     const [admin, setAdmin, removeAdmin] = useLocalStorage(sha256('userAuth'),'')
-    const { userConnection, sendNotification, closeConnection } = useNotification()
+    const [selectedListUsers, setSelectedListUsers, removeSelectedListUsers] = useLocalStorage(sha256('selectedListUsers'),[])
+    const [selectedListServices, setSelectedListServices, removeSelectedListServices] = useLocalStorage(sha256('selectedListServices'),[])
+    const { userConnection, sendNotification, closeConnection } = useNotification();
 
     const getToken = () => {
         return admin.token
@@ -20,7 +21,7 @@ export const AdminProvider = ({ children }) => {
         window.location.reload()
     }
 
-    const data={ admin, logoutAdmin, getToken, sendNotification }
+    const data={ admin, logoutAdmin, getToken, sendNotification, selectedListUsers, setSelectedListUsers, removeSelectedListUsers, selectedListServices, setSelectedListServices, removeSelectedListServices}
 
     useEffect(() => {     
         closeConnection()

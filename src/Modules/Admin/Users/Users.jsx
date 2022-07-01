@@ -1,58 +1,45 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext,useState } from 'react';
 
-import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin';
+import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
+import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
 import { Search } from 'Components/Layout/Search/Search';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard';
 import { UserInfo } from 'Components/Ui/UserInfo/UserInfo';
-
 import {PopupConfirmChanges} from '../../../Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectStatus } from 'Components/Ui/ObjectStatus/ObjectStatus';
-import { AdminContext } from 'Context/AdminContext';
-import { useAdmin } from 'CustomHooks/useAdmin';
-import '.././Admin.css';
 
+import { AdminContext } from 'Context/AdminContext';
+import { useGetAdmin } from 'CustomHooks/useGetAdmin';
+import { useSearchAdmin } from 'CustomHooks/useSearchAdmin';
+import { useStatusAdmin } from 'CustomHooks/useStatusAdmin';
+
+import '.././Admin.css';
 
 export const Users = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
+  const { admin, logoutAdmin, getToken, sendNotification, selectedListUsers, setSelectedListUsers, removeSelectedListUsers } = useContext(AdminContext)
+  const adminGet=useGetAdmin();
+  const searchAdmin=useSearchAdmin();
+  const statusAdmin=useStatusAdmin();
+  const [removeCheckbox, setRemoveCheckbox] = useState({id:0,status:true});
     
-  const { 
-    data,
-    setData,
-    getAdmin, 
-    dataState, 
-    getAdminReports,
-    dataReport,
-    deletingSelectedDeslectCheckbox, 
-    objectSelectedSetState, 
-    selectedList, 
-    setselectedList, 
-    changeStatus,
-    setChangeStatus,
-    postWorkSearch,
-    searchWord,
-    validateSearchWord,
-    changeFilteringOptionId,
-    unSelect} = useAdmin();
-
   //To bring the initial data of the users
   useEffect(()=>{
-    getAdmin('Users');
-    getAdmin('State');
+    adminGet.getAdmin('Users');
+    adminGet.getAdmin('State');
   },[])  
 
-
+  
   //Dashboard setting according to the search
   useEffect(()=>{
-    if(searchWord.length>0){
-      setData(searchWord)
+    if(searchAdmin.searchWord.length>0){
+      adminGet.setData(searchAdmin.searchWord)
     }
     else{
-      getAdmin('Users');
+      adminGet.getAdmin('Users');
     }
-  },[searchWord]) 
-
+  },[searchAdmin.searchWord]) 
 
   const dataMenuAdmin = {
     nameAdmin: "Usuarios",
@@ -60,41 +47,46 @@ export const Users = () => {
     buttonDeactivated: " btn_change_color_gray",
     logoutAdmin: logoutAdmin
   }
+  
   const dataSearch={
     nameSearch: "Búsqueda de Usuarios",
-    postWorkSearch:postWorkSearch,
+    postWorkSearch:searchAdmin.postWorkSearch,
     searchNumber:"generalSearchReports",
-    searchString:"SearchUsers"
+    searchString:"SearchUsers",
+    nameFilter:searchAdmin.nameFilter,
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
   }
 
-
   const dataFilter={
-    changeFilteringOptionId:changeFilteringOptionId,
-    unSelect:unSelect,
+    changeFilteringOptionId:searchAdmin.changeFilteringOptionId,
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
     data:[
-      {id:1, nombre:"Tipo de Suspensión"},
-      {id:2, nombre:"Reportes"},
-      {id:3, nombre:"Correo"},
-      {id:4, nombre:"Nombres y Apellidos"}
-    ]
+      {nombre:"Tipo de Suspensión",id:1},
+      {nombre:"Reportes",id:2},
+      {nombre:"Correo",id:3},
+      {nombre:"Nombres y Apellidos",id:4}
+    ],
+    setNameFilter: searchAdmin.setNameFilter
   }
 
   const dataUsers={
-    objectAllStatus:dataState,
-    getAdminReports:getAdminReports,
-    dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
-    objectSelectedSetState:objectSelectedSetState, 
-    selectedList:selectedList, 
-    setselectedList:setselectedList, 
-    changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
+    objectAllStatus:adminGet.dataState,
+    getAdminReports:adminGet.getAdminReports,
+    dataReport:adminGet.dataReport,
+    deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:statusAdmin.objectSelectedSetState, 
+    selectedList:selectedListUsers, 
+    setSelectedList:setSelectedListUsers,
+    changeStatus:statusAdmin.changeStatus,
+    setChangeStatus:statusAdmin.setChangeStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox,
   }
   
   const dashboardHeader = {
-    columWidth1 : 'fieldSize3',
-    columWidth2 : 'fieldSize20',
-    columWidth3 : 'fieldSize20',
+    columWidth1 : 'fieldSize3 hide',
+    columWidth2 : 'fieldSize20 hide hide2',
+    columWidth3 : 'fieldSize20 hide',
     columWidth4 : 'fieldSize17',
     columWidth5 : 'fieldSize8',
     columWidth6 : 'fieldSize13',
@@ -103,46 +95,57 @@ export const Users = () => {
     columText2 : 'Apellidos',
     columText3 : 'Nombres',
     columText4 : 'Correo',
-    columText5 : 'Reportes',
-    columText6 : 'Estado Usuario',
-    columText7 : 'Conf. cambios',
     colorTituleReport: ' '
   }
 
   const dataPopupConfirmChanges = {
-    getAdmin:getAdmin,
-    setData:setData,
-    selectedList:selectedList, 
-    setselectedList: setselectedList,
-    nameTitle:"Esta seguro de querer actualizar el estado de: ",
-    valueButton:"Actualizar",
+    getAdmin:adminGet.getAdmin,
+    data:adminGet.data,
+    setData:adminGet.setData,
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Users",
-    typeAdmin: "usuario"
-    //sendNotification
+    typeAdmin: "usuario",
+    isOpen:statusAdmin.isOpen,
+    setIsOpen:statusAdmin.setIsOpen,
+    sendNotification:sendNotification,
+    selectedList:selectedListUsers, 
+    removeSelectedList:removeSelectedListUsers,
   }
 
+  const dataObject={
+    closePopUpAndDeleteSelectedDeslectCheckBox:statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox,
+    selectedList:selectedListUsers, 
+    setSelectedList:setSelectedListUsers,
+    setRemoveCheckbox:setRemoveCheckbox,
+  }
+
+  
 
   return (
     <div className='container_admin'>
-      <MenuAdmin dataMenuAdmin={dataMenuAdmin} />
+      <div className='visibility_menu_admin_vertical'>
+        <div className='container_menu_and_search_admin'>
+          <DropDownAdminMenu dataMenuAdmin={dataMenuAdmin}/>
+          <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+        </div>
+      </div>
+      <VerticalAdminMenu dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-      <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+      <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" hide"}/>
       <DashboardHeader dataDashboardHeader={dashboardHeader}/>
-      {validateSearchWord ?
+      {searchAdmin.validateSearchWord ?
         <Dashboard componetContent={
-          data?.map(item=>
-            <UserInfo objectAllUsers={item} dataUsers={dataUsers} key={item.idusuario}/>  
+          adminGet.data?.map(item=>
+            <UserInfo  objectAllUsers={item} dataUsers={dataUsers} key={item.id}/>  
           )}
         />
         :
         <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
-      
     }
       <PopupConfirmChanges objectContent={
-        selectedList?.map(item=>(
-          <ObjectStatus userSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        selectedListUsers?.map(item=>(
+          <ObjectStatus userSelect={item} dataObject={dataObject} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>
