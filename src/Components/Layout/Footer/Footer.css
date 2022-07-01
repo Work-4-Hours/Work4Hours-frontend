@@ -52,7 +52,7 @@
 }
 
 .about_footer {
-    width: 400px;
+    max-width: 400px;
 }
 
 .icon_footer {
@@ -69,4 +69,11 @@
     font-family: var(--font-1);
     color: var(--gray-text-3); 
     font-size: 15px;
+}
+
+@media screen and (max-width: 580px) {
+    .principal_info_footer {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

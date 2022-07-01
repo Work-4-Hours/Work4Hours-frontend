@@ -290,3 +290,17 @@
 .user_name_loading {
     margin: 0 0 10px 0;
 }
+
+@media screen and (max-width: 1330px) {
+    .center_info_service {
+        flex-direction: column-reverse;
+    }
+
+    .image_service_ {
+        width: 100%;
+    }
+
+    .information_service_ {
+        width: 100%;
+    }
+}

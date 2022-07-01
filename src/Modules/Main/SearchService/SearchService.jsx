@@ -12,6 +12,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { LoadingCardSearch } from "Components/Ui/LoadingCardSearch/LoadingCardSearch";
 import { SelectTextLabel } from "Components/Ui/SelectTextLabel/SelectTextLabel";
 import { Button } from "Components/Ui/Button/Button";
+import { CardService } from "Components/Ui/Cards/CardService/CardService";
 
 export const SearchService = () => {
   const [params, setParams] = useSearchParams();
@@ -101,9 +102,9 @@ export const SearchService = () => {
               </Title>
               {
                 loading ?
-                <p></p>
-                :
-                <p className="length_results">{results.length} Busquedas</p>
+                  <p></p>
+                  :
+                  <p className="length_results">{results.length} Busquedas</p>
               }
 
             </header>
@@ -120,7 +121,7 @@ export const SearchService = () => {
               <SelectTextLabel
                 titleLabel="Seleccione un tipo de servicio"
                 nameSelect="Categoria"
-                options={[{id: 'Oferta', name: 'Oferta'},{id: 'Demanda', name: 'Demanda'}]}
+                options={[{ id: 'Oferta', name: 'Oferta' }, { id: 'Demanda', name: 'Demanda' }]}
                 onChange={(e) => setCategory(e.target.value)}
               />
 
@@ -130,6 +131,7 @@ export const SearchService = () => {
               />
             </div>
           </DivShadow>
+
           <DivShadow className="search_services">
             {loading ? (
               <>
@@ -137,16 +139,38 @@ export const SearchService = () => {
                 <LoadingCardSearch />
               </>
             ) : (
-              results.map((item, index) => (
-                <Link
-                  key={index}
-                  to={`/CO/service/${formatName(item.name)}?sid=${item.id}`}
-                  className="link_card_service"
-                >
-                  <CardServiceSearch info_service={item} />
-                </Link>
-              ))
-            )}
+              <>
+                <div className="section_hight_resolution">
+                  {
+                    results.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={`/CO/service/${formatName(item.name)}?sid=${item.id}`}
+                        className="link_card_service"
+                      >
+                        <CardServiceSearch info_service={item} />
+                      </Link>
+                    ))
+                  }
+                </div>
+
+                <div className="section_slow_resolution">
+                  {
+                    results.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={`/CO/service/${formatName(item.name)}?sid=${item.id}`}
+                        className="link_card_service"
+                      >
+                        <CardService info={item} />
+                      </Link>
+                    ))
+                  }
+                </div>
+
+              </>
+            )
+            }
           </DivShadow>
         </div>
       </main>

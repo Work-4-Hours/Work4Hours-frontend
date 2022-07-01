@@ -11,17 +11,11 @@ export const Footer = () => {
         <footer className='footer_app'>
             <div className="center_footer_app">
 
-                
-
                 <div className="info_aplication">
 
                     <div className="section_information_aplicaction">
                         <Link to="/"><img className="footer_logo" src="https://res.cloudinary.com/sena-quindio/image/upload/v1656131213/work4hours/ipz0z1xedpgv9vcedtvs.png" alt="" /></Link>
-
-                       
                     </div>
-
-
 
                     <div className="social_networks">
                         <a href='https://web.facebook.com/Work-4-Hours-101901409252603/?_rdc=1&_rdr' target="_blank"><IconFacebook className='icon_footer' /></a>
@@ -32,9 +26,9 @@ export const Footer = () => {
                 </div>
 
                 <div className="footer_information">
-                            <Link to='' className='link_terminos_condiciones'>Terminos y condiciones</Link>
-                            <p className='information_copy'>Copyrigth © 2022, Todos los derechos reservados Work 4 Hours</p>
-                        </div>
+                    <Link to='' className='link_terminos_condiciones'>Terminos y condiciones</Link>
+                    <p className='information_copy'>Copyrigth © 2022, Todos los derechos reservados Work 4 Hours</p>
+                </div>
 
                 <div className="principal_info_footer">
                     <div className="contact">
