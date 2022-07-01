@@ -12,6 +12,7 @@ export const VerticalAdminMenu = ({dataMenuAdmin}) => {
   const logoutApp = () => {
     logoutAdmin();
     navigate('/');
+    window.location.reload()
   }
   return (
     <div className='visibility_menu_admin'>
@@ -23,7 +24,7 @@ export const VerticalAdminMenu = ({dataMenuAdmin}) => {
             <Link to="/AdminServices" className='text_decoration_none'><Button className={"button btn_with_admin "+ buttonDeactivated} value={"Servicios"}/></Link>
           </div>
         </div>
-        <Button className="button btn_change_color_gray btn_with_admin" value={"Cerrar Sesión"} onClick={logoutApp}/>
+        <Button className="button btn_change_color_gray btn_with_admin" value={"Cerrar Sesión"} onClick={logoutApp()}/>
       </div>
 
     </div>

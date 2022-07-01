@@ -39,7 +39,7 @@ export const useManageServices = () => {
             .then(response => response.json())
             .then(response => {
                 const oublicated_services = response[0].filter(item => {
-                    return item.status == 1                 
+                    return item.visibility == 1                 
                 })
                 setData(oublicated_services);
                 
@@ -59,7 +59,7 @@ export const useManageServices = () => {
             .then(response => response.json())
             .then(response => {
                 const oculted_services = response[0].filter(item => {
-                    return item.status == 3                 
+                    return item.visibility == 2                 
                 })
                 setData(oculted_services);
             })

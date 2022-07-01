@@ -18,7 +18,7 @@ export const ConfigRoutes = () => {
                 :
                 <>
                     {
-                        jwt_decode(user?.token).rol == process.env.REACT_APP_USER_ROL ?
+                        jwt_decode(user?.token).rol == 2 ?
                         <AllRoutes/>
                         :
                         <RoutesAdmin/>

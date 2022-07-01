@@ -27,14 +27,18 @@ export const Login = () => {
 
     useEffect(() => {
         if (!isLoading && isAuth()) {
-            if (jwt_decode(user.token).rol === process.env.REACT_APP_USER_ROL) {
+            if (jwt_decode(user.token).rol === 2) {
                 navigate('/')
+                console.log('log');
                 window.location.reload()
+
             }
 
-            else if (jwt_decode(user.token).rol === process.env.REACT_APP_ADMIN_ROL) {
+            else if (jwt_decode(user.token).rol === 1) {
                 navigate('/AdminUsers')
+                console.log('log');
                 window.location.reload()
+
             }
         }
     }, [isLoading])
