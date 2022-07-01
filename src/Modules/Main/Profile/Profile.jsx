@@ -4,31 +4,22 @@ import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
 import { ReactComponent as IconEmail } from 'Assets/Icons/IconEmail.svg'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from 'Context/UserContext'
 import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUser'
 
 import './Profile.css'
 import { Link, useSearchParams } from 'react-router-dom'
 import { LoadingCard } from 'Components/Ui/LoadingCard/LoadingCard'
-import { useFetch } from 'CustomHooks/useFetch'
 
 export const Profile = () => {
 
-    const { user, isAuth, getJwt } = useContext(UserContext)
+    const {getJwt } = useContext(UserContext)
     const [services, setServices] = useState([])
     const [profileU, setProfileU] = useState([])
     const [params, setParams] = useSearchParams()
     const [loading, setLoading] = useState(false)
     const [qualification, setQualification] = useState(null)
-
-    // const { data, isLoading : loading } = useFetch(`
-    // ${process.env.REACT_APP_API_PRODUCTION}/getUserServices/${params.get('id')}`,{
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `JSW ${getJwt()}`
-    //     }
-    // })
 
     useEffect(() => {
         const getInfo = async () => {
@@ -56,12 +47,6 @@ export const Profile = () => {
 
     const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()
-    }
-
-    const inputRef = useRef(null)
-
-    const onFocus = () => {
-        inputRef.current.focus()
     }
 
     return (

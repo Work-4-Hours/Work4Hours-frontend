@@ -30,6 +30,8 @@
   --bg-dark-2: #222831;
   --bg-dark-3: #2b323b;
 
+  --btn-background-color:#bfbfbf;
+
   /* Borders */
   --gray-border-1: 1px solid rgba(0, 0, 0, 0.034);
 
@@ -208,7 +210,6 @@ code {
 
 }
 
-/* Keyframes */
 
 @keyframes show_slow {
   0% {

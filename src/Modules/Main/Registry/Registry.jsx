@@ -4,13 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
 import { Button } from 'Components/Ui/Button/Button'
 import { Title } from 'Components/StyledComponets/Titlte'
-import { InputSelect } from 'Components/Ui/InputSelect/InputSelect'
 import { SelectTextLabel } from 'Components/Ui/SelectTextLabel/SelectTextLabel'
 import { useField } from 'CustomHooks/useField'
 import { ReactComponent as IconPlus } from 'Assets/Icons/IconPlus.svg'
-import { useFetch } from 'CustomHooks/useFetch'
 import { useUploadImage } from 'CustomHooks/useUploadImage'
-import { ReactComponent as RegistryBackground } from 'Assets/Backgrounds/RegistryBackground.svg'
 import { useImagePreview } from 'CustomHooks/useImagePreview'
 import { regex_email, regex_names, regex_password, regex_phone } from 'Validations/RejexForms'
 
@@ -49,10 +46,17 @@ export const Registry = () => {
         { step: 3, current: false, complete: false, info: 'Perfil (Opcional)' }
     ])
 
+
     const changeStep = (value) => {
         setCurrentStep(currentStep + 1)
         steps[value - 1].current = true
         steps[value - 2].complete = true
+    }
+
+    const returnStep = (value) => {
+        setCurrentStep(currentStep - 1)
+        steps[value - 1].current = false
+        steps[value - 2].complete = false
     }
 
     const registry = async () => {
@@ -123,12 +127,6 @@ export const Registry = () => {
 
     return (
         <main className='registry_main'>
-            {/* <div className="background_registry"></div>
-            <div className="background_image">
-                <RegistryBackground className='background_image_login_svg' />
-            </div> */}
-            {/* <img  src="https://res.cloudinary.com/sena-quindio/image/upload/v1652153285/nt4veg6nluasxa29vxnp.png" alt="" /> */}
-
             <div className="center_main_registry">
 
                 <DivShadow className='container_form_registry'>
@@ -142,29 +140,29 @@ export const Registry = () => {
                         <div className='form_registry'>
 
                             {
-                                currentStep == 1 && (
+                                currentStep === 1 && (
                                     <>
-                                        <section className="acount_data">
+                                        <form className="acount_data" onSubmit={e=>{e.preventDefault()}}>
 
                                             <InputTextLabel titleLabel='Correo' {...email} placeholder='Correo' />
 
-                                            <InputTextLabel titleLabel='Contraseña' {...password} placeholder='Contraseña' />
+                                            <InputTextLabel titleLabel='Contraseña' {...password}  placeholder='Contraseña' />
 
-                                        </section>
-                                        <Button value='Siguiente' onClick={() => {
+                                            <Button value='Siguiente' onClick={() => {
                                             email.validator(email.value)
                                             password.validator(password.value)
                                             if (email.validator(email.value) && password.validator(password.value))
-                                                changeStep(currentStep + 1)
-                                        }} />
+                                                changeStep(currentStep)
+                                            }} />
+                                        </form>
+                                        
                                     </>
                                 )
-
                             }
                             {
-                                currentStep == 2 && (
+                                currentStep === 2 && (
                                     <>
-                                        <section className="basic_data">
+                                        <form className="basic_data" onSubmit={e=>{e.preventDefault()}}>
 
                                             <InputTextLabel titleLabel='Nombres' {...name} placeholder='Camilo' />
 
@@ -188,26 +186,27 @@ export const Registry = () => {
                                                 nameSelect='Ciudad'
                                                 options={cities}
                                                 disable={disable}
-                                                onChange={e => setCity(e.target.value)}
+                                                onChange={e => setCity(e.target.value)} 
                                             />
+                                            <div className='container_buttons_registry'>
+                                                <Button value='Anterior' onClick={() => {returnStep(currentStep)}} />
+                                                <Button value='Siguiente' onClick={() => {
+                                                    name.validator(name.value)
+                                                    surname.validator(surname.value)
+                                                    phone.validator(phone.value)
+                                                    birthday.validator(phone.value)
+                                                    if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
+                                                        changeStep(currentStep)
+                                                }} />
+                                            </div>
+                                        </form>
 
-                                        </section>
-
-                                        <Button value='Siguiente' onClick={() => {
-                                            name.validator(name.value)
-                                            surname.validator(surname.value)
-                                            phone.validator(phone.value)
-                                            birthday.validator(phone.value)
-                                            if (name.validator(name.value) && surname.validator(surname.value) && phone.validator(phone.value) && birthday.validator(birthday.value))
-                                                changeStep(currentStep + 1)
-                                        }
-                                        } />
                                     </>
                                 )
                             }
 
                             {
-                                currentStep == 3 && (
+                                currentStep === 3 && (
                                     <>
                                         <section className="profile_user">
                                             <header className="">
@@ -240,7 +239,10 @@ export const Registry = () => {
                                                 </section>
                                             </header>
                                         </section>
-                                        <Button value='Registrate' onClick={() => registry()  } />
+                                        <div className='container_buttons_registry'>
+                                            <Button value='Anterior' onClick={() => {returnStep(currentStep)}} />
+                                            <Button value='Registrate' onClick={() => registry()} /> 
+                                        </div>
                                     </>
                                 )
                             }

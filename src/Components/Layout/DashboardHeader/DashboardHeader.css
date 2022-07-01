@@ -1,10 +1,11 @@
 .dashboard_header{
-    background-color: #ebebeb;
+    background-color: var(--bg-dashboard-grey);
     padding: 1% 2%;
     border-radius: 1em;
     display: flex;
     gap: 2%;
     color: var(--bd-checkbox-grey);
+    align-items: center;
 }
 .reportColor{color:var(--status-red)}
 
@@ -17,3 +18,8 @@
 .fieldSize13{width: 13%;}
 .fieldSize17{width: 17%;}
 .fieldSize20{width: 20%;}
+@media (min-width: 320px) and (max-width: 480px) {
+    
+
+    
+}

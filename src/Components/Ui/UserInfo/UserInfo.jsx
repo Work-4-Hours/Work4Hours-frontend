@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { CheckBoxAdmin } from '../CheckBoxAdmin/CheckBoxAdmin';
 import { InfoReportAdmin } from '../InfoReportAdmin/InfoReportAdmin';
 import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
@@ -6,38 +6,76 @@ import { StatusUsersAdmin } from '../StatusUsersAdmin/StatusUsersAdmin';
 import './UserInfo.css';
 
 
-export const UserInfo = ({deleteUserSelect,objectAllUsers,objectAllStatus, listUserSelectSet, selectUsers}) => {
+export const UserInfo = ({objectAllUsers,dataUsers}) => {
 
-  const { fotop, apellidos, nombres, correo, cantidadReportes, idEstado,nombre_estado, idusuario, color} = objectAllUsers;
-
-  // const { data } = objectAllStatus;
-
+  
   const [idStatus, setIdStatus] = useState(0);
-  const [changeStatus, setChangeStatus]=useState(false);
-  const photoData={name:nombres, color:color, userPicture:fotop};
+  const { 
+    fotop, 
+    apellidos, 
+    nombreUsuario, 
+    correo, 
+    cantidadReportes, 
+    idEstado,
+    nombre_estado, 
+    idusuario, 
+    color
+  } = objectAllUsers;
 
-  const userSelectListSelectSetStatus =(statusChange, idUser, idStatus)=>{
+  const {
+    objectAllStatus,
+    getAdminReports,
+    dataReport,
+    deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState, 
+    selectedList, 
+    setselectedList, 
+    changeStatus,
+    setChangeStatus
+  }=dataUsers;
+  
+  const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
-    if (statusChange===true){
-      selectUsers.map(item=>{
-        if(item.idUsuario===idUser){
-          item.idEstado=idStatus
-        }
-      })
-      listUserSelectSet=([...selectUsers]);
-      setChangeStatus(!changeStatus);
-    }
+  const dataStatusAdmin={
+    objectSelectedSetState:objectSelectedSetState, 
+    idObject:idusuario,
+    nameStatus:nombre_estado, 
+    idObjectStatus:idEstado, 
+    data:objectAllStatus, 
+    numberReports:cantidadReportes,
+    changeStatus:changeStatus,
+    setChangeStatus:setChangeStatus,
+    setIdStatus:setIdStatus
   }
 
+  const dataCheckBoxAdmin={
+    objectAll:objectAllUsers, 
+    designCheckBoxAdmin:"span_confirm_changes", 
+    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
+    selectedList:selectedList, 
+    setselectedList:setselectedList,
+    boardType:true,
+    idStatus:idStatus
+  }
+
+  const dataReports = {
+    numberReports: cantidadReportes,
+    idObject: idusuario, 
+    getAdminReports: getAdminReports,
+    dataReport: dataReport,
+    typeReport:"ReportsUsers"
+  }
+
+
   return (
-    <div className='user_info'>
+    <div className='object_info'>
       <PhotoAdmin photoData={photoData}/>
       <p className='ellipsis fieldSize20'>{apellidos}</p>
-      <p className='ellipsis fieldSize20'> {nombres}</p>
+      <p className='ellipsis fieldSize20'> {nombreUsuario}</p>
       <p className='ellipsis fieldSize17'>{correo}</p>
-      <InfoReportAdmin NumberReports={cantidadReportes} idUsers={idusuario}/>
-      <StatusUsersAdmin userSelectListSelectSetStatus={userSelectListSelectSetStatus} idUsuario={idusuario} statusChange={changeStatus} statusChangeSet={setChangeStatus} userStatus={nombre_estado} idUserStatus={idEstado} data={objectAllStatus} capturarid={setIdStatus} NumberReports={cantidadReportes}/>
-      <CheckBoxAdmin objectAllUsers={objectAllUsers} deleteUserSelect={deleteUserSelect} designCheckBoxAdmin={"span_confirm_changes"} id={idusuario} correo={correo} idStatus={idStatus} fotop={fotop} listUserSelectSet={listUserSelectSet} selectUsers={selectUsers} />
-    </div>
+      <InfoReportAdmin dataReports={dataReports} />
+      <StatusUsersAdmin dataStatusAdmin={dataStatusAdmin} />
+      <CheckBoxAdmin dataCheckBoxAdmin={dataCheckBoxAdmin}/>
+    </div>    
   )
 }

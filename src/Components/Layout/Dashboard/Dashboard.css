@@ -20,7 +20,6 @@
     width:8px;
 }
 
-
 .scroll::-webkit-scrollbar-thumb {
     background-color: var(--bd-checkbox-grey);
     border-radius: 20px;

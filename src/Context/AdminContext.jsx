@@ -3,14 +3,13 @@ import { useNotification } from 'CustomHooks/useNotification';
 import { sha256 } from 'js-sha256';
 import jwt_decode from "jwt-decode";
 
-import React, { createContext, useEffect, useState,useContext } from 'react'
+import React, { createContext, useEffect, useState, useContext } from 'react'
 
 
 export const AdminContext = createContext({});
 
 export const AdminProvider = ({ children }) => {
     const [admin, setAdmin, removeAdmin] = useLocalStorage(sha256('userAuth'),'')
-
     const { userConnection, sendNotification, closeConnection } = useNotification()
 
     const getToken = () => {

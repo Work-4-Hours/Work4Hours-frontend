@@ -9,11 +9,8 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { Button } from 'Components/Ui/Button/Button'
 import jwt_decode from 'jwt-decode'
 import { UserContext } from 'Context/UserContext'
-import { useNotification } from 'CustomHooks/useNotification'
-import { useLogin } from 'CustomHooks/useLogin'
 
 import './InfoService.css'
-import { Alert } from 'Components/StyledComponets/Alert'
 
 export const InfoService = () => {
 
@@ -43,7 +40,6 @@ export const InfoService = () => {
             .then(response => response.json())
             .then(response => {
                 setIsCreateRoom(response)
-                // console.log(response);
             })
             .catch(error => console.log(error))
             .finally(() => {
@@ -86,8 +82,6 @@ export const InfoService = () => {
                 .then(response => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
-                    // console.log(response);
-                    // console.log(jwt_decode(response[0].serviceInfo.user).userId);
                     setUserId(jwt_decode(response[0].serviceInfo.user).userId)
 
                 })

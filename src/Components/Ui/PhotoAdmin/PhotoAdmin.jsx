@@ -4,7 +4,6 @@ import './PhotoAdmin.css'
 
 
 export const PhotoAdmin = ({photoData}) => {
-    
     const {name, color, userPicture} = photoData;
     const getCharaterName = (value) => {
         let character = value.substring(1,0).toUpperCase()
@@ -12,6 +11,7 @@ export const PhotoAdmin = ({photoData}) => {
     }
 
   return (
+    
     <div className='fieldSize3 center_img'> 
         {userPicture ? 
                 <img className='admin_user_photo' src={userPicture} alt={userPicture} />
