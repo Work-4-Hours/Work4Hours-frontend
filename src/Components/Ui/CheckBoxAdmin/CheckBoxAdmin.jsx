@@ -8,52 +8,87 @@ export const CheckBoxAdmin = ({dataCheckBoxAdmin}) => {
     designCheckBoxAdmin, 
     deletingSelectedDeslectCheckbox,
     selectedList,
-    setselectedList,
+    setSelectedList,
     boardType,
-    idStatus
+    idStatus,
+    removeCheckbox, setRemoveCheckbox
   } = dataCheckBoxAdmin;
 
+  const [radioState, setRadioState] = useState(false);
+  const [statusChecked, setStatusChecked]=useState(false);
+
+  useEffect(()=>{
+    if(removeCheckbox.status===false && objectAll.id===removeCheckbox.id){
+      setRadioState(false);
+      setStatusChecked(false);
+    }
+    setRemoveCheckbox({id:0,status:true})
+
+  },[removeCheckbox.status])
 
   const [allObject, setallObject]=useState([]);
-
+  
   useEffect(()=>{
     if(objectAll!==undefined){
       setallObject(objectAll)
+      if(selectedList.length>0){
+        selectedList.map(item=>{
+          if(item.id===objectAll.id){
+            setRadioState(true);
+            setStatusChecked(true);
+          }
+        })
+      }
     }
   },[''])
-
  
   const validarcheckbox=(e)=>{
-    if(e.target.checked && boardType===true){
+    if(e && boardType===true){
       const datauser={
-        idEstado:idStatus, 
+        idStatus:idStatus, 
         email:allObject.correo, 
-        id:allObject.idusuario, 
-        fotoUser:allObject.fotop, 
-        nombres:allObject.nombreUsuario, 
+        id:allObject.id, 
+        photo:allObject.fotop, 
+        name:allObject.nombreUsuario, 
         color:allObject.color
       }
-      setselectedList([...selectedList, datauser]);
+      setSelectedList([...selectedList, datauser]);
     }
-    else if(e.target.checked && boardType===false){
+    else if(e && boardType===false){
+      
       const dataServices={
-        idEstado:idStatus,
-        id:allObject.idservicio,
-        nombre:allObject.nombreServicio
+        idStatus:idStatus,
+        id:allObject.id,
+        name:allObject.nombreServicio
       }
-      setselectedList([...selectedList, dataServices]);
-    }
-    else if(!e.target.checked && boardType===true){ 
-      deletingSelectedDeslectCheckbox(allObject.idusuario);
+      setSelectedList([...selectedList, dataServices]);
+
     }
     else{
-      deletingSelectedDeslectCheckbox(allObject.idservicio);
+      deletingSelectedDeslectCheckbox(allObject.id, selectedList, setSelectedList);
     }
  }
+ 
+ //With each click the check box is activated or deactivated
+ const changeCheckboxStatus=()=>{
+  if(radioState===false){
+    setStatusChecked(true);
+    setRadioState(true);
+    validarcheckbox(true)
+  }
+  else{
+    setStatusChecked(false);
+    setRadioState(false);
+    validarcheckbox(false)
+  }
+  
+ }
+
+
   return (
     <div className='text_center fieldSize8' >
       <label className='position_flex_center'>
-          <input type="checkbox" className='cb_confirm_changes' id={allObject.id}  onClick={(e)=>validarcheckbox(e)}/>
+          <input type="radio" className='cb_confirm_changes' id={allObject.id} checked={statusChecked} name={allObject.id} onClick={changeCheckboxStatus} readOnly />
           <span className={designCheckBoxAdmin}></span>
       </label>
     </div>

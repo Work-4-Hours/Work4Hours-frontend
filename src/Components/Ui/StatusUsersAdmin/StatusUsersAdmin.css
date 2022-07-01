@@ -1,3 +1,6 @@
+.content_status_users{
+    width: 11.4375em;
+}
 .op_state_object{
     cursor: pointer;
     position: relative;
@@ -29,6 +32,22 @@
     background-color: var(--status-red);
 }
 
+.status_object_dashboard{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    cursor:pointer
+}
 
+@media (min-width: 0) and (max-width: 480px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 
+@media (min-width: 801px) and (max-width: 1070px) {
+    .content_status_users{
+        right: -14px;
+    }
+}
 

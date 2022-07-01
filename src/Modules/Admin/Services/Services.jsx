@@ -1,56 +1,44 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useEffect,useContext, useState} from 'react';
 
-import { MenuAdmin } from 'Components/Layout/MenuAdmin/MenuAdmin.jsx';
+import { DropDownAdminMenu } from 'Components/Layout/DropDownAdminMenu/DropDownAdminMenu';
+import { VerticalAdminMenu } from 'Components/Layout/VerticalAdminMenu/VerticalAdminMenu';
 import { Search } from 'Components/Layout/Search/Search.jsx';
 import { DashboardHeader } from 'Components/Layout/DashboardHeader/DashboardHeader.jsx';
 import { Dashboard } from 'Components/Layout/Dashboard/Dashboard.jsx';
 import { ServiceInfo } from 'Components/Ui/ServiceInfo/ServiceInfo';
-
 import { PopupConfirmChanges } from 'Components/Layout/PopupConfirmChanges/PopupConfirmChanges';
 import { ObjectDelete } from 'Components/Ui/ObjectDelete/ObjectDelete';
-import { useAdmin } from 'CustomHooks/useAdmin';
+
 import { AdminContext } from 'Context/AdminContext';
+import { useGetAdmin } from 'CustomHooks/useGetAdmin';
+import { useSearchAdmin } from 'CustomHooks/useSearchAdmin';
+import { useStatusAdmin } from 'CustomHooks/useStatusAdmin';
 
 import '.././Admin.css';
 
 export const Services = () => {
 
-  const { admin, logoutAdmin, getToken, sendNotification } = useContext(AdminContext)
-
-  const { data,
-    setData,
-    getAdmin, 
-    dataState, 
-    getAdminReports,
-    dataReport,
-    deletingSelectedDeslectCheckbox, 
-    objectSelectedSetState, 
-    selectedList, 
-    setselectedList, 
-    changeStatus,
-    setChangeStatus,
-    postWorkSearch,
-    searchWord,
-    validateSearchWord,
-    changeFilteringOptionId,
-    unSelect
-  } = useAdmin();
+  const { admin, logoutAdmin, getToken, selectedListServices, setSelectedListServices, removeSelectedListServices } = useContext(AdminContext);
+  const adminGet= useGetAdmin();
+  const searchAdmin=useSearchAdmin();
+  const statusAdmin=useStatusAdmin();
+  const [removeCheckbox, setRemoveCheckbox] = useState({id:0,status:true});
 
   //To bring the initial data of the services
   useEffect(()=>{
-    getAdmin('Services');
-    getAdmin('State');
+    adminGet.getAdmin('Services');
+    adminGet.getAdmin('State');
   },[])
 
   //Dashboard setting according to the search
   useEffect(()=>{
-    if(searchWord.length>0){
-      setData(searchWord)
+    if(searchAdmin.searchWord.length>0){
+      adminGet.setData(searchAdmin.searchWord)
     }
     else{
-      getAdmin('Services');
+      adminGet.getAdmin('Services');
     }
-  },[searchWord]) 
+  },[searchAdmin.searchWord]) 
     
   const dataMenuAdmin = {
     nameAdmin: "Servicios",
@@ -60,26 +48,42 @@ export const Services = () => {
   }
   const dataSearch={
     nameSearch: "Búsqueda de Servicios",
-    postWorkSearch:postWorkSearch,
+    postWorkSearch:searchAdmin.postWorkSearch,
     searchNumber:"generalSearchReportsServices",
-    searchString:"SearchServices"
+    searchString:"SearchServices",
+    nameFilter:searchAdmin.nameFilter,
+    setNameFilter:searchAdmin.setNameFilter
   }
 
   const dataFilter={
-    changeFilteringOptionId:changeFilteringOptionId,
-    unSelect:unSelect,
+    changeFilteringOptionId:searchAdmin.changeFilteringOptionId,
+    changeFilterStatusInitial:searchAdmin.changeFilterStatusInitial,
     data:[
-      {id:1, nombre:"Reportes"},
-      {id:2, nombre:"Nombre del servicio"},
-      {id:3, nombre:"Tipo"}
-    ]
+      {nombre:"Reportes",id:1},
+      {nombre:"Nombre del servicio",id:2},
+      {nombre:"Tipo",id:3}
+    ],
+    setNameFilter:searchAdmin.setNameFilter
   }
 
+  const dataServices={
+    objectAllStatus:adminGet.dataState,
+    getAdminReports:adminGet.getAdminReports,
+    dataReport:adminGet.dataReport,
+    deletingSelectedDeslectCheckbox:statusAdmin.deletingSelectedDeslectCheckbox, 
+    objectSelectedSetState:statusAdmin.objectSelectedSetState, 
+    selectedList:selectedListServices, 
+    setSelectedList:setSelectedListServices,
+    changeStatus:statusAdmin.changeStatus,
+    setChangeStatus:statusAdmin.setChangeStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox,
+  }
   const dashboardHeader = {
     columWidth1 : 'fieldSize15',
-    columWidth2 : 'fieldSize15',
-    columWidth3 : 'fieldSize15',
-    columWidth4 : 'fieldSize15',
+    columWidth2 : 'fieldSize15 hide',
+    columWidth3 : 'fieldSize15 hide',
+    columWidth4 : 'fieldSize15 hide',
     columWidth5 : 'fieldSize8 ',
     columWidth6 : 'fieldSize13',
     columWidth7 : 'fieldSize8', 
@@ -87,56 +91,56 @@ export const Services = () => {
     columText2 : 'Usuario',
     columText3 : 'Descripción',
     columText4 : 'Apelación',
-    columText5 : 'Reportes',
-    columText6 : 'Estado Usuario',
-    columText7 : 'Seleccionar',
     colorTituleReport: 'reportColor'
   }
 
-  const dataServices={
-    objectAllStatus:dataState,
-    getAdminReports:getAdminReports,
-    dataReport:dataReport,
-    deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox, 
-    objectSelectedSetState:objectSelectedSetState, 
-    selectedList:selectedList, 
-    setselectedList:setselectedList, 
-    changeStatus:changeStatus,
-    setChangeStatus:setChangeStatus
-  }
 
   const dataPopupConfirmChanges = {
-    getAdmin:getAdmin,
-    setData:setData,
-    selectedList:selectedList, 
-    setselectedList: setselectedList,
-    nameTitle:"Esta seguro de querer actualizar el estado de: ",
-    valueButton:"Actualizar",
+    getAdmin:adminGet.getAdmin,
+    data:adminGet.data,
+    setData:adminGet.setData,
     token:getToken(),
     email:admin.info[0].email,
     typePetition:"Services",
-    typeAdmin: "servicio"
-    //sendNotification
+    typeAdmin: "servicio",
+    isOpen:statusAdmin.isOpen,
+    setIsOpen:statusAdmin.setIsOpen,
+    sendNotification:sendNotification,
+    selectedList:selectedListServices, 
+    removeSelectedList:removeSelectedListServices
   }
-  
+
+  const dataDelete={
+    closePopUpAndDeleteSelectedDeslectCheckBox:statusAdmin.closePopUpAndDeleteSelectedDeslectCheckBox,
+    selectedList:selectedListServices, 
+    setSelectedList:setSelectedListServices,
+    setRemoveCheckbox:setRemoveCheckbox,
+  }
+
   return (
     <div className='container_admin'>
-      <MenuAdmin dataMenuAdmin={dataMenuAdmin}/>
+      <div className='visibility_menu_admin_vertical'>
+        <div className='container_menu_and_search_admin'>
+          <DropDownAdminMenu dataMenuAdmin={dataMenuAdmin}/>
+          <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+        </div>
+      </div>
+      <VerticalAdminMenu dataMenuAdmin={dataMenuAdmin} />
       <div className='manager_control'>
-        <Search dataSearch={dataSearch} dataFilter={dataFilter}/>
+        <Search dataSearch={dataSearch} dataFilter={dataFilter} visible={" hide"}/>
         <DashboardHeader dataDashboardHeader={dashboardHeader}/>
         {
-          validateSearchWord ?
+          searchAdmin.validateSearchWord ?
           <Dashboard componetContent={
-            data?.map(item=>(
-              <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.idservicio}/>)
+            adminGet.data?.map(item=>(
+              <ServiceInfo objectServiceInfo={item} dataServices={dataServices} key={item.id}/>)
             ) }/>
           :
           <Dashboard result="center_message" componetContent={<h1 className='title_admin'>No se encontraron resultados</h1>}/>
         }
         <PopupConfirmChanges objectContent={
-        selectedList?.map(item=>(
-          <ObjectDelete servicesSelect={item} deletingSelectedDeslectCheckbox={deletingSelectedDeslectCheckbox} key={item.id}/>
+        selectedListServices?.map(item=>(
+          <ObjectDelete servicesSelect={item} dataDelete={dataDelete} key={item.id}/>
         ))
       } dataPopupConfirmChanges={dataPopupConfirmChanges}/>
       </div>

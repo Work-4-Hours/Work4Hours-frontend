@@ -69,6 +69,7 @@ export const InfoService = () => {
             .finally(() => {
                 console.log('XED');
             })
+        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
 

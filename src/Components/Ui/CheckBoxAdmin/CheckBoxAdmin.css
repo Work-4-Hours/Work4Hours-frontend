@@ -1,4 +1,4 @@
-.cb_confirm_changes{display: none;}
+.cb_confirm_changes{display: none; cursor:pointer}
 
 .span_filter::after{
     background-color: var(--bg-blue);
@@ -27,7 +27,8 @@
     color:var(--white-text-1);
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
+    cursor:pointer
 }
 .position_flex_center{
     display: flex;

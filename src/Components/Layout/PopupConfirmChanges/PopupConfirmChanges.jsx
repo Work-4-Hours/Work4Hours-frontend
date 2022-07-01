@@ -13,23 +13,18 @@ import { PopupConfirmChangesContentObjects } from '../PopupConfirmChangesContent
 export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) => {
     const apiAdmin = process.env.REACT_APP_API_ADMIN;
     const API = process.env.REACT_APP_API;
-    
+
     const {
-        setData,
-        getAdmin,
-        selectedList, 
-        setselectedList,
-        nameTitle,
-        valueButton,
-        token,
-        email,
+        data, 
+        token, email,
+        selectedList, removeSelectedList,
         typePetition,
-        typeAdmin
+        typeAdmin,
+        isOpen, setIsOpen,
+        sendNotification
     }=dataPopupConfirmChanges;
 
-    const [isOpen, setIsOpen] = useState(false);
     const [passwordAdmin, setPasswordAdmin]=useState('');
-    const [passwordAdminValidate,setPasswordAdminValidate]=useState(false);
 
     const validationInput= (e) => {
         if(e.keyCode===13){
@@ -43,16 +38,70 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
     }
 
     const popUpOpen = () => {
+        let detectChangeStatus = false;
         if(selectedList.length===0){
             Alert("No se registran cambios", `Por favor seleccione y cambie el estado del ${typeAdmin}.`, "info", "Ok");
         }
         else{
-            setIsOpen(!isOpen);
+            selectedList.map(item=>{
+                data.map(object => {
+                    if(item.id===object.id){
+                        if(item.idStatus===object.idEstado){
+                            detectChangeStatus=true;
+                        }
+                    }
+                });
+            })
+            if(detectChangeStatus){
+                Alert("No se registran cambios de estados", `Verifique que toda la lista seleccionada tenga cambios.`, "info", "Ok");
+            }
+            else{
+                setIsOpen(!isOpen);
+            }
         }
     }
 
-    const sendObjects=(e)=>{
+    const messageDescriptionNotification = (status, name) => {
+        let message="";
+        let messageUsers="Usted ha sido"
+        let messageServices=`Su servicio ${name} ha sido`
+        if(typeAdmin==="usuario"){
+            if(status===1){
+                message=`${messageUsers} habilitado de nuevo.`;
+            }
+            else if (status===2){
+                message=`${messageUsers} suspendido por 3 días.`;
+            }
+            else if(status===3){
+                message=`${messageUsers} inhabilitado.`;
+            }
+
+        }
+        else{
+            if(status===1){
+                message=`${messageServices} habilitado de nuevo.`;
+            }
+            else if (status===2){
+                message=`${messageServices} suspendido por 3 días.`;
+            }
+            else if(status===3){
+                message=`${messageServices} inhabilitado.`;
+            }
+        }
+        return message;
+    }
+    
+    const sendNotificationAdmin=()=>{
+        selectedList.map(item=>{
+            const message=messageDescriptionNotification(item.idStatus, item.name);
+            sendNotification(item.id, message,"Work 4 Hours", "#14A2D6", "")
+            console.log(message);
+        })
+    }
+
+    const sendObjects=()=>{
         if(passwordAdmin!==""){
+            setIsOpen(!isOpen);
             fetch(`${API}/allowChanges/${email}/${passwordAdmin}`,{
                 method:"POST",
                 headers:{
@@ -61,22 +110,33 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             })
             .then(res=>res.json())
             .then(res=>{
-                if (res){
+                console.log(res)
+                if (res.response){
                     axios.put(`${apiAdmin}/api/${typePetition}`, selectedList)
                     .then(response => {
                         console.log(response);
-                        setselectedList([]);
-                        setIsOpen(!isOpen);
-                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success", "Ok");    
-                        setData(getAdmin(typePetition));
+                        sendNotificationAdmin();
+                        removeSelectedList();
+                        
+                        setPasswordAdmin('');
+                        Alert("Cambios realizados", `El cambio de estado de ${typeAdmin} se realizo correctamente.`, "success"); 
+                        setInterval(() => {
+                            window.location.reload();
+                        }, 500);   
+
                     })
                     .catch(e => {console.log(e);})
                 }
                 else{
+                    setPasswordAdmin('');
                     Alert("Error", "La contraseña ingresada es incorrecta no se pueden realizar cambios.", "error", "Ok");
                 }
             })
             .catch(err=>console.log(err))
+        }
+        else{
+            setPasswordAdmin('');
+            Alert("Campo vacío", "Ingrese la contraseña por favor.", "info", "Ok");
         }
     }
 
@@ -86,16 +146,15 @@ export const PopupConfirmChanges = ({ dataPopupConfirmChanges, objectContent }) 
             <PopUp isOpen={isOpen}>
                 <div className="overlay_popup_confirm_changes_content_object">
                     <div className='popup_admin_save_changes_admin'>
-                        <PopupTitleAdmin title={nameTitle} />
+                        <PopupTitleAdmin />
                         <PopupConfirmChangesContentObjects content={objectContent} />
-                        <input type="password" className='password_admin_save_changes_admin' placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
+                        <input type="password" className='password_admin_save_changes_admin' value={passwordAdmin} placeholder='Ingrese su contraseña de administrador' onChange={(e)=>{setPasswordAdmin(e.target.value)}} onKeyUp={(e)=>{validationInput(e)}}/>
                         <div className='btns_save_changes_admin'>
                             <div className='btns_save_changes_admin_spacing'>
                                 <Button value="Cancelar" className="button btn_change_color_gray" onClick={() => {setIsOpen(!isOpen)}} />
-                                <Button value={valueButton} onClick={(e)=>{sendObjects(e);}}/>
+                                <Button value="Actualizar" onClick={(e)=>{sendObjects(e);}}/>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </PopUp>

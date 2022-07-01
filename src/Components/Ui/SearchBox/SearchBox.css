@@ -1,6 +1,6 @@
 .search_box{
     background-color: var(--bg-dashboard-grey);
-    padding: 1.5%;
+    padding: 0.8%;
     width: 88%;
     display: flex;
     align-items: center;
@@ -14,10 +14,22 @@
     font-size: 1em;
     width: 100%;
 }
+.object_filter_selected{
+    background-color: var(--bg-popup-description);
+    border-radius: 10px;
+    display: flex;
+    color:var(--gray-text-2);
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5%;
+    width: 28%;
+    justify-content: space-between;
+}
 
-@media (min-width: 320px) and (max-width: 480px) {
+.delete_appearance{appearance: none;}
+
+@media (min-width: 0) and (max-width: 800px) {
     .search_box{
         width: 100%;
     }
-
 }

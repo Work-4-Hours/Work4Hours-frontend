@@ -12,9 +12,9 @@ export const PhotoAdmin = ({photoData}) => {
 
   return (
     
-    <div className='fieldSize3 center_img'> 
+    <div className='center_img hide'> 
         {userPicture ? 
-                <img className='admin_user_photo' src={userPicture} alt={userPicture} />
+                <img className='admin_user_photo' src={userPicture} alt={name} />
             :
             <DesignLetters color={color}>
                 <p className='first_letter_name_user_admin'>{getCharaterName(name)}</p>

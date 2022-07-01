@@ -1,12 +1,26 @@
-.checkbox_admin_filter[type='radio']{
-    appearance: none; 
-    background-color: var(--bg-blue); 
-    border:1px solid var(--white-text-1);
-    width: 16px;
-    height: 16px;
+.checkbox_admin_filter{display: none; cursor:pointer; }
+
+.span_admin_filter{
+    display: inline-block;
+    cursor: pointer; 
+    height: 100%;
+}
+.span_admin_filter::after{
+    content: "";
+    display: block;
+    background-color:var(--bg-blue) ;
+    border: 1px solid var(--white-text-1);
+    width: 1em;
+    height: 1em; 
 }
 
-.checkbox_admin_filter[type='radio']:checked{
-    background-color: var(--white-text-1);
-    border: 1px solid var(--status-grey);
+.checkbox_admin_filter:checked ~ .span_admin_filter::after{
+    content: "✓";
+    width: 1em;
+    height: 1em; 
+    color:var(--white-text-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer
 }

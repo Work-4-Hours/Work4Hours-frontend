@@ -11,25 +11,30 @@ import { PhotoAdmin } from '../PhotoAdmin/PhotoAdmin';
 
 
 export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
-  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, idservicio, idusuario,idEstado,color}=objectServiceInfo;
+  const {apelacion, cantidadReportes, descripcionServicio, estado, fotop, nombreServicio, nombreUsuario, id, idusuario,idEstado,color}=objectServiceInfo;
   
   const {objectAllStatus,
     getAdminReports,
     dataReport,
     deletingSelectedDeslectCheckbox, 
     objectSelectedSetState, 
-    selectedList, 
-    setselectedList, 
     changeStatus,
-    setChangeStatus}=dataServices;
+    setChangeStatus,
+    selectedList, 
+    setSelectedList,
+    removeCheckbox,
+    setRemoveCheckbox
+  }=dataServices;
 
   const [idStatus, setIdStatus] = useState(0);
+  const [notificationAutomaticSuspension, setNotificationAutomaticSuspension] = useState("background_object_info");
+
 
   const photoData={name:nombreUsuario, color:color, userPicture:fotop};
 
   const dataReports = {
     numberReports: cantidadReportes,
-    idObject: idservicio, 
+    idObject: id, 
     getAdminReports: getAdminReports,
     dataReport: dataReport,
     typeReport:"ReportsServices"
@@ -37,31 +42,35 @@ export const ServiceInfo = ({objectServiceInfo, dataServices}) => {
 
   const dataStatusAdmin={
     objectSelectedSetState:objectSelectedSetState,
-    idObject:idservicio, 
+    idObject:id, 
     nameStatus:estado, 
     idObjectStatus:idEstado, 
     data:objectAllStatus, 
-    numberReports:cantidadReportes,
     changeStatus:changeStatus,
     setChangeStatus:setChangeStatus,
-    setIdStatus:setIdStatus
+    setIdStatus:setIdStatus,
+    setNotificationAutomaticSuspension:setNotificationAutomaticSuspension,
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
   }
 
   const dataCheckBoxAdmin={
     objectAll:objectServiceInfo, 
     designCheckBoxAdmin:"span_confirm_changes", 
     deletingSelectedDeslectCheckbox:deletingSelectedDeslectCheckbox,
-    selectedList:selectedList, 
-    setselectedList:setselectedList,
+    selectedList:selectedList,
+    setSelectedList:setSelectedList,
     boardType:false,
-    idStatus:idStatus
+    idStatus:idStatus,
+    removeCheckbox:removeCheckbox,
+    setRemoveCheckbox:setRemoveCheckbox
   }
 
 
   return (
-    <div className='object_info'>
-      <p className='ellipsis fieldSize15  '>{nombreServicio}</p>
-      <div className='fieldSize15 space_photo_username'>
+    <div className={'object_info ' + notificationAutomaticSuspension}>
+      <p className='ellipsis fieldSize15 '>{nombreServicio}</p>
+      <div className='fieldSize15 space_photo_username hide'>
         <PhotoAdmin photoData={photoData}/>
         <p className='ellipsis'>{nombreUsuario} </p>
       </div>
