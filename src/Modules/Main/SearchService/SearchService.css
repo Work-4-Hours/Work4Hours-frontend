@@ -4,6 +4,7 @@
     padding: 0 20px;
 
     display: flex;
+    align-items: flex-start;
     gap: 20px;
 }
 
@@ -21,8 +22,16 @@
     color: var(--gray-text-3);
 }
 
+.title_value_search {
+    font-size: 30px;
+}
+
 .filter_search_info {
     padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .subtitle_filter_search {
