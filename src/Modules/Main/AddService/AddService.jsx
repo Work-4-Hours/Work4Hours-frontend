@@ -28,7 +28,7 @@ export const AddService = () => {
     const [name, setName] = useState(null);
     const [status, setStatus] = useState(null);
     const [type, setType] = useState(null);
-    // const [fileImage, setFileImage] = useState(null);
+    const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
     const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
@@ -71,8 +71,7 @@ export const AddService = () => {
                     <DivShadow className='image_add'>
                         <input type="file" className='input_add_image_service' id='input_add_image_service' onChange={e => { 
                             setPreviewImage(e) 
-                            // setFileImage(e.target.files[0])
-                            uploadImage(e.target.files[0])
+                            setFileImage(e.target.files[0])
                         }} />
 
                         <label htmlFor="input_add_image_service">
@@ -80,9 +79,9 @@ export const AddService = () => {
                                 previewImage ?
                                     <>
                                         <img className='image_service_preview' src={previewImage} alt="" />
-                                        {/* <div className="button_upload_image_service">
+                                        <div className="button_upload_image_service">
                                             <Button value='Subir imagen' onClick={ () => uploadImage(fileImage)} isLoading={loading} />
-                                        </div> */}
+                                        </div>
                                     </>
 
                                     :
