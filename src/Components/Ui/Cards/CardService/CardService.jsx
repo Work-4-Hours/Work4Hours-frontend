@@ -22,7 +22,7 @@ export const CardService = ({info}) => {
                         <p>COP ${ agregarSeparadorMiles(price)}/hora</p>                           
                     </div>
                 </div>
-                <img className='image_header_card' src={photo} alt="" />
+                <img className='image_header_card' src={photo ? photo : 'https://gigacon.com.co/web/images/joomlart/demo/default.jpg'} alt="" />
             </header>
             <body className='body_card_service'>
                 <div className="location_card_service">

@@ -29,14 +29,11 @@ export const Login = () => {
         if (!isLoading && isAuth()) {
             if (jwt_decode(user.token).rol === 2) {
                 navigate('/')
-                console.log('log');
                 window.location.reload()
-
             }
 
             else if (jwt_decode(user.token).rol === 1) {
                 navigate('/AdminUsers')
-                console.log('log');
                 window.location.reload()
 
             }

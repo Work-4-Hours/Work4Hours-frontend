@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DivShadow } from 'Components/StyledComponets/DivShadow'
 import { Button } from 'Components/Ui/Button/Button'
 import { InputTextLabel } from 'Components/Ui/InputTextLabel/InputTextLabel'
@@ -36,6 +36,20 @@ export const ForgottenPassword = () => {
         .catch(error => console.log(error))          
     }
 
+    const updatePassword = () => {
+        fetch(`${process.env.REACT_APP_API_PRODUCTION}/changePassword/${confrimPassword.value}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JSW ${params.get('id')}`
+            }
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => console.log(error))   
+    }
+
     useEffect(() => {
         if (params.get('id')) {
             setValue(2)
@@ -52,6 +66,7 @@ export const ForgottenPassword = () => {
     }, [confrimPassword.value])
 
     const redirecLogin = () => {
+        updatePassword()
         removeValue()
         navigate('/login')
     }
@@ -94,8 +109,8 @@ export const ForgottenPassword = () => {
                                     </header>
 
                                     <form className='form_forgotten_password'>
-                                        <InputTextLabel titleLabel='Nueva contraseña' {...password} placeholder='Direccion de correo electronico' />
-                                        <InputTextLabel titleLabel='Confirmar nueva contraseña' {...confrimPassword} placeholder='Direccion de correo electronico' />
+                                        <InputTextLabel titleLabel='Nueva contraseña' {...password} placeholder='Contraseña' />
+                                        <InputTextLabel titleLabel='Confirmar nueva contraseña' {...confrimPassword} placeholder='Confirmar contraseña' />
                                         <Button value='Actualizar contraseña' onClick={() => setValue(value + 1)} />
                                     </form>
                                 </section>

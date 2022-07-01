@@ -29,7 +29,7 @@ export const Registry = () => {
 
     // Form fields registry
     const email = useField({ type: 'email', validate: regex_email, message_errors: 'Correo incorrecto' })
-    const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta, debe contener almenos un numero' })
+    const password = useField({ type: 'password', validate: regex_password, message_errors: 'Contraseña incorrecta, debe contener letras y numeros' })
     const name = useField({ type: 'text', validate: regex_names, message_errors: 'Nombres incorrectos' })
     const surname = useField({ type: 'text', validate: regex_names, message_errors: 'Apellidos incorrectos' })
     const phone = useField({ type: 'text', validate: regex_phone, message_errors: 'Numero telefonico incorrecto' })

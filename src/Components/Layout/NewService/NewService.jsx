@@ -157,7 +157,7 @@ export const NewService = () => {
 
                     <InputTextLabel titleLabel='Descripción del servicio' {...description} placeholder='Detalle su petición o prestación de su servicio' />
 
-                    <Button value={`${status === 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
+                    <Button value={`'Guardar publicacion'`} isLoading={loading} />
                 </form>
 
 

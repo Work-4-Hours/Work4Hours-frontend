@@ -21,9 +21,10 @@ export const useLogin = ( user, setUser, removeUser, userConnection ) => {
                 }
             )
         })
-        .then(response => response.json())
+        .then(response => response.json())  
         .then(response => {
-            if (response[0].userInfo.token) {
+            console.log(response);
+            if (response) {
                 setUser(response[0].userInfo)
                 userConnection(jwt_decode(response[0].userInfo.token).userId)
             } else if(!response[0].userInfo.exist) {

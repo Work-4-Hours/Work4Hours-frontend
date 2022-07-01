@@ -12,6 +12,7 @@ export const AdminProvider = ({ children }) => {
     const [selectedListUsers, setSelectedListUsers, removeSelectedListUsers] = useLocalStorage(sha256('selectedListUsers'),[])
     const [selectedListServices, setSelectedListServices, removeSelectedListServices] = useLocalStorage(sha256('selectedListServices'),[])
     const { userConnection, sendNotification, closeConnection } = useNotification();
+    console.log(admin)
 
     const getToken = () => {
         return admin.token

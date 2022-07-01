@@ -9,7 +9,7 @@ import { useLocalStorage } from 'CustomHooks/useLocalStorage'
 import { sha256 } from 'js-sha256'
 
 export const ConfigRoutes = () => {
-    const [user] = useLocalStorage(sha256('userAuth'),null)
+    const [user] = useLocalStorage(sha256('userAuth'),'')
     return (
         <>
             {

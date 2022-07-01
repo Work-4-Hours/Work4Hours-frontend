@@ -143,7 +143,10 @@ export const InfoService = () => {
                                     loading ?
                                         <div className="image_service_loading"></div>
                                         :
-                                        <img className='image_service' src={service?.photo} alt="" />
+                                        
+                                          
+                                            <img className='image_service' src={ service.photo ? service.photo : 'https://gigacon.com.co/web/images/joomlart/demo/default.jpg'} alt="" />
+                                        
                                 }
                             </div>
                         </DivShadow>
