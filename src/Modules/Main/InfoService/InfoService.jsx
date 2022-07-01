@@ -10,9 +10,9 @@ import { Button } from 'Components/Ui/Button/Button'
 import jwt_decode from 'jwt-decode'
 import { UserContext } from 'Context/UserContext'
 
-import './InfoService.css'
 import { Alert } from 'Components/StyledComponets/Alert'
 import { toast, ToastContainer } from 'react-toastify'
+import './InfoService.css'
 
 export const InfoService = () => {
 
@@ -77,7 +77,7 @@ export const InfoService = () => {
             .finally(() => {
                 service_reported()
             })
-        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
+            // sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
 
@@ -96,7 +96,7 @@ export const InfoService = () => {
                     setService(response[0].serviceInfo)
                     setInfoUser(response[0].serviceUser)
                     setUserId(jwt_decode(response[0].serviceInfo.user).userId)
-
+                    console.log(response);
                 })
                 .finally(() => setLoading(false))
         }
