@@ -27,7 +27,6 @@ export const AddService = () => {
     const [type, setType] = useState(null);
     const [fileImage, setFileImage] = useState(null);
     const [price, setPrice] = useState(null);
-    const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(null);
 
     const { previewImage, setPreviewImage } = useImagePreview()

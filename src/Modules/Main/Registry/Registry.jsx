@@ -140,7 +140,7 @@ export const Registry = () => {
                         <div className='form_registry'>
 
                             {
-                                currentStep == 1 && (
+                                currentStep === 1 && (
                                     <>
                                         <form className="acount_data" onSubmit={e=>{e.preventDefault()}}>
 
@@ -160,7 +160,7 @@ export const Registry = () => {
                                 )
                             }
                             {
-                                currentStep == 2 && (
+                                currentStep === 2 && (
                                     <>
                                         <form className="basic_data" onSubmit={e=>{e.preventDefault()}}>
 
@@ -206,7 +206,7 @@ export const Registry = () => {
                             }
 
                             {
-                                currentStep == 3 && (
+                                currentStep === 3 && (
                                     <>
                                         <section className="profile_user">
                                             <header className="">

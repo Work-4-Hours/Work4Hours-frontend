@@ -39,7 +39,6 @@ export const NewService = () => {
     const { createService, loading } = useManageServices()
     const { previewImage, setPreviewImage } = useImagePreview()
     const { data: image_service, uploadImage } = useUploadImage()
-    const [test, setTest] = useState()
 
     function agregarSeparadorMiles(numero) {
         let partesNumero = numero.toString().split(',');
@@ -115,7 +114,7 @@ export const NewService = () => {
 
                     <InputTextLabel titleLabel='Descripción del servicio' {...description} placeholder='Detalle su petición o prestación de su servicio' />
 
-                    <Button value={`${status == 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
+                    <Button value={`${status === 1 ? 'Publicar servicio' : 'Guardar borrador'}`} isLoading={loading} />
                 </form>
 
 

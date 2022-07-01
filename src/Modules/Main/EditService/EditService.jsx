@@ -22,9 +22,7 @@ export const EditService = () => {
 
     const [name, setName] = useState(service.name);
     const [type, setType] = useState(null);
-    const [photo, setPhoto] = useState(null);
     const [price, setPrice] = useState(service.price);
-    const [category, setCategory] = useState(null);
     const [description, setDescription] = useState(service.description);
 
 

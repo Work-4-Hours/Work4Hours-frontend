@@ -62,7 +62,7 @@ export const ForgottenPassword = () => {
                 <DivShadow className='form_forgotten_password'>
                     <div className="padding_forgotten_password">
                         {
-                            value == 1 && (
+                            value === 1 && (
                                 <>
                                     <header className='header_forgotten_password'>
                                         <IconUnlock className='incon_unlock' />
@@ -85,7 +85,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 2 && (
+                            value === 2 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <div>
@@ -103,7 +103,7 @@ export const ForgottenPassword = () => {
                         }
 
                         {
-                            value == 3 && (
+                            value === 3 && (
                                 <section className='section_new_pasword'>
                                     <header className='header_forgotten_password'>
                                         <IconCheck className='incon_unlock' />

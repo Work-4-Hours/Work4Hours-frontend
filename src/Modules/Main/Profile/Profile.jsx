@@ -4,7 +4,7 @@ import { CardService } from 'Components/Ui/Cards/CardService/CardService'
 import { PhotoUserProfile } from 'Components/Ui/PhotoUserProfile/PhotoUserProfile'
 import { ReactComponent as IconPhone } from 'Assets/Icons/IconPhone.svg'
 import { ReactComponent as IconEmail } from 'Assets/Icons/IconEmail.svg'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from 'Context/UserContext'
 import { CalificationUser } from 'Components/Ui/CalificationUser/CalificationUser'
 
@@ -47,12 +47,6 @@ export const Profile = () => {
 
     const formatName = (name) => {
         return name.split(' ').join('-').toLowerCase()
-    }
-
-    const inputRef = useRef(null)
-
-    const onFocus = () => {
-        inputRef.current.focus()
     }
 
     return (
