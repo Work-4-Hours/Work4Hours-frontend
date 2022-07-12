@@ -77,7 +77,7 @@ export const InfoService = () => {
             .finally(() => {
                 service_reported()
             })
-        sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
+        // sendNotification(jwt_decode(serviceuser).userId, `${service?.name} ha sido solicitado`, `${infoUser?.name}`, `${infoUser?.color}`, `${infoUser?.photo}`)
     }
 
 
